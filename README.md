@@ -1,2 +1,2 @@
 # doecode
-Main repo for managing theD DOECOode project.
+Main repo for managing the DOECode project.
