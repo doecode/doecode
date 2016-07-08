@@ -1,5 +1,6 @@
 # Guide to Contributing
-Contributions to this project are welcome. All contributors agree to the following:
+
+Contributions to this project are welcome. All contributors agree to the following.
 1. You have permission and any required rights to submit your contribution.
 2. Your contribution is provided under the license of this project and may be redistributed as such.
 3. All contributions to this project are public.
