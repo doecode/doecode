@@ -1,14 +1,11 @@
 # Guide to Contributing
 
-Contributions to this project are welcome. A
-
-## General Guidelines 
-All contributors agree to the following:
-1. You have permission and any required rights to submit your contribution.
-2. Your contribution is provided under the license of this project and may be redistributed as such.
-3. All contributions to this project are public.
-4. All contributions must be "signed off" in the commit log.
-5. Adding your name to the list below indicates your acceptance of these these points.
+Contributions to this project are welcome. All contributiors agree to the following:
+- You have permission and any required rights to submit your contribution.
+- Your contribution is provided under the license of this project and may be redistributed as such.
+- All contributions to this project are public.
+- All contributions must be "signed off" in the commit log.
+- Adding your name to the list below indicates your acceptance of these these points.
 
 ## Contribution Mechanisms
 All contributions to this project should be done through "Pull Requests" except for those individuals that have direct commit rights on the repository. This is important so that we can track changes and contributions effectively.
