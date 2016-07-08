@@ -36,5 +36,6 @@ Direct commit access to the project is currently restricted to only a few indivi
 The best mechanism for contacting the team is to "open a ticket," which you may do by clicking [here](https://github.com/doecode/doecode/issues/new) if you have a GitHub account. Otherwise, please email the project lead, Jay Jay Billings, at billingsjj &lt;at> ornl DOT gov.
 
 ## Contributors ##
-Jay Jay Billings, billingsjj &lt;at> ornl DOT gov, 20160708
-Lance Vowell, vowelll &lt;at> osti DOT gov
+* Jay Jay Billings, billingsjj &lt;at> ornl DOT gov, 20160708
+* Lance Vowell, vowelll &lt;at> osti DOT gov
+* Joshua Nelson, nelsonjc &lt;at> osti DOT gov
