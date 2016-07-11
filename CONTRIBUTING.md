@@ -39,3 +39,4 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Jay Jay Billings, billingsjj &lt;at> ornl DOT gov, 20160708
 * Lance Vowell, vowelll &lt;at> osti DOT gov, 20160708
 * Joshua Nelson, nelsonjc &lt;at> osti DOT gov, 20160708
+* Darel Finkbeiner, finkbeinerd &lt;at> osti DOT gov, 20160708
