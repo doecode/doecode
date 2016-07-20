@@ -1,0 +1,55 @@
+Mark,
+
+Very nice! This is precisely how I have been looking at the aggregator and your text is very close to what I am writing up for the intro document. Here are some additional thoughts.
+
+Yes, the aggregation site will be the forward face of DOECode and the metadata is what they will initially interact with. That code - which is a web page/dashboard - plus connectors and maybe a few translators is the only thing that I see us needing to write in Phase I.
+
+It is important to note that the connectors need to support "hubs" as well as repositories. For example, we need a connector that can connect to GitHub and then delegate calls to a sub-connector for Git such that for every repository in our list or in the DOECode organization on GitHub, we issue some set of commands - clone, pull, etc. - to accomplish our goals. This is important not only for the hubs that OSTI supports, but for providing connectors to the backend OSTI-specific hubs for OUO/controlled code. 
+
+For example, let's say that OSTI has an OUO hub behind the firewall. If that hub is running GitHub Enterprise or GitLab, then we just specify that connector in the server config file. On the other hand, if the internal hub was some other homegrown or proprietary system, then we would have a custom connector that is not released with the rest of the open source code which we would specify in the configuration file. A very good practical example of this is feeding information into DOECode from the old ESTSC/ELink: Do we hard code that interaction or move the data manually? No, we write a custom, closed-source OSTI-only connector and load it from the server.
+
+This is important too for linking papers, data, etc. into the software entry. Another place where we will need some sort of connector is social media integration to show author profiles.
+
+We may also consider that some types of connectors should be soft: they only provide references, not direct access. My thinking here is that OUO/controlled codes shouldn't necessarily be hard linked because all it takes is for one enterprising person to jump the access restrictions and now they are downloading something they shouldn't have. That is probably a good question for the OSTI Technical and OSTI Policy requirements teams.
+
+I'm not sure what input_repository.metadata is, but I think Lance showed it to me the other day. Lorrie shared this link with me to get me started with the metadata, https://www.osti.gov/elink/241-4Instructions.jsp#submission_type , and I've been working through it. There were some concerns about information exposed in the other document. What do you think?
+
+Lance, let's try to get this documented in the DOECode repository and on the mailing list. Neither Peter nor I can get to the wiki from outside OSTI. The simplest way to add it to the repository is to paste it into a Markdown file and commit it to the repo, then I can clean it up later.
+
+I've also CC'ed our mailing list on this to archive the conversation and bring the rest of the team in the loop.
+
+Great discussion! :)
+
+Jay
+
+Jay Jay Billings
+Oak Ridge National Laboratory
+Twitter Handle: @jayjaybillings
+
+________________________________________
+From: Vowell, Lance <VowellL@osti.gov>
+Sent: Wednesday, July 20, 2016 10:37 AM
+To: Martin, Mark; Billings, Jay Jay; Nelson, Joshua
+Subject: RE: DOE Code 
+ 
+Awesome.  I’ve added these to a new wiki page here: https://iweb.osti.gov/confluence/display/app/DOE+Code
+ 
+I will keep this up-to-date as items trickle in and thoughts/questions addressed.
+ 
+From: Martin, Mark 
+Sent: Wednesday, July 20, 2016 10:30 AM
+To: Jay JJ. Billings <billingsjj@ornl.gov>; Vowell, Lance <VowellL@osti.gov>; Nelson, Joshua <nelsonjc@osti.gov>
+Subject: DOE Code
+ 
+I have begun jotting down thoughts/requirements/open questions regarding DOE Code.  Here are some musings…
+ 
+Aggregating Archiver
+ 
+We need to build connectors, i.e. archiving logic/processing, from popular repository software such as Git, CVS, and SVN.  Others?
+Aggregator metadata is the forward-face of DOE Code?  Links to repositories external and internal to OSTI as the full-text?
+The basis for the aggregator metadata should be input_repository.metadata, I think…
+ 
+Open Source
+ 
+Address cyber concerns with open access project that supports OUO material storage
+Can only the portions of the project that maintain forward facing projects be open source?
