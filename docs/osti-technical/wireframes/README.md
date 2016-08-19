@@ -1,0 +1,1 @@
+This directory contains wireframes to capture the initial concepts and design of various pages in the product.
