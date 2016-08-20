@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gov.ornl.doecode.connectors -->
+      <package
+            uri="https://gov.ornl.doecode.connectors.ecore"
+            class="gov.ornl.doecode.connectors.ConnectorsPackage"
+            genModel="gov.ornl.doecode.connectors.genmodel"/>
+   </extension>
+
+</plugin>
