@@ -7,4 +7,5 @@ The job of the DOECode Core Requirements Team is to provide requirements to the 
 - Lorrie Johnson, OSTI
 - Jerome Laurent, BNL
 - Gilberto Pastorello, LBL
+- Carly Robinson, OSTI
 - Lance Vowell, OSTI
