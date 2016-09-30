@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/gov.ornl.doecode/src" modelPluginID="gov.ornl.doecode"
+    modelName="Gov.ornl" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>gov.ornl.doecode.ecore</foreignModel>
+  <genPackages prefix="Doecode" basePackage="gov.ornl" disposableProviderFactory="true"
+      ecorePackage="gov.ornl.doecode.ecore#/">
+    <genClasses ecoreClass="gov.ornl.doecode.ecore#//TestClass"/>
+  </genPackages>
+</genmodel:GenModel>
