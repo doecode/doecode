@@ -11,7 +11,7 @@ We are creating many requirements teams to advise us on required feature set of 
 | DOE-GC | DOE General Counsel | Partially |
 | DOE-ASCR | DOE Office of Advanced Scientific Computing Research | No |
 | DOE-AT | DOE Applied Technologies Offices | No |
-| Labs-Software | Software experts from multiple labs | No |
+| Labs-Software | Software experts from multiple labs | Partially |
 | Labs-Data | Data scientists and consumers from multiple labs | No |
 | Labs-Operations | Operational experts from multiple labs | No |
 | Labs-HPC | High-Performance Computing researchers from multiple labs | Partially |
