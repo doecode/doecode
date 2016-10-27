@@ -44,3 +44,4 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Michael Hensley, hensleym &lt;at> osti DOT gov, 20160712
 * Thomas Welsch, welscht &lt;at> osti DOT gov, 20160819
 * Andrew Smith, smitha &lt;at> osti DOT gov, 20160819
+* Shelby Stooksbury, stooksburys &lt;at> osti DOT gov, 20160921
