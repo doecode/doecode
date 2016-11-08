@@ -14,3 +14,5 @@
 | Labs-Software | 20161021 |
 | Policy Team | 20161028 |
 | Technical Team | 20161028 |
+| Core Team | 20161101 |
+| Policy Team | 20161104 |
