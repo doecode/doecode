@@ -46,3 +46,4 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Andrew Smith, smitha &lt;at> osti DOT gov, 20160819
 * Shelby Stooksbury, stooksburys &lt;at> osti DOT gov, 20160921
 * Lynn Davis, davisl &lt;at> osti DOT gov, 20161108
+* Katie Knight, knightke &lt;at> ornl DOT gov, 20161202
