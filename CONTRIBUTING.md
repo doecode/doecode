@@ -37,12 +37,13 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 
 ## Contributors ##
 * Jay Jay Billings, billingsjj &lt;at> ornl DOT gov, 20160708
-* Lance Vowell, vowelll &lt;at> osti DOT gov, 20160708
-* Joshua Nelson, nelsonjc &lt;at> osti DOT gov, 20160708
-* Lorrie Johnson, johnsonlva &lt;at> osti DOT gov, 20160711
+* Lynn Davis, davisl &lt;at> osti DOT gov, 20161108
 * Darel Finkbeiner, finkbeinerd &lt;at> osti DOT gov, 20160708
 * Michael Hensley, hensleym &lt;at> osti DOT gov, 20160712
-* Thomas Welsch, welscht &lt;at> osti DOT gov, 20160819
+* Lorrie Johnson, johnsonlva &lt;at> osti DOT gov, 20160711
+* Joshua Nelson, nelsonjc &lt;at> osti DOT gov, 20160708
+* Crystal Sherline, sherlinec &lt;at> osti DOT gov, 20161109
 * Andrew Smith, smitha &lt;at> osti DOT gov, 20160819
 * Shelby Stooksbury, stooksburys &lt;at> osti DOT gov, 20160921
-* Lynn Davis, davisl &lt;at> osti DOT gov, 20161108
+* Thomas Welsch, welscht &lt;at> osti DOT gov, 20160819
+* Lance Vowell, vowelll &lt;at> osti DOT gov, 20160708
