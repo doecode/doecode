@@ -23,3 +23,13 @@ We are creating many requirements teams to advise us on required feature set of 
 | Industry Partners | Representatives of OSTI's Industry Partners | No |
 | Students | The best and brightest software engineering, computer science and related students in the complex | No |
 | Postgraduates | Postdocs, post-masters and post-bachelors appointees who work with software | No |
+
+
+##Metadata
+The DOE Code team has updated several new requirements for metadata fields for the submission of software. The spreadsheet shows the list of proposed metadata fields, whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column. The link to this metadata excel spreadsheet can be found [here](https://github.com/doecode/doecode/blob/master/docs/MetaData_Software_Fields%2011_14_16.xlsx).
+
+##Submission Models 
+A requirement to create ideal submission models for the three scenarios for types of software submissions were made using UML diagrams. The three types include [submission as a grantee]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-Submit%20New%20Product%20As%20Grantee.jpg), [submission as a lab researcher or developer/STI POC for a new single submission]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-LabResearcher%20Developer%20STI%20POC_New%20Single%20Submission%20.jpg), and [lab STI POC submission(s) through the web API]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg). 
+
+##Wireframes
+A requirement to create wireframes to capture the initial concepts and design of various pages of the product was completed by the DOE Code Technical Team. The directory of wireframes can be found [here]( https://github.com/doecode/doecode/tree/master/docs/osti-technical/wireframes). 
