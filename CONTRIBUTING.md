@@ -5,7 +5,7 @@ Contributions to this project are welcome. All contributors agree to the followi
 - Your contribution is provided under the license of this project and may be redistributed as such.
 - All contributions to this project are public.
 - All contributions must be "signed off" in the commit log.
-- Adding your name to the list below indicates your acceptance of these these points.
+- Adding your name to the list below indicates your acceptance of these points.
 
 ## Contribution Mechanisms
 All contributions to this project should be done through "Pull Requests" except for those individuals that have direct commit rights on the repository. This is important so that we can track changes and contributions effectively.
