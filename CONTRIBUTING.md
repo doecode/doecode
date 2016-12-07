@@ -11,7 +11,7 @@ Contributions to this project are welcome. All contributors agree to the followi
 All contributions to this project should be done through "Pull Requests" except for those individuals that have direct commit rights on the repository. This is important so that we can track changes and contributions effectively.
 
 ## Getting Started
-Follow the following steps to add your name to this document. You'll need a GitHub account. After that, make any changes that you want and issue pull requests to contribute back to the project.
+Follow the following steps to add your name to this document. You'll [need a GitHub account](https://github.com/join). After that, make any changes that you want and issue pull requests to contribute back to the project.
 
 ### Adding your name below via the web interface
 1. Fork the repository on GitHub. This creates a copy of the project that you can work on without directly having access to the main project. If you are reading this at github.com/doecode, look for the gray "fork" button in the top right and click it.
