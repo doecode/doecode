@@ -33,3 +33,6 @@ A requirement to create ideal submission models for the three scenarios for type
 
 ##Wireframes
 A requirement to create wireframes to capture the initial concepts and design of various pages of the product was completed by the DOE Code Technical Team. The directory of wireframes can be found [here]( https://github.com/doecode/doecode/tree/master/docs/osti-technical/wireframes). 
+
+##Handling Multiple Media 
+The plans for DOECode not only include the ability to link to references (papers, data sets), but also to other documents, manuals, examples, charts, forum links, etc. This would require the system to be able to handle multiple media. The meeting notes for this requirement can be found [here](https://github.com/doecode/doecode/blob/master/docs/osti-technical/tech-reqs-20161007.md). The [whiteboard photo](https://github.com/doecode/doecode/blob/master/docs/osti-technical/20161007%20Meeting%20Photo.jpg) from the meeting is also available. 
