@@ -42,7 +42,7 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Michael Hensley, hensleym &lt;at> osti DOT gov, 20160712
 * Lorrie Johnson, johnsonlva &lt;at> osti DOT gov, 20160711
 * Katie Knight, knightke &lt;at> ornl DOT gov, 20161202
-* Ian Lee, lee1001 &lt;at> llnl DOE gov, 20161206
+* Ian Lee, lee1001 &lt;at> llnl DOT gov, 20161206
 * Joshua Nelson, nelsonjc &lt;at> osti DOT gov, 20160708
 * Crystal Sherline, sherlinec &lt;at> osti DOT gov, 20161109
 * Andrew Smith, smitha &lt;at> osti DOT gov, 20160819
