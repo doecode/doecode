@@ -18,3 +18,4 @@
 | Policy Team | 20161104 |
 | Labs-Legal Team | 20161108 |
 | Labs-Commericalization and Technology Transfer Team | 20161110 |
+| Core Team | 20161206 |
