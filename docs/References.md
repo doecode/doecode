@@ -8,7 +8,7 @@ OMB memorandum M-16-21, the [Federal Source Code Policy](https://sourcecode.cio.
 
 ### FSC Metadata Schema
 
-The primarily deliverable of the FSC Policy is a Federal wide code inventory, hosted at [Code.gov](https://code.gov). As part of defining the deliverable, a [metadata schema](https://github.com/presidential-innovation-fellows/code-gov-web/blob/master/_draft_content/02_compliance/05-metadata-schema-definition.md) was developed with quite a bit of [public input from interested parties](https://github.com/presidential-innovation-fellows/code-gov-web/issues/41). This schema is fairly light in terms of the data it requires, for instance, compared with the
+The primarily deliverable of the FSC Policy is a Federal wide code inventory, hosted at [Code.gov](https://code.gov). As part of defining the deliverable, a [metadata schema](https://github.com/presidential-innovation-fellows/code-gov-web/blob/master/_draft_content/02_compliance/05-metadata-schema-definition.md) was developed with quite a bit of [public input from interested parties](https://github.com/presidential-innovation-fellows/code-gov-web/issues/41). This schema is fairly light in terms of the data it requires, for instance, compared with the [DOECode metadata schema](https://github.com/doecode/doecode/blob/master/metadata-schema/XMLSchema/MetadataSchema.xsd).
 
 ### FSC Tools
 
