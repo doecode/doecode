@@ -33,12 +33,18 @@ DOECode uses the following namespaces:
 
 A class is a mechanism defining a group of resources of a particular type. A resource which is a member of a particular class of resources is called an instance of that class. A common convention is to capitalize the names of classes and to write the names of properties in camelCase. 
 
-dctype:Software
-org:Organization
-adms:Identifier
-foaf:Document
-foaf:Person
-?custom OSTI access class?
+dctype:Software 
+
+org:Organization 
+
+adms:Identifier 
+
+foaf:Document 
+
+foaf:Person 
+
+?custom OSTI access class? 
+
 
 ## ELEMENTS
 Label: a human-readable label for the metadata field. *This does not correspond to fields in the GUI*
