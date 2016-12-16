@@ -102,4 +102,4 @@ A requirement to create ideal submission models for the three scenarios for type
 
 ![Submission as a lab researcher or developer/STI POC for a new single submission](../models/IdealSubmissionProcess-UML%20Diagram/UML-LabResearcher%20Developer%20STI%20POC_New%20Single%20Submission%20.jpg)
 
-![Lab STI POC submission(s) through the web API](../models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg). 
+![Lab STI POC submission(s) through the web API](../models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg) 
