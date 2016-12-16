@@ -1,25 +1,28 @@
 # DOECode Metadata Application Profile
-# *DRAFT*
+## *DRAFT*
 
 This is a draft application profile for the descriptive metadata properties attached to objects in DOECode. 
 
 Existing vocabularies are reused whenever possible. 
-https://www.w3.org/2001/sw/wiki/SKOS/Datasets
+
+Example:https://www.w3.org/2001/sw/wiki/SKOS/Datasets
 
 ## NAMESPACES
 DOECode uses the following namespaces:
-|Prefix | Namespace |
-|:------|:---------:|
-| adms    | http://www.w3.org/ns/adms# |
-| dcterms | http://purl.org/dc/terms/ |
-| dctype  | http://purl.org/dc/dcmitype/ |
-| foaf    | http://xmlns.com/foaf/0.1/ |
-| org     | http://www.w3.org/ns/org# |
-| osti    | http://example.com/osti/namespace/ |
+
+|Prefix   | Namespace                                   |
+|:--------|:-------------------------------------------:|
+| adms    | http://www.w3.org/ns/adms#                  |
+| dcterms | http://purl.org/dc/terms/                   |
+| dctype  | http://purl.org/dc/dcmitype/                |
+| foaf    | http://xmlns.com/foaf/0.1/                  |
+| org     | http://www.w3.org/ns/org#                   |
+| osti    | http://example.com/osti/namespace/          |
 | rdf     | http://www.w3.org/1999/02/22-rdf-syntax-ns# |
-| rdfs    | http://www.w3.org/2000/01/rdf-schema# |
-| schema  | http://schema.org/ |
-| skos    | http://www.w3.org/2004/02/skos/core# |
+| rdfs    | http://www.w3.org/2000/01/rdf-schema#       |
+| schema  | http://schema.org/                          |
+| skos    | http://www.w3.org/2004/02/skos/core#        |
+
 
 ## DOMAIN MODEL 
 !Diagram of DOECode data model:
@@ -39,12 +42,19 @@ foaf:Person
 
 ## ELEMENTS
 Label: a human-readable label for the metadata field. *This does not correspond to fields in the GUI*
+
 Definition : What this field is for 
+
 Refinement: if applicable, to indicate additional schemes for granularity, clarity
+
 Scheme: if applicable, controlled vocabs used to populate the field
+
 Property: the RDF value of the metadata element (e.g. dc:title)
+
 Usage: description of how the property should be used
+
 Cardinality: the requirement and number of properties that can exist 
+
 (1 = required and not repeatable, 1 - n, required and repeatable, 0 - 1, optional and not repeatable, 0 - n = optional and repeatable)
 
 
