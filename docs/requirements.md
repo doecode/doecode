@@ -82,14 +82,24 @@ The OSTI-Technical requirements team developed a set of [wireframe diagrams]( ht
 
 ## Requirements from a Policy Perspective
 
-shall
-- not charge a cost recovery fee.
+The most important policy requirement is that DOE Code [shall support DOE Order 241.4.](https://www.osti.gov/stip/241.4) In addition, investigations by the OSTI-Policy team have determined that DOE Code shall
+ - not charge a cost recovery fee.
+ - support updated metadata for 241.4 that reflects modern software development.
+ - provide a Metadata Application Profile.
+ - provide a mapping that describes the compatibility of DOE Code metadata with common metadata schemas such as DataCite. 
+ - support the software license assigned by the copyright holder/originating institution instead of relicensing under an OSTI license.
 
-##Metadata
-The DOE Code team has updated several new requirements for metadata fields for the submission of software. Detailed notes are available in the [policy requirements team folder](https://github.com/doecode/doecode/tree/master/docs/osti-policy).
- - Metadata version 1 - Spreadsheet that shows the list of [proposed metadata fields](https://github.com/doecode/doecode/blob/master/docs/MetaData_Software_Fields%2011_14_16.xlsx), whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column.
- - Creation of a metadata application profile
- - Metadata schema - a rough draft of an XML schema can be found [here](https://github.com/doecode/doecode/blob/master/metadata-schema/XMLSchema/MetadataSchema.xsd)
+## Metadata
+
+Detailed information on proposed changes to the metadata schema for DOE 241.4 are available in the [policy requirements team folder](https://github.com/doecode/doecode/tree/master/docs/osti-policy).
+ - [Metadata version 1](https://github.com/doecode/doecode/blob/master/docs/MetaData_Software_Fields%2011_14_16.xlsx) - Spreadsheet that shows the list of proposed metadata fields, whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column.
+ - [Metadata schema](https://github.com/doecode/doecode/blob/master/metadata-schema/XMLSchema/MetadataSchema.xsd) - a rough draft of an XML schema
  
 ##Submission Models 
-A requirement to create ideal submission models for the three scenarios for types of software submissions were made using UML diagrams. The three types include [submission as a grantee]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-Submit%20New%20Product%20As%20Grantee.jpg), [submission as a lab researcher or developer/STI POC for a new single submission]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-LabResearcher%20Developer%20STI%20POC_New%20Single%20Submission%20.jpg), and [lab STI POC submission(s) through the web API]( https://github.com/doecode/doecode/blob/master/models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg). 
+A requirement to create ideal submission models for the three scenarios for types of software submissions were made using UML diagrams. The three types include submission as a grantee, submission as a lab researcher or developer/STI point of contact, batch submissions through the web API. 
+
+![Submission as a grantee](../models/IdealSubmissionProcess-UML%20Diagram/UML-Submit%20New%20Product%20As%20Grantee.jpg) 
+
+![Submission as a lab researcher or developer/STI POC for a new single submission](../models/IdealSubmissionProcess-UML%20Diagram/UML-LabResearcher%20Developer%20STI%20POC_New%20Single%20Submission%20.jpg)
+
+![Lab STI POC submission(s) through the web API](../models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg). 
