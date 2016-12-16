@@ -1,0 +1,41 @@
+<!-- Create the header -->
+<head>
+
+<!-- Set the metadata type and the browser title -->
+<meta charset="utf-8">
+<title>Test schema</title>
+
+<link rel="stylesheet" href="test.css" type="text/css">
+
+</head>
+
+<body>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/TestXMLSchema" targetNamespace="http://www.example.org/TestXMLSchema" elementFormDefault="qualified">
+
+    
+<simpleType name="Type1">
+        
+<annotation>
+        	
+<documentation>Info on Type1</documentation>
+        
+</annotation>
+        
+<restriction base="string"></restriction>
+    
+</simpleType>
+
+    
+<element name="Element1" type="string">
+    	
+<annotation>
+    		
+<documentation>my text Element 1 documentation</documentation>
+    	
+</annotation>
+</element>
+
+</schema>
+
+</body>

@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/TestXMLSchema" xmlns:tns="http://www.example.org/TestXMLSchema" elementFormDefault="qualified">
+
+    <simpleType name="Type1">
+        <annotation>
+        	<documentation>Info on Type1</documentation>
+        </annotation>
+        <restriction base="string"></restriction>
+    </simpleType>
+
+    <element name="Element1" type="string">
+    	<annotation>
+    		<documentation><![CDATA[my text]]> Element 1 documentation</documentation>
+    	</annotation></element>
 </schema>
