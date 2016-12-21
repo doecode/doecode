@@ -5,6 +5,7 @@
  "dcterms": "http://purl.org/dc/terms/",
  "dctype": "http://purl.org/dc/dcmitype/",
  "foaf": "http://xmlns.com/foaf/0.1/",
+ "loc": "http://id.loc.gov/authorities/",
  "org": "http://www.w3.org/ns/org#",
  "osti": "http://example.com/osti/namespace/",
  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -22,31 +23,38 @@
   "schema:codeRepository": "http://github.com/ExampleSoftware",
   "dcterms:rights": "Open Source",
   "dcterms:license": "https://opensource.org/licenses/MIT",
-  "foaf:Document": 
+  "dcterms:isReferencedBy": 
  {
   "@type": "foaf:Document",
+  "@id": "github.com/link_to_software_docs",
   "dcterms:title": "Software Example Technical Documentation"
  },
   "dcterms:subject":
 	[
-	{"@value": "https://lccn.loc.gov/sh85029534"},
-	{"@value": "https://lccn.loc.gov/sh85098374"}
+	{"@type": "loc:subjects",
+	"@id": "https://lccn.loc.gov/sh85029534",
+	"skos:prefLabel": "Computer software"},
+	{"@type": "loc:subjects",
+	"@id": "https://lccn.loc.gov/sh85098374",
+	"skos:prefLabel": "Particles (Nuclear physics)"}
 	],
   "dcterms:hasVersion": 
   [
-   {"@value": "github.com/Version1"},
-   {"@value": "github.com/Version2"}
+   {"@id": "github.com/Version2",
+   "skos:prefLabel": "Version 2"},
+   {"@id": "github.com/Version3",
+   "skos:prefLabel": "Version 3"}
   ],
 
   "schema:sponsor": 
   {
     "@type": "org:Organization",
     "skos:prefLabel": "Oak Ridge National Laboratory",
-	"skos:altLabel": "ORNL",
-	"adms:Identifier": 
+    "skos:altLabel": "ORNL",
+    "adms:Identifier": 
 		{
 		"adms:schemaAgency": "ORCiD",
-		"skos:notation": "123-456-789"
+		"skos:notation": "0000-0001-5848-6881"
 		}
   }
  
