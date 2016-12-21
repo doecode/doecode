@@ -5,7 +5,7 @@ This is a draft application profile for the descriptive metadata properties atta
 
 Existing vocabularies are reused whenever possible. 
 
-Example:https://www.w3.org/2001/sw/wiki/SKOS/Datasets
+Example: https://www.w3.org/2001/sw/wiki/SKOS/Datasets
 
 ## NAMESPACES
 DOECode uses the following namespaces:
@@ -31,7 +31,7 @@ DOECode uses the following namespaces:
 
 ## CLASSES
 
-A class is a mechanism defining a group of resources of a particular type. A resource which is a member of a particular class of resources is called an instance of that class. A common convention is to capitalize the names of classes and to write the names of properties in camelCase. 
+A class is a mechanism defining a group of resources of a particular type. A resource which is a member of a particular class of resources is called an instance of that class. A common convention is to capitalize the names of classes and to write the names of properties in camelCase. Proposed classes for DOECode:
 
 dctype:Software 
 
@@ -41,9 +41,9 @@ adms:Identifier
 
 foaf:Document 
 
-foaf:Person 
+schema:Person 
 
-?custom OSTI access class? 
+?custom osti:Access class? 
 
 
 ## ELEMENTS
@@ -72,6 +72,9 @@ Cardinality: the requirement and number of properties that can exist
 |Usage               | will always be dctype:Software unless DOECode extends type submissions |
 |Cardinality         | 1                                                                      | 
 
+```json
+"@type": "dctype:Software",
+```
 
 | Label      		 | *Organization Name*                                                       
 |:-------------------|:-----------------------------------------------------------------------|
@@ -82,6 +85,13 @@ Cardinality: the requirement and number of properties that can exist
 |Usage               | It is recommended that SKOS lexical labels should be used to label the Organization. In particular skos:prefLabel for the primary (e.g. legally recognized name), skos:altLabel for alternative names (acronyms, trading names, colloquial names) and skos:notation to denote codes from a code list. |
 |Cardinality         | 1 - n                                                                  | 
 
+```json
+{
+ "@type": "org:Organization",
+ "skos:prefLabel": "Oak Ridge National Laboratory",
+ "skos:altLabel": "ORNL"
+}
+```
 
 | Label        		 | *Organizational Role*                                                  | 
 |:-------------------|:-----------------------------------------------------------------------|
@@ -102,11 +112,18 @@ Cardinality: the requirement and number of properties that can exist
 |Usage               | In RDF this is expressed using the following properties: - the content string should be provided using skos:notation; - use dcterms:creator to link to a class describing the agency that manages the identifier scheme or adms:schemaAgency to provide the name as a literal. Although not part of the ADMS conceptual model, it may be useful to provide further properties to the Identifier class such as dcterms:created to provide the date on which the identifier was issued. |
 |Cardinality         | 1 - n                                                                  |
 
-`EXAMPLE
-<adms:Identifier><adms:schemaAgency>ORCiD<skos:notation>123-456-789
-	<adms:schemaAgency>B&R Code<skos:notation>WP-1234567-89
-`
-
+EXAMPLE
+```json
+"adms:Identifier":
+[
+ {"adms:schemaAgency": "ORCiD",
+  	"skos:notation": "0000-0001-5848-6881"},
+ {"adms:schemaAgency": "B&R Code",
+	"skos:notation": "NN4003010" },
+ {"adms:schemaAgency": "DOE Contract",
+ 	"skos:notation": "AC05-84OR21400"}
+]
+```
 
 | Label        		 | *Open Source*                                                          | 
 |:-------------------|:-----------------------------------------------------------------------|
@@ -119,7 +136,7 @@ Cardinality: the requirement and number of properties that can exist
 
 | Label        		 | *Repository Link*                                                      | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).                                      |
+|Definition          | URL to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).                                      |
 |Scheme              | n/a   |
 |Property            | schema:codeRepository                                                  |
 |Usage               |  |
@@ -127,16 +144,32 @@ Cardinality: the requirement and number of properties that can exist
 
 
 
-| Label        		 | *Distribution/Access Limitation*                                       | 
+| Label        		 | *Distribution/Access Limitation*                                   | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | *CREATE CUSTOM SKOS ConceptScheme FOR DOE ACCESS CONCEPTS?             |
+|Definition          | *CREATE CUSTOM SKOS ConceptScheme FOR DOE ACCESS CONCEPTS?*            |
 |Scheme              | n/a                                                                    |
-|Property            | x                                                        |
+|Property            | osti:Access                                                        |
 |Usage               | x |
 |Cardinality         | 1                                                                      |	
 
+| Label        		 | *Developer(s)/Creator*                                            |
+|:-----------------------|:------------------------------------------------------------------|
+|Definition              | 
+|Scheme                  | n/a
+|Property                | schema:Person
+|Refined by              | schema:creator, schema:contributor, schema:firstName, schema:givenName, schema:email |
 
-| Label        		 | *Title*                                                                | 
+```json
+"schema:creator": [
+   {
+   "@type": "schema:Person",
+   "schema:firstName": "Nancy",
+   "schema:lastName": "Fancy",
+   }
+]
+```
+
+| Label        		 | *Title*                                                            | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | The name given to the resource. Title will be a name by which the resource is formally known. |
 |Scheme              | n/a                                                                    |
@@ -145,18 +178,18 @@ Cardinality: the requirement and number of properties that can exist
 |Cardinality         | 1                                                                      |	
 
 
-| Label        		 | *Date*                                                          | 
+| Label              | *Date*                                                                 |
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | A date associated with an event in the life cycle of the resource. Typically, Date will be associated with the creation or availability of the resource.  |
 |Scheme              | ISO 8601 [Date and Time Formats, W3C Note, http://www.w3.org/TR/NOTE- datetime]  |
-|Property            | dcterms:date                                                     |
+|Property            | dcterms:date, dcterms:created, dcterms:issued, dcterms:modified                                           |
 |Usage               | Recommended best practice for encoding the date value is defined in a profile of ISO 8601 [Date and Time Formats, W3C Note, http://www.w3.org/TR/NOTE-datetime] and follows the YYYY-MM-DD format. |	
 |Cardinality         | 1 |
 
 
 | Label        		 | *Description*                                                          | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | An account of the content of the resource. Description may include but is not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content.                                         |
+|Definition          | An account of the content of the resource. Description may include but is not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content. |
 |Scheme              | N/A   |
 |Property            | dcterms:description                                                    |
 |Usage               | Descriptive information can be copied or automatically extracted from the item if there is no abstract or other structured description available. Although the source of the description may be a web page or other structured text with presentation tags, it is generally not good practice to include HTML or other structural tags within the Description element. |
@@ -198,10 +231,11 @@ Cardinality: the requirement and number of properties that can exist
 |Usage               | Recommended best practice is to identify the license using a URI. License is designed to allow the inclusion of specific licensed uses to be specified. An example would be a resource that was available to be used freely but not for reproduction within commercial applications. |	
 |Cardinality         | 0 - 1 |
 
-`Examples:
-license="http://creativecommons.org/licenses/by-nc-nd/2.0/legalcode"
-license="Licensed for use under Creative Commons Attribution 2.0."
-`
+Example:
+```xml
+dcterms:license="http://creativecommons.org/licenses/by-nc-nd/2.0/legalcode"
+dcterms:license="Licensed for use under Creative Commons Attribution 2.0."
+```
 
 | Label        		 | *Version*                                                              | 
 |:-------------------|:-----------------------------------------------------------------------|
@@ -211,16 +245,17 @@ license="Licensed for use under Creative Commons Attribution 2.0."
 |Usage               | Potential use for multiple versions is the standard rdf:Alt container (or rdf:Seq or rdf:Bag) as a blank node containing the ordered or unordered versions |
 |Cardinality         | 1 - n  |
 
-`EXAMPLE
- <dcterms:hasVersion>   
-  <rdf:Alt rdf:about="http://www.github.com/Software">      
-  <rdf:_1 rdf:resource=“github.com/Version2”>     
-  <rdf:_2 rdf:resource=“github.com/Version3”>     
-  <rdf:_3 rdf:resource=“github.com/Version4”>   
-`	
+Example:
+```xml
+<dcterms:hasVersion>
+<rdf:Alt rdf:about="http://www.github.com/Software">
+	<rdf:_1 rdf:resource=“github.com/Version2”>
+	<rdf:_2 rdf:resource=“github.com/Version3”>
+	<rdf:_3 rdf:resource=“github.com/Version4”>
+```
 
 
-| Label        		 | *Operating System*                                                     | 
+| Label        	     | *Operating System*                                                     | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | Operating systems supported (Windows 7, OSX 10.6, Android 1.6).        |
 |Scheme              | n/a                                                                    |
@@ -229,7 +264,7 @@ license="Licensed for use under Creative Commons Attribution 2.0."
 |Cardinality         | 1                                                                      |	
 
 
-| Label        		 | *Documentation*                                                        | 
+| Label              | *Documentation*                                                        | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | Class for any type of document related to the software described.      |
 |Scheme              | n/a                                                                    |
@@ -237,16 +272,13 @@ license="Licensed for use under Creative Commons Attribution 2.0."
 |Usage               | The Document class is loosely defined by W3C. Additional elements may be used to clarify attributes of the document.  |
 |Cardinality         | 0 - n                                                                  |	
 
-`
 Example:
-<foaf:Document rdfs:resource"pointer-to-file-location">
-	<dcterms:title>"Software Example Technical Documentation"</>
-	<skos:related rdfs:resource="http://github.com/ExampleSoftware"</>
-	<adms:Identifier><adms:schemaAgency>ISBN<skos:notation>97654321234</>
-	<skos:relatedHasPart rdfs:resource="pointer-to-any-related-docs"</>
-</foaf:Document>
-`
-
+```json
+ {
+  "@type": "foaf:Document",
+  "dcterms:title": "Software Example Technical Documentation"
+ }
+```
 
 | Label        		 | *Requirements*                                                         | 
 |:-------------------|:-----------------------------------------------------------------------|
@@ -258,11 +290,14 @@ Example:
 
 | Label        		 | *Auxiliary software*                                                   | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | X                                           |
-|Scheme              | n/a                                                                    |
-|Property            | x                                                        |
-|Usage               | x |
+|Definition          | The described resource is referenced, cited, or otherwise pointed to by the referenced resource, The described resource references, cites, or otherwise points to the referenced resource. |
+|Scheme              | URI                                                                    |
+|Property            | dcterms:isReferencedBy, dcterms:references                                 |
+|Usage               | It is recommended that the value should be a URI. |
 |Cardinality         | 0 - n                                                                  |
 
-
-   
+Example:
+```xml
+<dc:title>Expressing Simple Dublin Core in RDF/XML</dc:title>
+<dcterms:references rdf:resource="http://www.w3.org/TR/REC-rdf-syntax"></dcterms:references>
+```   
