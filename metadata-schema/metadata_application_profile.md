@@ -25,7 +25,7 @@ DOECode uses the following namespaces:
 
 
 ## DOMAIN MODEL 
-!Diagram of DOECode data model:
+Placeholder for Diagram of DOECode data model:
 [Diagram](imagesLocation/image_file_name.png)
 
 
@@ -53,7 +53,7 @@ Definition : What this field is for
 
 Refinement: if applicable, to indicate additional schemes for granularity, clarity
 
-Scheme: if applicable, controlled vocabs used to populate the field
+Scheme: if applicable, any controlled vocabs used to populate the field
 
 Property: the RDF value of the metadata element (e.g. dc:title)
 
@@ -127,7 +127,7 @@ EXAMPLE
 
 | Label        		 | *Open Source*                                                          | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Is this different than "rights?"                                       |
+|Definition          | Is this different than "rights?" If not, omit.                         |
 |Scheme              | n/a                                                                    |
 |Property            | x                                                        |
 |Usage               | x |
