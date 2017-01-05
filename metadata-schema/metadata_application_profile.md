@@ -97,7 +97,7 @@ Cardinality: the requirement and number of properties that can exist
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | States role(s) of organization                                         |
 |Scheme              |   |
-|Property            | schema:sponsor ; schema:funder ; schema:owns ; schema:locationCreated  |
+|Property            | schema:sponsor ; schema:funder ; schema:owns ; schema:locationCreated ; schema:recipient |
 |Usage               |   |
 |Cardinality         | 1 - n                                                                  | 
 
@@ -124,15 +124,6 @@ EXAMPLE
  	"skos:notation": "AC05-84OR21400"}
 ]
 ```
-
-| Label        		 | *Open Source*                                                          | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Is this different than "rights?" If not, omit.                         |
-|Scheme              | n/a                                                                    |
-|Property            | x                                                        |
-|Usage               | x |
-|Cardinality         | 1                                                                      |
-
 
 | Label        		 | *Repository Link*                                                      | 
 |:-------------------|:-----------------------------------------------------------------------|
@@ -202,7 +193,7 @@ EXAMPLE
 |Scheme              | Getty Thesaurus of Geographic Names,                                   |
 |Property            | dcterms:coverage                                                       |
 |Usage               | Coverage will typically include spatial location (a place name or geographic co-ordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names). Where appropriate, named places or time periods should be used in preference to numeric identifiers such as sets of co-ordinates or date ranges. |	
-|Cardinality         | 1 |
+|Cardinality         | 0 |
 
 
 | Label        		 | *Subjects*                                                             | 
@@ -211,7 +202,16 @@ EXAMPLE
 |Scheme              | LCSH? International Energy Subject Thesaurus?                          |
 |Property            | dcterms:subject                                                        |
 |Usage               | Typically, a Subject will be expressed as keywords or key phrases or classification codes that describe the topic of the resource. Recommended best practice is to select a value from a controlled vocabulary or formal classification scheme. |
-|Cardinality         | 1 - n                                                                  |	
+|Cardinality         | 0 - n                                                                  |	
+
+
+| Label        		 | *Keywords*                                                          | 
+|:-------------------|:-----------------------------------------------------------------------|
+|Definition          | Keywords or tags used to describe this content.                        |
+|Scheme              | n/a                                                                    |
+|Property            | schema:keywords                                                        |
+|Usage               | Multiple entries in a keywords list are typically delimited by commas. |
+|Cardinality         | 0 - n                                                                  |
 
 
 | Label        		 | *Rights*                                                               | 
@@ -243,7 +243,7 @@ dcterms:license="Licensed for use under Creative Commons Attribution 2.0."
 |Scheme              | n/a                                                                    |
 |Property            | dcterms:hasVersion / dcterms:isVersionOf                               |
 |Usage               | Potential use for multiple versions is the standard rdf:Alt container (or rdf:Seq or rdf:Bag) as a blank node containing the ordered or unordered versions |
-|Cardinality         | 1 - n  |
+|Cardinality         | 0 - n  |
 
 Example:
 ```xml
@@ -261,7 +261,7 @@ Example:
 |Scheme              | n/a                                                                    |
 |Property            | schema:operatingSystem                                                 |
 |Usage               | x |
-|Cardinality         | 1                                                                      |	
+|Cardinality         | 0                                                                      |	
 
 
 | Label              | *Documentation*                                                        | 
