@@ -14,7 +14,7 @@
  "skos": "http://www.w3.org/2004/02/skos/core#"
 
   },
-  "@type": "dcterms:Software",
+  "@type": "dctype:Software",
   "@id": "github.com/ExampleSoftware",
   "dcterms:title": "Example Software",
   "dcterms:date": "2016-12-16",
