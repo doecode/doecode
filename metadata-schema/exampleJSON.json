@@ -51,8 +51,9 @@
     "@type": "org:Organization",
     "skos:prefLabel": "Oak Ridge National Laboratory",
     "skos:altLabel": "ORNL",
-    "adms:Identifier": 
+    "adms:identifier": 
 		{
+		"@type:": "adms:Identifier",
 		"adms:schemaAgency": "ORCiD",
 		"skos:notation": "0000-0001-5848-6881"
 		}
