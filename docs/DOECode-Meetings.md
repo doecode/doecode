@@ -22,4 +22,6 @@
 | Technical Team | 20161209 |
 | Policy Team | 20161209 |
 | Labs - STI Managers Team | 20161214 |
-| Labs - HPC | 20161221 |
+| Labs - HPC Team | 20161221 |
+| Technical Team | 20170106 |
+| Policy Team | 20170106 |
