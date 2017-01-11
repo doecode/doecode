@@ -92,7 +92,7 @@ The most important policy requirement is that DOE Code [shall support DOE Order 
 ## Metadata
 
 Detailed information on proposed changes to the metadata schema for DOE 241.4 are available in the [policy requirements team folder](https://github.com/doecode/doecode/tree/master/docs/osti-policy).
- - [Metadata version 1](https://github.com/doecode/doecode/blob/master/docs/MetaData_Software_Fields%2011_14_16.xlsx) - Spreadsheet that shows the list of proposed metadata fields, whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column.
+ - [Metadata version 1](https://github.com/doecode/doecode/blob/master/docs/osti-policy/MetaData_Software_Fields%2011_14_16.xlsx) - Spreadsheet that shows the list of proposed metadata fields, whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column.
  - [Metadata schema](https://github.com/doecode/doecode/blob/master/metadata-schema/XMLSchema/MetadataSchema.xsd) - a rough draft of an XML schema
  
 ##Submission Models 
