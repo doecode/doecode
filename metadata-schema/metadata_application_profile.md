@@ -37,11 +37,13 @@ dctype:Software
 
 org:Organization 
 
+org:Role
+
 adms:Identifier 
 
 foaf:Document 
 
-schema:Person 
+foaf:Person 
 
 ?custom osti:Access class? 
 
@@ -79,7 +81,7 @@ Cardinality: the requirement and number of properties that can exist
 | Label      		 | *Organization Name*                                                       
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | States name of organization                                            |
-|Refinement          | skos:prefLabel, skos:altLabel, skos:notation                           |
+|Annotation          | skos:prefLabel, skos:altLabel, skos:notation                           |
 |Scheme              | n/a                                                                    |
 |Property            | org:Organization                                                       |
 |Usage               | It is recommended that SKOS lexical labels should be used to label the Organization. In particular skos:prefLabel for the primary (e.g. legally recognized name), skos:altLabel for alternative names (acronyms, trading names, colloquial names) and skos:notation to denote codes from a code list. |
@@ -93,12 +95,13 @@ Cardinality: the requirement and number of properties that can exist
 }
 ```
 
-| Label        		 | *Organizational Role*                                                  | 
+| Label        	     | *Organizational Role*                                                  | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | States role(s) of organization                                         |
-|Scheme              |   |
-|Property            | schema:sponsor ; schema:funder ; schema:owns ; schema:locationCreated ; schema:recipient |
-|Usage               |   |
+|Annotation	     | skos:prefLabel, skos:altLabel
+|Scheme              | n/a  |
+|Property            | org:Role |
+|Usage               | It is common for roles to be arranged in some taxonomic structure. The normal SKOS lexical properties should be used when labelling the Role. Additional descriptive properties for the Role may be added by extension vocabularies.  |
 |Cardinality         | 1 - n                                                                  | 
 
 
@@ -106,7 +109,7 @@ Cardinality: the requirement and number of properties that can exist
 | Label        		 | *Identifier*                                                           | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | Identifier of a given resource                                         |
-|Refinement          | skos:notation, adms:schemaAgency, dcterms:created, dcterms:creator     |
+|Annotation          | skos:notation, adms:schemaAgency, dcterms:created, dcterms:creator     |
 |Scheme              |  n/a  |
 |Property            | adms:Identifier                                                        |
 |Usage               | In RDF this is expressed using the following properties: - the content string should be provided using skos:notation; - use dcterms:creator to link to a class describing the agency that manages the identifier scheme or adms:schemaAgency to provide the name as a literal. Although not part of the ADMS conceptual model, it may be useful to provide further properties to the Identifier class such as dcterms:created to provide the date on which the identifier was issued. |
@@ -143,12 +146,12 @@ EXAMPLE
 |Usage               | x |
 |Cardinality         | 1                                                                      |	
 
-| Label        		 | *Developer(s)/Creator*                                            |
+| Label        		 | *Developer(s)/Creator/Contributor/Contact Point*                                            |
 |:-----------------------|:------------------------------------------------------------------|
 |Definition              | 
 |Scheme                  | n/a
 |Property                | schema:Person
-|Refined by              | schema:creator, schema:contributor, schema:firstName, schema:givenName, schema:email |
+|Annotation              | dcterms:creator, dcterms:contributor, adms:contactPoint, foaf:firstName, foaf:familyName, foaf:mbox_sha1sum |
 
 ```json
 "schema:creator": [
@@ -269,7 +272,7 @@ Example:
 |Definition          | Class for any type of document related to the software described.      |
 |Scheme              | n/a                                                                    |
 |Property            | foaf:Document                                                          |
-|Usage               | The Document class is loosely defined by W3C. Additional elements may be used to clarify attributes of the document.  |
+|Usage               | The Document class is loosely defined by W3C. Additional elements may be used to clarify attributes of the document, such as dcterms:title, dcterms:date, etc.  |
 |Cardinality         | 0 - n                                                                  |	
 
 Example:
