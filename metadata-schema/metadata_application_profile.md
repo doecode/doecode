@@ -150,15 +150,15 @@ EXAMPLE
 |:-----------------------|:------------------------------------------------------------------|
 |Definition              | 
 |Scheme                  | n/a
-|Property                | schema:Person
+|Property                | foaf:Person
 |Annotation              | dcterms:creator, dcterms:contributor, adms:contactPoint, foaf:firstName, foaf:familyName, foaf:mbox_sha1sum |
 
 ```json
-"schema:creator": [
+"dcterms:creator": [
    {
-   "@type": "schema:Person",
-   "schema:firstName": "Nancy",
-   "schema:lastName": "Fancy",
+   "@type": "foaf:Person",
+   "foaf:firstName": "Nancy",
+   "foaf:familyName": "Fancy",
    }
 ]
 ```
