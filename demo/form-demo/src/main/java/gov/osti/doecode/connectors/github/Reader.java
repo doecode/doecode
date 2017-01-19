@@ -17,8 +17,8 @@ import org.apache.http.client.methods.HttpGet;
  * @author ensornl
  */
 public class Reader {
-    private static final String API_USER = "nensor";
-    private static final String API_KEY = "735525af829d9e18b8c340e57e3d4f1d410c1d15";
+    private static final String API_USER = System.getProperty("api-user");
+    private static final String API_KEY = System.getProperty("api-key");
     
     /** REPOSITORY SAMPLE JSON
      * {
