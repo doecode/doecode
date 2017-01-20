@@ -50,3 +50,18 @@ Using Vaadin pre-releases
 
 If Vaadin pre-releases are not enabled by default, use the Maven parameter
 "-P vaadin-prerelease" or change the activation default value of the profile in pom.xml .
+
+Deploying to tomcat 7+
+----------------------
+
+The maven pom.xml file is modified to deploy to tomcat (7+) but reliant on
+local user settings.xml maven configuration elements for certain values.  
+Namely, a profile should be set up containing the following:
+  - github.apikey = the value of an authentication GitHub API key to use
+  - github.user = the user associated with the authentication key
+  - server = a (maven) configured tomcat server definition
+  - host = the tomcat host name for the manager
+  - port = the port number running the container
+
+Deploying to tomcat
+  - run "mvn -Pprofile-id tomcat7:redeploy" to deploy the application to tomcat
