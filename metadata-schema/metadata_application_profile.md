@@ -152,6 +152,7 @@ EXAMPLE
 |Scheme                  | n/a
 |Property                | foaf:Person
 |Annotation              | dcterms:creator, dcterms:contributor, adms:contactPoint, foaf:firstName, foaf:familyName, foaf:mbox_sha1sum |
+|Cardinality             | 1 - n                                                             |	
 
 ```json
 "dcterms:creator": [
@@ -196,7 +197,7 @@ EXAMPLE
 |Scheme              | Getty Thesaurus of Geographic Names,                                   |
 |Property            | dcterms:coverage                                                       |
 |Usage               | Coverage will typically include spatial location (a place name or geographic co-ordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names). Where appropriate, named places or time periods should be used in preference to numeric identifiers such as sets of co-ordinates or date ranges. |	
-|Cardinality         | 0 |
+|Cardinality         | 0 - 1                                                                  |
 
 
 | Label        		 | *Subjects*                                                             | 
@@ -264,7 +265,7 @@ Example:
 |Scheme              | n/a                                                                    |
 |Property            | schema:operatingSystem                                                 |
 |Usage               | x |
-|Cardinality         | 0                                                                      |	
+|Cardinality         | 0 - 1                                                                  |	
 
 
 | Label              | *Documentation*                                                        | 
