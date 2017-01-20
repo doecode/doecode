@@ -31,6 +31,10 @@ public class SoftwareRepository {
     private List<Agent> agents = new ArrayList<>();
     private List<Identifier> identifiers = new ArrayList<>();
 
+    // faking it
+    private Long id_id = 0L;
+    private Long agent_id = 0L;
+    
     /**
      * @return the name
      */
@@ -87,8 +91,37 @@ public class SoftwareRepository {
         this.agents = agents;
     }
 
-    public void addAgent(Agent a) {
-        agents.add(a);
+    public boolean add(Agent a) {
+        if (0==a.getId()) a.setId(++agent_id);
+        
+        int index = agents.indexOf(a);
+        if ( -1==index ) {
+            return agents.add(a);
+        } else {
+            agents.add(index, a);
+            return true;
+        }
+    }
+    
+    public boolean remove(Agent a) {
+        System.out.println("Delete: " + a.getId());
+        return agents.remove(a);
+    }
+    
+    public boolean add(Identifier id) {
+        if (0==id.getId()) id.setId(++id_id);
+        
+        int index = identifiers.indexOf(id);
+        if ( -1==index ) {
+            return identifiers.add(id);
+        } else {
+            identifiers.add(index, id);
+            return true;
+        }
+    }
+    
+    public boolean remove(Identifier id) {
+        return identifiers.remove(id);
     }
     
     /**

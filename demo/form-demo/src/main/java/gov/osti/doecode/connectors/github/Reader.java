@@ -7,7 +7,9 @@ import gov.osti.doecode.entity.Agent;
 import gov.osti.doecode.entity.SoftwareRepository;
 import gov.osti.doecode.util.Fetcher;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.Properties;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
@@ -17,8 +19,8 @@ import org.apache.http.client.methods.HttpGet;
  * @author ensornl
  */
 public class Reader {
-    private static final String API_USER = System.getProperty("api-user");
-    private static final String API_KEY = System.getProperty("api-key");
+    private static String API_USER = "";
+    private static String API_KEY = "";
     
     /** REPOSITORY SAMPLE JSON
      * {
@@ -133,6 +135,26 @@ public class Reader {
 
      */
     
+    /**
+     * Initialize and read the properties for configuration purposes.
+     * 
+     * @throws IOException on file IO errors
+     */
+    public static void init() throws IOException {
+        Properties config = new Properties();
+        InputStream stream = null;
+        
+        try { 
+            stream = Reader.class.getClassLoader().getResourceAsStream("github-connector.properties");
+            config.load(stream);
+            
+            API_KEY=config.getProperty("github.apikey");
+            API_USER=config.getProperty("github.user");
+        } finally {
+            if (null!=stream) stream.close(); stream = null;
+        }
+    }
+    
     private static HttpGet getGitHubUrl(String url) {
         HttpGet get = new HttpGet(url);
         String authentication = API_USER + ":" + API_KEY;
@@ -146,6 +168,7 @@ public class Reader {
         SoftwareRepository repo = new SoftwareRepository();
         Gson gson = new Gson();
         
+        Reader.init();
         Repository repository = gson.fromJson(Fetcher.getJsonFrom(getGitHubUrl("https://api.github.com/repos/" + project_name + "/" + project_name)), Repository.class);
         
         repo.setName(repository.getName());
@@ -178,7 +201,7 @@ public class Reader {
                     agent.setLastName(user.getName().substring(lastSpace+1));
                 }
             }
-            repo.addAgent(agent);
+            repo.add(agent);
         }
         long now = System.currentTimeMillis();
         

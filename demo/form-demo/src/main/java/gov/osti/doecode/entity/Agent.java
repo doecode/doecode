@@ -2,11 +2,14 @@
  */
 package gov.osti.doecode.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ensornl
  */
-public class Agent {
+public class Agent implements Serializable {
+    private Long id = 0L;
     private String firstName = "";
     private String lastName = "";
     private String fullName = "";
@@ -16,6 +19,21 @@ public class Agent {
     private String affiliation = "";
     private String orcid = "";
     private String funderId = "";
+    private String phoneNumber = "";
+    
+    public static final String[] agentTypes = {
+        "Developer",
+        "Contributor",
+        "Collaborator",
+        "Sponsor"
+    };
+    
+    public static final String[] specificTypes = {
+        "ProjectLead",
+        "Coordinator",
+        "Researcher",
+        "Tester"
+    };
 
     /**
      * @return the firstName
@@ -142,4 +160,34 @@ public class Agent {
     public void setFunderId(String funderId) {
         this.funderId = funderId;
     }
+
+    /**
+     * @return the phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public boolean isPersisted() { return (getId()!=0L); }
 }
