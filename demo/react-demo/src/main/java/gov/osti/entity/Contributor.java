@@ -1,17 +1,12 @@
 package gov.osti.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="developers")
-public class Developer extends Agent {
-
+public class Contributor extends Agent{
 	private String firstName = null;
 	private String lastName = null;
 	private String middleName = null;
+	private String contributorType = null;
 	
-	public Developer() {
+	public Contributor() {
 		
 	}
 	
@@ -33,6 +28,16 @@ public class Developer extends Agent {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
+	public String getContributorType() {
+		return contributorType;
+	}
+
+	public void setContributorType(String contributorType) {
+		this.contributorType = contributorType;
+	}
+	
+	
 	
 	
 }

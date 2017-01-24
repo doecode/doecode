@@ -70,7 +70,7 @@ public class ReactHandler {
 		JsonObject responseObject = new JsonObject();
 		DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
 		System.out.println("md is" + md);
-		
+		md.save();
 		responseObject.add("metadata",md.getJson());
 		
 		

@@ -2,25 +2,45 @@ package gov.osti.entity;
 
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
+import gov.osti.database.DBOps;
+
+@Entity
+@Table(name="metadata", schema="welscht")
 public class DOECodeMetadata {
 
 	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).serializeNulls().create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
 	
-	
-	private transient Long codeId = null;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long codeId = null;
 	private String siteOwnershipCode = null;
 	private Boolean openSource = null; 
 	private String  repositoryLink = null; 
 	//private DOECodeMetadataLists lists = null;
-	private ArrayList<Developer> developers = null;
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="ownerid", referencedColumnName="codeid")
+	private List<Developer> developers = null;
 	/*private ArrayList<Contributor> contributors = null;
 	private ArrayList<Sponsor> sponsors = null;
 	private ArrayList<ContributingOrganization> contributingOrganizations = null;
@@ -66,6 +86,7 @@ public class DOECodeMetadata {
 	
 	public void save() {
 		//implement later
+		DBOps.saveMetadata(this);
 	}
 	
 	public JsonElement getJson() {
@@ -178,7 +199,7 @@ public class DOECodeMetadata {
 		this.license = license;
 	}
 
-	public ArrayList<Developer> getDevelopers() {
+	public List<Developer> getDevelopers() {
 		return developers;
 	}
 

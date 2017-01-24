@@ -1,13 +1,21 @@
 package gov.osti.entity;
 
-import java.util.ArrayList;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
-
+@MappedSuperclass
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Agent {
 
-	private String email = null;
-	//private ArrayList<Affiliation> affiliations = null;
+	private Integer place = null;
 	
+	private Long ownerId = null;
+	@Id
+	private String email = null;
+	private String affiliations = null;
+	private String orcid = null;
 	
 	public Agent() {
 		
@@ -19,35 +27,44 @@ public class Agent {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 
-/*	public ArrayList<Affiliation> getAffiliations() {
+	public String getAffiliations() {
 		return affiliations;
 	}
 
-	public void setAffiliations(ArrayList<Affiliation> affiliations) {
+	public void setAffiliations(String affiliations) {
 		this.affiliations = affiliations;
 	}
 
+	public String getOrcid() {
+		return orcid;
+	}
 
-	class Affiliation {
-		private String type;
-		private String id;
-		
-		public String getType() {
-			return type;
-		}
-		public void setType(String type) {
-			this.type = type;
-		}
-		public String getId() {
-			return id;
-		}
-		public void setId(String id) {
-			this.id = id;
-		}
-		
-		
-	}*/
+	public void setOrcid(String orcid) {
+		this.orcid = orcid;
+	}
+
+	public Integer getPlace() {
+		return place;
+	}
+
+	public void setPlace(Integer place) {
+		this.place = place;
+	}
+
+	public Long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
+	
+	
+	
+	
+	
+	
+
 	
 }
