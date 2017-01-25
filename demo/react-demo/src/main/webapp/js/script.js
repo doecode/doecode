@@ -8,6 +8,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Griddle = require('griddle-react');
+var ReactBootstrap = require('react-bootstrap');
+var utils = require('./utils.js');
+
 var AgentsModal = function (_React$Component) {
   _inherits(AgentsModal, _React$Component);
 
@@ -280,7 +286,7 @@ var NameForm = function (_React$Component5) {
   _createClass(NameForm, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      doAjax('GET', 'services?action=load', this.parseLoadResponse);
+      utils.doAjax('GET', 'services?action=load', this.parseLoadResponse);
     }
   }, {
     key: 'parseLoadResponse',
@@ -309,7 +315,7 @@ var NameForm = function (_React$Component5) {
       console.log("metadata on submit", this.state.metadata);
       var metadata = this.state.metadata;
       console.log(JSON.stringify(metadata));
-      doAjax('POST', 'services?action=save', this.parseSaveResponse, metadata);
+      utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, metadata);
 
       event.preventDefault();
     }
