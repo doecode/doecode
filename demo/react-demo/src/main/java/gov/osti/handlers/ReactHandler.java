@@ -39,7 +39,9 @@ public class ReactHandler {
 	
 	private static String handleActionLoad(long codeId) {
 		JsonObject responseObject = new JsonObject();
-		DOECodeMetadata md = new DOECodeMetadata(codeId);
+		DOECodeMetadata md = DOECodeMetadata.lookup(codeId);
+		if (md == null)
+			md = new DOECodeMetadata();
 		md.setSoftwareTitle("something");
 		md.setAcronym("ORNL");
 		md.setDescription("Description");

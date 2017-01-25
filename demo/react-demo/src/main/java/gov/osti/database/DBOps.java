@@ -20,6 +20,24 @@ public class DBOps {
 		
 	}
 	
+	public static DOECodeMetadata lookupMetadata(long codeId) {
+		DOECodeMetadata md = null;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		md = entityManager.find(DOECodeMetadata.class, codeId);
+		entityManager.close();
+		return md;
+	}
+	
+	public static void deleteMetadata(long codeId) {
+		DOECodeMetadata md = null;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		md = entityManager.find(DOECodeMetadata.class, codeId);
+		entityManager.remove(md);
+		entityManager.close();
+	}
+	
 	
 	
 

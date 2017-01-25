@@ -38,7 +38,7 @@ public class DOECodeMetadata {
 	private Boolean openSource = null; 
 	private String  repositoryLink = null; 
 	//private DOECodeMetadataLists lists = null;
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ownerid", referencedColumnName="codeid")
 	private List<Developer> developers = null;
 	/*private ArrayList<Contributor> contributors = null;
@@ -69,36 +69,52 @@ public class DOECodeMetadata {
 	private String relatedSoftware = null;
 	//private String documentation = null; this will be structured in some way tbd per the metadata document
 	
-	
-	public DOECodeMetadata(long codeId) {
-		this.lookup(codeId);
-	}
-	
 	//for Gson
 	public DOECodeMetadata() {
 		
 	}
 	
-	public boolean lookup(long codeId) {
-		//implement later
-		return true;
+	/**
+	 * lookup- Syntactic sugar for DatabaseOps function. Tries to lookup metadata based off provided codeId.
+	 * @param codeId
+	 * @return Returns metadata for the code ID or null if none exists
+	 */
+	public static DOECodeMetadata lookup(long codeId) {
+		return DBOps.lookupMetadata(codeId);
 	}
 	
+	/**
+	 * save - Syntactic sugar for DatabaseOps function. Persists the metadata object to memory.
+	 */
 	public void save() {
 		//implement later
 		DBOps.saveMetadata(this);
 	}
 	
+	public static void delete(long codeId) {
+		DBOps.deleteMetadata(codeId);
+	}
+	
+	public void delete() {
+		DBOps.deleteMetadata(this.codeId);
+	}
+	
+	
+	/**
+	 * getJson - Serializes the Metadata Object into a JSON.
+	 * @return A JsonElement representing the metadata's internal state in JSON
+	 */
 	public JsonElement getJson() {
 		return serializer.toJsonTree(this);
 	}
 	
-	public String getJsonString() {
-		return serializer.toJson(this);
-	}
-	
-	public static DOECodeMetadata parseJson(Reader json) {
-		return serializer.fromJson(json, DOECodeMetadata.class);
+	/**
+	 * Parses JSON in the request body of the reader into a DOECodemetadata object.
+	 * @param reader - A request reader containing JSON in the request body. 
+	 * @return A DOECodeMetadata object representing the data of the JSON in the request body.
+	 */
+	public static DOECodeMetadata parseJson(Reader reader) {
+		return serializer.fromJson(reader, DOECodeMetadata.class);
 
 	}
 	

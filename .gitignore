@@ -1,2 +1,4 @@
 .project
 demo/form-demo/.gitignore
+demo/form-demo/.classpath
+demo/form-demo/.settings/
