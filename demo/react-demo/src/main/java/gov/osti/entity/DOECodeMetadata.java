@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class DOECodeMetadata {
     private static final Logger log = LoggerFactory.getLogger(DOECodeMetadata.class.getName());
 
-	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).serializeNulls().create();
+	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
 	
 	@Id

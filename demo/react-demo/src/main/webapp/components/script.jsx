@@ -49,7 +49,6 @@ email:''}
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="form-group form-group-sm">
       <div className="col-xs-offset-5">
@@ -90,13 +89,10 @@ class AgentsTable extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.props.value = nextProps.value;
-  }
 
   render() {
     return(
-
+    	
 <div className="form-group form-group-sm">
       <div className="col-sm-offset-2 col-sm-8">
         <h2>Developers</h2>
@@ -121,9 +117,6 @@ class TextField extends React.Component {
     this.props.onChange(this.props.field,event.target.value);
   }
 
-componentWillReceiveProps(nextProps) {
-  this.props.value = nextProps.value;
-}
 
   render() {
 	  return(
@@ -132,7 +125,7 @@ componentWillReceiveProps(nextProps) {
         {this.props.label}
       </label>
       <div className="col-xs-4">
-        <input name={this.props.field} id={this.props.field} className="form-control" value={this.props.value} onChange={this.handleChange} />
+        <input type="text" name={this.props.field} id={this.props.field} className="form-control" value={this.props.value} onChange={this.handleChange} />
       </div>
     </div>);
   }
@@ -152,10 +145,6 @@ class SelectField extends React.Component {
 	    this.props.onChange(this.props.field,event.target.value);
 	  }
 
-	componentWillReceiveProps(nextProps) {
-	  this.props.value = nextProps.value;
-	}
-
 	  render() {
 		  return(
 	      <div className="form-group form-group-sm row">
@@ -173,7 +162,31 @@ class SelectField extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {metadata : {}};
+    this.state = {metadata : {
+    	"code_id": undefined,
+    	"site_ownership_code": undefined,
+    	"open_source": undefined,
+    	"repository_link": undefined,
+    	"developers": [],
+    	"originating_research_organizations": undefined,
+    	"software_title": undefined,
+    	"acronym": undefined,
+    	"doi": undefined,
+    	"description": undefined,
+    	"related_identifiers": undefined,
+    	"country_of_origin": undefined,
+    	"keywords": undefined,
+    	"disclaimers": undefined,
+    	"license": undefined,
+    	"recipient_name": undefined,
+    	"recipient_email": undefined,
+    	"recipient_phone": undefined,
+    	"recipient_org": undefined,
+    	"site_accession_number": undefined,
+    	"other_special_requirements": undefined,
+    	"related_software": undefined
+    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.parseLoadResponse = this.parseLoadResponse.bind(this);
     this.parseSaveResponse = this.parseSaveResponse.bind(this);
@@ -183,7 +196,7 @@ class NameForm extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
 	    utils.doAjax('GET', 'services?action=load', this.parseLoadResponse);
   }
 
@@ -208,22 +221,17 @@ onModalSubmit(developer) {
 }
 
   handleSubmit(event) {
-    console.log("metadata on submit",this.state.metadata);
-    var metadata = this.state.metadata;
-    console.log(JSON.stringify(metadata));
-    utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, metadata);
+	console.log(this.state.metadata);
+    utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
   
     event.preventDefault();
   }
   
   parseSaveResponse(data) {
-	  console.log("Returned from save",data);
 	  alert('Saved record');
   }
 
   render() {
-    console.log(this.state);
-
 
     return (
       <div className="container-fluid">

@@ -62,6 +62,7 @@ public class ReactHandler {
 		
 		
 		responseObject.add("metadata", md.getJson());
+		System.out.println(md.getJson().toString());
 		
 		return responseObject.toString();
 		

@@ -69,7 +69,6 @@ var AgentsModal = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state);
       return React.createElement(
         'div',
         { className: 'form-group form-group-sm' },
@@ -146,11 +145,6 @@ var AgentsTable = function (_React$Component2) {
   }
 
   _createClass(AgentsTable, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      this.props.value = nextProps.value;
-    }
-  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -192,11 +186,6 @@ var TextField = function (_React$Component3) {
       this.props.onChange(this.props.field, event.target.value);
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      this.props.value = nextProps.value;
-    }
-  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -210,7 +199,7 @@ var TextField = function (_React$Component3) {
         React.createElement(
           'div',
           { className: 'col-xs-4' },
-          React.createElement('input', { name: this.props.field, id: this.props.field, className: 'form-control', value: this.props.value, onChange: this.handleChange })
+          React.createElement('input', { type: 'text', name: this.props.field, id: this.props.field, className: 'form-control', value: this.props.value, onChange: this.handleChange })
         )
       );
     }
@@ -236,11 +225,6 @@ var SelectField = function (_React$Component4) {
     key: 'handleChange',
     value: function handleChange(event) {
       this.props.onChange(this.props.field, event.target.value);
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      this.props.value = nextProps.value;
     }
   }, {
     key: 'render',
@@ -273,7 +257,31 @@ var NameForm = function (_React$Component5) {
 
     var _this5 = _possibleConstructorReturn(this, (NameForm.__proto__ || Object.getPrototypeOf(NameForm)).call(this, props));
 
-    _this5.state = { metadata: {} };
+    _this5.state = { metadata: {
+        "code_id": undefined,
+        "site_ownership_code": undefined,
+        "open_source": undefined,
+        "repository_link": undefined,
+        "developers": [],
+        "originating_research_organizations": undefined,
+        "software_title": undefined,
+        "acronym": undefined,
+        "doi": undefined,
+        "description": undefined,
+        "related_identifiers": undefined,
+        "country_of_origin": undefined,
+        "keywords": undefined,
+        "disclaimers": undefined,
+        "license": undefined,
+        "recipient_name": undefined,
+        "recipient_email": undefined,
+        "recipient_phone": undefined,
+        "recipient_org": undefined,
+        "site_accession_number": undefined,
+        "other_special_requirements": undefined,
+        "related_software": undefined
+      }
+    };
     _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
     _this5.parseLoadResponse = _this5.parseLoadResponse.bind(_this5);
     _this5.parseSaveResponse = _this5.parseSaveResponse.bind(_this5);
@@ -284,8 +292,8 @@ var NameForm = function (_React$Component5) {
   }
 
   _createClass(NameForm, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
       utils.doAjax('GET', 'services?action=load', this.parseLoadResponse);
     }
   }, {
@@ -312,23 +320,19 @@ var NameForm = function (_React$Component5) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      console.log("metadata on submit", this.state.metadata);
-      var metadata = this.state.metadata;
-      console.log(JSON.stringify(metadata));
-      utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, metadata);
+      console.log(this.state.metadata);
+      utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
 
       event.preventDefault();
     }
   }, {
     key: 'parseSaveResponse',
     value: function parseSaveResponse(data) {
-      console.log("Returned from save", data);
       alert('Saved record');
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state);
 
       return React.createElement(
         'div',
