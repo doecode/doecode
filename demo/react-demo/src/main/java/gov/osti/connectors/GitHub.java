@@ -1720,7 +1720,6 @@ public class GitHub {
      * @throws IOException on IO errors
      */
     private static String fetch(HttpGet get) throws IOException {
-        StringBuilder b = new StringBuilder();
         // set some reasonable default timeouts
         RequestConfig rc = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).build();
         // create an HTTP client to request through
