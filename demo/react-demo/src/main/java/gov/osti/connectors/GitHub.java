@@ -1737,7 +1737,8 @@ public class GitHub {
      * Obtain the connection-driven metadata elements from GitHub public API
      * requests.
      * 
-     * @param name the GitHub project name
+     * @param name the GitHub project name; in this case, this should be of
+     * the form "owner/project" to access the project API
      * @return a JsonElement of the DOECodeMetadata filled in as possible from
      * the API
      */
@@ -1750,7 +1751,7 @@ public class GitHub {
             GitHub.init();
 
             // acquire the SourceForge API response as JSON
-            HttpGet get = gitHubAPIGet(GITHUB_BASE_URL + name + "/" + name);
+            HttpGet get = gitHubAPIGet(GITHUB_BASE_URL + name);
 
             // Convert the JSON into an Object we can handle
             Repository response = 
