@@ -7,12 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 
 /**
  * Metadata scraper for SourceForge public API projects.
@@ -20,7 +16,7 @@ import org.apache.http.impl.client.HttpClients;
  * @author nensor
  */
 public class SourceForge {
-    private static final String SOURCEFORGE_API_BASEURL = "http://sourceforge.com/rest/p/";
+    private static final String SOURCEFORGE_API_BASEURL = "https://sourceforge.com/rest/p/";
     
     /**
      * Define the SourceForge "developer" information
@@ -171,37 +167,33 @@ public class SourceForge {
      */
     public static JsonElement readProject(String name) {
         DOECodeMetadata md = new DOECodeMetadata();
-         CloseableHttpClient hc = HttpClients.createDefault();
-         Gson gson = new Gson();
+        Gson gson = new Gson();
          
+         // acquire the SourceForge API response as JSON
+         HttpGet get = new HttpGet(SOURCEFORGE_API_BASEURL + name);
+
          try {
-             // acquire the SourceForge API response as JSON
-             HttpGet get = new HttpGet(SOURCEFORGE_API_BASEURL + name);
-             // set some reasonable default connection timeouts
-             RequestConfig rc = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).build();
-             get.setConfig(rc);
-             
              // Convert the JSON into an Object we can handle
              SourceForgeResponse response = 
-                     (SourceForgeResponse) gson.fromJson(new InputStreamReader(hc.execute(get).getEntity().getContent()), SourceForgeResponse.class);
-             
+                     (SourceForgeResponse) gson.fromJson(HttpUtil.fetch(get), SourceForgeResponse.class);
+
              // parse the relevant response parts into Metadata
              md.setSoftwareTitle(response.getName());
              md.setAcronym(response.getShortname());
              md.setDescription(response.getShortDescription());
-             
+
              SourceForgeLicense[] licenses = response.getCategories().getLicense();
-             
+
              StringBuilder license_text = new StringBuilder();
              for ( SourceForgeLicense license : licenses ) {
                  license_text.append( (0==license_text.length()) ? "" : ",");
                  license_text.append(license.getFullname());
              }
              md.setLicense(license_text.toString());
-             
+
              SourceForgeDeveloper[] developers = response.getDevelopers();
              ArrayList<Developer> devs = new ArrayList<>();
-             
+
              for ( SourceForgeDeveloper developer : developers ) {
                  int space = developer.getName().indexOf(" ");
                  Developer dev = new Developer();
@@ -215,13 +207,7 @@ public class SourceForge {
              }
              md.setDevelopers(devs);
          } catch ( IOException e ) {
-             // warn about failure here
-         } finally {
-             try {
-                 hc.close();
-             } catch ( IOException e ) {
-                 
-             }
+             // here's where we warn log error messages
          }
          
         return md.getJson();

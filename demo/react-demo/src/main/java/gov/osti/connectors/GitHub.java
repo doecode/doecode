@@ -1713,26 +1713,6 @@ public class GitHub {
     }
     
     /**
-     * Retrieve just the String content from a given HttpGet request.
-     * 
-     * @param get the GET to execute
-     * @return String contents of the results
-     * @throws IOException on IO errors
-     */
-    private static String fetch(HttpGet get) throws IOException {
-        // set some reasonable default timeouts
-        RequestConfig rc = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).build();
-        // create an HTTP client to request through
-        CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(rc).build();
-        
-        try {
-            return EntityUtils.toString(hc.execute(get).getEntity());
-        } finally {
-            hc.close();
-        }
-    }
-    
-    /**
      * Obtain the connection-driven metadata elements from GitHub public API
      * requests.
      * 
@@ -1754,7 +1734,7 @@ public class GitHub {
 
             // Convert the JSON into an Object we can handle
             Repository response = 
-                     (Repository) gson.fromJson(fetch(get), Repository.class);
+                     (Repository) gson.fromJson(HttpUtil.fetch(get), Repository.class);
 
             // parse the relevant response parts into Metadata
             md.setSoftwareTitle(response.getFullName());
@@ -1763,13 +1743,13 @@ public class GitHub {
             md.setDescription(response.getDescription());
 
             HttpGet contributor_request = gitHubAPIGet(response.getContributorsUrl());
-            Contributor[] contributors = gson.fromJson(fetch(contributor_request), Contributor[].class);
+            Contributor[] contributors = gson.fromJson(HttpUtil.fetch(contributor_request), Contributor[].class);
             ArrayList<Developer> devs = new ArrayList<>();
 
             for ( Contributor contributor : contributors ) {
                 Developer developer = new Developer();
                 HttpGet user_request = gitHubAPIGet(contributor.getUrl());
-                User user = gson.fromJson(fetch(user_request), User.class);
+                User user = gson.fromJson(HttpUtil.fetch(user_request), User.class);
 
                 developer.setEmail(user.getEmail());
                 developer.setAffiliations(user.getCompany());
