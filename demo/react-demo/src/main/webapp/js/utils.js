@@ -28,5 +28,5 @@
       return url;
   }
 
-  module.exports.doAjax = doAjax;
-  module.exports.appendQueryString = appendQueryString;
+export {doAjax};
+export {appendQueryString};

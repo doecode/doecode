@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-class SelectField extends React.Component {
+export default class SelectField extends React.Component {
 	  constructor(props) {
 	    super(props);
 
@@ -27,4 +27,4 @@ class SelectField extends React.Component {
 
 	}
 
-module.exports = SelectField;
+

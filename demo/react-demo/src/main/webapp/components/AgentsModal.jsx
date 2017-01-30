@@ -1,7 +1,7 @@
-const React = require('react');
-const ReactBootstrap = require('react-bootstrap');
-const TextField  = require('./TextField');
-const SelectField = require('./SelectField');
+import React from 'react';
+import {Modal,Button} from 'react-bootstrap';
+import TextField  from './TextField';
+import SelectField from './SelectField';
 
 export default class AgentsModal extends React.Component {
   constructor(props) {
@@ -51,19 +51,19 @@ email:''}
     return (
       <div className="form-group form-group-sm">
       <div className="col-xs-offset-5">
-        <ReactBootstrap.Button
+        <Button
           bsStyle="primary"
           bsSize="large"
           onClick={this.open}
         >
         Add Developer
-        </ReactBootstrap.Button>
+        </Button>
 
-        <ReactBootstrap.Modal show={this.state.showModal} onHide={this.close} bsSize="large">
-          <ReactBootstrap.Modal.Header closeButton>
-            <ReactBootstrap.Modal.Title>Manage Developer</ReactBootstrap.Modal.Title>
-          </ReactBootstrap.Modal.Header>
-          <ReactBootstrap.Modal.Body>
+        <Modal show={this.state.showModal} onHide={this.close} bsSize="large">
+          <Modal.Header closeButton>
+            <Modal.Title>Manage Developer</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
            <div className="container-fluid">
              <div className="form-horizontal">
            <TextField field="first_name" label="First Name" type="textarea" value={this.state.developer.first_name} onChange={this.onModalChange}/>
@@ -72,12 +72,12 @@ email:''}
            <TextField field="email" label="Email" type="textarea" value={this.state.developer.email} onChange={this.onModalChange}/>
             </div>
          </div>
-          </ReactBootstrap.Modal.Body>
-          <ReactBootstrap.Modal.Footer>
-            <ReactBootstrap.Button onClick={this.close}>Close</ReactBootstrap.Button>
-            <ReactBootstrap.Button onClick={this.handleSave}>Save and close</ReactBootstrap.Button>
-          </ReactBootstrap.Modal.Footer>
-        </ReactBootstrap.Modal>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+            <Button onClick={this.handleSave}>Save and close</Button>
+          </Modal.Footer>
+        </Modal>
         </div>
       </div>
     );

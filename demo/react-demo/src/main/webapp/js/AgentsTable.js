@@ -1,15 +1,27 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _griddleReact = require('griddle-react');
+
+var _griddleReact2 = _interopRequireDefault(_griddleReact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var React = require('react');
-var Griddle = require('griddle-react');
 
 var AgentsTable = function (_React$Component) {
   _inherits(AgentsTable, _React$Component);
@@ -23,24 +35,24 @@ var AgentsTable = function (_React$Component) {
   _createClass(AgentsTable, [{
     key: 'render',
     value: function render() {
-      return React.createElement(
+      return _react2.default.createElement(
         'div',
         { className: 'form-group form-group-sm' },
-        React.createElement(
+        _react2.default.createElement(
           'div',
           { className: 'col-sm-offset-2 col-sm-8' },
-          React.createElement(
+          _react2.default.createElement(
             'h2',
             null,
             'Developers'
           ),
-          React.createElement(Griddle, { results: this.props.value })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.value })
         )
       );
     }
   }]);
 
   return AgentsTable;
-}(React.Component);
+}(_react2.default.Component);
 
-module.exports = AgentsTable;
+exports.default = AgentsTable;

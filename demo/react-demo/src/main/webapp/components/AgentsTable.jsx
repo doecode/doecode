@@ -1,7 +1,7 @@
-const React = require('react');
-const Griddle = require('griddle-react');
+import React from 'react';
+import Griddle from 'griddle-react';
 
-class AgentsTable extends React.Component {
+export default class AgentsTable extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,4 +21,3 @@ class AgentsTable extends React.Component {
 
 }
 
-module.exports = AgentsTable;

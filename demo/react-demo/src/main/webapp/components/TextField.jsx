@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-class TextField extends React.Component {
+export default class TextField extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,4 +28,3 @@ class TextField extends React.Component {
 
 }
 
-module.exports = TextField;

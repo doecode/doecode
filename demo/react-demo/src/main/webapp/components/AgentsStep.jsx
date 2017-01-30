@@ -1,9 +1,9 @@
-const React = require('react');
-const AgentsModal = require('./AgentsModal');
-const AgentsTable = require('./AgentsTable');
+import React from 'react';
+import AgentsModal from './AgentsModal';
+import AgentsTable from './AgentsTable';
 
 
-class AgentsStep extends React.Component {
+export default class AgentsStep extends React.Component {
 	  
 	constructor(props) {
 		    super(props);
@@ -26,5 +26,3 @@ class AgentsStep extends React.Component {
 		      );
 		  }
 }
-
-module.exports = AgentsStep;

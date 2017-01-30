@@ -1,16 +1,46 @@
 import React  from 'react';
 import ReactDOM  from 'react-dom';
-import utils  from './utils.js';
+import {doAjax,appendQueryString}  from './utils';
 import TextField   from './TextField';
 import SelectField  from './SelectField';
 import AgentsStep from './AgentsStep';
-//import {observer} from "mobx-react";
+import {observer} from "mobx-react";
+import {observable} from 'mobx';
+
+class Metadata {
+	@observable metadata {
+    	"code_id": undefined,
+    	"site_ownership_code": undefined,
+    	"open_source": undefined,
+    	"repository_link": undefined,
+    	"developers": [],
+    	"originating_research_organizations": undefined,
+    	"software_title": undefined,
+    	"acronym": undefined,
+    	"doi": undefined,
+    	"description": undefined,
+    	"related_identifiers": undefined,
+    	"country_of_origin": undefined,
+    	"keywords": undefined,
+    	"disclaimers": undefined,
+    	"license": undefined,
+    	"recipient_name": undefined,
+    	"recipient_email": undefined,
+    	"recipient_phone": undefined,
+    	"recipient_org": undefined,
+    	"site_accession_number": undefined,
+    	"other_special_requirements": undefined,
+    	"related_software": undefined
+	}
+	
+	
+}
 
 
 
+const store = new Metadata();
 
-
-//@observer
+@observer
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -45,12 +75,14 @@ class NameForm extends React.Component {
     this.onStateChange = this.onStateChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
     
+    console.log(this.props);
+    
 
 
   }
 
   componentWillMount() {
-	    utils.doAjax('GET', 'services?action=load', this.parseLoadResponse);
+	    doAjax('GET', 'services?action=load', this.parseLoadResponse);
   }
 
 
@@ -76,7 +108,7 @@ onModalSubmit(developer) {
   handleSubmit(event) {
 	console.log(this.state.metadata);
 	console.log(this.store);
-    utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
+    doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
 
     event.preventDefault();
   }
@@ -118,6 +150,6 @@ onModalSubmit(developer) {
 }
 
 ReactDOM.render(
-  <NameForm/>,
+  <NameForm store={store} />,
   document.getElementById('root')
 );

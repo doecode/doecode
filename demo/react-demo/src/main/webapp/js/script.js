@@ -4,9 +4,33 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _desc, _value, _class, _descriptor, _descriptor2, _class3;
 
-var _mobx = require('mobx');
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _utils = require('./utils');
+
+var _TextField = require('./TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _SelectField = require('./SelectField');
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _AgentsStep = require('./AgentsStep');
+
+var _AgentsStep2 = _interopRequireDefault(_AgentsStep);
 
 var _mobxReact = require('mobx-react');
+
+var _mobx = require('mobx');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -57,13 +81,6 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var utils = require('./utils.js');
-var TextField = require('./TextField');
-var SelectField = require('./SelectField');
-var AgentsStep = require('./AgentsStep');
-
 var Metadata = (_class = function Metadata() {
   _classCallCheck(this, Metadata);
 
@@ -83,7 +100,7 @@ var Metadata = (_class = function Metadata() {
 })), _class);
 
 
-var metadata = new Metadata();
+var store = new Metadata();
 
 var NameForm = (0, _mobxReact.observer)(_class3 = function (_React$Component) {
   _inherits(NameForm, _React$Component);
@@ -124,7 +141,7 @@ var NameForm = (0, _mobxReact.observer)(_class3 = function (_React$Component) {
     _this.onStateChange = _this.onStateChange.bind(_this);
     _this.onModalSubmit = _this.onModalSubmit.bind(_this);
 
-    var store = _this.props.store;
+    console.log(_this.props);
 
     return _this;
   }
@@ -132,7 +149,7 @@ var NameForm = (0, _mobxReact.observer)(_class3 = function (_React$Component) {
   _createClass(NameForm, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      utils.doAjax('GET', 'services?action=load', this.parseLoadResponse);
+      (0, _utils.doAjax)('GET', 'services?action=load', this.parseLoadResponse);
     }
   }, {
     key: 'parseLoadResponse',
@@ -160,7 +177,7 @@ var NameForm = (0, _mobxReact.observer)(_class3 = function (_React$Component) {
     value: function handleSubmit(event) {
       console.log(this.state.metadata);
       console.log(this.store);
-      utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
+      (0, _utils.doAjax)('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
 
       event.preventDefault();
     }
@@ -173,38 +190,38 @@ var NameForm = (0, _mobxReact.observer)(_class3 = function (_React$Component) {
     key: 'render',
     value: function render() {
 
-      return React.createElement(
+      return _react2.default.createElement(
         'div',
         { className: 'container-fluid' },
-        React.createElement(
+        _react2.default.createElement(
           'form',
           { id: 'react_form', className: 'form-horizontal', onSubmit: this.handleSubmit },
-          React.createElement(TextField, { field: 'software_title', label: 'Software Title', type: 'textarea', value: store.software_title }),
-          React.createElement(TextField, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: store.acronym }),
-          React.createElement(TextField, { field: 'description', label: 'Software Title', type: 'textarea', value: this.state.metadata.description, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: this.state.metadata.disclaimers, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'doi', label: 'DOI', type: 'text', value: this.state.metadata.doi, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'keywords', label: 'Keywords', type: 'text', value: this.state.metadata.keywords, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'license', label: 'License', type: 'select', value: this.state.metadata.license, onChange: this.onStateChange }),
-          React.createElement(SelectField, { field: 'open_source', label: 'Open Source?', type: 'select', value: this.state.metadata.open_source, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: this.state.metadata.originating_research_organizations, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: this.state.metadata.other_special_requirements, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: this.state.metadata.recipient_email, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: this.state.metadata.recipient_name, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: this.state.metadata.recipient_org, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: this.state.metadata.recipient_phone, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: this.state.metadata.related_identifiers, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'related_software', label: 'Related Software', type: 'text', value: this.state.metadata.related_software, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'repository_link', label: 'Repository Link', type: 'text', value: this.state.metadata.repository_link, onChange: this.onStateChange }),
-          React.createElement(TextField, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: this.state.metadata.site_accession_number, onChange: this.onStateChange }),
-          React.createElement(SelectField, { field: 'site_ownership_code', label: 'Site Ownership Code', type: 'select', value: this.state.metadata.site_ownership_code, onChange: this.onStateChange }),
-          React.createElement(AgentsStep, { developers: this.state.metadata.developers, onModalSubmit: this.onModalSubmit })
+          _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', type: 'textarea', value: this.state.metadata.software_title }),
+          _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: this.state.metadata.acronym }),
+          _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', type: 'textarea', value: this.state.metadata.description, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: this.state.metadata.disclaimers, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', type: 'text', value: this.state.metadata.doi, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', type: 'text', value: this.state.metadata.keywords, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', type: 'select', value: this.state.metadata.license, onChange: this.onStateChange }),
+          _react2.default.createElement(_SelectField2.default, { field: 'open_source', label: 'Open Source?', type: 'select', value: this.state.metadata.open_source, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: this.state.metadata.originating_research_organizations, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: this.state.metadata.other_special_requirements, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: this.state.metadata.recipient_email, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: this.state.metadata.recipient_name, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: this.state.metadata.recipient_org, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: this.state.metadata.recipient_phone, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: this.state.metadata.related_identifiers, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: this.state.metadata.related_software, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: this.state.metadata.repository_link, onChange: this.onStateChange }),
+          _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: this.state.metadata.site_accession_number, onChange: this.onStateChange }),
+          _react2.default.createElement(_SelectField2.default, { field: 'site_ownership_code', label: 'Site Ownership Code', type: 'select', value: this.state.metadata.site_ownership_code, onChange: this.onStateChange }),
+          _react2.default.createElement(_AgentsStep2.default, { developers: this.state.metadata.developers, onModalSubmit: this.onModalSubmit })
         )
       );
     }
   }]);
 
   return NameForm;
-}(React.Component)) || _class3;
+}(_react2.default.Component)) || _class3;
 
-ReactDOM.render(React.createElement(NameForm, { store: metadata }), document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(NameForm, { store: store }), document.getElementById('root'));
