@@ -8,7 +8,7 @@ import {observer} from "mobx-react";
 import {observable} from 'mobx';
 
 class Metadata {
-	@observable metadata {
+	@observable metadata = {
     	"code_id": undefined,
     	"site_ownership_code": undefined,
     	"open_source": undefined,
@@ -73,7 +73,9 @@ class NameForm extends React.Component {
     this.parseLoadResponse = this.parseLoadResponse.bind(this);
     this.parseSaveResponse = this.parseSaveResponse.bind(this);
     this.onStateChange = this.onStateChange.bind(this);
+    this.onModxChange = this.onModxChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
+    
     
     console.log(this.props);
     
@@ -99,6 +101,10 @@ onStateChange(id,value) {
 
 }
 
+onModxChange(id,value) {
+	this.props.store[id] = value;
+}
+
 onModalSubmit(developer) {
 	  var newState = this.state;
 	  newState.metadata.developers.push(developer);
@@ -119,12 +125,14 @@ onModalSubmit(developer) {
   }
 
   render() {
+	const metadata = this.props.store;
+	console.log(metadata);
 
     return (
       <div className="container-fluid">
       <form id="react_form" className="form-horizontal" onSubmit={this.handleSubmit}>
-      <TextField field="software_title" label="Software Title" type="textarea" value={this.state.metadata.software_title}/>
-      <TextField field="acronym" label="Acronym or Short Title" type="text" value={this.state.metadata.acronym} />
+      <TextField field="software_title" label="Software Title" type="textarea" value={metadata.software_title} onChange={this.onModxChange}/>
+      <TextField field="acronym" label="Acronym or Short Title" type="text" value={metadata.acronym} onChange={this.onModxChange}/>
       <TextField field="description" label="Software Title" type="textarea" value={this.state.metadata.description} onChange={this.onStateChange}/>
       <TextField field="disclaimers" label="Disclaimers" type="text" value={this.state.metadata.disclaimers} onChange={this.onStateChange}/>
       <TextField field="doi" label="DOI" type="text" value={this.state.metadata.doi} onChange={this.onStateChange}/>
