@@ -1738,37 +1738,41 @@ public class GitHub {
             md.setAcronym(response.getName());
             md.setDescription(response.getDescription());
 
-            HttpGet contributor_request = gitHubAPIGet(response.getContributorsUrl());
-            Contributor[] contributors = gson.fromJson(HttpUtil.fetch(contributor_request), Contributor[].class);
-            ArrayList<Developer> devs = new ArrayList<>();
+            if (null!=response.getContributorsUrl()) {
+                HttpGet contributor_request = gitHubAPIGet(response.getContributorsUrl());
+                Contributor[] contributors = gson.fromJson(HttpUtil.fetch(contributor_request), Contributor[].class);
+                ArrayList<Developer> devs = new ArrayList<>();
 
-            for ( Contributor contributor : contributors ) {
-                Developer developer = new Developer();
-                HttpGet user_request = gitHubAPIGet(contributor.getUrl());
-                User user = gson.fromJson(HttpUtil.fetch(user_request), User.class);
+                for ( Contributor contributor : contributors ) {
+                    Developer developer = new Developer();
+                    if (null!=contributor.getUrl()) {
+                        HttpGet user_request = gitHubAPIGet(contributor.getUrl());
+                        User user = gson.fromJson(HttpUtil.fetch(user_request), User.class);
 
-                developer.setEmail(user.getEmail());
-                developer.setAffiliations(user.getCompany());
+                        developer.setEmail(user.getEmail());
+                        developer.setAffiliations(user.getCompany());
 
-                /** if no User name is present, default to the login name;
-                 * otherwise attempt to break into first/last name.
-                 */
-                if (null==user.getName()) {
-                    developer.setFirstName(user.getLogin());
-                    developer.setLastName("(undefined)");
-                } else {
-                    int lastSpace = user.getName().lastIndexOf(" ");
-                    if ( -1==lastSpace ) {
-                        developer.setFirstName(user.getName());
-                        developer.setLastName("(undefined)");
-                    } else {
-                        developer.setFirstName(user.getName().substring(0, lastSpace));
-                        developer.setLastName(user.getName().substring(lastSpace+1));
+                        /** if no User name is present, default to the login name;
+                         * otherwise attempt to break into first/last name.
+                         */
+                        if (null==user.getName()) {
+                            developer.setFirstName(user.getLogin());
+                            developer.setLastName("(undefined)");
+                        } else {
+                            int lastSpace = user.getName().lastIndexOf(" ");
+                            if ( -1==lastSpace ) {
+                                developer.setFirstName(user.getName());
+                                developer.setLastName("(undefined)");
+                            } else {
+                                developer.setFirstName(user.getName().substring(0, lastSpace));
+                                developer.setLastName(user.getName().substring(lastSpace+1));
+                            }
+                        }
+                        devs.add(developer);
                     }
                 }
-                devs.add(developer);
+                md.setDevelopers(devs);
             }
-            md.setDevelopers(devs);
         } catch ( IOException e ) {
             // here's where you'd warn about the IO error
         }

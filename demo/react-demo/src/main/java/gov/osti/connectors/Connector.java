@@ -4,6 +4,8 @@ package gov.osti.connectors;
 
 import com.google.gson.JsonElement;
 import gov.osti.entity.DOECodeMetadata;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Generic Connector to various API sources for metadata information.
@@ -21,24 +23,35 @@ public class Connector {
      * information was found if possible.
      */
     public static JsonElement readProject(String url) {
-        String safeUrl = (null==url) ? "" : url.trim();
-        
-        /**
-         * Attempt to interpret the URL and access one of the known API 
-         * connectors.  Unknown repository URLs will return empty Metadata JSON.
-         * 
-         * GitHub:  contains github.com, path should be of the form "username/project"
-         * SourceForge: contains sourceforge.net, path should be "project"
-         * BitBucket: contains bitbucket.org, path is of the form "user/repo-slug"
-         */
-        if ( safeUrl.contains("gihub.com") ) {
-            return GitHub.readProject(safeUrl.substring(safeUrl.indexOf("/")+1));
-        } else if ( safeUrl.contains("sourceforge.net") ) {
-            return SourceForge.readProject(safeUrl.substring(safeUrl.indexOf("/")+1));
-        } else if ( safeUrl.contains("bitbucket.org") ) {
-            return BitBucket.readProject(safeUrl.substring(safeUrl.indexOf("/")+1));
-        } else {
-            return new DOECodeMetadata().getJson();
+        try {
+            String safeUrl = (null==url) ? "" : url.trim();
+            // err on the side of encryption, if no protocol provided
+            URI uri = new URI(
+                    !safeUrl.startsWith("http") ?
+                            "https://" + safeUrl : 
+                            safeUrl);
+            
+            // protection against bad URL input
+            if (null!=uri.getHost()) {
+                if (uri.getHost().contains("github.com")) {
+                    // get rid of the first slash
+                    String path = uri.getPath();
+                    return GitHub.readProject(path.substring(path.indexOf("/")+1));
+                } else if (uri.getHost().contains("sourceforge.net")) {
+                    // assume SourceForge path is formed by "/projects/project-name"
+                    String path = uri.getPath();
+                    return SourceForge.readProject(path.substring(path.lastIndexOf("/")+1));
+                } else if (uri.getHost().contains("bitbucket.org")) {
+                    // skip the slash
+                    String path = uri.getPath();
+                    return BitBucket.readProject(path.substring(path.indexOf("/")+1));
+                }
+            }
+        } catch ( URISyntaxException e ) {
+            // warn that URL is not a valid URI
+            System.err.println("Not a valid URI: " + url + " message: " + e.getMessage());
         }
+        // nothing matched, return empty Object
+        return new DOECodeMetadata().getJson();
     }
 }
