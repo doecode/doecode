@@ -3,7 +3,7 @@ const ReactBootstrap = require('react-bootstrap');
 const TextField  = require('./TextField');
 const SelectField = require('./SelectField');
 
-class AgentsModal extends React.Component {
+export default class AgentsModal extends React.Component {
   constructor(props) {
     super(props);
     var developerObj = {first_name:'',
@@ -84,4 +84,3 @@ email:''}
   }
 }
 
-module.exports = AgentsModal;

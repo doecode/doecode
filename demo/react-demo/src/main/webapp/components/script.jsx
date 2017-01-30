@@ -1,13 +1,16 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Griddle = require('griddle-react');
-const ReactBootstrap = require('react-bootstrap');
-const utils = require('./utils.js');
-const TextField  = require('./TextField');
-const SelectField = require('./SelectField');
-const AgentsModal = require('./AgentsModal');
-const AgentsTable = require('./AgentsTable');
+import React  from 'react';
+import ReactDOM  from 'react-dom';
+import utils  from './utils.js';
+import TextField   from './TextField';
+import SelectField  from './SelectField';
+import AgentsStep from './AgentsStep';
+//import {observer} from "mobx-react";
 
+
+
+
+
+//@observer
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +44,7 @@ class NameForm extends React.Component {
     this.parseSaveResponse = this.parseSaveResponse.bind(this);
     this.onStateChange = this.onStateChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
+    
 
 
   }
@@ -71,6 +75,7 @@ onModalSubmit(developer) {
 
   handleSubmit(event) {
 	console.log(this.state.metadata);
+	console.log(this.store);
     utils.doAjax('POST', 'services?action=save', this.parseSaveResponse, this.state.metadata);
 
     event.preventDefault();
@@ -78,6 +83,7 @@ onModalSubmit(developer) {
 
   parseSaveResponse(data) {
 	  alert('Saved record');
+
   }
 
   render() {
@@ -85,8 +91,8 @@ onModalSubmit(developer) {
     return (
       <div className="container-fluid">
       <form id="react_form" className="form-horizontal" onSubmit={this.handleSubmit}>
-      <TextField field="software_title" label="Software Title" type="textarea" value={this.state.metadata.software_title} onChange={this.onStateChange}/>
-      <TextField field="acronym" label="Acronym or Short Title" type="text" value={this.state.metadata.acronym} onChange={this.onStateChange}/>
+      <TextField field="software_title" label="Software Title" type="textarea" value={this.state.metadata.software_title}/>
+      <TextField field="acronym" label="Acronym or Short Title" type="text" value={this.state.metadata.acronym} />
       <TextField field="description" label="Software Title" type="textarea" value={this.state.metadata.description} onChange={this.onStateChange}/>
       <TextField field="disclaimers" label="Disclaimers" type="text" value={this.state.metadata.disclaimers} onChange={this.onStateChange}/>
       <TextField field="doi" label="DOI" type="text" value={this.state.metadata.doi} onChange={this.onStateChange}/>
@@ -104,15 +110,7 @@ onModalSubmit(developer) {
       <TextField field="repository_link" label="Repository Link" type="text" value={this.state.metadata.repository_link} onChange={this.onStateChange}/>
       <TextField field="site_accession_number" label="Site Accession Number" type="text" value={this.state.metadata.site_accession_number} onChange={this.onStateChange}/>
       <SelectField field="site_ownership_code" label="Site Ownership Code" type="select" value={this.state.metadata.site_ownership_code} onChange={this.onStateChange}/>
-      <AgentsTable value={this.state.metadata.developers}/>
-      <AgentsModal onClick={this.onModalSubmit}/>
-      <div className="form-group form-group-sm">
-        <div className="col-xs-offset-2">
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
-        </div>
-      </div>
+      <AgentsStep developers={this.state.metadata.developers} onModalSubmit={this.onModalSubmit}/>
       </form>
     </div>
       );
@@ -120,6 +118,6 @@ onModalSubmit(developer) {
 }
 
 ReactDOM.render(
-  <NameForm />,
+  <NameForm/>,
   document.getElementById('root')
 );
