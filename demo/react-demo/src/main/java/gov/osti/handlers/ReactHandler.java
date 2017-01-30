@@ -16,9 +16,9 @@ import gov.osti.util.ServletUtil;
 
 public class ReactHandler {
 
-	
+
 	public static String handleRequest(HttpServletRequest request) throws IOException {
-		
+
 		String action = request.getParameter("action");
 		Long osti_id = NumberUtils.toLong(request.getParameter("code_id"), 0);
 
@@ -36,12 +36,12 @@ public class ReactHandler {
 
 	}
 
-	
+
 	private static String handleActionLoad(long codeId) {
 		JsonObject responseObject = new JsonObject();
-		DOECodeMetadata md = DOECodeMetadata.lookup(codeId);
-		if (md == null)
-			md = new DOECodeMetadata();
+		//DOECodeMetadata md = DOECodeMetadata.lookup(codeId);
+		//if (md == null)
+		DOECodeMetadata md = new DOECodeMetadata();
 		md.setSoftwareTitle("something");
 		md.setAcronym("ORNL");
 		md.setDescription("Description");
@@ -59,26 +59,26 @@ public class ReactHandler {
 		developers.add(d1);
 		developers.add(d2);
 		md.setDevelopers(developers);
-		
-		
+
+
 		responseObject.add("metadata", md.getJson());
 		System.out.println(md.getJson().toString());
-		
+
 		return responseObject.toString();
-		
-		
+
+
 	}
-	
+
 	private static String handleActionSave(BufferedReader reader) throws IOException {
 		JsonObject responseObject = new JsonObject();
 		DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
 		System.out.println("md is" + md);
-		md.save();
+		//md.save();
 		responseObject.add("metadata",md.getJson());
-		
-		
+
+
 		return responseObject.toString();
-		
-		
+
+
 	}
 }
