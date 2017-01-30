@@ -5,9 +5,8 @@ package gov.osti.connectors;
 import java.io.IOException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 /**
@@ -28,9 +27,9 @@ public class HttpUtil {
         // set some reasonable default timeouts
         RequestConfig rc = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).build();
         // create an HTTP client to request through
-        CloseableHttpClient hc = HttpClients
-                .custom()
-                .setHostnameVerifier(new AllowAllHostnameVerifier())
+        CloseableHttpClient hc = 
+                HttpClientBuilder
+                .create()
                 .setDefaultRequestConfig(rc)
                 .build();
         

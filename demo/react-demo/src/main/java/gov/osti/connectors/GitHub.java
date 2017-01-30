@@ -14,11 +14,7 @@ import java.util.Date;
 import java.util.Properties;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpHeaders;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 /**
  * The GitHub metadata scraper class, to acquire the relevant metadata attributes

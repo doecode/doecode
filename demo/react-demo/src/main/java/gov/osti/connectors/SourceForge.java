@@ -16,7 +16,7 @@ import org.apache.http.client.methods.HttpGet;
  * @author nensor
  */
 public class SourceForge {
-    private static final String SOURCEFORGE_API_BASEURL = "https://sourceforge.com/rest/p/";
+    private static final String SOURCEFORGE_API_BASEURL = "https://sourceforge.net/rest/p/";
     
     /**
      * Define the SourceForge "developer" information
