@@ -13,11 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "~6.22.2",
+    "babel-plugin-syntax-flow": "~6.18.0",
     "babel-preset-es2015": "~6.22.0",
     "babel-preset-react": "~6.22.0",
-    "webpack": "^1.14.0",
-    "browserify": "~14.0.0",
-    "babel-plugin-syntax-flow": "~6.18.0"
+    "browserify": "^14.0.0",
+    "webpack": "^1.14.0"
   },
   "dependencies": {
     "griddle-react": "^0.7.1",
