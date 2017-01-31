@@ -30,7 +30,8 @@ export default class AgentsModal extends React.Component {
 	}
 
   handleSave(event) {
-	  this.props.onClick(this.props.store.developer);
+	  var dev = Object.assign({}, this.props.store.developer);
+	  this.props.onClick(dev);
 	  this.close();
   }
 

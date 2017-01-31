@@ -68,7 +68,8 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
   }, {
     key: 'handleSave',
     value: function handleSave(event) {
-      this.props.onClick(this.props.store.developer);
+      var dev = Object.assign({}, this.props.store.developer);
+      this.props.onClick(dev);
       this.close();
     }
   }, {

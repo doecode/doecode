@@ -25,7 +25,7 @@ export default class Metadata {
     "related_software": ''
   }
 
-   @observable.shallow developers = [];
+   @observable developers = [];
    addToDevelopers(developer) {
      this.developers.push(developer);
    }

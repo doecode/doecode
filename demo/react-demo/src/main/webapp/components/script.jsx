@@ -37,7 +37,6 @@ class NameForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.props.store.metadata);
         doAjax('POST', 'services?action=save', this.parseSaveResponse, this.props.store.metadata);
 
         event.preventDefault();
@@ -45,14 +44,12 @@ class NameForm extends React.Component {
 
     parseSaveResponse(data) {
         alert('Saved record');
-        console.log(data);
 
     }
 
     render() {
         const store = this.props.store;
         const metadata = store.metadata;
-        console.log(metadata);
         return (
             <div className="container-fluid">
                 <form id="react_form" className="form-horizontal" onSubmit={this.handleSubmit}>
@@ -73,7 +70,7 @@ class NameForm extends React.Component {
                     <TextField field="related_software" label="Related Software" type="text" value={metadata.related_software} onChange={this.onModxChange}/>
                     <TextField field="repository_link" label="Repository Link" type="text" value={metadata.repository_link} onChange={this.onModxChange}/>
                     <TextField field="site_accession_number" label="Site Accession Number" type="text" value={metadata.site_accession_number} onChange={this.onModxChange}/>
-                    <AgentsStep developers={store.developers} onModalSubmit={this.onModalSubmit}/>
+                    <AgentsStep developers={store.developers.slice()} onModalSubmit={this.onModalSubmit}/>
                     <div className="form-group form-group-sm">
                         <div className="col-xs-offset-2">
                             <button className="btn btn-primary" type="submit">

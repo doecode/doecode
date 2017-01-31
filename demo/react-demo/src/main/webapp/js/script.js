@@ -97,7 +97,8 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         value: function render() {
             var store = this.props.store;
             var metadata = store.metadata;
-            console.log(metadata);
+            console.log(store);
+            console.log(store.developers.peek());
             return _react2.default.createElement(
                 'div',
                 { className: 'container-fluid' },
@@ -121,7 +122,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
                     _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: metadata.related_software, onChange: this.onModxChange }),
                     _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: metadata.repository_link, onChange: this.onModxChange }),
                     _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: metadata.site_accession_number, onChange: this.onModxChange }),
-                    _react2.default.createElement(_AgentsStep2.default, { developers: store.developers, onModalSubmit: this.onModalSubmit }),
+                    _react2.default.createElement(_AgentsStep2.default, { developers: store.developers.slice(), onModalSubmit: this.onModalSubmit }),
                     _react2.default.createElement(
                         'div',
                         { className: 'form-group form-group-sm' },
