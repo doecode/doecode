@@ -2,15 +2,12 @@ import React from 'react';
 import {Modal,Button} from 'react-bootstrap';
 import TextField  from './TextField';
 import SelectField from './SelectField';
+import {observer} from "mobx-react";
 
+@observer
 export default class AgentsModal extends React.Component {
   constructor(props) {
     super(props);
-    var developerObj = {first_name:'',
-    middle_name: '',
-  last_name: '',
-email:''}
-    this.state = {showModal: false, developer : developerObj};
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.onModalChange = this.onModalChange.bind(this);
@@ -18,36 +15,28 @@ email:''}
   }
 
   close() {
-    var newState = this.state;
-    var developerObj = {first_name:'',
-    middle_name: '',
-  last_name: '',
-email:''}
-    newState.showModal=false;
-    newState.developer = developerObj;
-    this.setState(newState);
+    this.props.store.showModal = false;
+    this.props.store.clear();
   }
 
   open() {
-    var newState = this.state;
-    newState.showModal=true;
-    this.setState(newState);
+    this.props.store.showModal = true;
+    this.props.store.clear();
 
   }
 
   onModalChange(id,value) {
-	  var newState = this.state;
-	  newState.developer[id] = value;
-	  this.setState(newState);
-
+	  this.props.store.developer[id] = value;
 	}
 
   handleSave(event) {
-	  this.props.onClick(this.state.developer);
+	  this.props.onClick(this.props.store.developer);
 	  this.close();
   }
 
   render() {
+    const developer = this.props.store.developer;
+    const showModal = this.props.store.showModal;
     return (
       <div className="form-group form-group-sm">
       <div className="col-xs-offset-5">
@@ -59,17 +48,17 @@ email:''}
         Add Developer
         </Button>
 
-        <Modal show={this.state.showModal} onHide={this.close} bsSize="large">
+        <Modal show={showModal} onHide={this.close} bsSize="large">
           <Modal.Header closeButton>
             <Modal.Title>Manage Developer</Modal.Title>
           </Modal.Header>
           <Modal.Body>
            <div className="container-fluid">
              <div className="form-horizontal">
-           <TextField field="first_name" label="First Name" type="textarea" value={this.state.developer.first_name} onChange={this.onModalChange}/>
-           <TextField field="middle_name" label="Middle Name" type="textarea" value={this.state.developer.middle_name} onChange={this.onModalChange}/>
-           <TextField field="last_name" label="Last Name" type="textarea" value={this.state.developer.last_name} onChange={this.onModalChange}/>
-           <TextField field="email" label="Email" type="textarea" value={this.state.developer.email} onChange={this.onModalChange}/>
+           <TextField field="first_name" label="First Name" type="textarea" value={developer.first_name} onChange={this.onModalChange}/>
+           <TextField field="middle_name" label="Middle Name" type="textarea" value={developer.middle_name} onChange={this.onModalChange}/>
+           <TextField field="last_name" label="Last Name" type="textarea" value={developer.last_name} onChange={this.onModalChange}/>
+           <TextField field="email" label="Email" type="textarea" value={developer.email} onChange={this.onModalChange}/>
             </div>
          </div>
           </Modal.Body>
@@ -83,4 +72,3 @@ email:''}
     );
   }
 }
-

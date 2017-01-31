@@ -7,6 +7,8 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -19,6 +21,12 @@ var _AgentsTable = require('./AgentsTable');
 
 var _AgentsTable2 = _interopRequireDefault(_AgentsTable);
 
+var _Developer = require('./Developer');
+
+var _Developer2 = _interopRequireDefault(_Developer);
+
+var _mobxReact = require('mobx-react');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,7 +35,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AgentsStep = function (_React$Component) {
+var developer = new _Developer2.default();
+
+var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 	_inherits(AgentsStep, _React$Component);
 
 	function AgentsStep(props) {
@@ -44,25 +54,12 @@ var AgentsStep = function (_React$Component) {
 				'div',
 				null,
 				_react2.default.createElement(_AgentsTable2.default, { value: this.props.developers }),
-				_react2.default.createElement(_AgentsModal2.default, { onClick: this.props.onModalSubmit }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'form-group form-group-sm' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'col-xs-offset-2' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'btn btn-primary', type: 'submit' },
-							'Submit'
-						)
-					)
-				)
+				_react2.default.createElement(_AgentsModal2.default, { store: developer, onClick: this.props.onModalSubmit })
 			);
 		}
 	}]);
 
 	return AgentsStep;
-}(_react2.default.Component);
+}(_react2.default.Component)) || _class;
 
 exports.default = AgentsStep;

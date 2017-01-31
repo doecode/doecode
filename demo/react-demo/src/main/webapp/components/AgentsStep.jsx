@@ -1,27 +1,25 @@
 import React from 'react';
 import AgentsModal from './AgentsModal';
 import AgentsTable from './AgentsTable';
+import Developer from './Developer';
+import {observer} from "mobx-react";
 
 
+const developer = new Developer();
+
+@observer
 export default class AgentsStep extends React.Component {
-	  
+
 	constructor(props) {
 		    super(props);
 		  }
-	
+
 	  render() {
 
 		    return (
 		    <div>
 		      <AgentsTable value={this.props.developers}/>
-		      <AgentsModal onClick={this.props.onModalSubmit}/>
-		      <div className="form-group form-group-sm">
-		        <div className="col-xs-offset-2">
-		          <button className="btn btn-primary" type="submit">
-		            Submit
-		          </button>
-		        </div>
-		      </div>
+		      <AgentsModal store={developer} onClick={this.props.onModalSubmit}/>
 		    </div>
 		      );
 		  }

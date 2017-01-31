@@ -1,6 +1,8 @@
 import React from 'react';
 import Griddle from 'griddle-react';
+import {observer} from "mobx-react";
 
+@observer
 export default class AgentsTable extends React.Component {
   constructor(props) {
     super(props);
@@ -20,4 +22,3 @@ export default class AgentsTable extends React.Component {
   }
 
 }
-
