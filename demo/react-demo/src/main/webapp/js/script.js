@@ -53,7 +53,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         _this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.parseLoadResponse = _this.parseLoadResponse.bind(_this);
         _this.parseSaveResponse = _this.parseSaveResponse.bind(_this);
-        _this.onModxChange = _this.onModxChange.bind(_this);
+        _this.onMobxChange = _this.onMobxChange.bind(_this);
         _this.onModalSubmit = _this.onModalSubmit.bind(_this);
         return _this;
     }
@@ -66,11 +66,11 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'parseLoadResponse',
         value: function parseLoadResponse(responseData) {
-            this.setState({ metadata: responseData.metadata });
+            this.props.store.metadata = responseData.metadata;
         }
     }, {
-        key: 'onModxChange',
-        value: function onModxChange(id, value) {
+        key: 'onMobxChange',
+        value: function onMobxChange(id, value) {
             this.props.store.metadata[id] = value;
         }
     }, {
@@ -81,7 +81,6 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'handleSubmit',
         value: function handleSubmit(event) {
-            console.log(this.props.store.metadata);
             (0, _utils.doAjax)('POST', 'services?action=save', this.parseSaveResponse, this.props.store.metadata);
 
             event.preventDefault();
@@ -90,39 +89,35 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         key: 'parseSaveResponse',
         value: function parseSaveResponse(data) {
             alert('Saved record');
-            console.log(data);
         }
     }, {
         key: 'render',
         value: function render() {
-            var store = this.props.store;
             var metadata = store.metadata;
-            console.log(store);
-            console.log(store.developers.peek());
             return _react2.default.createElement(
                 'div',
                 { className: 'container-fluid' },
                 _react2.default.createElement(
                     'form',
                     { id: 'react_form', className: 'form-horizontal', onSubmit: this.handleSubmit },
-                    _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', type: 'textarea', value: metadata.software_title, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: metadata.acronym, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', type: 'textarea', value: metadata.description, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: metadata.disclaimers, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', type: 'text', value: metadata.doi, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', type: 'text', value: metadata.keywords, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', type: 'select', value: metadata.license, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: metadata.originating_research_organizations, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: metadata.other_special_requirements, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: metadata.recipient_email, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: metadata.recipient_name, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: metadata.recipient_org, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: metadata.recipient_phone, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: metadata.related_identifiers, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: metadata.related_software, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: metadata.repository_link, onChange: this.onModxChange }),
-                    _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: metadata.site_accession_number, onChange: this.onModxChange }),
-                    _react2.default.createElement(_AgentsStep2.default, { developers: store.developers.slice(), onModalSubmit: this.onModalSubmit }),
+                    _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', type: 'textarea', value: metadata.software_title, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: metadata.acronym, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', type: 'textarea', value: metadata.description, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: metadata.disclaimers, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', type: 'text', value: metadata.doi, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', type: 'text', value: metadata.keywords, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', type: 'select', value: metadata.license, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: metadata.originating_research_organizations, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: metadata.other_special_requirements, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: metadata.recipient_email, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: metadata.recipient_name, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: metadata.recipient_org, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: metadata.recipient_phone, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: metadata.related_identifiers, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: metadata.related_software, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: metadata.repository_link, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: metadata.site_accession_number, onChange: this.onMobxChange }),
+                    _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit }),
                     _react2.default.createElement(
                         'div',
                         { className: 'form-group form-group-sm' },

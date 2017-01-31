@@ -7,7 +7,7 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _desc, _value, _class, _descriptor, _descriptor2;
+var _desc, _value, _class, _descriptor;
 
 var _mobx = require('mobx');
 
@@ -56,19 +56,20 @@ function _initializerWarningHelper(descriptor, context) {
    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var Metadata = (_dec = _mobx.observable.shallow, (_class = function () {
+var Metadata = (_class = function () {
    function Metadata() {
       _classCallCheck(this, Metadata);
 
       _initDefineProp(this, 'metadata', _descriptor, this);
-
-      _initDefineProp(this, 'developers', _descriptor2, this);
    }
 
    _createClass(Metadata, [{
       key: 'addToDevelopers',
+
+
+      // @observable developers = [];
       value: function addToDevelopers(developer) {
-         this.developers.push(developer);
+         this.metadata.developers.push(developer);
       }
    }]);
 
@@ -88,6 +89,7 @@ var Metadata = (_dec = _mobx.observable.shallow, (_class = function () {
          "description": '',
          "related_identifiers": '',
          "country_of_origin": '',
+         "developers": [],
          "keywords": '',
          "disclaimers": '',
          "license": '',
@@ -100,10 +102,5 @@ var Metadata = (_dec = _mobx.observable.shallow, (_class = function () {
          "related_software": ''
       };
    }
-}), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'developers', [_dec], {
-   enumerable: true,
-   initializer: function initializer() {
-      return [];
-   }
-})), _class));
+})), _class);
 exports.default = Metadata;

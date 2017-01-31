@@ -13,6 +13,7 @@ export default class Metadata {
     "description": '',
     "related_identifiers": '',
     "country_of_origin": '',
+    "developers" : [],
     "keywords": '',
     "disclaimers": '',
     "license": '',
@@ -25,9 +26,9 @@ export default class Metadata {
     "related_software": ''
   }
 
-   @observable developers = [];
+  // @observable developers = [];
    addToDevelopers(developer) {
-     this.developers.push(developer);
+     this.metadata.developers.push(developer);
    }
 
 
