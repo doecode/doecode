@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/reactdoecode.log</file>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/%i.log.zip</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>10</MaxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+
+	</appender>
+
+	<logger name="org.hibernate.type" level="ALL" />
+	<logger name="org.hibernate" level="INFO" />
+
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

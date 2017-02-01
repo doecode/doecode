@@ -53,6 +53,26 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.6.Final</version>
 		</dependency>
+                
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-c3p0</artifactId>
+                    <version>5.2.6.Final</version>
+                </dependency>
+                
+                <!-- logback -->
+                <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-core</artifactId>
+                        <version>1.1.8</version>
+                </dependency>
+
+                <!-- logback implementation -->
+                <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                        <version>1.1.8</version>
+                </dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>

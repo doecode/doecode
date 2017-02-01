@@ -23,10 +23,13 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
 import gov.osti.database.DBOps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Entity
-@Table(name="metadata", schema="welscht")
+@Table(name="metadata")
 public class DOECodeMetadata {
+    private static final Logger log = LoggerFactory.getLogger(DOECodeMetadata.class.getName());
 
 	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).serializeNulls().create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
@@ -88,6 +91,7 @@ public class DOECodeMetadata {
 	 */
 	public void save() {
 		//implement later
+                log.info("Saving record to database: " + this.getSoftwareTitle());
 		DBOps.saveMetadata(this);
 	}
 	

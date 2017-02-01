@@ -38,9 +38,9 @@ public class ConnectionSource {
 		PoolableConnectionFactory poolableConnectionFactory = new PoolableConnectionFactory(
 				new DriverManagerConnectionFactory(url, properties), null);
 
-		GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<PoolableConnection>(
+		GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(
 				poolableConnectionFactory, null);
-		pool = new PoolingDataSource<PoolableConnection>(connectionPool);
+		pool = new PoolingDataSource<>(connectionPool);
 	}
 
 	private static ConnectionSource getInstance() throws IOException, SQLException, PropertyVetoException {

@@ -4,5 +4,4 @@
 node_modules
 .settings/
 package.json
-src/main/resources/META-INF/persistence.xml
 

@@ -38,6 +38,14 @@ public class DBOps {
 		entityManager.close();
 	}
 	
+        
+        /**
+         * Shut down the entity manager factory at application shutdown.
+         */
+        public static void shutdown() {
+            if (entityManagerFactory.isOpen()) 
+                entityManagerFactory.close();
+        }
 	
 	
 
