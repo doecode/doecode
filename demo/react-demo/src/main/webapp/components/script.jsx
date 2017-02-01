@@ -6,7 +6,7 @@ import Metadata from './Metadata';
 import AgentsStep from './AgentsStep';
 import MetadataStep from './MetadataStep';
 import ConfirmStep from './ConfirmStep';
-import Stepzilla from 'react-stepzilla';
+import StepZilla from 'react-stepzilla';
 
 const store = new Metadata();
 
@@ -60,7 +60,7 @@ class NameForm extends React.Component {
         		
         		
             <div className='step-progress'>
-            	<Stepzilla steps={steps} nextTextOnFinalAction={"Submit"}/>
+            	<StepZilla steps={steps} nextTextOnFinalAction={"Submit"}/>
             </div>
         );
     }

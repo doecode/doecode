@@ -33,12 +33,47 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
   function AgentsTable(props) {
     _classCallCheck(this, AgentsTable);
 
-    return _possibleConstructorReturn(this, (AgentsTable.__proto__ || Object.getPrototypeOf(AgentsTable)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (AgentsTable.__proto__ || Object.getPrototypeOf(AgentsTable)).call(this, props));
+
+    _this.rowClick = _this.rowClick.bind(_this);
+    return _this;
   }
 
   _createClass(AgentsTable, [{
+    key: 'rowClick',
+    value: function rowClick(gridRow, event) {
+      console.log(gridRow.props);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var configureMetadata = [{
+        "columnName": "first_name",
+        "order": 1,
+        "locked": false,
+        "visible": true,
+        "displayName": "First Name"
+      }, {
+        "columnName": "middle_name",
+        "order": 2,
+        "locked": false,
+        "visible": true,
+        "displayName": "Middle Name"
+
+      }, {
+        "columnName": "last_name",
+        "order": 3,
+        "locked": false,
+        "visible": true,
+        "displayName": "Last Name"
+      }, {
+        "columnName": "email",
+        "order": 4,
+        "locked": false,
+        "visible": true,
+        "displayName": "Email"
+      }];
+
       return _react2.default.createElement(
         'div',
         { className: 'form-group form-group-sm' },
@@ -50,7 +85,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             { className: 'no-margin-left' },
             'Developers'
           ),
-          _react2.default.createElement(_griddleReact2.default, { results: this.props.value })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
         ),
         _react2.default.createElement('div', { className: 'col-sm-1' })
       );

@@ -25,11 +25,13 @@ export default class Metadata {
     "other_special_requirements": '',
     "related_software": ''
   }
+	
 
-  // @observable developers = [];
    addToDevelopers(developer) {
      this.metadata.developers.push(developer);
    }
+   
+   
 
 
 }
