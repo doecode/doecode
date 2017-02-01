@@ -11,43 +11,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import org.apache.http.client.methods.HttpGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author ensornl
  */
 public class BitBucket {
+    // base URL for BitBucket API requests
     private static final String BITBUCKET_API_URL="https://api.bitbucket.org/2.0/repositories/";
-    
-    /**
-     * {"scm": "git", "website": "", "has_wiki": true, 
-     * "name": "chorus-reader", 
-     * "links": {"watchers": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/watchers"}, 
-     * "branches": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/refs/branches"}, 
-     * "tags": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/refs/tags"}, 
-     * "commits": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/commits"}, 
-     * "clone": [{"href": "https://bitbucket.org/ensorn/chorus-reader.git", "name": "https"}, 
-     * {"href": "ssh://git@bitbucket.org/ensorn/chorus-reader.git", "name": "ssh"}], 
-     * "self": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader"}, 
-     * "html": {"href": "https://bitbucket.org/ensorn/chorus-reader"}, 
-     * "avatar": {"href": "https://bitbucket.org/ensorn/chorus-reader/avatar/32/"}, 
-     * "hooks": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/hooks"}, 
-     * "forks": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/forks"}, 
-     * "downloads": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/downloads"}, 
-     * "pullrequests": {"href": "https://api.bitbucket.org/2.0/repositories/ensorn/chorus-reader/pullrequests"}}, 
-     * "fork_policy": "allow_forks", "uuid": "{01d062fc-1e08-4caa-a666-5811a2059d05}", 
-     * "language": "java", "created_on": "2017-01-23T14:52:07.588727+00:00", 
-     * "full_name": "ensorn/chorus-reader", "has_issues": true, 
-     * "owner": {"username": "ensorn", "display_name": "Neal Ensor", "type": "user", "uuid": "{5db45add-c07a-41ee-80ae-2c23ec61e8ed}", 
-     * "links": {"self": {"href": "https://api.bitbucket.org/2.0/users/ensorn"}, 
-     * "html": {"href": "https://bitbucket.org/ensorn/"}, 
-     * "avatar": {"href": "https://bitbucket.org/account/ensorn/avatar/32/"}}}, 
-     * "updated_on": "2017-01-27T17:22:35.423250+00:00", 
-     * "size": 33348, "type": "repository", 
-     * "slug": "chorus-reader", 
-     * "is_private": false, 
-     * "description": "Sample bitbucket repository for a standalone JSON project"}
-     */
+    // a logger
+    private static final Logger log = LoggerFactory.getLogger(BitBucket.class);
     
     /**
      * Simple embedded class to get at HREF / URL link reference within another
@@ -403,7 +378,9 @@ public class BitBucket {
             md.setDevelopers(developers);
             
         } catch ( IOException e ) {
-            // warn here
+            // something went wrong
+            log.warn("IO Error reading from BitBucket: " + e.getMessage());
+            log.warn("Read from " + name);
         }
         return md.getJson();
     }

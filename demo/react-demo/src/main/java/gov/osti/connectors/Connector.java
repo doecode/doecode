@@ -6,6 +6,8 @@ import com.google.gson.JsonElement;
 import gov.osti.entity.DOECodeMetadata;
 import java.net.URI;
 import java.net.URISyntaxException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Generic Connector to various API sources for metadata information.
@@ -13,6 +15,9 @@ import java.net.URISyntaxException;
  * @author ensornl
  */
 public class Connector {
+    // the logger
+    private static final Logger log = LoggerFactory.getLogger(Connector.class);
+    
     /**
      * Attempt to retrieve metadata information based on the given repository
      * URL.  If recognizable, various connectors will be called to get relevant
@@ -49,7 +54,7 @@ public class Connector {
             }
         } catch ( URISyntaxException e ) {
             // warn that URL is not a valid URI
-            System.err.println("Not a valid URI: " + url + " message: " + e.getMessage());
+            log.warn("Not a valid URI: " + url + " message: " + e.getMessage());
         }
         // nothing matched, return empty Object
         return new DOECodeMetadata().getJson();

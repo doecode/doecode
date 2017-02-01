@@ -9,6 +9,8 @@ import gov.osti.entity.Developer;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.apache.http.client.methods.HttpGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Metadata scraper for SourceForge public API projects.
@@ -16,7 +18,10 @@ import org.apache.http.client.methods.HttpGet;
  * @author nensor
  */
 public class SourceForge {
+    // base URL for SourceForge API requests
     private static final String SOURCEFORGE_API_BASEURL = "https://sourceforge.net/rest/p/";
+    // the logger implementation
+    private static final Logger log = LoggerFactory.getLogger(SourceForge.class);
     
     /**
      * Define the SourceForge "developer" information
@@ -208,6 +213,8 @@ public class SourceForge {
              md.setDevelopers(devs);
          } catch ( IOException e ) {
              // here's where we warn log error messages
+             log.warn("IO Error reading from SourceForge: " + e.getMessage());
+             log.warn("Repository/project: " + name);
          }
          
         return md.getJson();

@@ -15,6 +15,8 @@ import java.util.Properties;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The GitHub metadata scraper class, to acquire the relevant metadata attributes
@@ -23,6 +25,8 @@ import org.apache.http.client.methods.HttpGet;
  * @author nenso
  */
 public class GitHub {
+    /** a logger implementation **/
+    private static final Logger log = LoggerFactory.getLogger(GitHub.class);
     /** authentication information for accessing GitHub API **/
     private static String API_KEY = "";
     private static String API_USER = "";
@@ -1775,6 +1779,8 @@ public class GitHub {
             }
         } catch ( IOException e ) {
             // here's where you'd warn about the IO error
+            log.warn("IO Error reading GitHub information: " + e.getMessage());
+            log.warn("Read from " + name);
         }
         
         // send back what we have
