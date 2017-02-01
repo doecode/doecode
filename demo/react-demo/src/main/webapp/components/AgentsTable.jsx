@@ -13,9 +13,11 @@ export default class AgentsTable extends React.Component {
     return(
 
 <div className="form-group form-group-sm">
-      <div className="col-sm-offset-2 col-sm-8">
-        <h2>Developers</h2>
+      <div className="col-sm-offset-1 col-sm-10">
+        <h2 className="no-margin-left">Developers</h2>
         <Griddle results = {this.props.value} />
+      </div>
+      <div className="col-sm-1">
       </div>
 </div>
 );
