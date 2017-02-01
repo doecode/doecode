@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {doAjax, appendQueryString} from './utils';
-import TextField from './TextField';
-import SelectField from './SelectField';
-import AgentsStep from './AgentsStep';
 import {observer} from "mobx-react";
 import Metadata from './Metadata';
+import AgentsStep from './AgentsStep';
 import MetadataStep from './MetadataStep';
+import ConfirmStep from './ConfirmStep';
+import Stepzilla from 'react-stepzilla';
 
 const store = new Metadata();
 
@@ -37,9 +37,8 @@ class NameForm extends React.Component {
         this.props.store.addToDevelopers(developer);
     }
 
-    handleSubmit(event) {
+    handleSubmit() {
         doAjax('POST', 'services?action=save', this.parseSaveResponse, this.props.store.metadata);
-        event.preventDefault();
     }
 
     parseSaveResponse(data) {
@@ -50,19 +49,18 @@ class NameForm extends React.Component {
 
     render() {
         const metadata = store.metadata;
+        
+        const steps =
+        	[
+        		{name: 'Developers', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange}/> },
+        		{name: 'Metadata', component: <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit} handleSubmit={this.handleSubmit}/>},		
+        		{name: 'Confirmation', component: <ConfirmStep /> }
+        		]
         return (
-            <div className="container-fluid">
-                <form id="react_form" className="form-horizontal" onSubmit={this.handleSubmit}>
-                	<MetadataStep metadata={metadata} onMobxChange={this.onMobxChange}/>
-                    <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit}/>
-                    <div className="form-group form-group-sm">
-                        <div className="col-xs-offset-2">
-                            <button className="btn btn-primary" type="submit">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
+        		
+        		
+            <div className='step-progress'>
+            	<Stepzilla steps={steps} nextTextOnFinalAction={"Submit"}/>
             </div>
         );
     }

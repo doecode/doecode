@@ -12,7 +12,13 @@ export default class AgentsStep extends React.Component {
 
 	constructor(props) {
 		    super(props);
+		    this.isValidated = this._isValidated.bind(this);
 		  }
+	
+	_isValidated() {
+		this.props.handleSubmit();
+		return true;
+	}
 
 	  render() {
 

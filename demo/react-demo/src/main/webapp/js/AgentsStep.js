@@ -43,10 +43,19 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 	function AgentsStep(props) {
 		_classCallCheck(this, AgentsStep);
 
-		return _possibleConstructorReturn(this, (AgentsStep.__proto__ || Object.getPrototypeOf(AgentsStep)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (AgentsStep.__proto__ || Object.getPrototypeOf(AgentsStep)).call(this, props));
+
+		_this.isValidated = _this._isValidated.bind(_this);
+		return _this;
 	}
 
 	_createClass(AgentsStep, [{
+		key: '_isValidated',
+		value: function _isValidated() {
+			this.props.handleSubmit();
+			return true;
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 

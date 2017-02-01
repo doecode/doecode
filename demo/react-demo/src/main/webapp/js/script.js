@@ -14,27 +14,27 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _utils = require('./utils');
 
-var _TextField = require('./TextField');
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = require('./SelectField');
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _AgentsStep = require('./AgentsStep');
-
-var _AgentsStep2 = _interopRequireDefault(_AgentsStep);
-
 var _mobxReact = require('mobx-react');
 
 var _Metadata = require('./Metadata');
 
 var _Metadata2 = _interopRequireDefault(_Metadata);
 
+var _AgentsStep = require('./AgentsStep');
+
+var _AgentsStep2 = _interopRequireDefault(_AgentsStep);
+
 var _MetadataStep = require('./MetadataStep');
 
 var _MetadataStep2 = _interopRequireDefault(_MetadataStep);
+
+var _ConfirmStep = require('./ConfirmStep');
+
+var _ConfirmStep2 = _interopRequireDefault(_ConfirmStep);
+
+var _reactStepzilla = require('react-stepzilla');
+
+var _reactStepzilla2 = _interopRequireDefault(_reactStepzilla);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -84,9 +84,8 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         }
     }, {
         key: 'handleSubmit',
-        value: function handleSubmit(event) {
+        value: function handleSubmit() {
             (0, _utils.doAjax)('POST', 'services?action=save', this.parseSaveResponse, this.props.store.metadata);
-            event.preventDefault();
         }
     }, {
         key: 'parseSaveResponse',
@@ -98,28 +97,12 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         key: 'render',
         value: function render() {
             var metadata = store.metadata;
+
+            var steps = [{ name: 'Developers', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange }) }, { name: 'Metadata', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
-                { className: 'container-fluid' },
-                _react2.default.createElement(
-                    'form',
-                    { id: 'react_form', className: 'form-horizontal', onSubmit: this.handleSubmit },
-                    _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange }),
-                    _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit }),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'form-group form-group-sm' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'col-xs-offset-2' },
-                            _react2.default.createElement(
-                                'button',
-                                { className: 'btn btn-primary', type: 'submit' },
-                                'Submit'
-                            )
-                        )
-                    )
-                )
+                { className: 'step-progress' },
+                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, nextTextOnFinalAction: "Submit" })
             );
         }
     }]);

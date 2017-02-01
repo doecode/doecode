@@ -7,16 +7,23 @@ export default class MetadataStep extends React.Component {
 	
 	constructor(props) {
 		super(props);
+		
+		this.isValidated = this._isValidated.bind(this);
 	}
 	
-	
+	_isValidated() {
+		//adding validations later
+		
+		return true;
+	}
 	
 	
 	
 	render() {
 		const metadata = this.props.metadata;
 		return (
-				<div>
+	            <div className="container-fluid">
+                <form id="react_form" className="form-horizontal">
                 <TextField field="software_title" label="Software Title" type="textarea" value={metadata.software_title} onChange={this.props.onMobxChange}/>
                 <TextField field="acronym" label="Acronym or Short Title" type="text" value={metadata.acronym} onChange={this.props.onMobxChange}/>
                 <TextField field="description" label="Software Title" type="textarea" value={metadata.description} onChange={this.props.onMobxChange}/>
@@ -34,6 +41,7 @@ export default class MetadataStep extends React.Component {
                 <TextField field="related_software" label="Related Software" type="text" value={metadata.related_software} onChange={this.props.onMobxChange}/>
                 <TextField field="repository_link" label="Repository Link" type="text" value={metadata.repository_link} onChange={this.props.onMobxChange}/>
                 <TextField field="site_accession_number" label="Site Accession Number" type="text" value={metadata.site_accession_number} onChange={this.props.onMobxChange}/>
+                </form>
                 </div>
 		);
 	}
