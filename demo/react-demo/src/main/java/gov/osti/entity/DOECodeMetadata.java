@@ -43,7 +43,7 @@ public class DOECodeMetadata {
 	//private DOECodeMetadataLists lists = null;
 	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ownerid", referencedColumnName="codeid")
-	private List<Developer> developers = null;
+	private List<Developer> developers = new ArrayList<>();
 	/*private ArrayList<Contributor> contributors = null;
 	private ArrayList<Sponsor> sponsors = null;
 	private ArrayList<ContributingOrganization> contributingOrganizations = null;
