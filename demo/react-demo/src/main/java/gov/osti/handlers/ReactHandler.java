@@ -10,6 +10,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import com.google.gson.JsonObject;
 
+import gov.osti.connectors.Connector;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import gov.osti.util.ServletUtil;
@@ -29,6 +30,8 @@ public class ReactHandler {
 			return handleActionLoad(osti_id);
 		case "save":
 			return handleActionSave(request.getReader());
+		case "autopopulate":
+			return handleActionAutopopulate(request.getParameter("repo"));
 		default:
 			return null;
 
@@ -54,6 +57,13 @@ public class ReactHandler {
 		return responseObject.toString();
 
 
+	}
+	
+	private static String handleActionAutopopulate(String repositoryUrl) {
+		JsonObject responseObject = new JsonObject();
+		
+		responseObject.add("metadata", Connector.readProject(repositoryUrl));
+		return responseObject.toString();
 	}
 
 	private static String handleActionSave(BufferedReader reader) throws IOException {

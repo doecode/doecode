@@ -13,7 +13,7 @@ public class Agent {
 	
 	private Long ownerId = null;
 	@Id
-	private String email = null;
+	private String email = "";
 	private String affiliations = null;
 	private String orcid = null;
 	

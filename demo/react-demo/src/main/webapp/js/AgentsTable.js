@@ -19,10 +19,6 @@ var _griddleReact2 = _interopRequireDefault(_griddleReact);
 
 var _mobxReact = require('mobx-react');
 
-var _PlaceLink = require('./PlaceLink');
-
-var _PlaceLink2 = _interopRequireDefault(_PlaceLink);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56,8 +52,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "order": 1,
         "locked": false,
         "visible": true,
-        "displayName": "#",
-        "customComponent": _PlaceLink2.default
+        "displayName": "#"
 
       }, {
         "columnName": "first_name",

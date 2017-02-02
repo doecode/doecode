@@ -60,13 +60,19 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         _this.onMobxChange = _this.onMobxChange.bind(_this);
         _this.onModalSubmit = _this.onModalSubmit.bind(_this);
         _this.onPlaceModalSubmit = _this.onPlaceModalSubmit.bind(_this);
+        _this.autopopulate = _this.autopopulate.bind(_this);
         return _this;
     }
 
+    /* componentWillMount() {
+         doAjax('GET', 'services?action=load', this.parseLoadResponse);
+     }*/
+
     _createClass(NameForm, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            (0, _utils.doAjax)('GET', 'services?action=load', this.parseLoadResponse);
+        key: 'autopopulate',
+        value: function autopopulate(event) {
+            (0, _utils.doAjax)('GET', "services?action=autopopulate&repo=" + this.props.store.metadata.repository_link, this.parseLoadResponse);
+            event.preventDefault();
         }
     }, {
         key: 'parseLoadResponse',
@@ -110,7 +116,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         value: function render() {
             var metadata = store.metadata;
 
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },

@@ -20,11 +20,19 @@ class NameForm extends React.Component {
         this.onMobxChange = this.onMobxChange.bind(this);
         this.onModalSubmit = this.onModalSubmit.bind(this);
         this.onPlaceModalSubmit = this.onPlaceModalSubmit.bind(this);
+        this.autopopulate = this.autopopulate.bind(this);
     }
 
-    componentWillMount() {
+   /* componentWillMount() {
         doAjax('GET', 'services?action=load', this.parseLoadResponse);
+    }*/
+    
+    
+    autopopulate(event) {
+    	doAjax('GET', "services?action=autopopulate&repo=" + this.props.store.metadata.repository_link,this.parseLoadResponse);
+    	event.preventDefault();
     }
+    
 
     parseLoadResponse(responseData) {
         this.props.store.metadata = responseData.metadata;
@@ -63,7 +71,7 @@ class NameForm extends React.Component {
         
         const steps =
         	[
-        		{name: 'Metadata', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange}/> },
+        		{name: 'Metadata', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange} autopopulate={this.autopopulate}/> },
         		{name: 'Developers', component: <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit} handleSubmit={this.handleSubmit}/>},		
         		{name: 'Confirmation', component: <ConfirmStep /> }
         		]

@@ -3,7 +3,6 @@ import AgentsModal from './AgentsModal';
 import AgentsTable from './AgentsTable';
 import Developer from './Developer';
 import {observer} from 'mobx-react';
-import PlaceModal from './PlaceModal';
 
 
 const developerStore = new Developer();
@@ -36,7 +35,6 @@ export default class AgentsStep extends React.Component {
 		    <div>
 		      <AgentsTable value={this.props.developers} editDeveloper={this.editDeveloper} />
 		      <AgentsModal store={developerStore} onClick={this.props.onModalSubmit}/>
-		      <PlaceModal store={developerStore}/>
 		    </div>
 		      );
 		  }

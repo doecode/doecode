@@ -16,14 +16,15 @@ export default class TextField extends React.Component {
 
   render() {
 	  return(
-      <div className="form-group form-group-sm row">
-      <label className="col-xs-2 control-label">
+      <div>
+      <label className="col-sm-2 control-label">
         {this.props.label}
       </label>
-      <div className="col-xs-4">
+      <div className="col-sm-4">
         <input type="text" name={this.props.field} id={this.props.field} className="form-control" value={this.props.value} onChange={this.handleChange} />
       </div>
-    </div>);
+      </div>
+    );
   }
 
 }

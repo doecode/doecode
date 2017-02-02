@@ -7,9 +7,9 @@ import javax.persistence.Table;
 @Table(name="developers")
 public class Developer extends Agent {
 
-	private String firstName = null;
-	private String lastName = null;
-	private String middleName = null;
+	private String firstName = "";
+	private String lastName = "";
+	private String middleName = "";
 	
 	public Developer() {
 		
