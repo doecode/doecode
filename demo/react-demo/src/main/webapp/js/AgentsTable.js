@@ -42,37 +42,50 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
   _createClass(AgentsTable, [{
     key: 'rowClick',
     value: function rowClick(gridRow, event) {
-      console.log(gridRow.props);
+      this.props.editDeveloper(gridRow.props.data);
     }
   }, {
     key: 'render',
     value: function render() {
       var configureMetadata = [{
-        "columnName": "first_name",
+        "columnName": "place",
         "order": 1,
+        "locked": false,
+        "visible": true,
+        "displayName": "#"
+      }, {
+        "columnName": "index",
+        "order": 2,
+        "locked": true,
+        "visible": false
+      }, {
+        "columnName": "first_name",
+        "order": 3,
         "locked": false,
         "visible": true,
         "displayName": "First Name"
       }, {
         "columnName": "middle_name",
-        "order": 2,
+        "order": 4,
         "locked": false,
         "visible": true,
         "displayName": "Middle Name"
 
       }, {
         "columnName": "last_name",
-        "order": 3,
+        "order": 5,
         "locked": false,
         "visible": true,
         "displayName": "Last Name"
       }, {
         "columnName": "email",
-        "order": 4,
+        "order": 6,
         "locked": false,
         "visible": true,
         "displayName": "Email"
       }];
+
+      var columns = ["place", "first_name", "middle_name", "last_name", "email"];
 
       return _react2.default.createElement(
         'div',
@@ -85,7 +98,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             { className: 'no-margin-left' },
             'Developers'
           ),
-          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick, columns: columns })
         ),
         _react2.default.createElement('div', { className: 'col-sm-1' })
       );

@@ -6,7 +6,9 @@ export default class Developer {
         first_name: '',
         middle_name: '',
         last_name: '',
-        email: ''
+        email: '',
+        place: 0,
+        index: 0
     }
 
     @observable showModal = false;

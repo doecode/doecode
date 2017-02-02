@@ -82,7 +82,9 @@ var Developer = (_class = function () {
             first_name: '',
             middle_name: '',
             last_name: '',
-            email: ''
+            email: '',
+            place: 0,
+            index: 0
         };
     }
 }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'showModal', [_mobx.observable], {
