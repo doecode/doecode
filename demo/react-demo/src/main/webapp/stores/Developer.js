@@ -7,11 +7,15 @@ export default class Developer {
         middle_name: '',
         last_name: '',
         email: '',
-        place: 0,
-        index: 0
+        place: 0
     }
 
     @observable showModal = false;
+    
+    @observable isEdit = false;
+    
+    @observable previousPlace = -1;
+    
 
     clear() {
       for (var field in this.developer)

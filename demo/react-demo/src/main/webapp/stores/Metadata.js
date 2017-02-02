@@ -27,42 +27,45 @@ export default class Metadata {
     }
 
     addToDevelopers(developer) {
-        developer.index = this.metadata.developers.length;
         developer.place = this.metadata.developers.length + 1;
         this.metadata.developers.push(developer);
     }
 
     removeDeveloper(developer) {
         const deletedPlace = developer.place;
-        this.metadata.developers.remove(developer);
+        const index = this.metadata.developers.findIndex(item => item.place === developer.place);
+        this.metadata.developers.splice(index, 1);
 
         for (var i = 0; i < this.metadata.developers.length; i++) {
-            this.metadata.developers[i].index = i;
 
             if (this.metadata.developers[i].place > deletedPlace)
-                this.metdata.developers[i].place--;
+                this.metadata.developers[i].place--;
             }
         }
 
-    modifyDeveloper(developer) {
-        this.metadata.developers[developer.index] = developer;
+    modifyDeveloper(developer, previousPlace) {
+    	if (developer.place != previousPlace) {
+    		this.updateDeveloperPlace(developer,previousPlace);
+    	}
+    	const index = this.metadata.developers.findIndex(item => item.place === developer.place);
+        this.metadata.developers[index] = developer;
     }
 
-    updateDeveloperPlace(developer) {
-        const prevPlace = this.metadata.developers[developer.index].place;
+    updateDeveloperPlace(developer, previousPlace) {
+    	const index = this.metadata.developers.findIndex(item => item.place === previousPlace);
         const newPlace = developer.place;
-
-        const check = newPlace > prevPlace;
+        	
+        const check = newPlace > previousPlace;
 
         for (var i = 0; i < this.metadata.developers.length; i++) {
-            if (check && this.metadata.developers[i] < newPlace) {
+            if (check && this.metadata.developers[i].place <= newPlace && this.metadata.developers[i].place  > previousPlace) {
                 this.metadata.developers[i].place--;
-            } else if (!check && this.metadata.developers[i] > newPlace) {
+            } else if (!check && this.metadata.developers[i].place >= newPlace && this.metadata.developers[i].place  < previousPlace) {
                 this.metadata.developers[i].place++;
             }
         }
 
-        this.metadata.developers[developer.index].place = newPlace;
+        this.metadata.developers[index].place = newPlace;
     }
 
 }

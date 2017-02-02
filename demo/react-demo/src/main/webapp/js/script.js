@@ -59,6 +59,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         _this.parseSaveResponse = _this.parseSaveResponse.bind(_this);
         _this.onMobxChange = _this.onMobxChange.bind(_this);
         _this.onModalSubmit = _this.onModalSubmit.bind(_this);
+        _this.onPlaceModalSubmit = _this.onPlaceModalSubmit.bind(_this);
         return _this;
     }
 
@@ -79,8 +80,19 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         }
     }, {
         key: 'onModalSubmit',
-        value: function onModalSubmit(developer) {
-            this.props.store.addToDevelopers(developer);
+        value: function onModalSubmit(developer, saveType, previousPlace) {
+            if (saveType === "new") {
+                this.props.store.addToDevelopers(developer);
+            } else if (saveType === "edit") {
+                this.props.store.modifyDeveloper(developer, previousPlace);
+            } else if (saveType === "remove") {
+                this.props.store.removeDeveloper(developer);
+            }
+        }
+    }, {
+        key: 'onPlaceModalSubmit',
+        value: function onPlaceModalSubmit(developer, previousPlace) {
+            this.props.store.updateDeveloperPlace(developer, previousPlace);
         }
     }, {
         key: 'handleSubmit',
@@ -98,7 +110,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         value: function render() {
             var metadata = store.metadata;
 
-            var steps = [{ name: 'Developers', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange }) }, { name: 'Metadata', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },

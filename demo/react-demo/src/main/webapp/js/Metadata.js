@@ -66,7 +66,6 @@ var Metadata = (_class = function () {
     _createClass(Metadata, [{
         key: 'addToDevelopers',
         value: function addToDevelopers(developer) {
-            developer.index = this.metadata.developers.length;
             developer.place = this.metadata.developers.length + 1;
             this.metadata.developers.push(developer);
         }
@@ -74,36 +73,46 @@ var Metadata = (_class = function () {
         key: 'removeDeveloper',
         value: function removeDeveloper(developer) {
             var deletedPlace = developer.place;
-            this.metadata.developers.remove(developer);
+            var index = this.metadata.developers.findIndex(function (item) {
+                return item.place === developer.place;
+            });
+            this.metadata.developers.splice(index, 1);
 
             for (var i = 0; i < this.metadata.developers.length; i++) {
-                this.metadata.developers[i].index = i;
 
-                if (this.metadata.developers[i].place > deletedPlace) this.metdata.developers[i].place--;
+                if (this.metadata.developers[i].place > deletedPlace) this.metadata.developers[i].place--;
             }
         }
     }, {
         key: 'modifyDeveloper',
-        value: function modifyDeveloper(developer) {
-            this.metadata.developers[developer.index] = developer;
+        value: function modifyDeveloper(developer, previousPlace) {
+            if (developer.place != previousPlace) {
+                this.updateDeveloperPlace(developer, previousPlace);
+            }
+            var index = this.metadata.developers.findIndex(function (item) {
+                return item.place === developer.place;
+            });
+            this.metadata.developers[index] = developer;
         }
     }, {
         key: 'updateDeveloperPlace',
-        value: function updateDeveloperPlace(developer) {
-            var prevPlace = this.metadata.developers[developer.index].place;
+        value: function updateDeveloperPlace(developer, previousPlace) {
+            var index = this.metadata.developers.findIndex(function (item) {
+                return item.place === previousPlace;
+            });
             var newPlace = developer.place;
 
-            var check = newPlace > prevPlace;
+            var check = newPlace > previousPlace;
 
             for (var i = 0; i < this.metadata.developers.length; i++) {
-                if (check && this.metadata.developers[i] < newPlace) {
+                if (check && this.metadata.developers[i].place <= newPlace && this.metadata.developers[i].place > previousPlace) {
                     this.metadata.developers[i].place--;
-                } else if (!check && this.metadata.developers[i] > newPlace) {
+                } else if (!check && this.metadata.developers[i].place >= newPlace && this.metadata.developers[i].place < previousPlace) {
                     this.metadata.developers[i].place++;
                 }
             }
 
-            this.metadata.developers[developer.index].place = newPlace;
+            this.metadata.developers[index].place = newPlace;
         }
     }]);
 

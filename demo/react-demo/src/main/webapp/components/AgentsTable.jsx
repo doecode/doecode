@@ -1,6 +1,7 @@
 import React from 'react';
 import Griddle from 'griddle-react';
-import {observer} from "mobx-react";
+import {observer} from 'mobx-react';
+import PlaceLink from './PlaceLink';
 
 @observer
 export default class AgentsTable extends React.Component {
@@ -20,13 +21,11 @@ export default class AgentsTable extends React.Component {
     	    "order": 1,
     	    "locked": false,
     	    "visible": true,
-    	    "displayName": "#"
-    	  },{
-    	    "columnName": "index",
-    	    "order": 2,
-    	    "locked": true,
-    	    "visible": false
-    	  },{
+    	    "displayName": "#",
+    	    "customComponent": PlaceLink
+    	    
+    	  },
+    	  {
     	    "columnName": "first_name",
     	    "order": 3,
     	    "locked": false,
@@ -56,14 +55,14 @@ export default class AgentsTable extends React.Component {
     	    "displayName": "Email"
     	  }]
 
-        const columns = ["place", "first_name", "middle_name", "last_name", "email"];
+        //const columns = ["place", "first_name", "middle_name", "last_name", "email"];
 
 	return(
 
 <div className="form-group form-group-sm">
       <div className="col-sm-offset-1 col-sm-10">
         <h2 className="no-margin-left">Developers</h2>
-        <Griddle results = {this.props.value} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} columns={columns} />
+        <Griddle results = {this.props.value} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
       </div>
       <div className="col-sm-1">
       </div>

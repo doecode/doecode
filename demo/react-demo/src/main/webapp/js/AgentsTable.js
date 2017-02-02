@@ -19,6 +19,10 @@ var _griddleReact2 = _interopRequireDefault(_griddleReact);
 
 var _mobxReact = require('mobx-react');
 
+var _PlaceLink = require('./PlaceLink');
+
+var _PlaceLink2 = _interopRequireDefault(_PlaceLink);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52,12 +56,9 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "order": 1,
         "locked": false,
         "visible": true,
-        "displayName": "#"
-      }, {
-        "columnName": "index",
-        "order": 2,
-        "locked": true,
-        "visible": false
+        "displayName": "#",
+        "customComponent": _PlaceLink2.default
+
       }, {
         "columnName": "first_name",
         "order": 3,
@@ -85,7 +86,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "displayName": "Email"
       }];
 
-      var columns = ["place", "first_name", "middle_name", "last_name", "email"];
+      //const columns = ["place", "first_name", "middle_name", "last_name", "email"];
 
       return _react2.default.createElement(
         'div',
@@ -98,7 +99,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             { className: 'no-margin-left' },
             'Developers'
           ),
-          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick, columns: columns })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
         ),
         _react2.default.createElement('div', { className: 'col-sm-1' })
       );

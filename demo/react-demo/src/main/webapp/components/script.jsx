@@ -19,6 +19,7 @@ class NameForm extends React.Component {
         this.parseSaveResponse = this.parseSaveResponse.bind(this);
         this.onMobxChange = this.onMobxChange.bind(this);
         this.onModalSubmit = this.onModalSubmit.bind(this);
+        this.onPlaceModalSubmit = this.onPlaceModalSubmit.bind(this);
     }
 
     componentWillMount() {
@@ -33,8 +34,18 @@ class NameForm extends React.Component {
         this.props.store.metadata[id] = value;
     }
 
-    onModalSubmit(developer) {
-        this.props.store.addToDevelopers(developer);
+    onModalSubmit(developer, saveType, previousPlace) {
+    	if (saveType === "new") {
+            this.props.store.addToDevelopers(developer);
+    	} else if (saveType === "edit") {
+        	this.props.store.modifyDeveloper(developer, previousPlace);
+    	} else if (saveType === "remove") {
+    		this.props.store.removeDeveloper(developer);
+    	}
+    }
+    
+    onPlaceModalSubmit(developer,previousPlace) {
+    	this.props.store.updateDeveloperPlace(developer,previousPlace);
     }
 
     handleSubmit() {
@@ -52,8 +63,8 @@ class NameForm extends React.Component {
         
         const steps =
         	[
-        		{name: 'Developers', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange}/> },
-        		{name: 'Metadata', component: <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit} handleSubmit={this.handleSubmit}/>},		
+        		{name: 'Metadata', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange}/> },
+        		{name: 'Developers', component: <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit} handleSubmit={this.handleSubmit}/>},		
         		{name: 'Confirmation', component: <ConfirmStep /> }
         		]
         return (

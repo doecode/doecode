@@ -45,6 +45,7 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
     _this.close = _this.close.bind(_this);
     _this.onModalChange = _this.onModalChange.bind(_this);
     _this.handleSave = _this.handleSave.bind(_this);
+    _this.handleDelete = _this.handleDelete.bind(_this);
     return _this;
   }
 
@@ -57,6 +58,7 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
   }, {
     key: 'open',
     value: function open() {
+      this.props.store.isEdit = false;
       this.props.store.showModal = true;
       this.props.store.clear();
     }
@@ -68,8 +70,17 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
   }, {
     key: 'handleSave',
     value: function handleSave(event) {
+      var saveType = "new";
+      if (this.props.store.isEdit) saveType = "edit";
       var dev = Object.assign({}, this.props.store.developer);
-      this.props.onClick(dev);
+      this.props.onClick(dev, saveType, this.props.store.previousPlace);
+      this.close();
+    }
+  }, {
+    key: 'handleDelete',
+    value: function handleDelete(event) {
+      var dev = Object.assign({}, this.props.store.developer);
+      this.props.onClick(dev, "remove");
       this.close();
     }
   }, {
@@ -77,6 +88,8 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
     value: function render() {
       var developer = this.props.store.developer;
       var showModal = this.props.store.showModal;
+      var isEdit = this.props.store.isEdit;
+
       return _react2.default.createElement(
         'div',
         { className: 'form-group form-group-sm' },
@@ -113,10 +126,11 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
                 _react2.default.createElement(
                   'div',
                   { className: 'form-horizontal' },
-                  _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', type: 'textarea', value: developer.first_name, onChange: this.onModalChange }),
-                  _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', type: 'textarea', value: developer.middle_name, onChange: this.onModalChange }),
-                  _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', type: 'textarea', value: developer.last_name, onChange: this.onModalChange }),
-                  _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', type: 'textarea', value: developer.email, onChange: this.onModalChange })
+                  isEdit && _react2.default.createElement(_TextField2.default, { field: 'place', label: 'Place', type: 'text', value: developer.place, onChange: this.onModalChange }),
+                  _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', type: 'text', value: developer.first_name, onChange: this.onModalChange }),
+                  _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', type: 'text', value: developer.middle_name, onChange: this.onModalChange }),
+                  _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', type: 'text', value: developer.last_name, onChange: this.onModalChange }),
+                  _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', type: 'text', value: developer.email, onChange: this.onModalChange })
                 )
               )
             ),
@@ -128,9 +142,14 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
                 { onClick: this.close },
                 'Close'
               ),
+              isEdit && _react2.default.createElement(
+                _reactBootstrap.Button,
+                { bsStyle: 'danger', onClick: this.handleDelete },
+                'Delete'
+              ),
               _react2.default.createElement(
                 _reactBootstrap.Button,
-                { onClick: this.handleSave },
+                { bsStyle: 'primary', onClick: this.handleSave },
                 'Save and close'
               )
             )

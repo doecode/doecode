@@ -27,6 +27,10 @@ var _Developer2 = _interopRequireDefault(_Developer);
 
 var _mobxReact = require('mobx-react');
 
+var _PlaceModal = require('./PlaceModal');
+
+var _PlaceModal2 = _interopRequireDefault(_PlaceModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60,8 +64,9 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 		key: 'editDeveloper',
 		value: function editDeveloper(dev) {
 			developerStore.developer = Object.assign({}, dev);
-			console.log("logging out" + developerStore.developer);
-			developerStore.clear();
+			developerStore.previousPlace = dev.place;
+			developerStore.showModal = true;
+			developerStore.isEdit = true;
 		}
 	}, {
 		key: 'render',
@@ -71,7 +76,8 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 				'div',
 				null,
 				_react2.default.createElement(_AgentsTable2.default, { value: this.props.developers, editDeveloper: this.editDeveloper }),
-				_react2.default.createElement(_AgentsModal2.default, { store: developerStore, onClick: this.props.onModalSubmit })
+				_react2.default.createElement(_AgentsModal2.default, { store: developerStore, onClick: this.props.onModalSubmit }),
+				_react2.default.createElement(_PlaceModal2.default, { store: developerStore })
 			);
 		}
 	}]);
