@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import org.apache.http.client.methods.HttpGet;
 import org.slf4j.Logger;
@@ -350,7 +349,6 @@ public class BitBucket {
             
             // if the "owner" is type "user", that's the only developer we can get
             // if it's a "team", go fetch team information for developers
-            ArrayList<Developer> developers = new ArrayList<>();
             if ( "user".equals(response.getOwner().getType()) ) {
                 Developer developer = new Developer();
                 String[] nameParts = parseName(response.getOwner().getDisplayName());
@@ -358,7 +356,7 @@ public class BitBucket {
                 developer.setFirstName(nameParts[0]);
                 developer.setLastName(nameParts[1]);
                 
-                developers.add(developer);
+                md.add(developer);
             } else if ( "team".equals(response.getOwner().getType()) ) {
                 // skip a step, tack on "/members" to get at the member list
                 MemberList teamList = gson.fromJson(
@@ -372,10 +370,9 @@ public class BitBucket {
                     developer.setFirstName(nameParts[0]);
                     developer.setLastName(nameParts[1]);
                     
-                    developers.add(developer);
+                    md.add(developer);
                 }
             }
-            md.setDevelopers(developers);
             
         } catch ( IOException e ) {
             // something went wrong

@@ -223,6 +223,21 @@ public class DOECodeMetadata {
 		return developers;
 	}
 
+        /**
+         * Add a single Developer to the in-memory items; if place is not set,
+         * set it to the end of the current list.
+         * 
+         * @param d the Developer to add
+         * @return the Object we just added
+         */
+        public Developer add(Developer d) {
+            if (0==d.getPlace())
+                d.setPlace(developers.size()+1);
+            developers.add(d);
+            
+            return d;
+        }
+        
 	public void setDevelopers(ArrayList<Developer> developers) {
 		this.developers = developers;
 	}

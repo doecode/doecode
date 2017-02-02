@@ -9,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Agent {
 
-	private Integer place = null;
+	private Integer place = 0;
 	
 	private Long ownerId = null;
 	@Id

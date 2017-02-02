@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import java.io.IOException;
-import java.util.ArrayList;
 import org.apache.http.client.methods.HttpGet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -197,7 +196,6 @@ public class SourceForge {
              md.setLicense(license_text.toString());
 
              SourceForgeDeveloper[] developers = response.getDevelopers();
-             ArrayList<Developer> devs = new ArrayList<>();
 
              for ( SourceForgeDeveloper developer : developers ) {
                  int space = developer.getName().indexOf(" ");
@@ -208,9 +206,8 @@ public class SourceForge {
                      dev.setFirstName(developer.getName().substring(0, space));
                      dev.setLastName(developer.getName().substring(space+1));
                  }
-                 devs.add(dev);
+                 md.add(dev);
              }
-             md.setDevelopers(devs);
          } catch ( IOException e ) {
              // here's where we warn log error messages
              log.warn("IO Error reading from SourceForge: " + e.getMessage());

@@ -9,7 +9,6 @@ import gov.osti.entity.Developer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import org.apache.commons.codec.binary.Base64;
@@ -1745,7 +1744,6 @@ public class GitHub {
             if (null!=response.getContributorsUrl()) {
                 HttpGet contributor_request = gitHubAPIGet(response.getContributorsUrl());
                 Contributor[] contributors = gson.fromJson(HttpUtil.fetch(contributor_request), Contributor[].class);
-                ArrayList<Developer> devs = new ArrayList<>();
 
                 for ( Contributor contributor : contributors ) {
                     Developer developer = new Developer();
@@ -1772,10 +1770,9 @@ public class GitHub {
                                 developer.setLastName(user.getName().substring(lastSpace+1));
                             }
                         }
-                        devs.add(developer);
+                        md.add(developer);
                     }
                 }
-                md.setDevelopers(devs);
             }
         } catch ( IOException e ) {
             // here's where you'd warn about the IO error
