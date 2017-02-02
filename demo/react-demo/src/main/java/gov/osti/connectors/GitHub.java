@@ -1737,7 +1737,6 @@ public class GitHub {
 
             // parse the relevant response parts into Metadata
             md.setSoftwareTitle(response.getFullName());
-            md.setRepositoryLink(response.getHomepage());
             md.setAcronym(response.getName());
             md.setDescription(response.getDescription());
 
