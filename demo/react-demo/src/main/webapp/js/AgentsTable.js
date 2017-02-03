@@ -79,9 +79,15 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "locked": false,
         "visible": true,
         "displayName": "Email"
+      }, {
+        "columnName": "affiliations",
+        "order": 7,
+        "locked": false,
+        "visible": true,
+        "displayName": "Affiliations"
       }];
 
-      //const columns = ["place", "first_name", "middle_name", "last_name", "email"];
+      var columns = ["place", "first_name", "middle_name", "last_name", "email"];
 
       return _react2.default.createElement(
         'div',
@@ -94,7 +100,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             { className: 'no-margin-left' },
             'Developers'
           ),
-          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columns: columns, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
         )
       );
     }

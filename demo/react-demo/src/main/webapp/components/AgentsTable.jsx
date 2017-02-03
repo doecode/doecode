@@ -51,16 +51,23 @@ export default class AgentsTable extends React.Component {
     	    "locked": false,
     	    "visible": true,
     	    "displayName": "Email"
-    	  }]
+    	  }, 
+    	  {
+      	    "columnName": "affiliations",
+      	    "order": 7,
+      	    "locked": false,
+      	    "visible": true,
+      	    "displayName": "Affiliations"
+      	  }]
 
-        //const columns = ["place", "first_name", "middle_name", "last_name", "email"];
+        const columns = ["place", "first_name", "middle_name", "last_name", "email"];
 
 	return(
 
 <div className="form-group form-group-sm col-sm-12">
       <div className="col-sm-offset-1 col-sm-10">
         <h2 className="no-margin-left">Developers</h2>
-        <Griddle results = {this.props.value} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
+        <Griddle results = {this.props.value} columns={columns} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
       </div>
 </div>
 );

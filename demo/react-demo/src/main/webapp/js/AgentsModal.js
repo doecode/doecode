@@ -146,6 +146,11 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
                                         'div',
                                         { className: 'form-group form-group-sm row' },
                                         _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', type: 'text', value: developer.email, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'affiliations', label: 'Affiliations', type: 'text', value: developer.affiliations, onChange: this.onModalChange })
                                     )
                                 )
                             )

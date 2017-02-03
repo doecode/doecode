@@ -7,6 +7,7 @@ export default class Developer {
         middle_name: '',
         last_name: '',
         email: '',
+        affiliations: '',
         place: 0
     }
 

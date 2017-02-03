@@ -81,6 +81,10 @@ export default class AgentsModal extends React.Component {
                                     <div className="form-group form-group-sm row">
                                         <TextField field="email" label="Email" type="text" value={developer.email} onChange={this.onModalChange}/>
                                     </div>
+                                    
+                                    <div className="form-group form-group-sm row">
+                                        <TextField field="affiliations" label="Affiliations" type="text" value={developer.affiliations} onChange={this.onModalChange}/>
+                                    </div>
                                 </div>
                             </div>
                         </Modal.Body>

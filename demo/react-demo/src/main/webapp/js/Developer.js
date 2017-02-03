@@ -87,6 +87,7 @@ var Developer = (_class = function () {
             middle_name: '',
             last_name: '',
             email: '',
+            affiliations: '',
             place: 0
         };
     }
