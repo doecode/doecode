@@ -26,7 +26,7 @@ The full list of DOE Code requirements teams is provided below.
 | University Partners | Representatives of OSTI's University Partners | No |
 | Industry Partners | Representatives of OSTI's Industry Partners | No |
 | Students | The best and brightest software engineering, computer science and related students in the complex | No |
-| Postgraduates | Postdocs, post-masters and post-bachelors appointees who work with software | No |
+| Post-graduates | Post-docs, post-masters and post-bachelors appointees who work with software | No |
 
 ## The Prime Directive
 
