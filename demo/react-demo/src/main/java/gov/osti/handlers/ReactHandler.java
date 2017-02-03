@@ -69,7 +69,7 @@ public class ReactHandler {
 	private static String handleActionSave(BufferedReader reader) throws IOException {
 		JsonObject responseObject = new JsonObject();
 		DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
-		//md.save();
+		md.save();
 		responseObject.add("metadata",md.getJson());
 
 

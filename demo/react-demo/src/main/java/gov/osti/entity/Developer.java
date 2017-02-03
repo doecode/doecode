@@ -1,12 +1,14 @@
 package gov.osti.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="developers")
 public class Developer extends Agent {
 
+    @Id
 	private String firstName = "";
 	private String lastName = "";
 	private String middleName = "";

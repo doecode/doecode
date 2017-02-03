@@ -1,5 +1,6 @@
 package gov.osti.entity;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -10,9 +11,9 @@ import javax.persistence.MappedSuperclass;
 public class Agent {
 
 	private Integer place = 0;
-	
+    
 	private Long ownerId = null;
-	@Id
+//	@Id
 	private String email = "";
 	private String affiliations = null;
 	private String orcid = null;
