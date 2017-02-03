@@ -2,7 +2,7 @@ import {observable} from 'mobx';
 
 export default class Metadata {
     @observable metadata = {
-        "code_id": '',
+        "code_id": 0,
         "site_ownership_code": '',
         "open_source": '',
         "repository_link": '',
@@ -44,28 +44,35 @@ export default class Metadata {
         }
 
     modifyDeveloper(developer, previousPlace) {
-    	if (developer.place != previousPlace) {
-    		this.updateDeveloperPlace(developer,previousPlace);
-    	}
-    	const index = this.metadata.developers.findIndex(item => item.place === developer.place);
-        this.metadata.developers[index] = developer;
-    }
+        var index;
+        if (developer.place != previousPlace) {
+            index = this.updateDeveloperPlaceAndReturnIndex(developer, previousPlace);
+        } else {
+            index = this.metadata.developers.findIndex(item => item.place === developer.place);
+        }
 
-    updateDeveloperPlace(developer, previousPlace) {
-    	const index = this.metadata.developers.findIndex(item => item.place === previousPlace);
+        if (index > -1)
+            this.metadata.developers[index] = developer;
+        }
+
+    updateDeveloperPlaceAndReturnIndex(developer, previousPlace) {
+        var index = -1;
         const newPlace = developer.place;
-        	
         const check = newPlace > previousPlace;
 
         for (var i = 0; i < this.metadata.developers.length; i++) {
-            if (check && this.metadata.developers[i].place <= newPlace && this.metadata.developers[i].place  > previousPlace) {
+            if (check && this.metadata.developers[i].place <= newPlace && this.metadata.developers[i].place > previousPlace) {
                 this.metadata.developers[i].place--;
-            } else if (!check && this.metadata.developers[i].place >= newPlace && this.metadata.developers[i].place  < previousPlace) {
+            } else if (!check && this.metadata.developers[i].place >= newPlace && this.metadata.developers[i].place < previousPlace) {
                 this.metadata.developers[i].place++;
+            } else if (this.metadata.developers[i].place == previousPlace) {
+                this.metadata.developers[i].place = newPlace;
+                index = i;
             }
         }
 
-        this.metadata.developers[index].place = newPlace;
+        return index;
+
     }
 
 }

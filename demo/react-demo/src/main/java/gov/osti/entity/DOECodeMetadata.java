@@ -33,13 +33,13 @@ public class DOECodeMetadata {
 
 	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codeId = null;
+	private Long codeId = 0L;
 	private String siteOwnershipCode = null;
-	private Boolean openSource = null; 
-	private String  repositoryLink = null; 
+	private Boolean openSource = null;
+	private String  repositoryLink = null;
 	//private DOECodeMetadataLists lists = null;
 	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="ownerid", referencedColumnName="codeid")
@@ -48,7 +48,7 @@ public class DOECodeMetadata {
 	private ArrayList<Sponsor> sponsors = null;
 	private ArrayList<ContributingOrganization> contributingOrganizations = null;
 	*/
-	
+
 	private String originatingResearchOrganizations = null;
 	//private String contractNumber = null; will be included on sponsor agent entity
 	private String softwareTitle = null;
@@ -71,12 +71,12 @@ public class DOECodeMetadata {
 	private String otherSpecialRequirements = null;
 	private String relatedSoftware = null;
 	//private String documentation = null; this will be structured in some way tbd per the metadata document
-	
+
 	//for Gson
 	public DOECodeMetadata() {
-		
+
 	}
-	
+
 	/**
 	 * lookup- Syntactic sugar for DatabaseOps function. Tries to lookup metadata based off provided codeId.
 	 * @param codeId
@@ -85,7 +85,7 @@ public class DOECodeMetadata {
 	public static DOECodeMetadata lookup(long codeId) {
 		return DBOps.lookupMetadata(codeId);
 	}
-	
+
 	/**
 	 * save - Syntactic sugar for DatabaseOps function. Persists the metadata object to memory.
 	 */
@@ -94,16 +94,16 @@ public class DOECodeMetadata {
                 log.info("Saving record to database: " + this.getSoftwareTitle());
 		DBOps.saveMetadata(this);
 	}
-	
+
 	public static void delete(long codeId) {
 		DBOps.deleteMetadata(codeId);
 	}
-	
+
 	public void delete() {
 		DBOps.deleteMetadata(this.codeId);
 	}
-	
-	
+
+
 	/**
 	 * getJson - Serializes the Metadata Object into a JSON.
 	 * @return A JsonElement representing the metadata's internal state in JSON
@@ -111,17 +111,17 @@ public class DOECodeMetadata {
 	public JsonElement getJson() {
 		return serializer.toJsonTree(this);
 	}
-	
+
 	/**
 	 * Parses JSON in the request body of the reader into a DOECodemetadata object.
-	 * @param reader - A request reader containing JSON in the request body. 
+	 * @param reader - A request reader containing JSON in the request body.
 	 * @return A DOECodeMetadata object representing the data of the JSON in the request body.
 	 */
 	public static DOECodeMetadata parseJson(Reader reader) {
 		return serializer.fromJson(reader, DOECodeMetadata.class);
 
 	}
-	
+
 
 	public Long getcodeId() {
 		return codeId;
@@ -143,21 +143,21 @@ public class DOECodeMetadata {
 	}
 	public void setOpenSource(Boolean openSource) {
 		this.openSource = openSource;
-	} 
+	}
 	public String getRepositoryLink() {
 		return repositoryLink;
 	}
 	public void setRepositoryLink(String repositoryLink) {
 		this.repositoryLink = repositoryLink;
 	}
-	
+
 	public String getOriginatingResearchOrganizations() {
 		return originatingResearchOrganizations;
 	}
 	public void setOriginatingResearchOrganizations(String originatingResearchOrganizations) {
 		this.originatingResearchOrganizations = originatingResearchOrganizations;
 	}
-	
+
 	public String getSoftwareTitle() {
 		return softwareTitle;
 	}
@@ -226,7 +226,7 @@ public class DOECodeMetadata {
         /**
          * Add a single Developer to the in-memory items; if place is not set,
          * set it to the end of the current list.
-         * 
+         *
          * @param d the Developer to add
          * @return the Object we just added
          */
@@ -234,10 +234,10 @@ public class DOECodeMetadata {
             if (0==d.getPlace())
                 d.setPlace(developers.size()+1);
             developers.add(d);
-            
+
             return d;
         }
-        
+
 	public void setDevelopers(ArrayList<Developer> developers) {
 		this.developers = developers;
 	}
@@ -286,7 +286,7 @@ public class DOECodeMetadata {
 	public void setRelatedSoftware(String relatedSoftware) {
 		this.relatedSoftware = relatedSoftware;
 	}
-	
+
 	/*
 	public String getDocumentation() {
 		return documentation;
@@ -294,9 +294,9 @@ public class DOECodeMetadata {
 	public void setDocumentation(String documentation) {
 		this.documentation = documentation;
 	}*/
-	
-	
-	
-	
-	
+
+
+
+
+
 }

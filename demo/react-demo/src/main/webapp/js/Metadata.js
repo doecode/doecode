@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _desc, _value, _class, _descriptor;
 
-var _mobx = require('mobx');
+var _mobx = require("mobx");
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -60,17 +60,17 @@ var Metadata = (_class = function () {
     function Metadata() {
         _classCallCheck(this, Metadata);
 
-        _initDefineProp(this, 'metadata', _descriptor, this);
+        _initDefineProp(this, "metadata", _descriptor, this);
     }
 
     _createClass(Metadata, [{
-        key: 'addToDevelopers',
+        key: "addToDevelopers",
         value: function addToDevelopers(developer) {
             developer.place = this.metadata.developers.length + 1;
             this.metadata.developers.push(developer);
         }
     }, {
-        key: 'removeDeveloper',
+        key: "removeDeveloper",
         value: function removeDeveloper(developer) {
             var deletedPlace = developer.place;
             var index = this.metadata.developers.findIndex(function (item) {
@@ -84,24 +84,24 @@ var Metadata = (_class = function () {
             }
         }
     }, {
-        key: 'modifyDeveloper',
+        key: "modifyDeveloper",
         value: function modifyDeveloper(developer, previousPlace) {
+            var index;
             if (developer.place != previousPlace) {
-                this.updateDeveloperPlace(developer, previousPlace);
+                index = this.updateDeveloperPlaceAndReturnIndex(developer, previousPlace);
+            } else {
+                index = this.metadata.developers.findIndex(function (item) {
+                    return item.place === developer.place;
+                });
             }
-            var index = this.metadata.developers.findIndex(function (item) {
-                return item.place === developer.place;
-            });
-            this.metadata.developers[index] = developer;
+
+            if (index > -1) this.metadata.developers[index] = developer;
         }
     }, {
-        key: 'updateDeveloperPlace',
-        value: function updateDeveloperPlace(developer, previousPlace) {
-            var index = this.metadata.developers.findIndex(function (item) {
-                return item.place === previousPlace;
-            });
+        key: "updateDeveloperPlaceAndReturnIndex",
+        value: function updateDeveloperPlaceAndReturnIndex(developer, previousPlace) {
+            var index = -1;
             var newPlace = developer.place;
-
             var check = newPlace > previousPlace;
 
             for (var i = 0; i < this.metadata.developers.length; i++) {
@@ -109,19 +109,22 @@ var Metadata = (_class = function () {
                     this.metadata.developers[i].place--;
                 } else if (!check && this.metadata.developers[i].place >= newPlace && this.metadata.developers[i].place < previousPlace) {
                     this.metadata.developers[i].place++;
+                } else if (this.metadata.developers[i].place == previousPlace) {
+                    this.metadata.developers[i].place = newPlace;
+                    index = i;
                 }
             }
 
-            this.metadata.developers[index].place = newPlace;
+            return index;
         }
     }]);
 
     return Metadata;
-}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'metadata', [_mobx.observable], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "metadata", [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
         return {
-            "code_id": '',
+            "code_id": 0,
             "site_ownership_code": '',
             "open_source": '',
             "repository_link": '',
