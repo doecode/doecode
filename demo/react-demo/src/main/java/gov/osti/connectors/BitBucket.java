@@ -379,6 +379,6 @@ public class BitBucket {
             log.warn("IO Error reading from BitBucket: " + e.getMessage());
             log.warn("Read from " + name);
         }
-        return md.getJson();
+        return md.toJson();
     }
 }

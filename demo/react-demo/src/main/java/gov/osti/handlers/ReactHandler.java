@@ -51,8 +51,8 @@ public class ReactHandler {
 		md.setDevelopers(new ArrayList<Developer>());
 
 
-		responseObject.add("metadata", md.getJson());
-		System.out.println(md.getJson().toString());
+		responseObject.add("metadata", md.toJson());
+		System.out.println(md.toJson().toString());
 
 		return responseObject.toString();
 
@@ -70,7 +70,7 @@ public class ReactHandler {
 		JsonObject responseObject = new JsonObject();
 		DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
 		md.save();
-		responseObject.add("metadata",md.getJson());
+		responseObject.add("metadata",md.toJson());
 
 
 		return responseObject.toString();

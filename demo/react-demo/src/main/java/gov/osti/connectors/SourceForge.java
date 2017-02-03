@@ -214,6 +214,6 @@ public class SourceForge {
              log.warn("Repository/project: " + name);
          }
          
-        return md.getJson();
+        return md.toJson();
     }
 }

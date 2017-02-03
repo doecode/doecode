@@ -1,14 +1,12 @@
 package gov.osti.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="developers")
-public class Developer extends Agent {
-
-    @Id
+public class Developer extends Agent implements Serializable {
 	private String firstName = "";
 	private String lastName = "";
 	private String middleName = "";

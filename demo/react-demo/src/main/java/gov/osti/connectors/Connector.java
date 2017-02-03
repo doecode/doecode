@@ -57,6 +57,6 @@ public class Connector {
             log.warn("Not a valid URI: " + url + " message: " + e.getMessage());
         }
         // nothing matched, return empty Object
-        return new DOECodeMetadata().getJson();
+        return new DOECodeMetadata().toJson();
     }
 }

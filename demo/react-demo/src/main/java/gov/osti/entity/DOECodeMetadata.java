@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,26 +19,24 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
 import gov.osti.database.DBOps;
+import java.io.Serializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name="metadata")
-public class DOECodeMetadata {
+public class DOECodeMetadata implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(DOECodeMetadata.class.getName());
 
 	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codeId = 0L;
 	private String siteOwnershipCode = null;
 	private Boolean openSource = null;
 	private String  repositoryLink = null;
 	//private DOECodeMetadataLists lists = null;
-	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="ownerid", referencedColumnName="codeid")
+	
 	private List<Developer> developers = new ArrayList<>();
 	/*private ArrayList<Contributor> contributors = null;
 	private ArrayList<Sponsor> sponsors = null;
@@ -108,7 +102,7 @@ public class DOECodeMetadata {
 	 * getJson - Serializes the Metadata Object into a JSON.
 	 * @return A JsonElement representing the metadata's internal state in JSON
 	 */
-	public JsonElement getJson() {
+	public JsonElement toJson() {
 		return serializer.toJsonTree(this);
 	}
 
@@ -123,11 +117,13 @@ public class DOECodeMetadata {
 	}
 
 
-	public Long getcodeId() {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getCodeId() {
 		return codeId;
 	}
 
-	public void setcodeId(Long codeId) {
+	public void setCodeId(Long codeId) {
 		this.codeId = codeId;
 	}
 
@@ -219,6 +215,8 @@ public class DOECodeMetadata {
 		this.license = license;
 	}
 
+        @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+        @JoinColumn(name="codeId", nullable = false, updatable = false)
 	public List<Developer> getDevelopers() {
 		return developers;
 	}
@@ -233,12 +231,13 @@ public class DOECodeMetadata {
         public Developer add(Developer d) {
             if (0==d.getPlace())
                 d.setPlace(developers.size()+1);
+            
             developers.add(d);
 
             return d;
         }
 
-	public void setDevelopers(ArrayList<Developer> developers) {
+	public void setDevelopers(List<Developer> developers) {
 		this.developers = developers;
 	}
 

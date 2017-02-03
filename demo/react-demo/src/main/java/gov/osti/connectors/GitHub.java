@@ -1780,6 +1780,6 @@ public class GitHub {
         }
         
         // send back what we have
-        return md.getJson();
+        return md.toJson();
     }
 }
