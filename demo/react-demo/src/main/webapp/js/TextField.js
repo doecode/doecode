@@ -42,15 +42,15 @@ var TextField = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        { className: "form-group form-group-sm row" },
+        null,
         _react2.default.createElement(
           "label",
-          { className: "col-xs-2 control-label" },
+          { className: "col-sm-2 control-label" },
           this.props.label
         ),
         _react2.default.createElement(
           "div",
-          { className: "col-xs-4" },
+          { className: "col-sm-4" },
           _react2.default.createElement("input", { type: "text", name: this.props.field, id: this.props.field, className: "form-control", value: this.props.value, onChange: this.handleChange })
         )
       );

@@ -1,7 +1,6 @@
 import React from 'react';
 import Griddle from 'griddle-react';
 import {observer} from 'mobx-react';
-import PlaceLink from './PlaceLink';
 
 @observer
 export default class AgentsTable extends React.Component {
@@ -21,8 +20,7 @@ export default class AgentsTable extends React.Component {
     	    "order": 1,
     	    "locked": false,
     	    "visible": true,
-    	    "displayName": "#",
-    	    "customComponent": PlaceLink
+    	    "displayName": "#"
     	    
     	  },
     	  {
