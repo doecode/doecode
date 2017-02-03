@@ -85,7 +85,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
 
       return _react2.default.createElement(
         'div',
-        { className: 'form-group form-group-sm' },
+        { className: 'form-group form-group-sm col-sm-12' },
         _react2.default.createElement(
           'div',
           { className: 'col-sm-offset-1 col-sm-10' },
@@ -95,8 +95,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             'Developers'
           ),
           _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
-        ),
-        _react2.default.createElement('div', { className: 'col-sm-1' })
+        )
       );
     }
   }]);
