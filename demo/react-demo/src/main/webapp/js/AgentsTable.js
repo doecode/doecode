@@ -42,12 +42,12 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
   _createClass(AgentsTable, [{
     key: 'rowClick',
     value: function rowClick(gridRow, event) {
-      //var dev = Object.assign({},gridRow.props.data);
-      var dev = gridRow.props.data;
-      developerStore.developer = dev;
-      developerStore.previousPlace = dev.place;
-      developerStore.showModal = true;
-      developerStore.isEdit = true;
+      var dev = Object.assign({}, gridRow.props.data);
+      //var dev = gridRow.props.data;
+      this.props.developerStore.developer = dev;
+      this.props.developerStore.previousPlace = dev.place;
+      this.props.developerStore.showModal = true;
+      this.props.developerStore.isEdit = true;
     }
   }, {
     key: 'render',
@@ -92,7 +92,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "displayName": "Affiliations"
       }];
 
-      var columns = ["place", "first_name", "middle_name", "last_name", "email", "affilliations"];
+      var columns = ["place", "first_name", "middle_name", "last_name", "email", "affiliations"];
 
       return _react2.default.createElement(
         'div',

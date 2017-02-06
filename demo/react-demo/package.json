@@ -35,7 +35,7 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "griddle-react": "0.6.01",
+    "griddle-react": "0.6.1",
     "mobx": "^3.0.2",
     "mobx-react": "^4.1.0",
     "react": "^15.4.2",

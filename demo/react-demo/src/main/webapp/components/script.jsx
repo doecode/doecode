@@ -64,4 +64,4 @@ class NameForm extends React.Component {
 }
 
 ReactDOM.render(
-    <NameForm store={metadataStore}/>, document.getElementById('root'));
+    <NameForm metadataStore={metadataStore}/>, document.getElementById('root'));

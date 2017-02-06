@@ -106,4 +106,6 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     return NameForm;
 }(_react2.default.Component)) || _class;
 
-_reactDom2.default.render(_react2.default.createElement(NameForm, { store: metadataStore }), document.getElementById('root'));
+
+_reactDom2.default.render(_react2.default.createElement(NameForm, { metadataStore: metadataStore }), document.getElementById('root'));
+

@@ -11,12 +11,12 @@ export default class AgentsTable extends React.Component {
 
 
   rowClick(gridRow, event) {
-	  //var dev = Object.assign({},gridRow.props.data);
-	  var dev = gridRow.props.data;
-	  developerStore.developer = dev;
-	  developerStore.previousPlace = dev.place;
-	  developerStore.showModal = true;
-	  developerStore.isEdit = true;
+	  var dev = Object.assign({},gridRow.props.data);
+	  //var dev = gridRow.props.data;
+	  this.props.developerStore.developer = dev;
+	  this.props.developerStore.previousPlace = dev.place;
+	  this.props.developerStore.showModal = true;
+	  this.props.developerStore.isEdit = true;
 		
   }
 
@@ -66,7 +66,7 @@ export default class AgentsTable extends React.Component {
       	    "displayName": "Affiliations"
       	  }]
 
-        const columns = ["place", "first_name", "middle_name", "last_name", "email", "affilliations"];
+        const columns = ["place", "first_name", "middle_name", "last_name", "email", "affiliations"];
 
 	return(
 
