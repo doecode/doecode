@@ -42,7 +42,12 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
   _createClass(AgentsTable, [{
     key: 'rowClick',
     value: function rowClick(gridRow, event) {
-      this.props.editDeveloper(gridRow.props.data);
+      //var dev = Object.assign({},gridRow.props.data);
+      var dev = gridRow.props.data;
+      developerStore.developer = dev;
+      developerStore.previousPlace = dev.place;
+      developerStore.showModal = true;
+      developerStore.isEdit = true;
     }
   }, {
     key: 'render',
@@ -87,7 +92,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
         "displayName": "Affiliations"
       }];
 
-      var columns = ["place", "first_name", "middle_name", "last_name", "email"];
+      var columns = ["place", "first_name", "middle_name", "last_name", "email", "affilliations"];
 
       return _react2.default.createElement(
         'div',
@@ -100,7 +105,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
             { className: 'no-margin-left' },
             'Developers'
           ),
-          _react2.default.createElement(_griddleReact2.default, { results: this.props.value, columns: columns, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
+          _react2.default.createElement(_griddleReact2.default, { results: this.props.developers, columns: columns, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
         )
       );
     }

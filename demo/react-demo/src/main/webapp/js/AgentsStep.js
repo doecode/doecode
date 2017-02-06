@@ -46,7 +46,6 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (AgentsStep.__proto__ || Object.getPrototypeOf(AgentsStep)).call(this, props));
 
 		_this.isValidated = _this._isValidated.bind(_this);
-		_this.editDeveloper = _this.editDeveloper.bind(_this);
 		return _this;
 	}
 
@@ -57,22 +56,14 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 			return true;
 		}
 	}, {
-		key: 'editDeveloper',
-		value: function editDeveloper(dev) {
-			developerStore.developer = Object.assign({}, dev);
-			developerStore.previousPlace = dev.place;
-			developerStore.showModal = true;
-			developerStore.isEdit = true;
-		}
-	}, {
 		key: 'render',
 		value: function render() {
-
+			var metadata = this.props.metadataStore.metadata;
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(_AgentsTable2.default, { value: this.props.developers, editDeveloper: this.editDeveloper }),
-				_react2.default.createElement(_AgentsModal2.default, { store: developerStore, onClick: this.props.onModalSubmit })
+				_react2.default.createElement(_AgentsTable2.default, { developers: metadata.developers.slice(), developerStore: developerStore }),
+				_react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore })
 			);
 		}
 	}]);

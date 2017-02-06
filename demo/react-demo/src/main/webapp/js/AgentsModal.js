@@ -52,43 +52,47 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
     _createClass(AgentsModal, [{
         key: 'close',
         value: function close() {
-            this.props.store.showModal = false;
-            this.props.store.clear();
+            this.props.developerStore.showModal = false;
+            this.props.developerStore.clear();
         }
     }, {
         key: 'open',
         value: function open() {
-            this.props.store.isEdit = false;
-            this.props.store.showModal = true;
-            this.props.store.clear();
+            this.props.developerStore.isEdit = false;
+            this.props.developerStore.showModal = true;
+            this.props.developerStore.clear();
         }
     }, {
         key: 'onModalChange',
         value: function onModalChange(id, value) {
-            this.props.store.developer[id] = value;
+            this.props.developerStore.developer[id] = value;
         }
     }, {
         key: 'handleSave',
         value: function handleSave(event) {
-            var saveType = "new";
-            if (this.props.store.isEdit) saveType = "edit";
-            var dev = Object.assign({}, this.props.store.developer);
-            this.props.onClick(dev, saveType, this.props.store.previousPlace);
+
+            var dev = Object.assign({}, this.props.developerStore.developer);
+
+            if (this.props.developerStore.isEdit) {
+                this.props.metadataStore.modifyDeveloper(dev, this.props.developerStore.previousPlace);
+            } else {
+                this.props.metadataStore.addToDevelopers(dev);
+            }
             this.close();
         }
     }, {
         key: 'handleDelete',
         value: function handleDelete(event) {
-            var dev = Object.assign({}, this.props.store.developer);
-            this.props.onClick(dev, "remove");
+            var dev = Object.assign({}, this.props.developerStore.developer);
+            this.props.metadataStore.removeDeveloper(dev);
             this.close();
         }
     }, {
         key: 'render',
         value: function render() {
-            var developer = this.props.store.developer;
-            var showModal = this.props.store.showModal;
-            var isEdit = this.props.store.isEdit;
+            var developer = this.props.developerStore.developer;
+            var showModal = this.props.developerStore.showModal;
+            var isEdit = this.props.developerStore.isEdit;
 
             return _react2.default.createElement(
                 'div',

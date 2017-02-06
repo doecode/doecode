@@ -44,7 +44,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var store = new _Metadata2.default();
+var metadataStore = new _Metadata2.default();
 
 var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     _inherits(NameForm, _React$Component);
@@ -58,14 +58,9 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         _this.parseLoadResponse = _this.parseLoadResponse.bind(_this);
         _this.parseSaveResponse = _this.parseSaveResponse.bind(_this);
         _this.onMobxChange = _this.onMobxChange.bind(_this);
-        _this.onModalSubmit = _this.onModalSubmit.bind(_this);
         _this.autopopulate = _this.autopopulate.bind(_this);
         return _this;
     }
-
-    /* componentWillMount() {
-         doAjax('GET', 'services?action=load', this.parseLoadResponse);
-     }*/
 
     _createClass(NameForm, [{
         key: 'autopopulate',
@@ -76,28 +71,18 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'parseLoadResponse',
         value: function parseLoadResponse(responseData) {
-            this.props.store.metadata = responseData.metadata;
+            this.props.metadataStore.metadata = responseData.metadata;
         }
     }, {
         key: 'onMobxChange',
         value: function onMobxChange(id, value) {
-            this.props.store.metadata[id] = value;
-        }
-    }, {
-        key: 'onModalSubmit',
-        value: function onModalSubmit(developer, saveType, previousPlace) {
-            if (saveType === "new") {
-                this.props.store.addToDevelopers(developer);
-            } else if (saveType === "edit") {
-                this.props.store.modifyDeveloper(developer, previousPlace);
-            } else if (saveType === "remove") {
-                this.props.store.removeDeveloper(developer);
-            }
+            this.props.metadataStore.metadata[id] = value;
         }
     }, {
         key: 'handleSubmit',
         value: function handleSubmit() {
             (0, _utils.doAjax)('POST', 'services/react?action=save', this.parseSaveResponse, this.props.store.metadata);
+
         }
     }, {
         key: 'parseSaveResponse',
@@ -108,9 +93,8 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var metadata = store.metadata;
-            console.log(metadata.developers.slice());
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { developers: metadata.developers.slice(), onModalSubmit: this.onModalSubmit, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var metadata = metadataStore.metadata;
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },
@@ -122,4 +106,4 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     return NameForm;
 }(_react2.default.Component)) || _class;
 
-_reactDom2.default.render(_react2.default.createElement(NameForm, { store: store }), document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(NameForm, { store: metadataStore }), document.getElementById('root'));

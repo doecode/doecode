@@ -11,7 +11,13 @@ export default class AgentsTable extends React.Component {
 
 
   rowClick(gridRow, event) {
-    this.props.editDeveloper(gridRow.props.data);
+	  //var dev = Object.assign({},gridRow.props.data);
+	  var dev = gridRow.props.data;
+	  developerStore.developer = dev;
+	  developerStore.previousPlace = dev.place;
+	  developerStore.showModal = true;
+	  developerStore.isEdit = true;
+		
   }
 
   render() {
@@ -60,14 +66,14 @@ export default class AgentsTable extends React.Component {
       	    "displayName": "Affiliations"
       	  }]
 
-        const columns = ["place", "first_name", "middle_name", "last_name", "email"];
+        const columns = ["place", "first_name", "middle_name", "last_name", "email", "affilliations"];
 
 	return(
 
 <div className="form-group form-group-sm col-sm-12">
       <div className="col-sm-offset-1 col-sm-10">
         <h2 className="no-margin-left">Developers</h2>
-        <Griddle results = {this.props.value} columns={columns} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
+        <Griddle results = {this.props.developers} columns={columns} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
       </div>
 </div>
 );

@@ -13,7 +13,6 @@ export default class AgentsStep extends React.Component {
 	constructor(props) {
 		    super(props);
 		    this.isValidated = this._isValidated.bind(this);
-			this.editDeveloper = this.editDeveloper.bind(this);
 		  }
 
 	_isValidated() {
@@ -22,19 +21,13 @@ export default class AgentsStep extends React.Component {
 	}
 	
 	
-	editDeveloper(dev) {
-	   developerStore.developer = Object.assign({}, dev);
-	   developerStore.previousPlace = dev.place;
-	   developerStore.showModal = true;
-	   developerStore.isEdit = true;
-	}
 
 	  render() {
-
+		    const metadata = this.props.metadataStore.metadata;
 		    return (
 		    <div>
-		      <AgentsTable value={this.props.developers} editDeveloper={this.editDeveloper} />
-		      <AgentsModal store={developerStore} onClick={this.props.onModalSubmit}/>
+		      <AgentsTable developers={metadata.developers.slice()} developerStore={developerStore} />
+		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore}/>
 		    </div>
 		      );
 		  }

@@ -16,40 +16,43 @@ export default class AgentsModal extends React.Component {
     }
 
     close() {
-        this.props.store.showModal = false;
-        this.props.store.clear();
+        this.props.developerStore.showModal = false;
+        this.props.developerStore.clear();
     }
 
     open() {
-        this.props.store.isEdit = false;
-        this.props.store.showModal = true;
-        this.props.store.clear();
+        this.props.developerStore.isEdit = false;
+        this.props.developerStore.showModal = true;
+        this.props.developerStore.clear();
 
     }
 
     onModalChange(id, value) {
-        this.props.store.developer[id] = value;
+        this.props.developerStore.developer[id] = value;
     }
 
     handleSave(event) {
-        var saveType = "new";
-        if (this.props.store.isEdit)
-            saveType = "edit";
-        var dev = Object.assign({}, this.props.store.developer);
-        this.props.onClick(dev, saveType, this.props.store.previousPlace);
+
+        var dev = Object.assign({}, this.props.developerStore.developer);
+
+        if (this.props.developerStore.isEdit) {
+        	this.props.metadataStore.modifyDeveloper(dev, this.props.developerStore.previousPlace);
+    	} else {
+            this.props.metadataStore.addToDevelopers(dev);
+    	}
         this.close();
     }
 
     handleDelete(event) {
-        var dev = Object.assign({}, this.props.store.developer);
-        this.props.onClick(dev, "remove");
+        var dev = Object.assign({}, this.props.developerStore.developer);
+		this.props.metadataStore.removeDeveloper(dev);
         this.close();
     }
 
     render() {
-        const developer = this.props.store.developer;
-        const showModal = this.props.store.showModal;
-        const isEdit = this.props.store.isEdit;
+        const developer = this.props.developerStore.developer;
+        const showModal = this.props.developerStore.showModal;
+        const isEdit = this.props.developerStore.isEdit;
 
         return (
             <div className="form-group form-group-sm">

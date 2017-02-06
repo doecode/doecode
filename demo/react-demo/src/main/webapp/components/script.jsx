@@ -8,7 +8,7 @@ import MetadataStep from './MetadataStep';
 import ConfirmStep from './ConfirmStep';
 import StepZilla from 'react-stepzilla';
 
-const store = new Metadata();
+const metadataStore = new Metadata();
 
 @observer
 class NameForm extends React.Component {
@@ -18,14 +18,8 @@ class NameForm extends React.Component {
         this.parseLoadResponse = this.parseLoadResponse.bind(this);
         this.parseSaveResponse = this.parseSaveResponse.bind(this);
         this.onMobxChange = this.onMobxChange.bind(this);
-        this.onModalSubmit = this.onModalSubmit.bind(this);
         this.autopopulate = this.autopopulate.bind(this);
     }
-
-   /* componentWillMount() {
-        doAjax('GET', 'services?action=load', this.parseLoadResponse);
-    }*/
-
 
     autopopulate(event) {
     	doAjax('GET', "services/react?action=autopopulate&repo=" + this.props.store.metadata.repository_link,this.parseLoadResponse);
@@ -34,21 +28,11 @@ class NameForm extends React.Component {
 
 
     parseLoadResponse(responseData) {
-        this.props.store.metadata = responseData.metadata;
+        this.props.metadataStore.metadata = responseData.metadata;
     }
 
     onMobxChange(id, value) {
-        this.props.store.metadata[id] = value;
-    }
-
-    onModalSubmit(developer, saveType, previousPlace) {
-    	if (saveType === "new") {
-            this.props.store.addToDevelopers(developer);
-    	} else if (saveType === "edit") {
-        	this.props.store.modifyDeveloper(developer, previousPlace);
-    	} else if (saveType === "remove") {
-    		this.props.store.removeDeveloper(developer);
-    	}
+        this.props.metadataStore.metadata[id] = value;
     }
 
     handleSubmit() {
@@ -62,14 +46,13 @@ class NameForm extends React.Component {
     }
 
     render() {
-        const metadata = store.metadata;
-        console.log(metadata.developers.slice())
+        const metadata = metadataStore.metadata;
         const steps =
         	[
         		{name: 'Metadata', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange} autopopulate={this.autopopulate}/> },
-        		{name: 'Developers', component: <AgentsStep developers={metadata.developers.slice()} onModalSubmit={this.onModalSubmit} handleSubmit={this.handleSubmit}/>},
+        		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} handleSubmit={this.handleSubmit}/>},
         		{name: 'Confirmation', component: <ConfirmStep /> }
-        		]
+        		];
         return (
 
 
@@ -81,4 +64,4 @@ class NameForm extends React.Component {
 }
 
 ReactDOM.render(
-    <NameForm store={store}/>, document.getElementById('root'));
+    <NameForm store={metadataStore}/>, document.getElementById('root'));
