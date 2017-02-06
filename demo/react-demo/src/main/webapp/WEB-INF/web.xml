@@ -11,6 +11,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServiceRouter</servlet-name>
-        <url-pattern>/services</url-pattern>
+        <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
 </web-app>

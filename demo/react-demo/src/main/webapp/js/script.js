@@ -70,7 +70,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     _createClass(NameForm, [{
         key: 'autopopulate',
         value: function autopopulate(event) {
-            (0, _utils.doAjax)('GET', "services?action=autopopulate&repo=" + this.props.store.metadata.repository_link, this.parseLoadResponse);
+            (0, _utils.doAjax)('GET', "services/react?action=autopopulate&repo=" + this.props.store.metadata.repository_link, this.parseLoadResponse);
             event.preventDefault();
         }
     }, {
@@ -97,7 +97,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'handleSubmit',
         value: function handleSubmit() {
-            (0, _utils.doAjax)('POST', 'services?action=save', this.parseSaveResponse, this.props.store.metadata);
+            (0, _utils.doAjax)('POST', 'services/react?action=save', this.parseSaveResponse, this.props.store.metadata);
         }
     }, {
         key: 'parseSaveResponse',

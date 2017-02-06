@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import gov.osti.connectors.Connector;
@@ -61,7 +62,6 @@ public class ReactHandler {
 	
 	private static String handleActionAutopopulate(String repositoryUrl) {
 		JsonObject responseObject = new JsonObject();
-		
 		responseObject.add("metadata", Connector.readProject(repositoryUrl));
 		return responseObject.toString();
 	}
