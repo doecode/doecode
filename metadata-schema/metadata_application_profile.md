@@ -13,6 +13,7 @@ DOECode uses the following namespaces:
 |Prefix   | Namespace                                   |
 |:--------|:-------------------------------------------:|
 | adms    | http://www.w3.org/ns/adms#                  |
+| cdg     | https://code.gov/#/policy-guide/docs/compliance/inventory-code |
 | dcterms | http://purl.org/dc/terms/                   |
 | dctype  | http://purl.org/dc/dcmitype/                |
 | foaf    | http://xmlns.com/foaf/0.1/                  |
@@ -128,7 +129,7 @@ EXAMPLE
 ]
 ```
 
-| Label        		 | *Repository Link*                                                      | 
+| Label              | *Repository Link*                                                      | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | URL to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).                                      |
 |Scheme              | n/a   |
@@ -137,10 +138,19 @@ EXAMPLE
 |Cardinality         | 1 |
 
 
+| Label              |  Government Wide Reuse                                                 |
+|:------------------ |:-----------------------------------------------------------------------|
+|Definition          | A value indicating whether or not the project is built for government-wide reuse.|
+|Scheme              | Boolean                                                                |
+|Property            | cdg:governmentWideReuseProject                                         |
+|Usage               | 0: The project is not built for government-wide reuse. 1: The project is built for government-wide reuse. Default value will be 1 unless access limitation field determines otherwise.|
+|Cardinality         | 1 |
+
+
 
 | Label        		 | *Distribution/Access Limitation*                                   | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | *CREATE CUSTOM SKOS ConceptScheme FOR DOE ACCESS CONCEPTS?*            |
+|Definition          | *CREATE CUSTOM SKOS ConceptScheme FOR DOE ACCESS CONCEPTS*            |
 |Scheme              | n/a                                                                    |
 |Property            | osti:Access                                                        |
 |Usage               | x |
@@ -223,23 +233,44 @@ EXAMPLE
 |Definition          | Information about rights held in and over the resource. Typically a Rights element will contain a rights management statement for the resource, or reference a service providing such information. Rights information often encompasses Intellectual Property Rights (IPR), Copyright, and various Property Rights.   |
 |Scheme              |  n/a  |
 |Property            | dcterms:rights                                                         |
-|Usage               | The Rights element may be used for either a textual statement or a URL pointing to a rights statement, or a combination, when a brief statement and a more lengthy one are available. |		
+|Usage               | The Rights element may be used for either a textual statement (e.g., "Open Source"), or a URL pointing to a rights statement, or a combination, when a brief statement and a more lengthy one are available. |		
 |Cardinality         | 1  |
+
+
+
 
 | Label        		 | *License*                                                               | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | A legal document giving official permission to do something with the resource.   |
 |Scheme              |  n/a  |
-|Property            | dcterms:license   
-|Refines 			 | dcterms:rights                                                      |
+|Property            | dcterms:license   |
 |Usage               | Recommended best practice is to identify the license using a URI. License is designed to allow the inclusion of specific licensed uses to be specified. An example would be a resource that was available to be used freely but not for reproduction within commercial applications. |	
-|Cardinality         | 0 - 1 |
+|Cardinality         | 1 - n |
 
 Example:
 ```xml
 dcterms:license="http://creativecommons.org/licenses/by-nc-nd/2.0/legalcode"
 dcterms:license="Licensed for use under Creative Commons Attribution 2.0."
 ```
+
+
+| Label              | *Legal Notices*  |
+|:-------------------|:--------------------------------------------------------------------------|
+|Definition          |  An official legal statement acknowledging sponsorship and/or data rights.  Respective SIACs, or originating sites, issue their own statements as legally appropriate.|
+|Property            | osti:legalNotices   |
+|Usage               | example: "This computer software has been developed under sponsorship of the U.S. Department of Energy." |	
+|Cardinality         | 1 - n |
+ 
+
+
+| Label | *Disclaimers* |
+|:-------------------|:--------------------------------------------------------------------------|
+|Definition          | An official legal statement declaring any additional conditions under which the software is to be distributed apart from those stated in the license.  Respective SIACs, or originating sites, issue their own statements as legally appropriate.  |
+|Property            | osti:disclaimers  |
+|Usage               | example: "Neither the United States Government nor the United States Department of Energy, nor any of their employees, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, or represents that its use would not infringe privately owned rights." |
+|Cardinality         | 1 - n |
+
+
 
 | Label        		 | *Version*                                                              | 
 |:-------------------|:-----------------------------------------------------------------------|
