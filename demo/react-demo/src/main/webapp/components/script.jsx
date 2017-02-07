@@ -17,7 +17,6 @@ class NameForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.parseLoadResponse = this.parseLoadResponse.bind(this);
         this.parseSaveResponse = this.parseSaveResponse.bind(this);
-        this.onMobxChange = this.onMobxChange.bind(this);
         this.autopopulate = this.autopopulate.bind(this);
     }
 
@@ -31,9 +30,6 @@ class NameForm extends React.Component {
         this.props.metadataStore.metadata = responseData.metadata;
     }
 
-    onMobxChange(id, value) {
-        this.props.metadataStore.metadata[id] = value;
-    }
 
     handleSubmit() {
         doAjax('POST', 'services/react?action=save', this.parseSaveResponse, this.props.store.metadata);
@@ -49,7 +45,7 @@ class NameForm extends React.Component {
         const metadata = metadataStore.metadata;
         const steps =
         	[
-        		{name: 'Metadata', component: <MetadataStep metadata={metadata} onMobxChange={this.onMobxChange} autopopulate={this.autopopulate}/> },
+        		{name: 'Metadata', component: <MetadataStep metadataStore={metadataStore}  autopopulate={this.autopopulate}/> },
         		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} handleSubmit={this.handleSubmit}/>},
         		{name: 'Confirmation', component: <ConfirmStep /> }
         		];

@@ -57,7 +57,6 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         _this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.parseLoadResponse = _this.parseLoadResponse.bind(_this);
         _this.parseSaveResponse = _this.parseSaveResponse.bind(_this);
-        _this.onMobxChange = _this.onMobxChange.bind(_this);
         _this.autopopulate = _this.autopopulate.bind(_this);
         return _this;
     }
@@ -72,11 +71,6 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         key: 'parseLoadResponse',
         value: function parseLoadResponse(responseData) {
             this.props.metadataStore.metadata = responseData.metadata;
-        }
-    }, {
-        key: 'onMobxChange',
-        value: function onMobxChange(id, value) {
-            this.props.metadataStore.metadata[id] = value;
         }
     }, {
         key: 'handleSubmit',
@@ -94,7 +88,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         key: 'render',
         value: function render() {
             var metadata = metadataStore.metadata;
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadata: metadata, onMobxChange: this.onMobxChange, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },

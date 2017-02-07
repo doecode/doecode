@@ -35,6 +35,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
 
     var _this = _possibleConstructorReturn(this, (MetadataStep.__proto__ || Object.getPrototypeOf(MetadataStep)).call(this, props));
 
+    _this.onFieldChange = _this.onFieldChange.bind(_this);
     _this.isValidated = _this._isValidated.bind(_this);
     return _this;
   }
@@ -47,9 +48,14 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
       return true;
     }
   }, {
+    key: 'onFieldChange',
+    value: function onFieldChange(id, value) {
+      this.props.metadataStore.metadata[id] = value;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var metadata = this.props.metadata;
+      var metadata = this.props.metadataStore.metadata;
       return _react2.default.createElement(
         'div',
         { className: 'container-fluid' },
@@ -59,7 +65,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: metadata.repository_link, onChange: this.props.onMobxChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', type: 'text', value: metadata.repository_link, onChange: this.onFieldChange }),
             _react2.default.createElement(
               'button',
               { className: 'btn btn-primary btn-sm', onClick: this.props.autopopulate },
@@ -71,50 +77,50 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', type: 'textarea', value: metadata.software_title, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: metadata.acronym, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', type: 'textarea', value: metadata.software_title, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', type: 'text', value: metadata.acronym, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', type: 'textarea', value: metadata.description, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: metadata.disclaimers, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', type: 'textarea', value: metadata.description, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', type: 'text', value: metadata.disclaimers, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', type: 'text', value: metadata.doi, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', type: 'text', value: metadata.keywords, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', type: 'text', value: metadata.doi, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', type: 'text', value: metadata.keywords, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', type: 'select', value: metadata.license, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: metadata.originating_research_organizations, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', type: 'select', value: metadata.license, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', type: 'text', value: metadata.originating_research_organizations, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: metadata.other_special_requirements, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: metadata.recipient_email, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', type: 'text', value: metadata.other_special_requirements, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', type: 'text', value: metadata.recipient_email, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: metadata.recipient_name, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: metadata.recipient_org, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', type: 'text', value: metadata.recipient_name, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', type: 'text', value: metadata.recipient_org, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: metadata.recipient_phone, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: metadata.related_identifiers, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', type: 'text', value: metadata.recipient_phone, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', type: 'text', value: metadata.related_identifiers, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: metadata.related_software, onChange: this.props.onMobxChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: metadata.site_accession_number, onChange: this.props.onMobxChange })
+            _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', type: 'text', value: metadata.related_software, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', type: 'text', value: metadata.site_accession_number, onChange: this.onFieldChange })
           )
         )
       );
