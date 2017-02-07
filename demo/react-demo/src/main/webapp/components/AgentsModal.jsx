@@ -1,7 +1,6 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap';
 import TextField from './TextField';
-import SelectField from './SelectField';
 import {observer} from "mobx-react";
 
 @observer
@@ -69,24 +68,24 @@ export default class AgentsModal extends React.Component {
                             <div className="container-fluid">
                                 <div className="form-horizontal">
                                     {isEdit && <div className="form-group form-group-sm row">
-                                        <TextField field="place" label="Place" type="number" value={developer.place} onChange={this.onModalChange}/>
+                                        <TextField field="place" label="Place" elementType="input" value={developer.place} onChange={this.onModalChange}/>
                                     </div>
 }
                                     <div className="form-group form-group-sm row">
-                                        <TextField field="first_name" label="First Name" type="text" value={developer.first_name} onChange={this.onModalChange}/>
+                                        <TextField field="first_name" label="First Name" elementType="input" value={developer.first_name} onChange={this.onModalChange}/>
                                     </div>
                                     <div className="form-group form-group-sm row">
-                                        <TextField field="middle_name" label="Middle Name" type="text" value={developer.middle_name} onChange={this.onModalChange}/>
+                                        <TextField field="middle_name" label="Middle Name" elementType="input" value={developer.middle_name} onChange={this.onModalChange}/>
                                     </div>
                                     <div className="form-group form-group-sm row">
-                                        <TextField field="last_name" label="Last Name" type="text" value={developer.last_name} onChange={this.onModalChange}/>
+                                        <TextField field="last_name" label="Last Name" elementType="input" value={developer.last_name} onChange={this.onModalChange}/>
                                     </div>
                                     <div className="form-group form-group-sm row">
-                                        <TextField field="email" label="Email" type="text" value={developer.email} onChange={this.onModalChange}/>
+                                        <TextField field="email" label="Email" elementType="input" value={developer.email} onChange={this.onModalChange}/>
                                     </div>
                                     
                                     <div className="form-group form-group-sm row">
-                                        <TextField field="affiliations" label="Affiliations" type="text" value={developer.affiliations} onChange={this.onModalChange}/>
+                                        <TextField field="affiliations" label="Affiliations" elementType="input" value={developer.affiliations} onChange={this.onModalChange}/>
                                     </div>
                                 </div>
                             </div>

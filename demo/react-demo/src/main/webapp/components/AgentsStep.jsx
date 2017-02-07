@@ -23,11 +23,14 @@ export default class AgentsStep extends React.Component {
 	
 
 	  render() {
+		  
 		    const metadata = this.props.metadataStore.metadata;
+		    const developers = metadata.developers.slice();
+		    const devsLength = developers.length;
 		    return (
 		    <div>
-		      <AgentsTable developers={metadata.developers.slice()} developerStore={developerStore} />
-		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore}/>
+		      <AgentsTable developers={developers} developerStore={developerStore} />
+		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore} devsLength={devsLength} />
 		    </div>
 		      );
 		  }

@@ -58,12 +58,15 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+
 			var metadata = this.props.metadataStore.metadata;
+			var developers = metadata.developers.slice();
+			var devsLength = developers.length;
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(_AgentsTable2.default, { developers: metadata.developers.slice(), developerStore: developerStore }),
-				_react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore })
+				_react2.default.createElement(_AgentsTable2.default, { developers: developers, developerStore: developerStore }),
+				_react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore, devsLength: devsLength })
 			);
 		}
 	}]);

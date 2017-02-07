@@ -19,10 +19,6 @@ var _TextField = require('./TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _SelectField = require('./SelectField');
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
 var _mobxReact = require('mobx-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -129,32 +125,32 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
                                     isEdit && _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'place', label: 'Place', type: 'number', value: developer.place, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'place', label: 'Place', elementType: 'input', value: developer.place, onChange: this.onModalChange })
                                     ),
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', type: 'text', value: developer.first_name, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', elementType: 'input', value: developer.first_name, onChange: this.onModalChange })
                                     ),
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', type: 'text', value: developer.middle_name, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', elementType: 'input', value: developer.middle_name, onChange: this.onModalChange })
                                     ),
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', type: 'text', value: developer.last_name, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', elementType: 'input', value: developer.last_name, onChange: this.onModalChange })
                                     ),
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', type: 'text', value: developer.email, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', elementType: 'input', value: developer.email, onChange: this.onModalChange })
                                     ),
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'form-group form-group-sm row' },
-                                        _react2.default.createElement(_TextField2.default, { field: 'affiliations', label: 'Affiliations', type: 'text', value: developer.affiliations, onChange: this.onModalChange })
+                                        _react2.default.createElement(_TextField2.default, { field: 'affiliations', label: 'Affiliations', elementType: 'input', value: developer.affiliations, onChange: this.onModalChange })
                                     )
                                 )
                             )

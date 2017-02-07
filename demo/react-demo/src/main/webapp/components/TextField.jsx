@@ -12,16 +12,28 @@ export default class TextField extends React.Component {
   handleChange(event) {
     this.props.onChange(this.props.field,event.target.value);
   }
+  
 
 
   render() {
+	  let input = null;
+	  const elementType = this.props.elementType;
+	  
+	  
+	  if (elementType === 'input') {
+		input = <input type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
+	  } else if (elementType === 'select') {
+	     input = <select className="form-control" value={this.props.value} onChange={this.handleChange} />
+	  } else if (elementType === 'textarea') {
+		 input = <textarea type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
+	  }
 	  return(
       <div>
       <label className="col-sm-2 control-label">
         {this.props.label}
       </label>
       <div className="col-sm-4">
-        <input type="text" name={this.props.field} id={this.props.field} className="form-control" value={this.props.value} onChange={this.handleChange} />
+        {input}
       </div>
       </div>
     );

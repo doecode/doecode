@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -7,7 +7,7 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -33,25 +33,35 @@ var TextField = function (_React$Component) {
   }
 
   _createClass(TextField, [{
-    key: "handleChange",
+    key: 'handleChange',
     value: function handleChange(event) {
       this.props.onChange(this.props.field, event.target.value);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
+      var input = null;
+      var elementType = this.props.elementType;
+
+      if (elementType === 'input') {
+        input = _react2.default.createElement('input', { type: 'text', className: 'form-control', value: this.props.value, onChange: this.handleChange });
+      } else if (elementType === 'select') {
+        input = _react2.default.createElement('select', { className: 'form-control', value: this.props.value, onChange: this.handleChange });
+      } else if (elementType === 'textarea') {
+        input = _react2.default.createElement('textarea', { type: 'text', className: 'form-control', value: this.props.value, onChange: this.handleChange });
+      }
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
         _react2.default.createElement(
-          "label",
-          { className: "col-sm-2 control-label" },
+          'label',
+          { className: 'col-sm-2 control-label' },
           this.props.label
         ),
         _react2.default.createElement(
-          "div",
-          { className: "col-sm-4" },
-          _react2.default.createElement("input", { type: "text", name: this.props.field, id: this.props.field, className: "form-control", value: this.props.value, onChange: this.handleChange })
+          'div',
+          { className: 'col-sm-4' },
+          input
         )
       );
     }
