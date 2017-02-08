@@ -2,13 +2,11 @@
  */
 package gov.osti.connectors;
 
-import com.google.gson.JsonElement;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -39,9 +37,11 @@ public class BitBucketTest {
      * Test of readProject method, of class BitBucket.
      */
     @Test
-    public void testReadProject() {
+    public void testReadProject() throws Exception {
         System.out.println("readProject");
         System.out.println("Result: " + BitBucket.readProject("ensorn/chorus-reader"));
+        
+        System.out.println("Result: " + BitBucket.readProject("petsc/petsc"));
     }
     
 }

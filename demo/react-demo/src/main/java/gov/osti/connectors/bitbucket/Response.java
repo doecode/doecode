@@ -4,7 +4,6 @@ package gov.osti.connectors.bitbucket;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Date;
 
 /**
  * The BitBucket API response information.
@@ -24,8 +23,6 @@ public class Response {
     @JsonProperty("has_issues")
     private Boolean hasIssues = false;
     private User owner;
-    @JsonProperty("updated_on")
-    private Date updatedOn;
     private Long size;
     private String type;
     private String description;
@@ -94,14 +91,6 @@ public class Response {
      */
     public User getOwner() {
         return owner;
-    }
-
-    /**
-     * Date the project was updated
-     * @return the updatedOn
-     */
-    public Date getUpdatedOn() {
-        return updatedOn;
     }
 
     /**

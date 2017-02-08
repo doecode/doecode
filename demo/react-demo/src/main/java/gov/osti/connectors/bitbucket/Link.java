@@ -3,8 +3,6 @@
 package gov.osti.connectors.bitbucket;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Date;
 
 /**
  * Listing of all relevant Link properties from BB API responses.
@@ -21,8 +19,6 @@ public class Link {
     private Href snippets = null;
     private Href repositories = null;
     private Href hooks = null;
-    @JsonProperty("updated_on")
-    private Date updatedOn;
 
     /**
      * @return the self
@@ -68,11 +64,4 @@ public class Link {
     public String getFollowing() {
         return (null==following) ? "" : following.getHref();
     }
-
-    /**
-     * @return the updatedOn
-     */
-    public Date getUpdatedOn() {
-        return updatedOn;
-    } 
 }

@@ -4,7 +4,6 @@ package gov.osti.connectors.bitbucket;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Date;
 
 /**
  *
@@ -17,8 +16,6 @@ public class User {
     @JsonProperty("display_name")
     private String displayName;
     private Link links;
-    @JsonProperty("created_on")
-    private Date createdOn;
     private String type;
 
     /**
@@ -47,13 +44,6 @@ public class User {
      */
     public Link getLinks() {
         return links;
-    }
-
-    /**
-     * @return the createdOn
-     */
-    public Date getCreatedOn() {
-        return createdOn;
     }
 
     /**
