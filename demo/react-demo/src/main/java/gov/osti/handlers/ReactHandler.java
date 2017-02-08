@@ -1,23 +1,21 @@
 package gov.osti.handlers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import gov.osti.connectors.Connector;
 import gov.osti.entity.DOECodeMetadata;
-import gov.osti.entity.Developer;
-import gov.osti.util.ServletUtil;
 
 public class ReactHandler {
 
+    private static final ObjectMapper mapper = new ObjectMapper();
 
 	public static String handleRequest(HttpServletRequest request) throws IOException {
 
@@ -42,39 +40,30 @@ public class ReactHandler {
 
 
 	private static String handleActionLoad(long codeId) {
-		JsonObject responseObject = new JsonObject();
-		//DOECodeMetadata md = DOECodeMetadata.lookup(codeId);
-		//if (md == null)
-		DOECodeMetadata md = new DOECodeMetadata();
-		md.setSoftwareTitle("something");
-		md.setAcronym("ORNL");
-		md.setDescription("Description");
-		md.setDevelopers(new ArrayList<Developer>());
-
-
-		responseObject.add("metadata", md.toJson());
-		System.out.println(md.toJson().toString());
-
-		return responseObject.toString();
+            return "";
+//		JsonObject responseObject = new JsonObject();
+//		//DOECodeMetadata md = DOECodeMetadata.lookup(codeId);
+//		//if (md == null)
+//		DOECodeMetadata md = new DOECodeMetadata();
+//		md.setSoftwareTitle("something");
+//		md.setAcronym("ORNL");
+//		md.setDescription("Description");
+//		md.setDevelopers(new ArrayList<Developer>());
+//
+//
+//		responseObject.add("metadata", md.toJson());
+//		System.out.println(md.toJson().toString());
+//
+//		return responseObject.toString();
 
 
 	}
 	
 	private static String handleActionAutopopulate(String repositoryUrl) {
-		JsonObject responseObject = new JsonObject();
-		responseObject.add("metadata", Connector.readProject(repositoryUrl));
-		return responseObject.toString();
+            return mapper.createObjectNode().putPOJO("metadata", Connector.readProject(repositoryUrl)).toString();
 	}
 
 	private static String handleActionSave(BufferedReader reader) throws IOException {
-		JsonObject responseObject = new JsonObject();
-		DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
-		md.save();
-		responseObject.add("metadata",md.toJson());
-
-
-		return responseObject.toString();
-
-
+            return mapper.createObjectNode().putPOJO("metadata", DOECodeMetadata.parseJson(reader)).toString();
 	}
 }

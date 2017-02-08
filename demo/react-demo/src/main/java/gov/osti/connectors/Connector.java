@@ -2,7 +2,7 @@
  */
 package gov.osti.connectors;
 
-import com.google.gson.JsonElement;
+import com.fasterxml.jackson.databind.JsonNode;
 import gov.osti.entity.DOECodeMetadata;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,10 +24,10 @@ public class Connector {
      * information from API calls.
      * 
      * @param url the full repository URL to read from
-     * @return a JsonElement of DOECodeMetadata information, filled with what
+     * @return a String in JSON of DOECodeMetadata information, filled with what
      * information was found if possible.
      */
-    public static JsonElement readProject(String url) {
+    public static JsonNode readProject(String url) {
         try {
             String safeUrl = (null==url) ? "" : url.trim();
             // err on the side of encryption, if no protocol provided
@@ -41,7 +41,7 @@ public class Connector {
                 if (uri.getHost().contains("github.com")) {
                     // get rid of the first slash
                     String path = uri.getPath();
-//                    return GitHub.readProject(path.substring(path.indexOf("/")+1));
+                    return GitHub.readProject(path.substring(path.indexOf("/")+1));
                 } else if (uri.getHost().contains("sourceforge.net")) {
                     // assume SourceForge path is formed by "/projects/project-name"
                     String path = uri.getPath();
@@ -55,6 +55,9 @@ public class Connector {
         } catch ( URISyntaxException e ) {
             // warn that URL is not a valid URI
             log.warn("Not a valid URI: " + url + " message: " + e.getMessage());
+        } catch ( Exception e ) {
+            // some unexpected error happened
+            log.warn("Unexpected Error from " + url + " message: " + e.getMessage());
         }
         // nothing matched, return empty Object
         return new DOECodeMetadata().toJson();

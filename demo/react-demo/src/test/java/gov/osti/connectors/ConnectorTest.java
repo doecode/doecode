@@ -41,20 +41,16 @@ public class ConnectorTest {
     @Test
     public void testReadProject() {
         System.out.println("Sourceforge URL: https://sourceforge.net/projects/desmume");
-        JsonElement result = Connector.readProject("https://sourceforge.net/projects/desmume");
-        System.out.println("Result: " + result.toString());
+        System.out.println("Result: " + Connector.readProject("https://sourceforge.net/projects/desmume"));
         
         System.out.println("GitHub: https://github.com/doecode/doecode");
-        result = Connector.readProject("https://github.com/doecode/doecode");
-        System.out.println("Result: " + result.toString());
+        System.out.println("Result: " + Connector.readProject("https://github.com/doecode/doecode"));
         
         System.out.println("BitBucket: https://bitbucket.org/ensorn/chorus-reader");
-        result = Connector.readProject("https://bitbucket.org/ensorn/chorus-reader");
-        System.out.println("Result: " + result.toString());
+        System.out.println("Result: " + Connector.readProject("https://bitbucket.org/ensorn/chorus-reader"));
         
         System.out.println("BB raw: bitbucket.org/ensorn/chorus-reader");
-        result = Connector.readProject("bitbucket.org/ensorn/chorus-reader");
-        System.out.println("Result: " + result.toString());
+        System.out.println("Result: " + Connector.readProject("bitbucket.org/ensorn/chorus-reader"));
     }
     
 }

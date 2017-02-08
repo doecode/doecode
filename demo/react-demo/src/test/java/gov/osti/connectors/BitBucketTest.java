@@ -41,8 +41,7 @@ public class BitBucketTest {
     @Test
     public void testReadProject() {
         System.out.println("readProject");
-        JsonElement result = BitBucket.readProject("ensorn/chorus-reader");
-        System.out.println("Result: " + result.toString());
+        System.out.println("Result: " + BitBucket.readProject("ensorn/chorus-reader"));
     }
     
 }

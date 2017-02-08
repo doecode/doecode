@@ -60,20 +60,12 @@
                     <version>5.2.6.Final</version>
                 </dependency>
                 
-                <!-- logback -->
-                <dependency>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-core</artifactId>
-                        <version>1.1.8</version>
+                <dependency> 
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-log4j12</artifactId>
+                  <version>1.7.22</version>
                 </dependency>
-
-                <!-- logback implementation -->
-                <dependency>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-classic</artifactId>
-                        <version>1.1.8</version>
-                </dependency>
-
+                
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>

@@ -44,9 +44,7 @@ public class SourceForgeTest {
     @Test
     public void testReadProject() {
         System.out.println("readProject");
-        JsonElement result = SourceForge.readProject("desmume");
-        
-        log.info("Result: " + result.toString());
+        System.out.println("Result: " + SourceForge.readProject("desmume"));
     }
     
 }

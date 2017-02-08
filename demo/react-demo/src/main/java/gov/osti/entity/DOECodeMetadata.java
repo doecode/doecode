@@ -1,5 +1,7 @@
 package gov.osti.entity;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-
 import gov.osti.database.DBOps;
+import java.io.IOException;
 import java.io.Serializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +26,7 @@ import org.slf4j.LoggerFactory;
 public class DOECodeMetadata implements Serializable {
     private static final Logger log = LoggerFactory.getLogger(DOECodeMetadata.class.getName());
 
-	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
+//	private static final Gson serializer = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     //private static final Logger log = Logger.getLogger(DOECodeMetadata.class);
 
 	private Long codeId = 0L;
@@ -65,6 +63,9 @@ public class DOECodeMetadata implements Serializable {
 	private String otherSpecialRequirements = null;
 	private String relatedSoftware = null;
 	//private String documentation = null; this will be structured in some way tbd per the metadata document
+        
+        // Jackson object mapper
+        private static final ObjectMapper mapper = new ObjectMapper();
 
 	//for Gson
 	public DOECodeMetadata() {
@@ -102,17 +103,18 @@ public class DOECodeMetadata implements Serializable {
 	 * getJson - Serializes the Metadata Object into a JSON.
 	 * @return A JsonElement representing the metadata's internal state in JSON
 	 */
-	public JsonElement toJson() {
-		return serializer.toJsonTree(this);
+	public JsonNode toJson() {
+            return mapper.valueToTree(this);
 	}
 
 	/**
 	 * Parses JSON in the request body of the reader into a DOECodemetadata object.
 	 * @param reader - A request reader containing JSON in the request body.
 	 * @return A DOECodeMetadata object representing the data of the JSON in the request body.
+         * @throws IOException on JSON parsing errors (IO errors)
 	 */
-	public static DOECodeMetadata parseJson(Reader reader) {
-		return serializer.fromJson(reader, DOECodeMetadata.class);
+	public static DOECodeMetadata parseJson(Reader reader) throws IOException {
+            return mapper.readValue(reader, DOECodeMetadata.class);
 
 	}
 

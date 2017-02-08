@@ -2,6 +2,7 @@
  */
 package gov.osti.connectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,11 +44,12 @@ public class GitHubTest {
      */
     @Test
     public void testReadProject() {
-        System.out.println("readProject");
-        String result = GitHub.readProject("doecode/doecode");
-        System.out.println("Result: " + result);
+        ObjectMapper mapper = new ObjectMapper();
         
-        System.out.println("Result#2: " + GitHub.readProject("doecode/dev-test-repo"));
+        System.out.println("readProject");
+        System.out.println("Result: " + 
+                mapper.createObjectNode().putPOJO("metadata", GitHub.readProject("doecode/doecode")).toString());
+//        System.out.println("Result: " + GitHub.readProject("doecode/doecode"));
     }
     
 }

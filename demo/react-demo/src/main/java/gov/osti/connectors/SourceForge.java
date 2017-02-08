@@ -1,8 +1,9 @@
 
 package gov.osti.connectors;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonElement;
 import gov.osti.connectors.sourceforge.License;
 import gov.osti.connectors.sourceforge.Person;
 import gov.osti.connectors.sourceforge.Response;
@@ -29,10 +30,9 @@ public class SourceForge {
      * from SourceForge.
      * 
      * @param name the project name
-     * @return a JSON Element defining the relevant metadata read from SourceForge
-     * if possible
+     * @return a JsonNode of the metadata
      */
-    public static JsonElement readProject(String name) {
+    public static JsonNode readProject(String name) {
         DOECodeMetadata md = new DOECodeMetadata();
         ObjectMapper mapper = new ObjectMapper();
          
@@ -76,6 +76,7 @@ public class SourceForge {
              log.warn("Repository/project: " + name);
          }
          
-        return md.toJson();
+         // send back the metadata
+         return md.toJson();
     }
 }

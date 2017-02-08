@@ -3,6 +3,7 @@ package gov.osti.connectors;
 
 import gov.osti.connectors.github.Repository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.osti.connectors.github.Contributor;
 import gov.osti.connectors.github.User;
@@ -86,14 +87,16 @@ public class GitHub {
      * @return a JsonElement of the DOECodeMetadata filled in as possible from
      * the API
      */
-    public static String readProject(String name) {
+    public static JsonNode readProject(String name) {
         DOECodeMetadata md = new DOECodeMetadata();
         ObjectMapper mapper = new ObjectMapper();
         
         try {
             // try to get the metadata YAML file first
-            String yaml = HttpUtil.readMetadataYaml(GITHUB_RAW_BASE_URL + name + "/master/metadata.yml");
-            log.info("YAML: " + yaml);
+            JsonNode yaml = HttpUtil.readMetadataYaml(GITHUB_RAW_BASE_URL + name + "/master/metadata.yml");
+            // if it's not empty, use that
+            if (null!=yaml)
+                return yaml;
             
             // read authentication token information
             GitHub.init();
@@ -149,13 +152,7 @@ public class GitHub {
             log.warn("Read from " + name);
         }
         
-        try {
-            // send back what we have
-            return mapper.writeValueAsString(md);
-        } catch (JsonProcessingException ex) {
-            log.warn("JSON Error: " + ex.getMessage());
-        }
-        
-        return null;
+        // send back a JsonNode
+        return md.toJson();
     }
 }
