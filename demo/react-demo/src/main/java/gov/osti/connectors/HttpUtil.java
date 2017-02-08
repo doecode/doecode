@@ -55,7 +55,8 @@ public class HttpUtil {
     }
     
     /**
-     * Attempt to read URL (file) as a YAML metadata reference.
+     * Attempt to read URL (file) as a YAML metadata reference.  Returns null
+     * if YAML file not found or could not process.
      * 
      * @param url the URL to the file to attempt to read
      * @return JSON representation of the YAML read, or null if not found/invalid

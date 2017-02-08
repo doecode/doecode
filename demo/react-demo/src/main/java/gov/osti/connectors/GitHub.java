@@ -2,7 +2,6 @@
 package gov.osti.connectors;
 
 import gov.osti.connectors.github.Repository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.osti.connectors.github.Contributor;

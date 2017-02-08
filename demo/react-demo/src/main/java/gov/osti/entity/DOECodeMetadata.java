@@ -2,6 +2,7 @@ package gov.osti.entity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,8 @@ public class DOECodeMetadata implements Serializable {
 	//private String documentation = null; this will be structured in some way tbd per the metadata document
         
         // Jackson object mapper
-        private static final ObjectMapper mapper = new ObjectMapper();
+        private static final ObjectMapper mapper = new ObjectMapper()
+                .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 
 	//for Gson
 	public DOECodeMetadata() {
