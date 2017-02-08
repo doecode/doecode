@@ -63,6 +63,8 @@ public class ReactHandler {
 	}
 
 	private static String handleActionSave(BufferedReader reader) throws IOException {
-            return mapper.createObjectNode().putPOJO("metadata", DOECodeMetadata.parseJson(reader)).toString();
+            DOECodeMetadata md = DOECodeMetadata.parseJson(reader);
+            md.save();
+            return mapper.createObjectNode().putPOJO("metadata", md).toString();
 	}
 }

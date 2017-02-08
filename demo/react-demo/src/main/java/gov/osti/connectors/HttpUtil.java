@@ -2,6 +2,8 @@
  */
 package gov.osti.connectors;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -26,6 +28,9 @@ public class HttpUtil {
     // logger
     protected static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
     
+    // jackson mapper
+    protected static final ObjectMapper mapper = new ObjectMapper(new YAMLFactory())
+            .setSerializationInclusion(Include.NON_NULL);
     /**
      * Retrieve just the String content from a given HttpGet request.
      * 
@@ -64,7 +69,6 @@ public class HttpUtil {
      */
     protected static JsonNode readMetadataYaml(String url) throws IOException {
         final HttpGet get = new HttpGet(url);
-        final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         String content = HttpUtil.fetch(get);
         if ( "".equals(content) ) 
             return null;

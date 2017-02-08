@@ -2,6 +2,7 @@
  */
 package gov.osti.connectors.bitbucket;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * 
  * @author ensornl
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Response {
     private String scm;
     private String website;

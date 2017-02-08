@@ -2,6 +2,7 @@
  */
 package gov.osti.connectors.bitbucket;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * 
  * @author ensornl
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberList {
     // page length in rows
     @JsonProperty("pagelen")
