@@ -2,6 +2,8 @@
  */
 package gov.osti.connectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.IOException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
@@ -38,5 +40,20 @@ public class HttpUtil {
         } finally {
             hc.close();
         }
+    }
+    
+    /**
+     * Attempt to read URL (file) as a YAML metadata reference.
+     * 
+     * @param url the URL to the file to attempt to read
+     * @return JSON representation of the YAML read, or null if not found/invalid
+     * @throws IOException on file IO errors
+     */
+    protected static String readMetadataYaml(String url) throws IOException {
+        final HttpGet get = new HttpGet(url);
+        final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        MetadataYaml yaml = mapper.readValue(HttpUtil.fetch(get), MetadataYaml.class);
+        
+        return yaml.toJson();
     }
 }

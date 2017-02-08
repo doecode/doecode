@@ -2,6 +2,8 @@
  */
 package gov.osti.connectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +22,8 @@ import org.slf4j.LoggerFactory;
 public class BitBucket {
     // base URL for BitBucket API requests
     private static final String BITBUCKET_API_URL="https://api.bitbucket.org/2.0/repositories/";
+    // base URL for RAW view requests (suffix with "owner/project/raw/master/metadata.yml")
+    private static final String BITBUCKET_RAW_URL="https://bitbucket.org/";
     // a logger
     private static final Logger log = LoggerFactory.getLogger(BitBucket.class);
     
@@ -340,6 +344,10 @@ public class BitBucket {
         HttpGet get = new HttpGet(BITBUCKET_API_URL + name);
         
         try {
+            // try to get the METADATA YAML first
+            String results = HttpUtil.readMetadataYaml(BITBUCKET_RAW_URL + name + "/raw/master/metadata.yml");
+            log.info("YAML: " + results);
+            
             Response response = gson.fromJson(HttpUtil.fetch(get), Response.class);
             
             // glean what information we can from the JSON

@@ -41,7 +41,7 @@ public class Connector {
                 if (uri.getHost().contains("github.com")) {
                     // get rid of the first slash
                     String path = uri.getPath();
-                    return GitHub.readProject(path.substring(path.indexOf("/")+1));
+//                    return GitHub.readProject(path.substring(path.indexOf("/")+1));
                 } else if (uri.getHost().contains("sourceforge.net")) {
                     // assume SourceForge path is formed by "/projects/project-name"
                     String path = uri.getPath();
