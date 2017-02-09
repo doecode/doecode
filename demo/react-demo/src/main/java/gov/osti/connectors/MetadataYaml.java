@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
  * base YAML metadata object for parsing.
  * 
  * @author ensornl
+ * @deprecated should be replaced with direct instances of DOECodeMetadata
  */
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class MetadataYaml {

@@ -1,6 +1,5 @@
 package gov.osti.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -246,8 +245,19 @@ public class DOECodeMetadata implements Serializable {
             return d;
         }
 
-	public void setDevelopers(List<Developer> developers) {
-		this.developers = developers;
+        /**
+         * Add entire List at once; make sure to keep Place up to date properly.
+         * 
+         * @param devlist a List of Developers to set
+         */
+	public void setDevelopers(List<Developer> devlist) {
+            // ensure that place is tracked appropriately
+            Integer place = 0;
+            for ( Developer d : devlist ) {
+                if (0==d.getPlace())
+                    d.setPlace(++place);
+            }
+		this.developers = devlist;
 	}
 
 	public String getRecipientName() {

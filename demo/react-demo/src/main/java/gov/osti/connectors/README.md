@@ -5,6 +5,11 @@ to pre-populate information it can glean given the project URL.  Currently the
 information obtained is somewhat sparse, as this is intended to provoke 
 discussion on what elements of metadata we should map to DOECode's schema.
 
+If any of these sources should have a "metadata.yml" file checked-in on the
+master branch, project root level, the Connector will attempt to read from and
+parse its information instead of calling various API methods to fill in the
+metadata information.
+
 ## GitHub
 
 Given the GitHub repository URL, the following information is obtained (provided
