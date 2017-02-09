@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import gov.osti.database.DBOps;
 import java.io.IOException;
 import java.io.Serializable;
+import javax.persistence.Column;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -179,6 +180,7 @@ public class DOECodeMetadata implements Serializable {
 	public void setDoi(String doi) {
 		this.doi = doi;
 	}
+        @Column (length = 4000, name = "description")
 	public String getDescription() {
 		return description;
 	}
