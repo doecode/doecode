@@ -27,6 +27,10 @@ var _Developer2 = _interopRequireDefault(_Developer);
 
 var _mobxReact = require('mobx-react');
 
+var _promise = require('promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52,8 +56,18 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 	_createClass(AgentsStep, [{
 		key: '_isValidated',
 		value: function _isValidated() {
-			this.props.handleSubmit();
-			return true;
+
+			return new _promise2.default(function (resolve, reject) {
+				setTimeout(function () {
+
+					//this.props.updateStore({savedToCloud: true});  // Update store here (this is just an example, in reality you will do it via redux or flux)
+
+					// call resolve() to indicate that server validation or other aync method was a success.
+					// ... only then will it move to the next step. reject() will indicate a fail
+					resolve();
+					// reject(); // or reject
+				}, 5000);
+			});
 		}
 	}, {
 		key: 'render',

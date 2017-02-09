@@ -3,6 +3,7 @@ import AgentsModal from './AgentsModal';
 import AgentsTable from './AgentsTable';
 import Developer from './Developer';
 import {observer} from 'mobx-react';
+import Promise from 'promise';
 
 
 const developerStore = new Developer();
@@ -16,8 +17,20 @@ export default class AgentsStep extends React.Component {
 		  }
 
 	_isValidated() {
-		this.props.handleSubmit();
-		return true;
+		
+		return new Promise((resolve,reject) => {
+			   setTimeout(() => {
+
+			        //this.props.updateStore({savedToCloud: true});  // Update store here (this is just an example, in reality you will do it via redux or flux)
+
+			        // call resolve() to indicate that server validation or other aync method was a success.
+			        // ... only then will it move to the next step. reject() will indicate a fail
+			        //resolve();
+			         reject(); // or reject
+			      }, 5000);
+		
+		});
+		
 	}
 	
 	

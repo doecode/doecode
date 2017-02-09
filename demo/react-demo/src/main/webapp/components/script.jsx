@@ -36,24 +36,32 @@ class NameForm extends React.Component {
     }
 
     parseSaveResponse(data) {
-        alert('Saved record');
         console.log(data);
+        //metadataStore.finished = true;
 
     }
 
     render() {
         const metadata = metadataStore.metadata;
+        const finished = false;
+        const submitOptions = {
+        	method: 'POST',
+        	uri: 'services/react?action=save',
+        	body : metadata,
+        	json: true      
+        }
+        
         const steps =
         	[
         		{name: 'Metadata', component: <MetadataStep metadataStore={metadataStore}  autopopulate={this.autopopulate}/> },
-        		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} handleSubmit={this.handleSubmit}/>},
+        		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} submitOptions={submitOptions}/>},
         		{name: 'Confirmation', component: <ConfirmStep /> }
         		];
         return (
 
 
             <div className='step-progress'>
-            	<StepZilla steps={steps} nextTextOnFinalAction={"Submit"}/>
+            	<StepZilla steps={steps} dontValidate={false} preventEnterSubmission={true} prevBtnOnLastStep={false} stepsNavigation={finished} nextTextOnFinalAction={"Submit"}/>
             </div>
         );
     }

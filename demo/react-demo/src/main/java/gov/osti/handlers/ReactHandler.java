@@ -71,5 +71,6 @@ public class ReactHandler {
             md.save();
             log.info("JSON: " + md.toJson());
             return mapper.createObjectNode().putPOJO("metadata", md.toJson()).toString();
+
 	}
 }

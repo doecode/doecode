@@ -80,18 +80,26 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'parseSaveResponse',
         value: function parseSaveResponse(data) {
-            alert('Saved record');
             console.log(data);
+            //metadataStore.finished = true;
         }
     }, {
         key: 'render',
         value: function render() {
             var metadata = metadataStore.metadata;
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, handleSubmit: this.handleSubmit }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var finished = false;
+            var submitOptions = {
+                method: 'POST',
+                uri: 'services/react?action=save',
+                body: metadata,
+                json: true
+            };
+
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, submitOptions: submitOptions }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },
-                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, nextTextOnFinalAction: "Submit" })
+                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, dontValidate: false, preventEnterSubmission: true, prevBtnOnLastStep: false, stepsNavigation: finished, nextTextOnFinalAction: "Submit" })
             );
         }
     }]);
