@@ -54,9 +54,8 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (NameForm.__proto__ || Object.getPrototypeOf(NameForm)).call(this, props));
 
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.getSubmitPromise = _this.getSubmitPromise.bind(_this);
         _this.parseLoadResponse = _this.parseLoadResponse.bind(_this);
-        _this.parseSaveResponse = _this.parseSaveResponse.bind(_this);
         _this.autopopulate = _this.autopopulate.bind(_this);
         return _this;
     }
@@ -73,29 +72,35 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
             this.props.metadataStore.metadata = responseData.metadata;
         }
     }, {
-        key: 'handleSubmit',
-        value: function handleSubmit() {
-            (0, _utils.doAjax)('POST', 'services/react?action=save', this.parseSaveResponse, this.props.metadataStore.metadata);
-        }
-    }, {
-        key: 'parseSaveResponse',
-        value: function parseSaveResponse(data) {
-            console.log(data);
-            //metadataStore.finished = true;
+        key: 'getSubmitPromise',
+        value: function getSubmitPromise() {
+            var _this2 = this;
+
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: 'services/react?action=save',
+                    cache: false,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(_this2.props.metadataStore.metadata),
+                    contentType: "application/json; charset=utf-8",
+                    success: function success(data) {
+                        console.log(data);
+                        resolve();
+                    },
+                    error: function error(x, y, z) {
+                        console.log("got an error");
+                        reject();
+                    }
+                });
+            });
         }
     }, {
         key: 'render',
         value: function render() {
-            var metadata = metadataStore.metadata;
             var finished = false;
-            var submitOptions = {
-                method: 'POST',
-                uri: 'services/react?action=save',
-                body: metadata,
-                json: true
-            };
 
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: metadataStore, submitOptions: submitOptions }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: this.props.metadataStore, getSubmitPromise: this.getSubmitPromise }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },

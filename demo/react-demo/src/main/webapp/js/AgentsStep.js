@@ -57,17 +57,7 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 		key: '_isValidated',
 		value: function _isValidated() {
 
-			return new _promise2.default(function (resolve, reject) {
-				setTimeout(function () {
-
-					//this.props.updateStore({savedToCloud: true});  // Update store here (this is just an example, in reality you will do it via redux or flux)
-
-					// call resolve() to indicate that server validation or other aync method was a success.
-					// ... only then will it move to the next step. reject() will indicate a fail
-					resolve();
-					// reject(); // or reject
-				}, 5000);
-			});
+			return this.props.getSubmitPromise();
 		}
 	}, {
 		key: 'render',

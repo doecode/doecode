@@ -14,9 +14,8 @@ const metadataStore = new Metadata();
 class NameForm extends React.Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.getSubmitPromise = this.getSubmitPromise.bind(this);
         this.parseLoadResponse = this.parseLoadResponse.bind(this);
-        this.parseSaveResponse = this.parseSaveResponse.bind(this);
         this.autopopulate = this.autopopulate.bind(this);
     }
 
@@ -29,32 +28,37 @@ class NameForm extends React.Component {
     parseLoadResponse(responseData) {
         this.props.metadataStore.metadata = responseData.metadata;
     }
-
-
-    handleSubmit() {
-        doAjax('POST', 'services/react?action=save', this.parseSaveResponse, this.props.metadataStore.metadata);
-    }
-
-    parseSaveResponse(data) {
-        console.log(data);
-        //metadataStore.finished = true;
-
+    
+    getSubmitPromise() {
+		return new Promise((resolve,reject) => {
+		    $.ajax({
+		        url: 'services/react?action=save',
+		        cache: false,
+		        method: 'POST',
+		        dataType: 'json',
+		        data: JSON.stringify(this.props.metadataStore.metadata),
+		        contentType: "application/json; charset=utf-8",
+		        success: function(data) {
+		        	console.log(data);
+		        	resolve();
+		        	
+		        },
+		        error: function(x,y,z) {
+		        	console.log("got an error");
+		        	reject();
+		        }
+		      });
+		
+		});
     }
 
     render() {
-        const metadata = metadataStore.metadata;
         const finished = false;
-        const submitOptions = {
-        	method: 'POST',
-        	uri: 'services/react?action=save',
-        	body : metadata,
-        	json: true      
-        }
         
         const steps =
         	[
-        		{name: 'Metadata', component: <MetadataStep metadataStore={metadataStore}  autopopulate={this.autopopulate}/> },
-        		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} submitOptions={submitOptions}/>},
+        		{name: 'Metadata', component: <MetadataStep metadataStore={this.props.metadataStore}  autopopulate={this.autopopulate}/> },
+        		{name: 'Developers', component: <AgentsStep metadataStore={this.props.metadataStore} getSubmitPromise={this.getSubmitPromise}/>},
         		{name: 'Confirmation', component: <ConfirmStep /> }
         		];
         return (
