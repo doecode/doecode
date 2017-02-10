@@ -25,6 +25,8 @@ export default class Metadata {
         "other_special_requirements": '',
         "related_software": ''
     }
+    
+    @observable finished = false;
 
     addToDevelopers(developer) {
         developer.place = this.metadata.developers.length + 1;

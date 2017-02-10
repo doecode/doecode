@@ -19,14 +19,19 @@ export default class TextField extends React.Component {
 	  let input = null;
 	  const elementType = this.props.elementType;
 	  
+	  const labelStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-2 control-label"; 
+	  const divStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-4"; 
 	  
-	  if (elementType === 'input') {
+	  if (this.props.displayOnly && this.props.displayOnly()) {
+		  input = this.props.value;
+	  }
+	  else if (elementType === 'input') {
 		input = <input type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  } else if (elementType === 'select') {
 	     input = <select className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  } else if (elementType === 'textarea') {
 		 input = <textarea type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
-	  }
+	  } 
 	  return(
       <div>
       <label className="col-sm-2 control-label">

@@ -21,6 +21,10 @@ export default class MetadataStep extends React.Component {
     onFieldChange(id, value) {
         this.props.metadataStore.metadata[id] = value;
     }
+    
+    displayOnly() {
+    	return this.props.metadataStore.finished;
+    }
 	
 	
 	
@@ -32,8 +36,6 @@ export default class MetadataStep extends React.Component {
                 <div className="form-group form-group-sm row">
                 <TextField field="repository_link" label="Repository Link" elementType="input" value={metadata.repository_link} onChange={this.onFieldChange}/>
                 <button className="btn btn-primary btn-sm" onClick={this.props.autopopulate}> Autopopulate </button>
-                <div className="col-sm-6">
-                </div>
                 </div>
                 <hr></hr>
                 <div className="form-group form-group-sm row">
