@@ -12,17 +12,17 @@ export default class TextField extends React.Component {
   handleChange(event) {
     this.props.onChange(this.props.field,event.target.value);
   }
-  
+
 
 
   render() {
 	  let input = null;
 	  const elementType = this.props.elementType;
-	  
-	  const labelStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-2 control-label"; 
-	  const divStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-4"; 
-	  
-	  if (this.props.displayOnly && this.props.displayOnly()) {
+
+	  const labelStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-2 control-label";
+	  const divStyle = this.props.labelStyle != undefined ? this.props.labelStyle : "col-sm-4";
+
+	  if (this.props.displayOnly) {
 		  input = this.props.value;
 	  }
 	  else if (elementType === 'input') {
@@ -31,7 +31,7 @@ export default class TextField extends React.Component {
 	     input = <select className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  } else if (elementType === 'textarea') {
 		 input = <textarea type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
-	  } 
+	  }
 	  return(
       <div>
       <label className="col-sm-2 control-label">
@@ -45,4 +45,3 @@ export default class TextField extends React.Component {
   }
 
 }
-

@@ -11,13 +11,14 @@ export default class AgentsTable extends React.Component {
 
 
   rowClick(gridRow, event) {
+    if (!this.props.finished) {
 	  var dev = Object.assign({},gridRow.props.data);
-	  //var dev = gridRow.props.data;
 	  this.props.developerStore.developer = dev;
 	  this.props.developerStore.previousPlace = dev.place;
 	  this.props.developerStore.showModal = true;
 	  this.props.developerStore.isEdit = true;
-		
+  }
+
   }
 
   render() {
@@ -27,7 +28,7 @@ export default class AgentsTable extends React.Component {
     	    "locked": false,
     	    "visible": true,
     	    "displayName": "#"
-    	    
+
     	  },
     	  {
     	    "columnName": "first_name",
@@ -57,7 +58,7 @@ export default class AgentsTable extends React.Component {
     	    "locked": false,
     	    "visible": true,
     	    "displayName": "Email"
-    	  }, 
+    	  },
     	  {
       	    "columnName": "affiliations",
       	    "order": 7,

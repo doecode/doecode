@@ -56,6 +56,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
     key: 'render',
     value: function render() {
       var metadata = this.props.metadataStore.metadata;
+      var finished = this.props.metadataStore.finished;
       return _react2.default.createElement(
         'div',
         { className: 'container-fluid' },
@@ -65,62 +66,61 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'repository_link', label: 'Repository Link', elementType: 'input', value: metadata.repository_link, onChange: this.onFieldChange }),
-            _react2.default.createElement(
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'repository_link', label: 'Repository Link', elementType: 'input', value: metadata.repository_link, onChange: this.onFieldChange }),
+            !finished && _react2.default.createElement(
               'button',
               { className: 'btn btn-primary btn-sm', onClick: this.props.autopopulate },
               ' Autopopulate '
-            ),
-            _react2.default.createElement('div', { className: 'col-sm-6' })
+            )
           ),
           _react2.default.createElement('hr', null),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'software_title', label: 'Software Title', elementType: 'input', value: metadata.software_title, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'acronym', label: 'Acronym or Short Title', elementType: 'input', value: metadata.acronym, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'software_title', label: 'Software Title', elementType: 'input', value: metadata.software_title, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'acronym', label: 'Acronym or Short Title', elementType: 'input', value: metadata.acronym, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'description', label: 'Software Title', elementType: 'input', value: metadata.description, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'disclaimers', label: 'Disclaimers', elementType: 'input', value: metadata.disclaimers, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'description', label: 'Software Title', elementType: 'input', value: metadata.description, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'disclaimers', label: 'Disclaimers', elementType: 'input', value: metadata.disclaimers, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'doi', label: 'DOI', elementType: 'input', value: metadata.doi, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'keywords', label: 'Keywords', elementType: 'input', value: metadata.keywords, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'doi', label: 'DOI', elementType: 'input', value: metadata.doi, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'keywords', label: 'Keywords', elementType: 'input', value: metadata.keywords, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'originating_research_organizations', label: 'Originating Research Organizations', elementType: 'input', value: metadata.originating_research_organizations, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'originating_research_organizations', label: 'Originating Research Organizations', elementType: 'input', value: metadata.originating_research_organizations, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'other_special_requirements', label: 'Other Special Requirements', elementType: 'input', value: metadata.other_special_requirements, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_email', label: 'Recipient Email', elementType: 'input', value: metadata.recipient_email, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'other_special_requirements', label: 'Other Special Requirements', elementType: 'input', value: metadata.other_special_requirements, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_email', label: 'Recipient Email', elementType: 'input', value: metadata.recipient_email, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_name', label: 'Recipient Name', elementType: 'input', value: metadata.recipient_name, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_org', label: 'Recipient Organization', elementType: 'input', value: metadata.recipient_org, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_name', label: 'Recipient Name', elementType: 'input', value: metadata.recipient_name, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_org', label: 'Recipient Organization', elementType: 'input', value: metadata.recipient_org, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'recipient_phone', label: 'Recipient Phone Number', elementType: 'input', value: metadata.recipient_phone, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'related_identifiers', label: 'Related Identifiers', elementType: 'input', value: metadata.related_identifiers, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_phone', label: 'Recipient Phone Number', elementType: 'input', value: metadata.recipient_phone, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_identifiers', label: 'Related Identifiers', elementType: 'input', value: metadata.related_identifiers, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { field: 'related_software', label: 'Related Software', elementType: 'input', value: metadata.related_software, onChange: this.onFieldChange }),
-            _react2.default.createElement(_TextField2.default, { field: 'site_accession_number', label: 'Site Accession Number', elementType: 'input', value: metadata.site_accession_number, onChange: this.onFieldChange })
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_software', label: 'Related Software', elementType: 'input', value: metadata.related_software, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'site_accession_number', label: 'Site Accession Number', elementType: 'input', value: metadata.site_accession_number, onChange: this.onFieldChange })
           )
         )
       );

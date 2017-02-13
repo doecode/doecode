@@ -17,21 +17,21 @@ export default class AgentsStep extends React.Component {
 		  }
 
 	_isValidated() {
-		
+
 		return this.props.getSubmitPromise();
-		
+
 	}
-	
-	
+
+
 
 	  render() {
-		  
+
 		    const metadata = this.props.metadataStore.metadata;
 		    const developers = metadata.developers.slice();
 		    const devsLength = developers.length;
 		    return (
 		    <div>
-		      <AgentsTable developers={developers} developerStore={developerStore} />
+		      <AgentsTable developers={developers} developerStore={developerStore} finished={false} />
 		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore} devsLength={devsLength} />
 		    </div>
 		      );

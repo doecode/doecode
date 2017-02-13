@@ -76,6 +76,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
         value: function getSubmitPromise() {
             var _this2 = this;
 
+            var self = this;
             return new Promise(function (resolve, reject) {
                 $.ajax({
                     url: 'services/react?action=save',
@@ -86,6 +87,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
                     contentType: "application/json; charset=utf-8",
                     success: function success(data) {
                         console.log(data);
+                        self.props.metadataStore.finished = true;
                         resolve();
                     },
                     error: function error(x, y, z) {
@@ -98,13 +100,13 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var finished = false;
+            var finished = this.props.metadataStore.finished;
 
-            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: this.props.metadataStore, getSubmitPromise: this.getSubmitPromise }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, null) }];
+            var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: this.props.metadataStore, getSubmitPromise: this.getSubmitPromise }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, { metadataStore: this.props.metadataStore }) }];
             return _react2.default.createElement(
                 'div',
                 { className: 'step-progress' },
-                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, dontValidate: false, preventEnterSubmission: true, prevBtnOnLastStep: false, stepsNavigation: finished, nextTextOnFinalAction: "Submit" })
+                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, dontValidate: false, preventEnterSubmission: true, prevBtnOnLastStep: false, stepsNavigation: false, nextTextOnFinalAction: "Submit" })
             );
         }
     }]);

@@ -28,8 +28,9 @@ class NameForm extends React.Component {
     parseLoadResponse(responseData) {
         this.props.metadataStore.metadata = responseData.metadata;
     }
-    
+
     getSubmitPromise() {
+      var self = this;
 		return new Promise((resolve,reject) => {
 		    $.ajax({
 		        url: 'services/react?action=save',
@@ -40,32 +41,33 @@ class NameForm extends React.Component {
 		        contentType: "application/json; charset=utf-8",
 		        success: function(data) {
 		        	console.log(data);
+              self.props.metadataStore.finished = true;
 		        	resolve();
-		        	
+
 		        },
 		        error: function(x,y,z) {
 		        	console.log("got an error");
 		        	reject();
 		        }
 		      });
-		
+
 		});
     }
 
     render() {
-        const finished = false;
-        
+        const finished = this.props.metadataStore.finished;
+
         const steps =
         	[
         		{name: 'Metadata', component: <MetadataStep metadataStore={this.props.metadataStore}  autopopulate={this.autopopulate}/> },
         		{name: 'Developers', component: <AgentsStep metadataStore={this.props.metadataStore} getSubmitPromise={this.getSubmitPromise}/>},
-        		{name: 'Confirmation', component: <ConfirmStep /> }
+        		{name: 'Confirmation', component: <ConfirmStep metadataStore={this.props.metadataStore}/> }
         		];
         return (
 
 
             <div className='step-progress'>
-            	<StepZilla steps={steps} dontValidate={false} preventEnterSubmission={true} prevBtnOnLastStep={false} stepsNavigation={finished} nextTextOnFinalAction={"Submit"}/>
+            	<StepZilla steps={steps} dontValidate={false} preventEnterSubmission={true} prevBtnOnLastStep={false} stepsNavigation={false} nextTextOnFinalAction={"Submit"}/>
             </div>
         );
     }
