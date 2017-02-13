@@ -28,6 +28,12 @@ export default class MetadataStep extends React.Component {
 	render() {
 		const metadata = this.props.metadataStore.metadata;
 		const finished = this.props.metadataStore.finished;
+		
+		const licenses = {
+				"BSD 3-Clause" : "BSD 3-Clause",
+				"GNU General Public License" : "GNU General Public License",
+				"MIT License" : "MIT License"};
+		
 		return (
 	            <div className="container-fluid">
                 <form id="react_form" className="form-horizontal col-sm-offset-2 col-sm-8">
@@ -51,7 +57,7 @@ export default class MetadataStep extends React.Component {
                 <TextField displayOnly={finished} field="keywords" label="Keywords" elementType="input" value={metadata.keywords} onChange={this.onFieldChange}/>
                 </div>
                 <div className="form-group form-group-sm row">
-                <TextField displayOnly={finished} field="license" label="License" elementType="select" value={metadata.license} onChange={this.onFieldChange}/>
+                <TextField options={licenses} displayOnly={finished} field="license" label="License" elementType="select" value={metadata.license} onChange={this.onFieldChange}/>
                 <TextField displayOnly={finished} field="originating_research_organizations" label="Originating Research Organizations" elementType="input" value={metadata.originating_research_organizations} onChange={this.onFieldChange}/>
                 </div>
                 <div className="form-group form-group-sm row">

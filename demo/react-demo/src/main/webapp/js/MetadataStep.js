@@ -57,6 +57,12 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
     value: function render() {
       var metadata = this.props.metadataStore.metadata;
       var finished = this.props.metadataStore.finished;
+
+      var licenses = {
+        "BSD 3-Clause": "BSD 3-Clause",
+        "GNU General Public License": "GNU General Public License",
+        "MIT License": "MIT License" };
+
       return _react2.default.createElement(
         'div',
         { className: 'container-fluid' },
@@ -95,7 +101,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
           _react2.default.createElement(
             'div',
             { className: 'form-group form-group-sm row' },
-            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { options: licenses, displayOnly: finished, field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }),
             _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'originating_research_organizations', label: 'Originating Research Organizations', elementType: 'input', value: metadata.originating_research_organizations, onChange: this.onFieldChange })
           ),
           _react2.default.createElement(

@@ -28,7 +28,13 @@ export default class TextField extends React.Component {
 	  else if (elementType === 'input') {
 		input = <input type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  } else if (elementType === 'select') {
-	     input = <select className="form-control" value={this.props.value} onChange={this.handleChange} />
+		 const options = this.props.options;
+	     input = <select className="form-control" value={this.props.value} onChange={this.handleChange}>
+	     {Object.keys(options).map(function(key) {
+	    	 return <option key={key} value={options[key]}>{key}</option>
+	     })
+	     }
+	     input += </select>
 	  } else if (elementType === 'textarea') {
 		 input = <textarea type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  }
