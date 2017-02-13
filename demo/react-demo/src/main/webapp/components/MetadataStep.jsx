@@ -30,6 +30,7 @@ export default class MetadataStep extends React.Component {
 		const finished = this.props.metadataStore.finished;
 		
 		const licenses = {
+				"Select One" : "",
 				"BSD 3-Clause" : "BSD 3-Clause",
 				"GNU General Public License" : "GNU General Public License",
 				"MIT License" : "MIT License"};
