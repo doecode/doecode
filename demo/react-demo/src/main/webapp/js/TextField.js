@@ -64,8 +64,7 @@ var TextField = function (_React$Component) {
 																{ key: key, value: options[key] },
 																key
 														);
-												}),
-												"input += "
+												})
 										);
 								})();
 						} else if (elementType === 'textarea') {

@@ -34,7 +34,7 @@ export default class TextField extends React.Component {
 	    	 return <option key={key} value={options[key]}>{key}</option>
 	     })
 	     }
-	     input += </select>
+	     </select>
 	  } else if (elementType === 'textarea') {
 		 input = <textarea type="text" className="form-control" value={this.props.value} onChange={this.handleChange} />
 	  }

@@ -59,6 +59,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
       var finished = this.props.metadataStore.finished;
 
       var licenses = {
+        "Select One": "",
         "BSD 3-Clause": "BSD 3-Clause",
         "GNU General Public License": "GNU General Public License",
         "MIT License": "MIT License" };
