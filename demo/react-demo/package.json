@@ -6,7 +6,9 @@
   "scripts": {
     "babel-compile-components": "babel src/main/webapp/components --out-dir src/main/webapp/js",
     "babel-compile-stores": "babel src/main/webapp/stores --out-dir src/main/webapp/js",
-    "build-form": "browserify src/main/webapp/js/script.js -o src/main/webapp/bundles/formbundle.js -d"
+    "build-form": "browserify src/main/webapp/js/script.js -o src/main/webapp/bundles/formbundle.js -d",
+    "babel-compile-splash": "babel src/main/webapp/splash/splash.jsx --out-file src/main/webapp/splash/splash.js",
+    "build-splash": "browserify src/main/webapp/splash/splash.js -o src/main/webapp/bundles/splashbundle.js -d"
   },
   "keywords": [],
   "author": "",
