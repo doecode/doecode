@@ -27,6 +27,13 @@ export default class Metadata {
     }
 
     @observable finished = false;
+    
+    updateMetadata(data) {
+    	const oldRepo = new String(this.metadata.repository_link);
+    	data.repository_link = oldRepo;
+    	this.metadata = data;
+    	
+    }
 
     addToDevelopers(developer) {
         developer.place = this.metadata.developers.length + 1;

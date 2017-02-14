@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-		value: true
+	value: true
 });
 exports.default = undefined;
 
@@ -28,30 +28,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ConfirmStep = function (_React$Component) {
-		_inherits(ConfirmStep, _React$Component);
+	_inherits(ConfirmStep, _React$Component);
 
-		function ConfirmStep(props) {
-				_classCallCheck(this, ConfirmStep);
+	function ConfirmStep(props) {
+		_classCallCheck(this, ConfirmStep);
 
-				return _possibleConstructorReturn(this, (ConfirmStep.__proto__ || Object.getPrototypeOf(ConfirmStep)).call(this, props));
+		return _possibleConstructorReturn(this, (ConfirmStep.__proto__ || Object.getPrototypeOf(ConfirmStep)).call(this, props));
+	}
+
+	_createClass(ConfirmStep, [{
+		key: 'render',
+		value: function render() {
+			var metadata = this.props.metadataStore.metadata;
+			var developers = metadata.developers.slice();
+			var devsLength = developers.length;
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h2',
+					null,
+					' Your record has been saved with the DOE Code ID of ',
+					metadata.code_id
+				),
+				_react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore }),
+				_react2.default.createElement(_AgentsTable2.default, { developers: developers, finished: true })
+			);
 		}
+	}]);
 
-		_createClass(ConfirmStep, [{
-				key: 'render',
-				value: function render() {
-						var metadata = this.props.metadataStore.metadata;
-						var developers = metadata.developers.slice();
-						var devsLength = developers.length;
-						return _react2.default.createElement(
-								'div',
-								null,
-								_react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore }),
-								_react2.default.createElement(_AgentsTable2.default, { developers: developers, finished: true })
-						);
-				}
-		}]);
-
-		return ConfirmStep;
+	return ConfirmStep;
 }(_react2.default.Component);
 
 exports.default = ConfirmStep;

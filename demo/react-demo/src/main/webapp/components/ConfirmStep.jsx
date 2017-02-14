@@ -16,8 +16,9 @@ export default class ConfirmStep extends React.Component {
 			const devsLength = developers.length;
 		    return (
 		    <div>
+		    <h2> Your record has been saved with the DOE Code ID of {metadata.code_id}</h2>
 		    <MetadataStep metadataStore={this.props.metadataStore}/>
-				<AgentsTable developers={developers} finished={true} />
+		    <AgentsTable developers={developers} finished={true} />
 		    </div>
 		      );
 		  }

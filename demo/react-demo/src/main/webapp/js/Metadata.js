@@ -7,7 +7,7 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _desc, _value, _class, _descriptor;
+var _desc, _value, _class, _descriptor, _descriptor2;
 
 var _mobx = require("mobx");
 
@@ -61,9 +61,18 @@ var Metadata = (_class = function () {
         _classCallCheck(this, Metadata);
 
         _initDefineProp(this, "metadata", _descriptor, this);
+
+        _initDefineProp(this, "finished", _descriptor2, this);
     }
 
     _createClass(Metadata, [{
+        key: "updateMetadata",
+        value: function updateMetadata(data) {
+            var oldRepo = new String(this.metadata.repository_link);
+            data.repository_link = oldRepo;
+            this.metadata = data;
+        }
+    }, {
         key: "addToDevelopers",
         value: function addToDevelopers(developer) {
             developer.place = this.metadata.developers.length + 1;
@@ -147,6 +156,11 @@ var Metadata = (_class = function () {
             "other_special_requirements": '',
             "related_software": ''
         };
+    }
+}), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "finished", [_mobx.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+        return false;
     }
 })), _class);
 exports.default = Metadata;

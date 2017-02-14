@@ -26,7 +26,7 @@ class NameForm extends React.Component {
 
 
     parseLoadResponse(responseData) {
-        this.props.metadataStore.metadata = responseData.metadata;
+        this.props.metadataStore.updateMetadata(responseData.metadata);
     }
 
     getSubmitPromise() {
@@ -42,6 +42,7 @@ class NameForm extends React.Component {
 		        success: function(data) {
 		        	console.log(data);
               self.props.metadataStore.finished = true;
+              self.props.metadataStore.metadata.code_id = data.metadata.code_id;
 		        	resolve();
 
 		        },

@@ -69,6 +69,13 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				null,
+				_react2.default.createElement(
+					'h3',
+					null,
+					' (Developers associated with ',
+					metadata.repository_link,
+					') '
+				),
 				_react2.default.createElement(_AgentsTable2.default, { developers: developers, developerStore: developerStore, finished: false }),
 				_react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore, devsLength: devsLength })
 			);

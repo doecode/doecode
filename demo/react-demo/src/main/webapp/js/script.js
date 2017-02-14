@@ -69,7 +69,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     }, {
         key: 'parseLoadResponse',
         value: function parseLoadResponse(responseData) {
-            this.props.metadataStore.metadata = responseData.metadata;
+            this.props.metadataStore.updateMetadata(responseData.metadata);
         }
     }, {
         key: 'getSubmitPromise',
@@ -88,6 +88,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
                     success: function success(data) {
                         console.log(data);
                         self.props.metadataStore.finished = true;
+                        self.props.metadataStore.metadata.code_id = data.metadata.code_id;
                         resolve();
                     },
                     error: function error(x, y, z) {
