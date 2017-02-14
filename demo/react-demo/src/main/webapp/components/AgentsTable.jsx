@@ -72,10 +72,8 @@ export default class AgentsTable extends React.Component {
 	return(
 
 <div className="form-group form-group-sm col-sm-12">
-      <div className="col-sm-offset-1 col-sm-10">
         <h2 className="no-margin-left">Developers</h2>
         <Griddle results = {this.props.developers} columns={columns} columnMetadata={configureMetadata} showSettings={true} showFilter={true} onRowClick={this.rowClick} />
-      </div>
 </div>
 );
   }

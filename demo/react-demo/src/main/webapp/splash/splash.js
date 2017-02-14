@@ -59,114 +59,6 @@ var Splash = function (_React$Component) {
                 { className: 'container-fluid' },
                 _react2.default.createElement(
                     'div',
-                    { 'class': 'col-xs-12' },
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'The Department of Energy (DOE) Office of Scientific and Technical Information (OSTI) is building a new DOE software center.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code is the reimagining of OSTI\'s current product for the submission of software, the Energy Science and Technology Software Center, or ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: '//www.osti.gov/moved/estsc/' },
-                            'ESTSC'
-                        ),
-                        '.  Since DOE Code is still under development, if you need to submit, search, or order software, please visit the ESTSC site for instructions.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code, when launched, will provide a best-in-class service for the submission of software. As a form of scientific and technical information, software is a result of the Department\'s research and development activities at the DOE national laboratories and other DOE facilities/contractors.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code will provide ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: 'https://www.osti.gov/ostiblog/osti-developing-open-source-social-coding-platform-doe-scientific-software' },
-                            'an open source, social platform for DOE scientific software'
-                        ),
-                        '.  DOE Code will connect to repositories on GitHub, Bitbucket, and others, but will also provide a place to host code for users that are unable to use other hosting services.  Since DOE Code is itself an open source product, other institutions will be able to download and deploy it for their own purposes too. You can follow DOE Code\u2019s development at the ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: 'https://github.com/doecode' },
-                            'DOE Code GitHub site.'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'To provide a new, modern way of interacting, DOE Code will not only provide the ability to link to references (papers, datasets) but also to other documents, manuals, examples, charts, forums, etc., in one place. All of this scientific and technical information will be linked to scientific software, whether it be software for modeling and simulation, data analytics or instrument control.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'The current software center, ESTSC, contains over 3,500 distinct pieces of software resulting from DOE R&D, as well as selected software from the Nuclear Energy Agency of the Organization for Economic Cooperation and Development.  ESTSC is the centralized DOE software management portal.  The ESTSC portal provides access to software packages, including source code, executable object code, and the minimum support documentation (e.g., software user guide or manual) needed to use the software or to modify the software to support subsequent development efforts.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'ESTSC and DOE Code are managed and operated by DOE OSTI.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'The Department of Energy (DOE) Office of Scientific and Technical Information (OSTI) is building a new DOE software center.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code is the reimagining of OSTI\'s current product for the submission of software, the Energy Science and Technology Software Center, or ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: '//www.osti.gov/moved/estsc/' },
-                            'ESTSC'
-                        ),
-                        '.  Since DOE Code is still under development, if you need to submit, search, or order software, please visit the ESTSC site for instructions.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code, when launched, will provide a best-in-class service for the submission of software. As a form of scientific and technical information, software is a result of the Department\'s research and development activities at the DOE national laboratories and other DOE facilities/contractors.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'DOE Code will provide ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: 'https://www.osti.gov/ostiblog/osti-developing-open-source-social-coding-platform-doe-scientific-software' },
-                            'an open source, social platform for DOE scientific software'
-                        ),
-                        '.  DOE Code will connect to repositories on GitHub, Bitbucket, and others, but will also provide a place to host code for users that are unable to use other hosting services.  Since DOE Code is itself an open source product, other institutions will be able to download and deploy it for their own purposes too. You can follow DOE Code\u2019s development at the ',
-                        _react2.default.createElement(
-                            'a',
-                            { href: 'https://github.com/doecode' },
-                            'DOE Code GitHub site.'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'To provide a new, modern way of interacting, DOE Code will not only provide the ability to link to references (papers, datasets) but also to other documents, manuals, examples, charts, forums, etc., in one place. All of this scientific and technical information will be linked to scientific software, whether it be software for modeling and simulation, data analytics or instrument control.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'The current software center, ESTSC, contains over 3,500 distinct pieces of software resulting from DOE R&D, as well as selected software from the Nuclear Energy Agency of the Organization for Economic Cooperation and Development.  ESTSC is the centralized DOE software management portal.  The ESTSC portal provides access to software packages, including source code, executable object code, and the minimum support documentation (e.g., software user guide or manual) needed to use the software or to modify the software to support subsequent development efforts.'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'ESTSC and DOE Code are managed and operated by DOE OSTI.'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
                     { className: 'row' },
                     _react2.default.createElement(
                         'div',
@@ -201,6 +93,62 @@ var Splash = function (_React$Component) {
                                 )
                             )
                         )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'col-xs-12' },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'The Department of Energy (DOE) Office of Scientific and Technical Information (OSTI) is building a new DOE software center.'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'DOE Code is the reimagining of OSTI\'s current product for the submission of software, the Energy Science and Technology Software Center, or ',
+                        _react2.default.createElement(
+                            'a',
+                            { href: '//www.osti.gov/moved/estsc/' },
+                            'ESTSC'
+                        ),
+                        '.  Since DOE Code is still under development, if you need to submit, search, or order software, please visit the ESTSC site for instructions.'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'DOE Code, when launched, will provide a best-in-class service for the submission of software. As a form of scientific and technical information, software is a result of the Department\'s research and development activities at the DOE national laboratories and other DOE facilities/contractors.'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'DOE Code will provide ',
+                        _react2.default.createElement(
+                            'a',
+                            { href: 'https://www.osti.gov/ostiblog/osti-developing-open-source-social-coding-platform-doe-scientific-software' },
+                            'an open source, social platform for DOE scientific software'
+                        ),
+                        '.  DOE Code will connect to repositories on GitHub, Bitbucket, and others, but will also provide a place to host code for users that are unable to use other hosting services.  Since DOE Code is itself an open source product, other institutions will be able to download and deploy it for their own purposes too. You can follow DOE Code\u2019s development at the ',
+                        _react2.default.createElement(
+                            'a',
+                            { href: 'https://github.com/doecode' },
+                            'DOE Code GitHub site.'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'To provide a new, modern way of interacting, DOE Code will not only provide the ability to link to references (papers, datasets) but also to other documents, manuals, examples, charts, forums, etc., in one place. All of this scientific and technical information will be linked to scientific software, whether it be software for modeling and simulation, data analytics or instrument control.'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'The current software center, ESTSC, contains over 3,500 distinct pieces of software resulting from DOE R&D, as well as selected software from the Nuclear Energy Agency of the Organization for Economic Cooperation and Development.  ESTSC is the centralized DOE software management portal.  The ESTSC portal provides access to software packages, including source code, executable object code, and the minimum support documentation (e.g., software user guide or manual) needed to use the software or to modify the software to support subsequent development efforts.'
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'ESTSC and DOE Code are managed and operated by DOE OSTI.'
                     )
                 ),
                 _react2.default.createElement(

@@ -50,7 +50,7 @@ export default class MetadataStep extends React.Component {
                 <TextField displayOnly={finished} field="acronym" label="Acronym or Short Title" elementType="input" value={metadata.acronym} onChange={this.onFieldChange}/>
                 </div>
                 <div className="form-group form-group-sm row">
-                <TextField displayOnly={finished} field="description" label="Software Title" elementType="input" value={metadata.description} onChange={this.onFieldChange}/>
+                <TextField displayOnly={finished} field="description" label="Description/Abstract" elementType="input" value={metadata.description} onChange={this.onFieldChange}/>
                 <TextField displayOnly={finished} field="disclaimers" label="Disclaimers" elementType="input" value={metadata.disclaimers} onChange={this.onFieldChange}/>
                 </div>
                 <div className="form-group form-group-sm row">
