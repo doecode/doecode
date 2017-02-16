@@ -63,7 +63,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
     _createClass(NameForm, [{
         key: 'autopopulate',
         value: function autopopulate(event) {
-            (0, _utils.doAjax)('GET', "services/react?action=autopopulate&repo=" + this.props.metadataStore.metadata.repository_link, this.parseLoadResponse);
+            (0, _utils.doAjax)('GET', "services/metadata/autopopulate?repo=" + this.props.metadataStore.metadata.repository_link, this.parseLoadResponse);
             event.preventDefault();
         }
     }, {
@@ -79,7 +79,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
             var self = this;
             return new Promise(function (resolve, reject) {
                 $.ajax({
-                    url: 'services/react?action=save',
+                    url: 'services/metadata',
                     cache: false,
                     method: 'POST',
                     dataType: 'json',
