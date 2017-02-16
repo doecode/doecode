@@ -1,0 +1,38 @@
+#Metadata template for DOECode users
+#Version: 1.1
+
+---
+repository_link: https://github.com/doecode/dev-test-repo
+developers:
+- affiliations: Oak Ridge National Laboratory
+  first_name: Jay Jay
+  last_name: Billings
+- email: knight.kathryn@gmail.com
+  affiliations: Oak Ridge National Laboratory
+  first_name: Katie
+  last_name: Knight
+- first_name: Neal
+  last_name: Ensor
+  email: ensorn@osti.gov
+- affiliations: Information International Associates (Contractor to DOE)
+  first_name: Thomas
+  last_name: Welsch
+  email: welscht@osti.gov
+originating_research_organizations: OSTI, ORNL
+software_title: Sample development and testing repository for DOECode
+acronym: dev-test-repo
+doi: 10.5072/23892
+description: > 
+  An example testing repository for submissions of YAML and other associated
+  testing projects related to the development of DOECode.
+related_identifiers: "related identifier"
+keywords: software, DOECode, hosting repositories
+disclaimers: open source
+recipient_name: Neal Ensor
+recipient_email: ensorn@osti.gov
+recipient_phone: 865-576-1295
+recipient_org: DOE OSTI
+site_accession_number: '384983'
+other_special_requirements: none
+related_software: linux, github, bitbucket
+
