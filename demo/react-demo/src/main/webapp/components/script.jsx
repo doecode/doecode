@@ -20,7 +20,7 @@ class NameForm extends React.Component {
     }
 
     autopopulate(event) {
-    	doAjax('GET', "services/react?action=autopopulate&repo=" + this.props.metadataStore.metadata.repository_link,this.parseLoadResponse);
+    	doAjax('GET', "services/metadata/autopopulate?repo=" + this.props.metadataStore.metadata.repository_link,this.parseLoadResponse);
     	event.preventDefault();
     }
 
@@ -33,7 +33,7 @@ class NameForm extends React.Component {
       var self = this;
 		return new Promise((resolve,reject) => {
 		    $.ajax({
-		        url: 'services/react?action=save',
+		        url: 'services/metadata',
 		        cache: false,
 		        method: 'POST',
 		        dataType: 'json',

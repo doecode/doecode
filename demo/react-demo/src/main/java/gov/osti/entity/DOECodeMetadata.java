@@ -17,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import gov.osti.database.DBOps;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -76,33 +75,6 @@ public class DOECodeMetadata implements Serializable {
 	public DOECodeMetadata() {
 
 	}
-
-	/**
-	 * lookup- Syntactic sugar for DatabaseOps function. Tries to lookup metadata based off provided codeId.
-	 * @param codeId
-	 * @return Returns metadata for the code ID or null if none exists
-	 */
-	public static DOECodeMetadata lookup(long codeId) {
-		return DBOps.lookupMetadata(codeId);
-	}
-
-	/**
-	 * save - Syntactic sugar for DatabaseOps function. Persists the metadata object to memory.
-	 */
-	public void save() {
-		//implement later
-                log.info("Saving record to database: " + this.getSoftwareTitle());
-		DBOps.saveMetadata(this);
-	}
-
-	public static void delete(long codeId) {
-		DBOps.deleteMetadata(codeId);
-	}
-
-	public void delete() {
-		DBOps.deleteMetadata(this.codeId);
-	}
-
 
 	/**
 	 * getJson - Serializes the Metadata Object into a JSON.
