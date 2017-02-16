@@ -3,3 +3,4 @@ demo/form-demo/.gitignore
 demo/form-demo/.classpath
 demo/form-demo/.settings/
 /demo/react-demo/nbproject/
+application/nb-configuration.xml

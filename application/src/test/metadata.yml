@@ -1,0 +1,85 @@
+---
+#Metadata template for DOECode users
+#Version: 1.0
+
+#REQUIRED FIELDS
+
+title: "My fancy software title" 
+date: 2017-02-07 #on what date was this code created YYYY-MM-DD
+description: |
+  This is a sample lengthy description.
+  It may span multiple lines, and captures the newlines as part
+  of its description.
+license: #give the URL for your license
+openSourceProject: 1 
+governmentWideReuseProject: 1
+codeRepository: https://github.com/doecode/dev-test-repo
+
+doeIdentifier:
+   -
+    identName: "DOE Contract Number"
+    identNumber: "DE-19233843"
+   -    
+    identName: "DOE Contract Number"
+    identNumber: "DE-2342342"
+
+#repeat developer field as needed
+developer: 
+  - 
+    basedAt: OSTI
+    email: nensor@gmail.com
+    familyname: Ensor
+    firstname: Neal
+    orcID: 
+      identName: ORCiD
+      identNumber: 1111222233334444
+  - 
+    basedAt: OSTI
+    email: welscht@osti.gov
+    familyname: Welsch
+    firstname: Thomas
+    
+submittingOrganization: 
+  - orgName: OSTI
+  - orgName: ORNL
+sponsoringOrganization: 
+  - orgName: #What org funded this project? Repeat field as needed.
+researchOrganization: 
+  - orgName: #What org contributed to this research? Repeat field as needed. 
+
+
+#OPTIONAL FIELDS
+
+keywords:
+  - "Fancy Hats"
+  - Generic
+  - Portable
+
+#repeat contributor field as needed
+contributor:
+    -
+      firstname:
+      familyname:
+      email:
+      orcID:
+        identName: "ORCiD"
+        identNumber: #type in orcid
+      basedAt: #current primary workplace
+
+doi: 
+  identName: "DOI"
+  identNumber: https://doi.org/10.5072/123456
+
+#repeat field as needed
+additionalIdentifier:
+    -
+      identName: #name of the ID type, e.g. "B&R Code"
+      identNumber: #the alpha/numeric identifier 
+  
+countryOfOrigin: #primary location of software development
+hasVersion: #url of newer version
+isVersionOf: #url of older version
+contactPerson: 
+requirements: #list any requirements
+relatedSoftware: #url of related software repo
+relatedDocumentation: #url or uri of related docs
