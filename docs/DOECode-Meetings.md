@@ -25,3 +25,8 @@
 | Labs - HPC Team | 20161221 |
 | Technical Team | 20170106 |
 | Policy Team | 20170106 |
+| Core Team | 20170113 |
+| Technical Team | 20170120 |
+| Technical Team | 20170127 |
+| Policy Team | 20170203 |
+| Technical Team | 20170203 |

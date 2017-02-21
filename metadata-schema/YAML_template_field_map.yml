@@ -1,0 +1,145 @@
+--- 
+# A metadata schema for DOECode: http://github.com/doecode/doecode/
+# Version: 1.0
+type: map
+
+mapping: 
+  title: 
+    property: 'dcterms:title'
+    type: str
+    required: yes
+  date: 
+    property: 'dcterms:date'
+    type: date
+    required: yes
+  description: 
+    property: 'dcterms:description'
+    type: str
+    required: yes
+  license: 
+    property: 'dcterms:license'
+    type: str
+    required: yes
+  openSourceProject: 
+    property: 'dcterms:rights'
+    type: boolean
+    required: yes
+  governmentWideReuseProject: 
+    property: 'dcterms:rights'
+    type: boolean
+    required: yes
+  codeRepository: 
+    property: 'schema:codeRepository'
+    type: str
+    required: yes
+  identifier: &identifier
+    property: 'adms:Identifier'
+    type: map
+    identName: 
+      property: 'adms:schemaAgency'
+      type: str
+      required: yes
+    identNumber: 
+      property: 'skos:notation'
+      type: str
+      required: yes
+  organization: &organization
+    property: 'org:Organization'
+    type: map
+    orgName:
+      property: 'skos:prefLabel'
+      type: str
+      required: yes
+    orgAcronym: 
+      property: 'skos:altLabel'
+      required: no
+    orgID: 
+      property: 'adms:identifier'
+      <<: *identifier
+      required: no
+  person: &person
+    property: 'foaf:Person'
+    type: map
+    firstname: 
+      property: 'foaf:firstName'
+      type: str
+      required: yes
+    familyname: 
+      property: 'foaf:familyName'
+      type: str
+      required: yes
+    email: 
+      property: 'foaf:mbox_sha1sum'
+      type: str
+      required: yes
+    orcID:
+      property: 'adms:identifier'
+      <<: *identifier
+      required: yes
+    basedAt:
+      property: 'org:basedAt'
+      <<: *organization
+      required: yes
+  doeIdentifier: 
+    property: 'adms:identifier'
+    <<: *identifier
+    required: yes
+  keywords: 
+    property: 'schema:keywords'
+    type: str
+    required: no
+  developer:
+    property: 'dcterms:creator'
+    <<: *person
+    required: yes
+  contributor:
+    property: 'dcterms:contributor'
+    <<: *person
+    <<: *organization
+    'org:role':
+      submittingOrganization: 
+        property: 'org:Role'
+        'skos:preflabel': "Submitting Organization"
+      sponsoringOrganization:
+        property: 'org:Role'  
+        'skos:prefLabel': "Sponsoring Organization"
+      researchOrganization:
+        property: 'org:Role'
+        'skos:prefLabel': "Research Organization"
+    required: no
+  doi:
+    property: 'adms:identifier'
+    <<: *identifier
+    required: no
+  additionalIdentifier:
+    property: 'adms:identifier'
+    <<: *identifier
+    required: no
+  countryOfOrigin: 
+    property: 'dcterms:coverage'	
+    type: str
+    required: no
+  hasVersion: 
+    property: 'dcterms:hasVersion'
+    type: str
+    required: no
+  isVersionOf: 
+    property: 'dcterms:isVersionOf'
+    type: str
+    required: no
+  contactPerson:
+    property: 'adms:contactPoint'  
+    <<: *person
+    required: no
+  requirements:
+    property: 'dcterms:requires'
+    type: str
+    required: no
+  relatedSoftware:
+    property: 'dcterms:references'
+    type: str
+    required: no
+  relatedDocumentation:
+    property: 'dcterms:references'
+    type: str
+    required: no
