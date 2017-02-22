@@ -10,6 +10,8 @@ import gov.osti.connectors.bitbucket.User;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import org.apache.http.client.methods.HttpGet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +20,22 @@ import org.slf4j.LoggerFactory;
  *
  * @author ensornl
  */
-public class BitBucket {
+public class BitBucket implements ConnectorInterface {
     // base URL for BitBucket API requests
     private static final String BITBUCKET_API_URL="https://api.bitbucket.org/2.0/repositories/";
     // base URL for RAW view requests (suffix with "owner/project/raw/master/metadata.yml")
     private static final String BITBUCKET_RAW_URL="https://bitbucket.org/";
     // a logger
     private static final Logger log = LoggerFactory.getLogger(BitBucket.class);
+    
+    /**
+     * Initialize the Connector
+     * @throws IOException on errors
+     */
+    @Override
+    public void init() throws IOException {
+        // not required
+    }
     
     /**
      * Split a given Name into two parts, assuming it's "first last".  If no
@@ -41,15 +52,47 @@ public class BitBucket {
                 new String[] { name.substring(0,space), name.substring(space+1) };
     }
     
+    private static String getProjectNameFromUrl(String url) {
+        try {
+            String safeUrl = (null==url) ? "" : url.trim();
+            // err on the side of encryption, if no protocol provided
+            URI uri = new URI(
+                    !safeUrl.startsWith("http") ?
+                            "https://" + safeUrl : 
+                            safeUrl);
+            
+            // protection against bad URL input
+            if (null!=uri.getHost()) {
+                if (uri.getHost().contains("bitbucket.org")) {
+                    // skip the slash
+                    String path = uri.getPath();
+                    return path.substring(path.indexOf("/")+1);
+                }
+            }
+        } catch ( URISyntaxException e ) {
+            // warn that URL is not a valid URI
+            log.warn("Not a valid URI: " + url + " message: " + e.getMessage());
+        }
+        // don't recognize this one
+        return null;
+    }
+    
     /**
      * Read API details from a Project hosted on BitBucket.
      * 
-     * @param name the Project Name to read from
+     * @param url the URL to read
      * @return JsonElement of the auto-populated DOECodeMetadata entity
      */
-    public static JsonNode readProject(String name) {
+    @Override
+    public JsonNode read(String url) {
         DOECodeMetadata md = new DOECodeMetadata();
         ObjectMapper mapper = new ObjectMapper();
+        
+        String name = getProjectNameFromUrl(url);
+        if (null==name)
+            return null;
+        
+        // load the API information
         HttpGet get = new HttpGet(BITBUCKET_API_URL + name);
         
         try {
@@ -92,12 +135,14 @@ public class BitBucket {
                     md.add(developer);
                 }
             }
-            
+            // send back the metadata we read
+            return md.toJson();
         } catch ( IOException e ) {
             // something went wrong
             log.warn("IO Error reading from BitBucket: " + e.getMessage());
             log.warn("Read from " + name);
         }
-        return md.toJson();
+        // unknown
+        return null;
     }
 }

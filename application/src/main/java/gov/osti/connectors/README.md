@@ -41,4 +41,33 @@ BitBucket API maps elements:
     Owner, take that as the sole developer
   * First/Last Name
 
+# ConnectorFactory instantiation
 
+These connector instances should each implement the ConnectorInterface interface
+in order to be added to a ConnectorFactory instantiation.  The interface defines
+only two methods:
+
+``` java
+  init() throws IOException
+```
+
+  Initialize the Connector, if necessary, throwing IOException on errors
+
+``` java
+  read(String url)
+```
+
+  Attempt to load Metadata information from the given URL, if recognized. If not,
+  or unable to do so, return null.
+
+In order to use the Factory, one should acquire an instance, and add each desired Connector to it:
+
+``` java
+  ConnectorFactory factory = ConnectorFactory.getInstance()
+                             .add(new GitHub())
+                             .add(new SourceForge())
+                             .build();
+```
+
+Simply call the `factory.read(String)` method to obtain any JSON metadata if possible.
+Note this may return null if not recognized.

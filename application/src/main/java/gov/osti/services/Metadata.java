@@ -2,8 +2,13 @@
  */
 package gov.osti.services;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.osti.connectors.BitBucket;
 import gov.osti.connectors.Connector;
+import gov.osti.connectors.ConnectorFactory;
+import gov.osti.connectors.GitHub;
+import gov.osti.connectors.SourceForge;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.listeners.DoeServletContextListener;
 import java.io.IOException;
@@ -45,6 +50,20 @@ import org.slf4j.LoggerFactory;
 public class Metadata {
     // logger instance
     private static Logger log = LoggerFactory.getLogger(Metadata.class);
+    private static ConnectorFactory factory;
+    
+    // create and start a ConnectorFactory for use by "autopopulate" service
+    static {
+        try {
+        factory = ConnectorFactory.getInstance()
+                .add(new GitHub())
+                .add(new SourceForge())
+                .add(new BitBucket())
+                .build();
+        } catch ( IOException e ) {
+            log.warn("Unable to start ConnectorFactory: " + e.getMessage());
+        }
+    }
     
     @Context
     private UriInfo context;
@@ -53,7 +72,6 @@ public class Metadata {
      * Creates a new instance of MetadataResource
      */
     public Metadata() {
-        
     }
     
     private static final ObjectMapper mapper = new ObjectMapper();
@@ -98,10 +116,12 @@ public class Metadata {
     @Path ("/autopopulate")
     @Produces (MediaType.APPLICATION_JSON)
     public Response autopopulate(@QueryParam("repo") String url) {
-        return Response
-                .status(Response.Status.OK)
-                .entity(mapper.createObjectNode().putPOJO("metadata", Connector.readProject(url)).toString())
-                .build();
+        JsonNode result = factory.read(url);
+        
+        // no connector information, return nothing
+        return (null==result) ?
+                Response.status(Response.Status.NO_CONTENT).build() :
+                Response.status(Response.Status.OK).entity(mapper.createObjectNode().putPOJO("metadata", result).toString()).build();
     }
     
     /**

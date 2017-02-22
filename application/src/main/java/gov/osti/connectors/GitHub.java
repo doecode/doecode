@@ -10,6 +10,8 @@ import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.Properties;
 import org.apache.commons.codec.binary.Base64;
@@ -24,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author nenso
  */
-public class GitHub {
+public class GitHub implements ConnectorInterface {
     /** a logger implementation **/
     private static final Logger log = LoggerFactory.getLogger(GitHub.class);
     /** authentication information for accessing GitHub API **/
@@ -44,7 +46,8 @@ public class GitHub {
      * 
      * @throws IOException on file IO errors
      */
-    public static void init() throws IOException {
+    @Override
+    public void init() throws IOException {
         Properties config = new Properties();
         InputStream stream = null;
         
@@ -78,30 +81,73 @@ public class GitHub {
     }
     
     /**
+     * Attempt to identify the PROJECT NAME from the given URL.  
+     * 
+     * Criteria:  URL host should contain "github.com"; the project is assumed
+     * to be the first two components of the PATH, splitting on the slash.  
+     * (owner/project)
+     * 
+     * @param url the URL to process
+     * @return the PROJECT NAME if able to parse; null if not, or unrecognized
+     * URL
+     */
+    private static String getProjectFromUrl(String url) {
+        try {
+            String safeUrl = (null==url) ? "" : url.trim();
+            // err on the side of encryption, if no protocol provided
+            URI uri = new URI(
+                    !safeUrl.startsWith("http") ?
+                            "https://" + safeUrl : 
+                            safeUrl);
+            
+            // protection against bad URL input
+            if (null!=uri.getHost()) {
+                if (uri.getHost().contains("github.com")) {
+                    String path = uri.getPath();
+                    return path.substring(path.indexOf("/")+1);
+                }
+            }
+        } catch ( URISyntaxException e ) {
+            // warn that URL is not a valid URI
+            log.warn("Not a valid URI: " + url + " message: " + e.getMessage());
+        } catch ( Exception e ) {
+            // some unexpected error happened
+            log.warn("Unexpected Error from " + url + " message: " + e.getMessage());
+        }
+        
+        return null;
+    }
+    
+    /**
      * Obtain the connection-driven metadata elements from GitHub public API
      * requests.
      * 
-     * @param name the GitHub project name; in this case, this should be of
-     * the form "owner/project" to access the project API
+     * @param url the URL to process
+     * 
      * @return a JsonElement of the DOECodeMetadata filled in as possible from
      * the API
      */
-    public static JsonNode readProject(String name) {
+    @Override
+    public JsonNode read(String url) {
         DOECodeMetadata md = new DOECodeMetadata();
         ObjectMapper mapper = new ObjectMapper();
         
         try {
+            // try to identify the NAME of the project
+            String name = getProjectFromUrl(url);
+            log.info("Project name: " + name);
+            if (null==name)
+                return null;
+            
             // try to get the metadata YAML file first
             JsonNode yaml = HttpUtil.readMetadataYaml(GITHUB_RAW_BASE_URL + name + "/master/metadata.yml");
             // if it's not empty, use that
             if (null!=yaml)
                 return yaml;
-            
-            // read authentication token information
-            GitHub.init();
 
             // acquire the SourceForge API response as JSON
             HttpGet get = gitHubAPIGet(GITHUB_BASE_URL + name);
+            log.info("GET " + get.toString());
 
             // Convert the JSON into an Object we can handle
             Repository response = 
@@ -145,13 +191,14 @@ public class GitHub {
                     }
                 }
             }
+            return md.toJson();
         } catch ( IOException e ) {
             // here's where you'd warn about the IO error
             log.warn("IO Error reading GitHub information: " + e.getMessage());
-            log.warn("Read from " + name);
+            log.warn("Read from " + url);
         }
-        
-        // send back a JsonNode
-        return md.toJson();
+        // unable to process this one
+        return null;
     }
+    
 }
