@@ -3,5 +3,5 @@
 .classpath
 node_modules
 .settings/
-src/main/webapp/bundles/
+src/main/webapp/bundles/*.js*
 
