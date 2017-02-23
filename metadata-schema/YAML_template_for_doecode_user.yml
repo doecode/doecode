@@ -1,6 +1,6 @@
 ---
 #Metadata template for DOECode users
-#Version: 1.0
+#Version: 1.01
 
 #REQUIRED FIELDS
 
@@ -16,22 +16,22 @@ doeIdentifier:
   identName: "DOE Contract Number"
   identNumber: #type in the DOE Contract Number 
 
-#repeat developer field as needed
-developer: 
-  firstname: #what is the developer's first name
+#add to list as needed
+developers: 
+- firstname: #what is the developer's first name
   familyname: #what is the developer's family name
   email: #what is the developer's email  
   orcID: 
-    identName: "ORCiD"
-    identNumber: #type in the developer's ORCiD, please	
+     identName: "ORCiD"
+     identNumber: #type in the developer's ORCiD, please	
   basedAt: #current primary workplace
 
 submittingOrganization: 
-  orgName: #What org is submitting this? Repeat field as needed.
+- orgName: #What org is submitting this? add to list as needed.
 sponsoringOrganization: 
-  orgName: #What org funded this project? Repeat field as needed.
+- orgName: #What org funded this project? add to list as needed.
 researchOrganization: 
-  orgName: #What org contributed to this research? Repeat field as needed. 
+- orgName: #What org contributed to this research? add to list as needed. 
 
 
 #OPTIONAL FIELDS
@@ -40,9 +40,9 @@ keywords:
   - #type a keyword/phrase that describes your project, e.g. "Earth Sciences"
   - #type another keyword/phrase, e.g. "Groundwater flow"
 
-#repeat contributor field as needed
-contributor:
-  firstname:
+#add to list as needed
+contributors:
+- firstname:
   familyname:
   email:
   orcID:
