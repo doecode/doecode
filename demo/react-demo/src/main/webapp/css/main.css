@@ -178,3 +178,17 @@ padding-left: 15px;
 .no-margin-left{
 margin-left: 0;
 }
+
+div#root .progtrckr {
+		border-bottom: 1px solid #ddd;
+		border-top: 1px solid #ddd;
+		background-color: #f2f2f2;
+}
+	
+div#root ol.progtrckr {
+		padding-bottom: 10px;
+}
+	
+div#root ol.progtrckr li.progtrckr-todo:before {
+		background-color: #f2f2f2;
+}
