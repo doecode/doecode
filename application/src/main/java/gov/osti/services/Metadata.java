@@ -137,18 +137,29 @@ public class Metadata {
         EntityManager em = DoeServletContextListener.createEntityManager();
         
         try {
+            em.getTransaction().begin();
+            
+            log.info("Starting upload persistence");
             DOECodeMetadata md = DOECodeMetadata.parseJson(new StringReader(object));
 
+            log.info("Read: " + md.getSoftwareTitle());
             if ( 0==md.getCodeId() )
                 em.persist(md);
             else
                 em.merge(md);
+            
+            em.getTransaction().commit();
+            log.info("Wrote: " + md.getCodeId());
             
             return Response
                     .status(200)
                     .entity(mapper.createObjectNode().putPOJO("metadata", md.toJson()).toString())
                     .build();
         } catch ( IOException e ) {
+            if (em.getTransaction().isActive())
+                em.getTransaction().rollback();
+            
+            log.warn("Persistence Error: " + e.getMessage());
             throw new InternalServerErrorException("IO Error: " + e.getMessage());
         } finally {
             em.close();

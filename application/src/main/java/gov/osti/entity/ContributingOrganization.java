@@ -1,35 +1,37 @@
+/*
+ */
 package gov.osti.entity;
 
-public class ContributingOrganization extends Agent{
-	private String organizationName = null;
-	private String contributorType = null;
-	
-	public ContributingOrganization() {
-		
-	}
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
+/**
+ * Contributing Organization information.
+ * 
+ * @author ensornl
+ */
+@Entity
+@Table(name="contributing_organizations")
+public class ContributingOrganization extends Organization {
+    // each have a Type of contribution
+    private Contributor.Type type;
 
-	public String getOrganizationName() {
-		return organizationName;
-	}
+    /**
+     * @return the type
+     */
+    @Enumerated (EnumType.STRING)
+    public Contributor.Type getType() {
+        return type;
+    }
 
-
-
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
-	}
-
-
-
-	public String getContributorType() {
-		return contributorType;
-	}
-
-	public void setContributorType(String contributorType) {
-		this.contributorType = contributorType;
-	}
-	
-	
-	
-	
+    /**
+     * @param type the type to set
+     */
+    public void setType(Contributor.Type type) {
+        this.type = type;
+    }
+    
+    
 }
