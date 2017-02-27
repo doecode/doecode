@@ -31,7 +31,7 @@ export default class AgentsStep extends React.Component {
 		    const devsLength = developers.length;
 		    return (
 		    <div>
-		      <h3> (Guten Tag Thomas Developers associated with {metadata.repository_link}) </h3>
+		      <h3> (Developers associated with {metadata.repository_link}) </h3>
 		      <AgentsTable developers={developers} developerStore={developerStore} finished={false} />
 		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore} devsLength={devsLength} />
 		    </div>

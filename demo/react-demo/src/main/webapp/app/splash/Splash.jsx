@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Modal, Button} from 'react-bootstrap';
 
-class Splash extends React.Component {
+export default class Splash extends React.Component {
     constructor(props) {
         super(props);
         this.state = {showModal: false};
@@ -104,5 +104,3 @@ class Splash extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <Splash/>, document.getElementById('root'));

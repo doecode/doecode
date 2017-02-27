@@ -8,10 +8,12 @@ import MetadataStep from './MetadataStep';
 import ConfirmStep from './ConfirmStep';
 import StepZilla from 'react-stepzilla';
 
+import css from '../css/main.css';
+
 const metadataStore = new Metadata();
 
 @observer
-class NameForm extends React.Component {
+export default class DOECodeWizard extends React.Component {
     constructor(props) {
         super(props);
         this.getSubmitPromise = this.getSubmitPromise.bind(this);
@@ -20,13 +22,17 @@ class NameForm extends React.Component {
     }
 
     autopopulate(event) {
+<<<<<<< HEAD:demo/react-demo/src/main/webapp/components/script.jsx
     	doAjax('GET', "services/metadata/autopopulate?repo=" + this.props.metadataStore.metadata.repository_link,this.parseLoadResponse);
+=======
+    	doAjax('GET', "services/react?action=autopopulate&repo=" + metadataStore.metadata.repository_link,this.parseLoadResponse);
+>>>>>>> React Router and CSS now work, significant restructuring:demo/react-demo/src/main/webapp/app/components/DOECodeWizard.jsx
     	event.preventDefault();
     }
 
 
     parseLoadResponse(responseData) {
-        this.props.metadataStore.updateMetadata(responseData.metadata);
+        metadataStore.updateMetadata(responseData.metadata);
     }
 
     getSubmitPromise() {
@@ -37,7 +43,7 @@ class NameForm extends React.Component {
 		        cache: false,
 		        method: 'POST',
 		        dataType: 'json',
-		        data: JSON.stringify(this.props.metadataStore.metadata),
+		        data: JSON.stringify(metadataStore.metadata),
 		        contentType: "application/json; charset=utf-8",
 		        success: function(data) {
 		        	console.log(data);
@@ -56,13 +62,13 @@ class NameForm extends React.Component {
     }
 
     render() {
-        const finished = this.props.metadataStore.finished;
+        const finished = metadataStore.finished;
 
         const steps =
         	[
-        		{name: 'Metadata', component: <MetadataStep metadataStore={this.props.metadataStore}  autopopulate={this.autopopulate}/> },
-        		{name: 'Developers', component: <AgentsStep metadataStore={this.props.metadataStore} getSubmitPromise={this.getSubmitPromise}/>},
-        		{name: 'Confirmation', component: <ConfirmStep metadataStore={this.props.metadataStore}/> }
+        		{name: 'Metadata', component: <MetadataStep metadataStore={metadataStore}  autopopulate={this.autopopulate}/> },
+        		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} getSubmitPromise={this.getSubmitPromise}/>},
+        		{name: 'Confirmation', component: <ConfirmStep metadataStore={metadataStore}/> }
         		];
         return (
 
@@ -74,5 +80,3 @@ class NameForm extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <NameForm metadataStore={metadataStore}/>, document.getElementById('root'));
