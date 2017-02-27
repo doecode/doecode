@@ -16027,22 +16027,12 @@ module.exports = function(module) {
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class;
 
@@ -16056,27 +16046,13 @@ var _TextField2 = _interopRequireDefault(_TextField);
 
 var _mobxReact = __webpack_require__(64);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
   _inherits(MetadataStep, _React$Component);
@@ -16115,7 +16091,73 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
         "GNU General Public License": "GNU General Public License",
         "MIT License": "MIT License" };
 
-      return _react2.default.createElement('div', { className: 'container-fluid' }, _react2.default.createElement('form', { id: 'react_form', className: 'form-horizontal col-sm-offset-2 col-sm-8' }, _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'repository_link', label: 'Repository Link', elementType: 'input', value: metadata.repository_link, onChange: this.onFieldChange }), !finished && _react2.default.createElement('button', { className: 'btn btn-primary btn-sm', onClick: this.props.autopopulate }, ' Autopopulate ')), _react2.default.createElement('hr', null), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'software_title', label: 'Software Title', elementType: 'input', value: metadata.software_title, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'acronym', label: 'Acronym or Short Title', elementType: 'input', value: metadata.acronym, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'description', label: 'Description/Abstract', elementType: 'input', value: metadata.description, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'disclaimers', label: 'Disclaimers', elementType: 'input', value: metadata.disclaimers, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'doi', label: 'DOI', elementType: 'input', value: metadata.doi, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'keywords', label: 'Keywords', elementType: 'input', value: metadata.keywords, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { options: licenses, displayOnly: finished, field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'originating_research_organizations', label: 'Originating Research Organizations', elementType: 'input', value: metadata.originating_research_organizations, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'other_special_requirements', label: 'Other Special Requirements', elementType: 'input', value: metadata.other_special_requirements, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_email', label: 'Recipient Email', elementType: 'input', value: metadata.recipient_email, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_name', label: 'Recipient Name', elementType: 'input', value: metadata.recipient_name, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_org', label: 'Recipient Organization', elementType: 'input', value: metadata.recipient_org, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_phone', label: 'Recipient Phone Number', elementType: 'input', value: metadata.recipient_phone, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_identifiers', label: 'Related Identifiers', elementType: 'input', value: metadata.related_identifiers, onChange: this.onFieldChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_software', label: 'Related Software', elementType: 'input', value: metadata.related_software, onChange: this.onFieldChange }), _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'site_accession_number', label: 'Site Accession Number', elementType: 'input', value: metadata.site_accession_number, onChange: this.onFieldChange }))));
+      return _react2.default.createElement(
+        'div',
+        { className: 'container-fluid' },
+        _react2.default.createElement(
+          'form',
+          { id: 'react_form', className: 'form-horizontal col-sm-offset-2 col-sm-8' },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'repository_link', label: 'Repository Link', elementType: 'input', value: metadata.repository_link, onChange: this.onFieldChange }),
+            !finished && _react2.default.createElement(
+              'button',
+              { className: 'btn btn-primary btn-sm', onClick: this.props.autopopulate },
+              ' Autopopulate '
+            )
+          ),
+          _react2.default.createElement('hr', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'software_title', label: 'Software Title', elementType: 'input', value: metadata.software_title, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'acronym', label: 'Acronym or Short Title', elementType: 'input', value: metadata.acronym, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'description', label: 'Description/Abstract', elementType: 'input', value: metadata.description, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'disclaimers', label: 'Disclaimers', elementType: 'input', value: metadata.disclaimers, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'doi', label: 'DOI', elementType: 'input', value: metadata.doi, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'keywords', label: 'Keywords', elementType: 'input', value: metadata.keywords, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { options: licenses, displayOnly: finished, field: 'license', label: 'License', elementType: 'select', value: metadata.license, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'originating_research_organizations', label: 'Originating Research Organizations', elementType: 'input', value: metadata.originating_research_organizations, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'other_special_requirements', label: 'Other Special Requirements', elementType: 'input', value: metadata.other_special_requirements, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_email', label: 'Recipient Email', elementType: 'input', value: metadata.recipient_email, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_name', label: 'Recipient Name', elementType: 'input', value: metadata.recipient_name, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_org', label: 'Recipient Organization', elementType: 'input', value: metadata.recipient_org, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'recipient_phone', label: 'Recipient Phone Number', elementType: 'input', value: metadata.recipient_phone, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_identifiers', label: 'Related Identifiers', elementType: 'input', value: metadata.related_identifiers, onChange: this.onFieldChange })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group form-group-sm row' },
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'related_software', label: 'Related Software', elementType: 'input', value: metadata.related_software, onChange: this.onFieldChange }),
+            _react2.default.createElement(_TextField2.default, { displayOnly: finished, field: 'site_accession_number', label: 'Site Accession Number', elementType: 'input', value: metadata.site_accession_number, onChange: this.onFieldChange })
+          )
+        )
+      );
     }
   }]);
 
@@ -16124,7 +16166,7 @@ var MetadataStep = (0, _mobxReact.observer)(_class = function (_React$Component)
 
 exports.default = MetadataStep;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "MetadataStep.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "MetadataStep.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 182 */
@@ -23265,22 +23307,12 @@ module.exports = traverseAllChildren;
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class;
 
@@ -23294,27 +23326,13 @@ var _griddleReact2 = _interopRequireDefault(_griddleReact);
 
 var _mobxReact = __webpack_require__(64);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) {
   _inherits(AgentsTable, _React$Component);
@@ -23384,7 +23402,16 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
 
       var columns = ["place", "first_name", "middle_name", "last_name", "email", "affiliations"];
 
-      return _react2.default.createElement('div', { className: 'form-group form-group-sm col-sm-12' }, _react2.default.createElement('h2', { className: 'no-margin-left' }, 'Developers'), _react2.default.createElement(_griddleReact2.default, { results: this.props.developers, columns: columns, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick }));
+      return _react2.default.createElement(
+        'div',
+        { className: 'form-group form-group-sm col-sm-12' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'no-margin-left' },
+          'Developers'
+        ),
+        _react2.default.createElement(_griddleReact2.default, { results: this.props.developers, columns: columns, columnMetadata: configureMetadata, showSettings: true, showFilter: true, onRowClick: this.rowClick })
+      );
     }
   }]);
 
@@ -23393,7 +23420,7 @@ var AgentsTable = (0, _mobxReact.observer)(_class = function (_React$Component) 
 
 exports.default = AgentsTable;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsTable.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsTable.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 293 */
@@ -23403,48 +23430,24 @@ exports.default = AgentsTable;
 
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
 		value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-		function defineProperties(target, props) {
-				for (var i = 0; i < props.length; i++) {
-						var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-				}
-		}return function (Constructor, protoProps, staticProps) {
-				if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-				throw new TypeError("Cannot call a class as a function");
-		}
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-		if (!self) {
-				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-				throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TextField = function (_React$Component) {
 		_inherits(TextField, _React$Component);
@@ -23482,14 +23485,35 @@ var TextField = function (_React$Component) {
 						} else if (elementType === 'select') {
 								(function () {
 										var options = _this2.props.options;
-										input = _react2.default.createElement("select", { className: "form-control", value: _this2.props.value, onChange: _this2.handleChange }, Object.keys(options).map(function (key) {
-												return _react2.default.createElement("option", { key: key, value: options[key] }, key);
-										}));
+										input = _react2.default.createElement(
+												"select",
+												{ className: "form-control", value: _this2.props.value, onChange: _this2.handleChange },
+												Object.keys(options).map(function (key) {
+														return _react2.default.createElement(
+																"option",
+																{ key: key, value: options[key] },
+																key
+														);
+												})
+										);
 								})();
 						} else if (elementType === 'textarea') {
 								input = _react2.default.createElement("textarea", { type: "text", className: "form-control", value: this.props.value, onChange: this.handleChange });
 						}
-						return _react2.default.createElement("div", null, _react2.default.createElement("label", { className: "col-sm-2 control-label" }, this.props.label), _react2.default.createElement("div", { className: "col-sm-4" }, input));
+						return _react2.default.createElement(
+								"div",
+								null,
+								_react2.default.createElement(
+										"label",
+										{ className: "col-sm-2 control-label" },
+										this.props.label
+								),
+								_react2.default.createElement(
+										"div",
+										{ className: "col-sm-4" },
+										input
+								)
+						);
 				}
 		}]);
 
@@ -23498,7 +23522,7 @@ var TextField = function (_React$Component) {
 
 exports.default = TextField;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "TextField.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "TextField.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 294 */
@@ -24533,22 +24557,12 @@ module.exports = ReactPropTypesSecret;
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-	function defineProperties(target, props) {
-		for (var i = 0; i < props.length; i++) {
-			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-		}
-	}return function (Constructor, protoProps, staticProps) {
-		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	};
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class;
 
@@ -24574,27 +24588,13 @@ var _promise = __webpack_require__(252);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var developerStore = new _Developer2.default();
 
@@ -24623,7 +24623,19 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 			var metadata = this.props.metadataStore.metadata;
 			var developers = metadata.developers.slice();
 			var devsLength = developers.length;
-			return _react2.default.createElement('div', null, _react2.default.createElement('h3', null, ' (Developers associated with ', metadata.repository_link, ') '), _react2.default.createElement(_AgentsTable2.default, { developers: developers, developerStore: developerStore, finished: false }), _react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore, devsLength: devsLength }));
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h3',
+					null,
+					' (Hello Developers associated with ',
+					metadata.repository_link,
+					') '
+				),
+				_react2.default.createElement(_AgentsTable2.default, { developers: developers, developerStore: developerStore, finished: false }),
+				_react2.default.createElement(_AgentsModal2.default, { developerStore: developerStore, metadataStore: this.props.metadataStore, devsLength: devsLength })
+			);
 		}
 	}]);
 
@@ -24632,7 +24644,7 @@ var AgentsStep = (0, _mobxReact.observer)(_class = function (_React$Component) {
 
 exports.default = AgentsStep;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsStep.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsStep.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 303 */
@@ -24642,22 +24654,12 @@ exports.default = AgentsStep;
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-	function defineProperties(target, props) {
-		for (var i = 0; i < props.length; i++) {
-			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-		}
-	}return function (Constructor, protoProps, staticProps) {
-		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	};
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
@@ -24671,27 +24673,13 @@ var _MetadataStep = __webpack_require__(181);
 
 var _MetadataStep2 = _interopRequireDefault(_MetadataStep);
 
-function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ConfirmStep = function (_React$Component) {
 	_inherits(ConfirmStep, _React$Component);
@@ -24708,7 +24696,18 @@ var ConfirmStep = function (_React$Component) {
 			var metadata = this.props.metadataStore.metadata;
 			var developers = metadata.developers.slice();
 			var devsLength = developers.length;
-			return _react2.default.createElement('div', null, _react2.default.createElement('h2', null, ' Your record has been saved with the DOE Code ID of ', metadata.code_id), _react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore }), _react2.default.createElement(_AgentsTable2.default, { developers: developers, finished: true }));
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h2',
+					null,
+					' Your record has been saved with the DOE Code ID of ',
+					metadata.code_id
+				),
+				_react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore }),
+				_react2.default.createElement(_AgentsTable2.default, { developers: developers, finished: true })
+			);
 		}
 	}]);
 
@@ -24717,7 +24716,7 @@ var ConfirmStep = function (_React$Component) {
 
 exports.default = ConfirmStep;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "ConfirmStep.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "ConfirmStep.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 304 */
@@ -24732,15 +24731,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _desc, _value, _class, _descriptor, _descriptor2;
 
@@ -24756,11 +24747,7 @@ function _initDefineProp(target, property, descriptor, context) {
     });
 }
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
     var desc = {};
@@ -51559,22 +51546,12 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = undefined;
 
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class;
 
@@ -51590,27 +51567,13 @@ var _TextField2 = _interopRequireDefault(_TextField);
 
 var _mobxReact = __webpack_require__(64);
 
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-    if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) {
     _inherits(AgentsModal, _React$Component);
@@ -51673,7 +51636,93 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
             var showModal = this.props.developerStore.showModal;
             var isEdit = this.props.developerStore.isEdit;
 
-            return _react2.default.createElement('div', { className: 'form-group form-group-sm' }, _react2.default.createElement('div', { className: 'col-xs-offset-5' }, _react2.default.createElement(_reactBootstrap.Button, { bsStyle: 'primary', bsSize: 'large', onClick: this.open }, 'Add Developer'), _react2.default.createElement(_reactBootstrap.Modal, { show: showModal, onHide: this.close, bsSize: 'large' }, _react2.default.createElement(_reactBootstrap.Modal.Header, { closeButton: true }, _react2.default.createElement(_reactBootstrap.Modal.Title, null, 'Manage Developer')), _react2.default.createElement(_reactBootstrap.Modal.Body, null, _react2.default.createElement('div', { className: 'container-fluid' }, _react2.default.createElement('div', { className: 'form-horizontal' }, isEdit && _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'place', label: 'Place', elementType: 'input', value: developer.place, onChange: this.onModalChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', elementType: 'input', value: developer.first_name, onChange: this.onModalChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', elementType: 'input', value: developer.middle_name, onChange: this.onModalChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', elementType: 'input', value: developer.last_name, onChange: this.onModalChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', elementType: 'input', value: developer.email, onChange: this.onModalChange })), _react2.default.createElement('div', { className: 'form-group form-group-sm row' }, _react2.default.createElement(_TextField2.default, { field: 'affiliations', label: 'Affiliations', elementType: 'input', value: developer.affiliations, onChange: this.onModalChange }))))), _react2.default.createElement(_reactBootstrap.Modal.Footer, null, _react2.default.createElement(_reactBootstrap.Button, { onClick: this.close }, 'Close'), isEdit && _react2.default.createElement(_reactBootstrap.Button, { bsStyle: 'danger', onClick: this.handleDelete }, 'Delete'), _react2.default.createElement(_reactBootstrap.Button, { bsStyle: 'primary', onClick: this.handleSave }, 'Save and close')))));
+            return _react2.default.createElement(
+                'div',
+                { className: 'form-group form-group-sm' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'col-xs-offset-5' },
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { bsStyle: 'primary', bsSize: 'large', onClick: this.open },
+                        'Add Developer'
+                    ),
+                    _react2.default.createElement(
+                        _reactBootstrap.Modal,
+                        { show: showModal, onHide: this.close, bsSize: 'large' },
+                        _react2.default.createElement(
+                            _reactBootstrap.Modal.Header,
+                            { closeButton: true },
+                            _react2.default.createElement(
+                                _reactBootstrap.Modal.Title,
+                                null,
+                                'Manage Developer'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _reactBootstrap.Modal.Body,
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'container-fluid' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'form-horizontal' },
+                                    isEdit && _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'place', label: 'Place', elementType: 'input', value: developer.place, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'first_name', label: 'First Name', elementType: 'input', value: developer.first_name, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'middle_name', label: 'Middle Name', elementType: 'input', value: developer.middle_name, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'last_name', label: 'Last Name', elementType: 'input', value: developer.last_name, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'email', label: 'Email', elementType: 'input', value: developer.email, onChange: this.onModalChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'form-group form-group-sm row' },
+                                        _react2.default.createElement(_TextField2.default, { field: 'affiliations', label: 'Affiliations', elementType: 'input', value: developer.affiliations, onChange: this.onModalChange })
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _reactBootstrap.Modal.Footer,
+                            null,
+                            _react2.default.createElement(
+                                _reactBootstrap.Button,
+                                { onClick: this.close },
+                                'Close'
+                            ),
+                            isEdit && _react2.default.createElement(
+                                _reactBootstrap.Button,
+                                { bsStyle: 'danger', onClick: this.handleDelete },
+                                'Delete'
+                            ),
+                            _react2.default.createElement(
+                                _reactBootstrap.Button,
+                                { bsStyle: 'primary', onClick: this.handleSave },
+                                'Save and close'
+                            )
+                        )
+                    )
+                )
+            );
         }
     }]);
 
@@ -51682,7 +51731,7 @@ var AgentsModal = (0, _mobxReact.observer)(_class = function (_React$Component) 
 
 exports.default = AgentsModal;
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsModal.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "AgentsModal.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
 /* 671 */
@@ -51697,15 +51746,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
@@ -51721,11 +51762,7 @@ function _initDefineProp(target, property, descriptor, context) {
     });
 }
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
     var desc = {};
@@ -55625,17 +55662,7 @@ function isReactComponent(component) {
 
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-}();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class;
 
@@ -55671,27 +55698,13 @@ var _reactStepzilla = __webpack_require__(306);
 
 var _reactStepzilla2 = _interopRequireDefault(_reactStepzilla);
 
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) {
-    if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var metadataStore = new _Metadata2.default();
 
@@ -55753,7 +55766,11 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
             var finished = this.props.metadataStore.finished;
 
             var steps = [{ name: 'Metadata', component: _react2.default.createElement(_MetadataStep2.default, { metadataStore: this.props.metadataStore, autopopulate: this.autopopulate }) }, { name: 'Developers', component: _react2.default.createElement(_AgentsStep2.default, { metadataStore: this.props.metadataStore, getSubmitPromise: this.getSubmitPromise }) }, { name: 'Confirmation', component: _react2.default.createElement(_ConfirmStep2.default, { metadataStore: this.props.metadataStore }) }];
-            return _react2.default.createElement('div', { className: 'step-progress' }, _react2.default.createElement(_reactStepzilla2.default, { steps: steps, dontValidate: false, preventEnterSubmission: true, prevBtnOnLastStep: false, stepsNavigation: false, nextTextOnFinalAction: "Submit" }));
+            return _react2.default.createElement(
+                'div',
+                { className: 'step-progress' },
+                _react2.default.createElement(_reactStepzilla2.default, { steps: steps, dontValidate: false, preventEnterSubmission: true, prevBtnOnLastStep: false, stepsNavigation: false, nextTextOnFinalAction: "Submit" })
+            );
         }
     }]);
 
@@ -55762,7 +55779,7 @@ var NameForm = (0, _mobxReact.observer)(_class = function (_React$Component) {
 
 _reactDom2.default.render(_react2.default.createElement(NameForm, { metadataStore: metadataStore }), document.getElementById('root'));
 
-/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "script.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/welschtg/Documents/doecode/demo/react-demo/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "script.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ })
 /******/ ]);

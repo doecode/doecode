@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {doAjax, appendQueryString} from './utils';
+import {doAjax, appendQueryString} from '../utils/utils';
 import {observer} from "mobx-react";
-import Metadata from 'Metadata';
+import Metadata from '../stores/Metadata';
 import AgentsStep from './AgentsStep';
 import MetadataStep from './MetadataStep';
 import ConfirmStep from './ConfirmStep';

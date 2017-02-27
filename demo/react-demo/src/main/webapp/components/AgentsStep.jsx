@@ -1,7 +1,7 @@
 import React from 'react';
 import AgentsModal from './AgentsModal';
 import AgentsTable from './AgentsTable';
-import Developer from './Developer';
+import Developer from '../stores/Developer';
 import {observer} from 'mobx-react';
 import Promise from 'promise';
 
@@ -31,7 +31,7 @@ export default class AgentsStep extends React.Component {
 		    const devsLength = developers.length;
 		    return (
 		    <div>
-		      <h3> (Hello Developers associated with {metadata.repository_link}) </h3>
+		      <h3> (Guten Tag Thomas Developers associated with {metadata.repository_link}) </h3>
 		      <AgentsTable developers={developers} developerStore={developerStore} finished={false} />
 		      <AgentsModal developerStore={developerStore} metadataStore={this.props.metadataStore} devsLength={devsLength} />
 		    </div>

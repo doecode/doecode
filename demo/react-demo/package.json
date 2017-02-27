@@ -9,7 +9,8 @@
     "build-form": "browserify src/main/webapp/js/script.js -o src/main/webapp/bundles/formbundle.js -d",
     "babel-compile-splash": "babel src/main/webapp/splash/splash.jsx --out-file src/main/webapp/splash/splash.js",
     "build-splash": "browserify src/main/webapp/splash/splash.js -o src/main/webapp/bundles/splashbundle.js -d",
-    "build": "webpack --display-error-details"
+    "build": "webpack --display-error-details",
+    "deploy": "webpack-dev-server --inline --hot --history-api-fallback"
   },
   "keywords": [],
   "author": "",
