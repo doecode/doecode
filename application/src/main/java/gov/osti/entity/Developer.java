@@ -1,12 +1,11 @@
 package gov.osti.entity;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="developers")
-public class Developer extends Agent implements Serializable {
+public class Developer extends Agent {
 	private String firstName = "";
 	private String lastName = "";
 	private String middleName = "";

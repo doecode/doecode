@@ -1,5 +1,6 @@
 package gov.osti.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 @MappedSuperclass
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Agent {
+public class Agent implements Serializable {
     private static Logger log = LoggerFactory.getLogger(Agent.class);
     private Long codeId = 0L;
     private Long agentId = 0L;
@@ -31,6 +32,7 @@ public class Agent {
             return agentId;
         }
 	
+        @Column (length = 640)
 	public String getEmail() {
 		return email;
 	}
@@ -38,6 +40,7 @@ public class Agent {
 		this.email = email;
 	}
 
+        @Column (length = 1000)
 	public String getAffiliations() {
 		return affiliations;
 	}
