@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/doecode">
-  <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
-            maxActive="20" maxIdle="10" maxWait="-1" name="doecode" 
-            password="pass$1word" type="javax.sql.DataSource" url="jdbc:derby://localhost:1527/doecode" 
-            username="doe"/>
+  <Resource auth="Container" type="javax.sql.DataSource"
+   maxActive="20" maxIdle="10" maxWait="-1" name="doecode" 
+   validationQuery="SELECT 1"
+   driverClassName="${database.driver}"
+   password="${database.password}" 
+   url="${database.url}"
+   username="${database.user}"/>
 </Context>
