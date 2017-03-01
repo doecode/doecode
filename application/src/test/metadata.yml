@@ -1,85 +1,72 @@
----
 #Metadata template for DOECode users
-#Version: 1.0
+#Version: 1.2
 
-#REQUIRED FIELDS
-
-title: "My fancy software title" 
-date: 2017-02-07 #on what date was this code created YYYY-MM-DD
-description: |
-  This is a sample lengthy description.
-  It may span multiple lines, and captures the newlines as part
-  of its description.
-license: #give the URL for your license
-openSourceProject: 1 
-governmentWideReuseProject: 1
-codeRepository: https://github.com/doecode/dev-test-repo
-
-doeIdentifier:
-   -
-    identName: "DOE Contract Number"
-    identNumber: "DE-19233843"
-   -    
-    identName: "DOE Contract Number"
-    identNumber: "DE-2342342"
-
-#repeat developer field as needed
-developer: 
-  - 
-    basedAt: OSTI
-    email: nensor@gmail.com
-    familyname: Ensor
-    firstname: Neal
-    orcID: 
-      identName: ORCiD
-      identNumber: 1111222233334444
-  - 
-    basedAt: OSTI
-    email: welscht@osti.gov
-    familyname: Welsch
-    firstname: Thomas
-    
-submittingOrganization: 
-  - orgName: OSTI
-  - orgName: ORNL
-sponsoringOrganization: 
-  - orgName: #What org funded this project? Repeat field as needed.
-researchOrganization: 
-  - orgName: #What org contributed to this research? Repeat field as needed. 
-
-
-#OPTIONAL FIELDS
-
-keywords:
-  - "Fancy Hats"
-  - Generic
-  - Portable
-
-#repeat contributor field as needed
-contributor:
-    -
-      firstname:
-      familyname:
-      email:
-      orcID:
-        identName: "ORCiD"
-        identNumber: #type in orcid
-      basedAt: #current primary workplace
-
-doi: 
-  identName: "DOI"
-  identNumber: https://doi.org/10.5072/123456
-
-#repeat field as needed
-additionalIdentifier:
-    -
-      identName: #name of the ID type, e.g. "B&R Code"
-      identNumber: #the alpha/numeric identifier 
-  
-countryOfOrigin: #primary location of software development
-hasVersion: #url of newer version
-isVersionOf: #url of older version
-contactPerson: 
-requirements: #list any requirements
-relatedSoftware: #url of related software repo
-relatedDocumentation: #url or uri of related docs
+---
+repository_link: https://github.com/doecode/dev-test-repo
+access_limitations:
+- UNL
+developers:
+- affiliations: Oak Ridge National Laboratory
+  first_name: Jay Jay
+  last_name: Billings
+- email: knight.kathryn@gmail.com
+  affiliations: Oak Ridge National Laboratory
+  first_name: Katie
+  last_name: Knight
+- first_name: Neal
+  last_name: Ensor
+  email: ensorn@osti.gov
+- affiliations: Information International Associates (Contractor to DOE)
+  first_name: Thomas
+  last_name: Welsch
+  email: welscht@osti.gov
+identifiers:
+- identifier_type: URL
+  identifier_value: http://github.com/doecode/doecode
+  relation_type: IsPreviousVersionOf
+  description: Newer code is present at this URL.
+- identifier_type: DOI
+  identifier_value: 10.5072/doecode2017/dev-test-repo/2
+  relation_type: Cites
+contributors:
+- first_name: Bob
+  last_name: McTester
+  affiliations: Java Testing Services, Inc.
+  contributor_type: DataCurator
+  email: mctester@testingservices.com
+contributing_organizations:
+- organization_name: University of Wisconsin
+  contributor_type: DataCurator
+research_organizations:
+- organization_name: OSTI
+  DOE: true 
+- organization_name: ORNL
+  DOE: true
+sponsoring_organizations:
+- organization_name: DOE OSTI
+  DOE: true
+  award_numbers:
+  - DE-865234
+  - DE-8293
+- organization_name: University of Miami, FL
+  award_numbers:
+  - UWIN-234
+  - UWIN-888
+  - UFL-11
+software_title: Sample development and testing repository for DOECode
+acronym: dev-test-repo
+doi: 10.5072/23892
+license: GNU General Public License
+description: > 
+  An example testing repository for submissions of YAML and other associated
+  testing projects related to the development of DOECode.
+keywords: software, DOECode, hosting repositories
+disclaimers: open source
+recipient_name: Neal Ensor
+recipient_email: ensorn@osti.gov
+recipient_phone: 865-576-1295
+recipient_org: DOE OSTI
+site_accession_number: '384983'
+other_special_requirements: none
+related_software: linux, github, bitbucket
+date_of_issuance: 1999-06-02

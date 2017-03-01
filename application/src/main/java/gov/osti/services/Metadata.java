@@ -5,7 +5,6 @@ package gov.osti.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.osti.connectors.BitBucket;
-import gov.osti.connectors.Connector;
 import gov.osti.connectors.ConnectorFactory;
 import gov.osti.connectors.GitHub;
 import gov.osti.connectors.SourceForge;
@@ -139,17 +138,14 @@ public class Metadata {
         try {
             em.getTransaction().begin();
             
-            log.info("Starting upload persistence");
             DOECodeMetadata md = DOECodeMetadata.parseJson(new StringReader(object));
 
-            log.info("Read: " + md.getSoftwareTitle());
             if ( 0==md.getCodeId() )
                 em.persist(md);
             else
                 em.merge(md);
             
             em.getTransaction().commit();
-            log.info("Wrote: " + md.getCodeId());
             
             return Response
                     .status(200)

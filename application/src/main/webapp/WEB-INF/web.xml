@@ -19,7 +19,7 @@
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>gov.osti.services.Metadata</param-value>
+            <param-value>gov.osti.services.Metadata,gov.osti.services.Types</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

@@ -166,6 +166,19 @@
 
 
 			</plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <configuration>
+                                <webResources>
+                                    <resource>
+                                        <directory>src/main/webapp/META-INF</directory>
+                                        <filtering>true</filtering>
+                                        <targetPath>META-INF</targetPath>
+                                    </resource>
+                                </webResources>
+                            </configuration>
+                        </plugin>
 		</plugins>
 		<finalName>doecode</finalName>
 	</build>

@@ -3,22 +3,26 @@
 package gov.osti.connectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import gov.osti.connectors.yaml.Identifier;
-import gov.osti.connectors.yaml.Person;
-import gov.osti.connectors.yaml.Organization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import gov.osti.entity.ContributingOrganization;
+import gov.osti.entity.Contributor;
 import gov.osti.entity.DOECodeMetadata;
 import gov.osti.entity.Developer;
+import gov.osti.entity.Identifier;
+import gov.osti.entity.ResearchOrganization;
+import gov.osti.entity.SponsoringOrganization;
 import java.io.File;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Before;
@@ -78,7 +82,7 @@ public class MetadataYamlTest {
                 .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
                 .setSerializationInclusion(Include.NON_NULL);
         
-        DOECodeMetadata metadata = mapper.readValue(new FileReader(getPathFor("metadata1.yml")), DOECodeMetadata.class);
+        DOECodeMetadata metadata = mapper.readValue(new FileReader(getPathFor("metadata.yml")), DOECodeMetadata.class);
         
         assertNotNull("Metadata parsing failed!", metadata);
         
@@ -110,13 +114,26 @@ public class MetadataYamlTest {
                 fail ("Unknown developer found: " + d.getLastName());
             }
         }
-//        assertEquals("research organizations wrong", "OSTI, ORNL", metadata.getOriginatingResearchOrganizations());
         assertEquals("title is wrong", "Sample development and testing repository for DOECode", metadata.getSoftwareTitle());
         assertEquals("Acronym wrong", "dev-test-repo", metadata.getAcronym());
         assertEquals("DOI wrong", "10.5072/23892", metadata.getDoi());
         assertEquals("Description wrong", "An example testing repository for submissions of YAML and other associated testing projects related to the development of DOECode.\n",
                 metadata.getDescription());
-        assertEquals("RI wrong", "related identifier", metadata.getIdentifiers());
+        
+        List<Identifier> identifiers = metadata.getIdentifiers();
+        assertEquals("There should be 2 identifiers", 2, identifiers.size());
+        
+        Identifier identifier = identifiers.get(0);
+        assertEquals ("ID#1 type wrong", Identifier.Type.URL, identifier.getIdentifierType());
+        assertEquals ("ID#1 value wrong", "http://github.com/doecode/doecode", identifier.getIdentifierValue());
+        assertEquals ("ID#1 relation wrong", Identifier.RelationType.IsPreviousVersionOf, identifier.getRelationType());
+        
+        identifier = identifiers.get(1);
+        
+        assertEquals("ID#2 type wrong", Identifier.Type.DOI, identifier.getIdentifierType());
+        assertEquals("ID#2 value wrong", "10.5072/doecode2017/dev-test-repo/2", identifier.getIdentifierValue());
+        assertEquals("ID#2 relation wrong", Identifier.RelationType.Cites, identifier.getRelationType());
+        
         assertEquals("Keywords wrong", "software, DOECode, hosting repositories", metadata.getKeywords());
         assertEquals("disclaimers wrong", "open source", metadata.getDisclaimers());
         assertEquals("recipient name wrong", "Neal Ensor", metadata.getRecipientName());
@@ -126,71 +143,59 @@ public class MetadataYamlTest {
         assertEquals("Accession number wrong", "384983", metadata.getSiteAccessionNumber());
         assertEquals("other requirements wrong", "none", metadata.getOtherSpecialRequirements());
         assertEquals("related software wrong", "linux, github, bitbucket", metadata.getRelatedSoftware());
-    }
-    
-    /**
-     * Test parsing known YAML file.
-     * 
-     * @throws Exception on unexpected events
-     */
-    @Test
-    public void testYamlParsing() throws Exception {
-        final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         
-        MetadataYaml metadata = mapper.readValue(new FileReader(getPathFor("metadata.yml")), MetadataYaml.class);
+        // check sponsoring orgs
+        List<SponsoringOrganization> sponsors = metadata.getSponsoringOrganizations();
         
-        // assert the known elements
-        assertEquals ("Title is wrong", 
-                "My fancy software title",
-                metadata.getTitle());
-        assertEquals ("URL is wrong",
-                "https://github.com/doecode/dev-test-repo",
-                metadata.getCodeRepository());
+        assertEquals("There should be 2", 2, sponsors.size());
         
-        assertEquals("Description is wrong", "This is a sample lengthy description.\n" +
-"It may span multiple lines, and captures the newlines as part\n" +
-"of its description.\n", metadata.getDescription());
+        SponsoringOrganization sponsor = sponsors.get(0);
+        assertEquals("Name is wrong", "DOE OSTI", sponsor.getOrganizationName());
+        assertTrue  ("Should be DOE", sponsor.isDOE());
+        List<String> award_numbers = sponsor.getAwardNumbers();
+        assertEquals("There should be 2 award numbers", 2, award_numbers.size());
+        assertEquals("First award wrong", "DE-865234", award_numbers.get(0));
+        assertEquals("Second award wrong", "DE-8293", award_numbers.get(1));
         
-        List<Organization> submitters = metadata.getSubmittingOrganizations();
+        sponsor = sponsors.get(1);
+        assertEquals("Name is wrong", "University of Miami, FL", sponsor.getOrganizationName());
+        assertFalse ("Should NOT be DOE", sponsor.isDOE());
+        award_numbers = sponsor.getAwardNumbers();
+        assertEquals("There should be 3 awards", 3, award_numbers.size());
+        assertEquals("award number 1 wrong", "UWIN-234", award_numbers.get(0));
+        assertEquals("award number 2 wrong", "UWIN-888", award_numbers.get(1));
+        assertEquals("award number 3 wrong", "UFL-11", award_numbers.get(2));
         
-        assertEquals("There should be 2 organizations.", 2, submitters.size());
-        assertTrue  ("ORNL not there", submitters.contains(new Organization("ORNL")));
-        assertTrue  ("OSTI not there", submitters.contains(new Organization("OSTI")));
+        List<Contributor> contributors = metadata.getContributors();
         
-        List<Person> developers = metadata.getDevelopers();
+        assertEquals("There should be 1 contributor", 1, contributors.size());
+        Contributor contributor = contributors.get(0);
+        assertEquals("Contributor name wrong", "Bob", contributor.getFirstName());
+        assertEquals("Contributor name wrong", "McTester", contributor.getLastName());
+        assertEquals("Affiliation wrong", "Java Testing Services, Inc.", contributor.getAffiliations());
+        assertEquals("Contributor type wrong", Contributor.Type.DataCurator, contributor.getContributorType());
+        assertEquals("Email wrong", "mctester@testingservices.com", contributor.getEmail());
         
-        assertEquals("Should be 2 developers", 2, developers.size());
+        List<ContributingOrganization> contribs = metadata.getContributingOrganizations();
+        assertEquals("There should be 1 org", 1, contribs.size());
+        ContributingOrganization corg = contribs.get(0);
+        assertEquals("Org name wrong", "University of Wisconsin", corg.getOrganizationName());
+        assertEquals("Type wrong", Contributor.Type.DataCurator, corg.getContributorType());
         
-        for ( Person d : developers ) {
-            if ("Neal".equals(d.getFirstName())) {
-                assertEquals("family name wrong", "Ensor", d.getFamilyName());
-                assertEquals("email wrong", "nensor@gmail.com", d.getEmail());
-                assertEquals("based at wrong", "OSTI", d.getBasedAt());
-                assertNotNull("Should have an ORCID", d.getOrcID());
-                Identifier orcid = d.getOrcID();
-                assertEquals("ORCID wrong", "1111222233334444", orcid.getIdentNumber());
-            } else if ("Thomas".equals(d.getFirstName())) {
-                assertEquals("family name wrong", "Welsch", d.getFamilyName());
-                assertEquals("email wrong", "welscht@osti.gov", d.getEmail());
-                assertEquals("based at wrong", "OSTI", d.getBasedAt());
-                assertNull  ("Should have no ORCID", d.getOrcID());
-            } else {
-                fail ("Unknown developer: " + d.getFirstName() + " " + d.getFamilyName());
-            }
-        }
+        List<ResearchOrganization> research_orgs = metadata.getResearchOrganizations();
+        assertEquals("There should be 2 research orgs", 2, research_orgs.size());
+        ResearchOrganization reorg = research_orgs.get(0);
+        assertEquals("Org name wrong", "OSTI", reorg.getOrganizationName());
+        assertTrue  ("Should be DOE", reorg.isDOE());
+        reorg = research_orgs.get(1);
+        assertEquals("Org name is wrong", "ORNL", reorg.getOrganizationName());
+        assertTrue  ("Should be DOE", reorg.isDOE());
         
-        List<String> keywords = metadata.getKeywords();
+        Date issue_date = metadata.getDateOfIssuance();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         
-        assertEquals("Should be 3 keywords", 3, keywords.size());
-        assertTrue  ("Missing Fancy Hats", keywords.contains("Fancy Hats"));
-        assertTrue  ("Missing Portable", keywords.contains("Portable"));
-        assertTrue  ("Missing Generic", keywords.contains("Generic"));
-        
-        Identifier doi = metadata.getDoi();
-        
-        assertEquals("DOI is wrong", "https://doi.org/10.5072/123456", doi.getIdentNumber());
-        assertEquals("DOI scheme is wrong", "DOI", doi.getIdentName());
-        
+        assertNotNull("Date is missing", issue_date);
+        assertEquals ("Date is wrong", "06/02/1999", sdf.format(issue_date));
     }
     
 }

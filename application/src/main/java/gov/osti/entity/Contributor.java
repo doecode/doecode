@@ -3,10 +3,17 @@ package gov.osti.entity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Table;
 
+/**
+ * The Contributor Embeddable entity class.
+ * 
+ * (NOTE:  Embeddable objects don't currently inherit, thus fields are 
+ * duplicated from the Agent superclass).
+ * 
+ * @author ensornl
+ */
 @Entity
-@Table(name="contributors")
+//public class Contributor implements Serializable {
 public class Contributor extends Agent {
     /**
      * Static Type of Contributor.  Based on DataCite accepted mapping values.
@@ -34,7 +41,6 @@ public class Contributor extends Agent {
         WorkPackageLeader,
         Other 
     }
-    
     private String firstName = "";
     private String lastName = "";
     private String middleName = "";

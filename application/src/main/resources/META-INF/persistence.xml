@@ -12,6 +12,7 @@
     <class>gov.osti.entity.SponsoringOrganization</class>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
     </properties>
   </persistence-unit>
 </persistence>

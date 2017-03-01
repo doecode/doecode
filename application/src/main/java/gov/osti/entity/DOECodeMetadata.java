@@ -1,5 +1,6 @@
 package gov.osti.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,19 +9,21 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
@@ -39,6 +42,9 @@ public class DOECodeMetadata implements Serializable {
     private Boolean openSource = null;
     private String  repositoryLink = null;
 
+    // set of Access Limitations (Strings)
+    private List<String> accessLimitations = new ArrayList<>();
+    
     // Child tables -- persons
     private List<Developer> developers = new ArrayList<>();
     private List<Contributor> contributors = new ArrayList<>();
@@ -51,6 +57,7 @@ public class DOECodeMetadata implements Serializable {
     // Child table -- identifiers
     private List<Identifier> identifiers = new ArrayList<>();
 
+    private Date dateOfIssuance = null;
     private String softwareTitle = null;
     private String acronym = null;
     private String doi = null;
@@ -105,6 +112,7 @@ public class DOECodeMetadata implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "CODE_ID")
     public Long getCodeId() {
             return codeId;
     }
@@ -133,26 +141,84 @@ public class DOECodeMetadata implements Serializable {
             this.repositoryLink = repositoryLink;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    /**
+     * Obtain the set of Access Limitation values for this record.
+     * @return a List of Access Limitation values
+     */
+    @ElementCollection
+    @CollectionTable(
+            name = "ACCESS_LIMITATIONS",
+            joinColumns=@JoinColumn(name="CODE_ID")
+    )
+    @Column (name="ACCESS_LIMITATION")
+    public List<String> getAccessLimitations() {
+        return this.accessLimitations;
+    }
+    
+    /**
+     * Set the Access Limitations for this record.
+     * @param limitations a set of Access Limitations to store
+     */
+    public void setAccessLimitations(List<String> limitations) {
+        this.accessLimitations = limitations;
+    }
+    
+    /**
+     * Get all the Contributors for this Metadata.
+     * @return the Contributor List
+     */
+//    @ElementCollection
+//    @CollectionTable(
+//        name="CONTRIBUTORS",
+//        joinColumns=@JoinColumn(name="CODE_ID")
+//    )
+    @OneToMany (cascade = CascadeType.ALL)
+    @JoinColumn (name="OWNER_ID", referencedColumnName = "CODE_ID")
     public List<Contributor> getContributors() {
         return this.contributors;
     }
 
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    /**
+     * Get all the Sponsoring Organizations for this Metadata
+     * @return a List of Sponsoring Organizations
+     */
+//    @ElementCollection
+//    @CollectionTable(
+//            name="SPONSORING_ORGANIZATIONS",
+//            joinColumns=@JoinColumn(name="CODE_ID")
+//    )
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn (name ="OWNER_ID", referencedColumnName = "CODE_ID")
     public List<SponsoringOrganization> getSponsoringOrganizations() {
         return this.sponsoringOrganizations;
     }
 
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    /**
+     * Get all the Contributing Organizations
+     * @return the List of Contributing Organizations
+     */
+//    @ElementCollection
+//    @CollectionTable(
+//            name="CONTRIBUTING_ORGANIZATIONS",
+//            joinColumns=@JoinColumn(name="CODE_ID")
+//    )
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn (name = "OWNER_ID", referencedColumnName = "CODE_ID")
     public List<ContributingOrganization> getContributingOrganizations() {
         return this.contributingOrganizations;
     }
-
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    
+    /**
+     * Get all the Research Organizations
+     * @return a List of Research Organizations
+     */
+//    @ElementCollection
+//    @CollectionTable(
+//            name="RESEARCH_ORGANIZATIONS",
+//            joinColumns=@JoinColumn(name="CODE_ID")
+//    )
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn (name="OWNER_ID", referencedColumnName = "CODE_ID")
     public List<ResearchOrganization> getResearchOrganizations() {
         return this.researchOrganizations;
     }
@@ -188,8 +254,11 @@ public class DOECodeMetadata implements Serializable {
         this.identifiers = identifiers;
     }
 
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    @ElementCollection
+    @CollectionTable(
+            name="IDENTIFIERS",
+            joinColumns=@JoinColumn(name="CODE_ID")
+    )
     public List<Identifier> getIdentifiers() {
         return this.identifiers;
     }
@@ -221,8 +290,17 @@ public class DOECodeMetadata implements Serializable {
             this.license = license;
     }
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name="codeId", nullable = false, updatable = false)
+    /**
+     * Get all the Developers for this Metadata
+     * @return the List of Developers
+     */
+//    @ElementCollection
+//    @CollectionTable(
+//            name="DEVELOPERS",
+//            joinColumns=@JoinColumn(name="CODE_ID")
+//    )
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn (name="OWNER_ID", referencedColumnName = "CODE_ID")
     public List<Developer> getDevelopers() {
             return developers;
     }
@@ -374,6 +452,17 @@ public class DOECodeMetadata implements Serializable {
     public void setRelatedSoftware(String relatedSoftware) {
             this.relatedSoftware = relatedSoftware;
     }
+    
+    public void setDateOfIssuance(Date date) {
+        this.dateOfIssuance = date;
+    }
+    
+    @Column (name="date_of_issuance")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "EST")
+    public Date getDateOfIssuance() {
+        return this.dateOfIssuance;
+    }
 
     public void setDateRecordAdded(Date date) {
         this.dateRecordAdded = date;
@@ -383,7 +472,10 @@ public class DOECodeMetadata implements Serializable {
         setDateRecordAdded(new Date());
     }
 
+    @Column (name="date_record_added", nullable = false)
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @JsonFormat
+      (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss'Z'")
     public Date getDateRecordAdded() {
         return dateRecordAdded;
     }
@@ -396,17 +488,26 @@ public class DOECodeMetadata implements Serializable {
         setDateRecordUpdated(new Date());
     }
 
+    @Column (name="date_record_updated", nullable = false)
     @Temporal (TemporalType.TIMESTAMP)
+    @JsonFormat
+      (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss'Z'")
     public Date getDateRecordUpdated() {
         return dateRecordUpdated;
     }
 
+    /**
+     * method to automatically set both date added and updated at persistence time.
+     */
     @PrePersist
     void createdAt() {
         setDateRecordAdded();
         setDateRecordUpdated();
     }
 
+    /**
+     * Set the date updated prior to update.
+     */
     @PreUpdate
     void updatedAt() {
         setDateRecordUpdated();

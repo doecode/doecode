@@ -4,31 +4,36 @@ package gov.osti.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
- *
+ * A Generic Identifier for metadata; includes Related Identifiers, BR Codes, etc.
+ * 
  * @author ensornl
  */
-@Entity
-@Table (name = "IDENTIFIERS")
+@Embeddable
 public class Identifier implements Serializable {
-    
-    public enum Type {
+    /**
+     * Enumeration of valid Types for an Identifier.
+     */
+    public enum Type implements Serializable {
         DOI,
         URL,
         BRCode,
         AwardNumber,
         Email,
-        Other
+        Other;
+        
+        public String getName() {
+            return this.name();
+        }
     }
-    public enum RelationType {
+    /**
+     * Enumeration of valid Relationship Types for Identifier.
+     */
+    public enum RelationType implements Serializable {
         IsCitedBy,
         Cites, 
         IsSupplementTo,
@@ -53,52 +58,33 @@ public class Identifier implements Serializable {
         IsReviewedBy, 
         Reviews, 
         IsDerivedFrom, 
-        IsSourceOf 
+        IsSourceOf;
+        
+        public String getName() {
+            return this.name();
+        }
     }
 
-    private Long id;
-    private Long codeId;
+    // the specific Type of the Identifier
     private Type identifierType;
-    private String value;
+    // optional String description of this Identifier
+    private String description;
+    // the value of the Identifier
+    private String identifierValue;
+    // the Relationship Type (if any) for this Identifier
     private RelationType relationType;
 
     public Identifier() {
         
     }
     
-    public Identifier(Long id, Long codeId, Type idType, String value, RelationType relType) {
-        this.id = id;
-        this.codeId = codeId;
+    public Identifier(Type idType, String value, RelationType relType) {
         this.identifierType = idType;
-        this.value = value;
+        this.identifierValue = value;
         this.relationType = relType;
     }
     
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the codeId
-     */
-    public Long getCodeId() {
-        return codeId;
-    }
-
-    /**
-     * @param codeId the codeId to set
-     */
-    public void setCodeId(Long codeId) {
-        this.codeId = codeId;
-    }
-
     /**
      * @return the type
      */
@@ -113,20 +99,37 @@ public class Identifier implements Serializable {
     public void setIdentifierType(Type type) {
         this.identifierType = type;
     }
+    
+    /**
+     * Get the Description for this Identifier
+     * @return the Description
+     */
+    @Column (length = 500, name="DESCRIPTION")
+    public String getDescription() {
+        return this.description;
+    }
+    
+    /**
+     * Add a description (optional) for this Identifier
+     * @param d the Description to use
+     */
+    public void setDescription(String d) {
+        this.description = d;
+    }
 
     /**
      * @return the value
      */
     @Column (length = 1000)
-    public String getValue() {
-        return value;
+    public String getIdentifierValue() {
+        return identifierValue;
     }
 
     /**
      * @param value the value to set
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setIdentifierValue(String value) {
+        this.identifierValue = value;
     }
 
     /**
