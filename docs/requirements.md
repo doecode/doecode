@@ -65,11 +65,12 @@ The initial requirements have been reviewed and expanded by the OSTI Technical R
  - provide the ability to create and manage lists of projects for monitoring purposes.
  - provide an online data analytics dashboard for querying and analyzing the database of software products.
  - support author identification and pseudonyms by cataloging different identification types such as GitHub usernames and ORCID Identification Numbers.
- - Separate and specific metrics and analytics reporting capabilities for the research and program management communities
- -	Expand social coding platform to include embedding blogging, news feeds, and other social sharing (“Publish to Twitter”) features
+ - separate and specific metrics and analytics reporting capabilities for the research and program management communities
+ -	expand social coding platform to include embedding blogging, news feeds, and other social sharing (“Publish to Twitter”) features
  -	IDE (Eclipse and others) Integration
- -	Archiving and support for runtime environments
- -	Provisioning and experiment integration for code and runtime environment execution
+ -	archiving and support for runtime environments
+ -	provisioning and experiment integration for code and runtime environment execution
+ - have 2-stage verification for entry vs. correctness. Something must be entered in all required fields to show up to be indexed.
 
 ### Wireframes
 
