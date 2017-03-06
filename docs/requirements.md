@@ -71,6 +71,7 @@ The initial requirements have been reviewed and expanded by the OSTI Technical R
  -	archiving and support for runtime environments
  -	provisioning and experiment integration for code and runtime environment execution
  - have 2-stage verification for entry vs. correctness. Something must be entered in all required fields to show up to be indexed.
+ - have license drop down list to match what [GitHub uses](https://github.com/blog/1530-choosing-an-open-source-license). 
 
 ### Wireframes
 
