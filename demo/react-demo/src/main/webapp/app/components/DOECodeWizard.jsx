@@ -22,11 +22,7 @@ export default class DOECodeWizard extends React.Component {
     }
 
     autopopulate(event) {
-<<<<<<< HEAD:demo/react-demo/src/main/webapp/components/script.jsx
-    	doAjax('GET', "services/metadata/autopopulate?repo=" + this.props.metadataStore.metadata.repository_link,this.parseLoadResponse);
-=======
     	doAjax('GET', "services/react?action=autopopulate&repo=" + metadataStore.metadata.repository_link,this.parseLoadResponse);
->>>>>>> React Router and CSS now work, significant restructuring:demo/react-demo/src/main/webapp/app/components/DOECodeWizard.jsx
     	event.preventDefault();
     }
 
