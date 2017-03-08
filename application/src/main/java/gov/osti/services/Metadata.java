@@ -2,8 +2,10 @@
  */
 package gov.osti.services;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import gov.osti.connectors.BitBucket;
 import gov.osti.connectors.ConnectorFactory;
 import gov.osti.connectors.GitHub;
@@ -73,7 +75,9 @@ public class Metadata {
     public Metadata() {
     }
     
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
+            .setSerializationInclusion(JsonInclude.Include.NON_NULL);
     
     /**
      * Attempt to look up and return a Metadata record.
