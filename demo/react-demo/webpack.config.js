@@ -3,7 +3,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname + "/src/main/webapp",
-
   entry: {
     javascript: "./app/index.jsx"
   },
@@ -17,6 +16,21 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'] 
   },
 
+
+devServer: {
+proxy: {
+'/api/*': {
+target: 'http://localhost:8080/doecode/services',
+secure: false,
+changeOrigin: true,
+pathRewrite: {
+'^/api' : ''
+}
+}
+}
+
+}
+,
   module: {
     rules: [
       {

@@ -14,16 +14,24 @@ export default class Metadata {
         "related_identifiers": '',
         "country_of_origin": '',
         "developers": [],
+        "contributors": [],
+        "sponsoring_organizations" : [],
+        "contributing_organizations" : [],
+        "research_organizations" : [],
+        "identifiers" : [],
+        "date_of_issuance" : "",
         "keywords": '',
         "disclaimers": '',
-        "license": '',
+        "licenses": [],
         "recipient_name": '',
         "recipient_email": '',
         "recipient_phone": '',
         "recipient_org": '',
         "site_accession_number": '',
         "other_special_requirements": '',
-        "related_software": ''
+        "related_software": '',
+        "access_limitations": [],
+        
     }
 
     @observable finished = false;

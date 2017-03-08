@@ -22,7 +22,7 @@ export default class DOECodeWizard extends React.Component {
     }
 
     autopopulate(event) {
-    	doAjax('GET', "services/react?action=autopopulate&repo=" + metadataStore.metadata.repository_link,this.parseLoadResponse);
+    	doAjax('GET', "/api/metadata/autopopulate?repo=" + metadataStore.metadata.repository_link,this.parseLoadResponse);
     	event.preventDefault();
     }
 
@@ -35,7 +35,7 @@ export default class DOECodeWizard extends React.Component {
       var self = this;
 		return new Promise((resolve,reject) => {
 		    $.ajax({
-		        url: 'services/metadata',
+		        url: "/api/metadata",
 		        cache: false,
 		        method: 'POST',
 		        dataType: 'json',
@@ -43,8 +43,8 @@ export default class DOECodeWizard extends React.Component {
 		        contentType: "application/json; charset=utf-8",
 		        success: function(data) {
 		        	console.log(data);
-              self.props.metadataStore.finished = true;
-              self.props.metadataStore.metadata.code_id = data.metadata.code_id;
+               metadataStore.finished = true;
+               metadataStore.metadata.code_id = data.metadata.code_id;
 		        	resolve();
 
 		        },
