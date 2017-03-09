@@ -30,7 +30,7 @@ export default class Metadata {
         "site_accession_number": '',
         "other_special_requirements": '',
         "related_software": '',
-        "access_limitations": [],
+        "access_limitations": []
         
     }
 

@@ -5,6 +5,7 @@ import {observer} from "mobx-react";
 import Metadata from '../stores/Metadata';
 import AgentsStep from './AgentsStep';
 import MetadataStep from './MetadataStep';
+import AccessStep from './AccessStep';
 import ConfirmStep from './ConfirmStep';
 import StepZilla from 'react-stepzilla';
 
@@ -43,8 +44,8 @@ export default class DOECodeWizard extends React.Component {
 		        contentType: "application/json; charset=utf-8",
 		        success: function(data) {
 		        	console.log(data);
-               metadataStore.finished = true;
-               metadataStore.metadata.code_id = data.metadata.code_id;
+                    metadataStore.finished = true;
+                    metadataStore.metadata.code_id = data.metadata.code_id;
 		        	resolve();
 
 		        },
@@ -63,6 +64,7 @@ export default class DOECodeWizard extends React.Component {
         const steps =
         	[
         		{name: 'Metadata', component: <MetadataStep metadataStore={metadataStore}  autopopulate={this.autopopulate}/> },
+        		{name: 'Licenses & Access Limitations', component: <AccessStep metadataStore={metadataStore}/>},
         		{name: 'Developers', component: <AgentsStep metadataStore={metadataStore} getSubmitPromise={this.getSubmitPromise}/>},
         		{name: 'Confirmation', component: <ConfirmStep metadataStore={metadataStore}/> }
         		];
