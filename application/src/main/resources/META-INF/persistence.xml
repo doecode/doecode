@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence  http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-  <persistence-unit name="DOECode" transaction-type="JTA">
+  <persistence-unit name="DOECode" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:comp/env/doecode</jta-data-source>
     <class>gov.osti.entity.Contributor</class>
     <class>gov.osti.entity.DOECodeMetadata</class>
     <class>gov.osti.entity.Developer</class>
@@ -11,7 +10,10 @@
     <class>gov.osti.entity.ResearchOrganization</class>
     <class>gov.osti.entity.SponsoringOrganization</class>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.url" value="${database.url}"/>
+      <property name="javax.persistence.jdbc.user" value="${database.user}"/>
+      <property name="javax.persistence.jdbc.driver" value="${database.driver}"/>
+      <property name="javax.persistence.jdbc.password" value="${database.password}"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
     </properties>
   </persistence-unit>

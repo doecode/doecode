@@ -22,7 +22,7 @@ public class Identifier implements Serializable {
         DOI,
         URL,
         BRCode,
-        AwardNumber,
+        FWPNumber,
         Email,
         Other;
         
