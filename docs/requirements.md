@@ -72,6 +72,7 @@ The initial requirements have been reviewed and expanded by the OSTI Technical R
  -	provisioning and experiment integration for code and runtime environment execution
  - have 2-stage verification for entry vs. correctness. Something must be entered in all required fields to show up to be indexed.
  - have license drop down list to match what [GitHub uses](https://github.com/blog/1530-choosing-an-open-source-license). 
+ - submitted code(s) must be scanned for vulnerabilities at some point in the submission lifecycle
 
 ### Wireframes
 
@@ -102,7 +103,7 @@ Detailed information on proposed changes to the metadata schema for DOE 241.4 ar
  - [Metadata version 1](https://github.com/doecode/doecode/blob/master/docs/osti-policy/MetaData_Software_Fields%2011_14_16.xlsx) - Spreadsheet that shows the list of proposed metadata fields, whether these fields will be mandatory or optional, and additional details about these fields provided in the ‘Notes’ column.
  - [Metadata schema](https://github.com/doecode/doecode/blob/master/metadata-schema/XMLSchema/MetadataSchema.xsd) - a rough draft of an XML schema
  
-##Submission Models 
+## Submission Models 
 A requirement to create ideal submission models for the three scenarios for types of software submissions were made using UML diagrams. The three types include submission as a grantee, submission as a lab researcher or developer/STI point of contact, batch submissions through the web API. 
 
 ![Submission as a grantee](../models/IdealSubmissionProcess-UML%20Diagram/UML-Submit%20New%20Product%20As%20Grantee.jpg) 
@@ -111,14 +112,14 @@ A requirement to create ideal submission models for the three scenarios for type
 
 ![Lab STI POC submission(s) through the web API](../models/IdealSubmissionProcess-UML%20Diagram/UML-Lab%20STI%20POC%20Submission%20Through%20Web%20API.jpg) 
 
-##Requirements from Communications and Technology Transfer Discussions
+## Requirements from Communications and Technology Transfer Discussions
 
 Detailed notes from the Communications and Tech Transfer meetings are available in the [team folder]( https://github.com/doecode/doecode/tree/master/docs/comm-techtransfer). Conversations with the Communications and Technology Transfer team have determined that DOE Code shall
 -	include a ‘save’ feature while filling out the submission form
 -	replace the use of CDs with digital capabilities as much as possible
 -	involve lab technical staff to test the product 
 
-##Requirements from meetings with the DOE Code Core Team
+## Requirements from meetings with the DOE Code Core Team
 
 Discussions with the Core team have determined that DOE Code shall include the following requirements. Detailed notes are available in the [core team folder]( https://github.com/doecode/doecode/tree/master/docs/core).
 -	automate submission process as much as possible to keep a low overhead
@@ -127,28 +128,28 @@ Discussions with the Core team have determined that DOE Code shall include the f
 -	build connectors, i.e. archiving logic/processing, from popular repository software
 -	address cyber concerns with open access project that supports OUO material storage
 
-##Requirements from discussions with the DOE-GC Team
+## Requirements from discussions with the DOE-GC Team
 
 Meetings with the DOE-General Counsel team have determined that DOE Code shall include the following requirements. Detailed notes are available in the [DOE-GC team folder]( https://github.com/doecode/doecode/tree/master/docs/doe-gc).
 -	become more transparent with awarding offices and sites on software created
 -	support the software license assigned by the copyright holder/originating institution instead of relicensing under an OSTI license
 -	distribute old codes that are out of commercialization if no longer in use by labs
-
-##Requirements from meetings with the Labs-HPC Team
+ 
+## Requirements from meetings with the Labs-HPC Team
 
 Detailed notes from the Labs-High Performance Computing meetings are available in the [team folder]( https://github.com/doecode/doecode/tree/master/docs/labs-hpc). Discussions with the Labs-HPC team have determined that DOE Code shall
 -	keep information/links fresh as open source community moves to other services 
 -	support hosting private repositories
 -	maintain association with lab specific release numbers
 
-##Requirements from discussions with the Labs-Legal Team
+## Requirements from discussions with the Labs-Legal Team
 
 Discussions with the Labs-Legal team have determined that DOE Code shall include the following requirements. Detailed notes are available in the [team folder]( https://github.com/doecode/doecode/tree/master/docs/labs-legal).
 -	provide easier accessibility for submission
 -	improve searching capabilities
 -	be reliable and standardized
 
-##Requirements from meetings with the Labs-STI Managers Team
+## Requirements from meetings with the Labs-STI Managers Team
 
 Detailed notes from the Labs-STI Managers meetings are available in the [stip team folder]( https://github.com/doecode/doecode/tree/master/docs/stip). Conversations with the team have determined that DOE Code shall
 -	accept DOIs generated from Zenodo and other sources
