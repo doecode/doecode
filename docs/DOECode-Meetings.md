@@ -1,4 +1,4 @@
-#DOECode Meetings
+# DOECode Meetings
 
 | Team Name | Meeting Date |
 | --------- | ------------ |
@@ -30,3 +30,11 @@
 | Technical Team | 20170127 |
 | Policy Team | 20170203 |
 | Technical Team | 20170203 |
+| Core Team | 20170223 |
+| Technical Team | 20170303 |
+| Policy Team | 20170310 |
+| Technical Team | 20170310 |
+| Technical Team | 20170324 |
+| Technical Team | 20170407 |
+| Policy Team | 20170421 |
+| Technical Team | 20170421 |
