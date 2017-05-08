@@ -9,3 +9,5 @@ The job of the DOECode Core Requirements Team is to provide requirements to the 
 - Gilberto Pastorello, LBL
 - Carly Robinson, OSTI
 - Lance Vowell, OSTI
+- Daniel Lamb, ORO
+- Clara Asmail, DOE-HQ
