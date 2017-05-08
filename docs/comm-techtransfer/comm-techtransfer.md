@@ -1,6 +1,6 @@
-#DOECode Commercialization and Technology Transfer Team
+# DOECode Commercialization and Technology Transfer Team
 
-##Members
+## Members
  - Jay Jay Billings, ORNL
  - Lance Vowell, OSTI
  - Carly Robinson, OSTI
@@ -16,4 +16,5 @@
  - Anne Miller, NREL
  - Gary Smith, INL
  - Paul Berg, INL
+ - Clara Asmail, DOE-HQ
  
