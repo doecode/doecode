@@ -76,6 +76,7 @@ The initial requirements have been reviewed and expanded by the OSTI Technical R
  - for the publish-save workflow, the save button should be used for saving the initial entry then once it's published, if the user goes back in and edits, they simply re-publish and the save feature won't be available - this is to prevent getting missed by indexer. 
  - have two separate GitLab installations (one for repository services and one for archiving)
  - for Beta, explore software categorization functionality 
+ - require the submission of the landing page URL that the lab or grantee will make the software available at
 
 ### Wireframes
 
