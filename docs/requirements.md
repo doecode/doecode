@@ -77,6 +77,10 @@ The initial requirements have been reviewed and expanded by the OSTI Technical R
  - have two separate GitLab installations (one for repository services and one for archiving)
  - for Beta, explore software categorization functionality 
  - require the submission of the landing page URL that the lab or grantee will make the software available at
+ - open Source PA requires a repository link
+ - open Source NPA now requires the repository link with an optional file upload
+ - closed Source now requires a landing page URL and a file upload
+
 
 ### Wireframes
 
