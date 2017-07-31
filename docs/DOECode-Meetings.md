@@ -49,3 +49,4 @@
 | Technical Team | 20170629 |
 | Technical Team | 20170707 |
 | Technical Team| 20170714 |
+| Labs-Legal Team | 20170728 |
