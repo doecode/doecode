@@ -46,8 +46,9 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Joshua Nelson, nelsonjc &lt;at> osti DOT gov, 20160708
 * Crystal Sherline, sherlinec &lt;at> osti DOT gov, 20161109
 * Andrew Smith, smitha &lt;at> osti DOT gov, 20160819
+* Tim Sowers, sowerst &lt;at> osti DOT gov, 20170801
 * Shelby Stooksbury, stooksburys &lt;at> osti DOT gov, 20160921
 * Thomas Welsch, welscht &lt;at> osti DOT gov, 20160819
 * Lance Vowell, vowelll &lt;at> osti DOT gov, 20160708
 * Amber Watson, watsona &lt;at> osti DOT gov, 20170510
-* Tim Sowers, sowerst &lt;at> osti DOT gov, 20170801
+* Mary Beth West, westm &lt;at> osti DOT gov, 20170801
