@@ -50,3 +50,4 @@ The best mechanism for contacting the team is to "open a ticket," which you may 
 * Thomas Welsch, welscht &lt;at> osti DOT gov, 20160819
 * Lance Vowell, vowelll &lt;at> osti DOT gov, 20160708
 * Amber Watson, watsona &lt;at> osti DOT gov, 20170510
+* Tim Sowers, sowerst &lt;at> osti DOT gov, 20170801
