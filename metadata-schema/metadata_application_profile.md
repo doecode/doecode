@@ -25,11 +25,6 @@ DOECode uses the following namespaces:
 | skos    | http://www.w3.org/2004/02/skos/core#        |
 
 
-## DOMAIN MODEL 
-Placeholder for Diagram of DOECode data model:
-[Diagram](imagesLocation/image_file_name.png)
-
-
 ## CLASSES
 
 A class is a mechanism defining a group of resources of a particular type. A resource which is a member of a particular class of resources is called an instance of that class. A common convention is to capitalize the names of classes and to write the names of properties in camelCase. Proposed classes for DOECode:
@@ -66,18 +61,6 @@ Cardinality: the requirement and number of properties that can exist
 
 (1 = required and not repeatable, 1 - n, required and repeatable, 0 - 1, optional and not repeatable, 0 - n = optional and repeatable)
 
-
-| Label      		 | *Product Type*                                                         |
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Declares type of resource                                              |
-|Scheme              | n/a                                                                    |
-|Property            | dctype:Software                                                        |
-|Usage               | will always be dctype:Software unless DOECode extends type submissions |
-|Cardinality         | 1                                                                      | 
-
-```json
-"@type": "dctype:Software",
-```
 
 | Label      		 | *Organization Name*                                                       
 |:-------------------|:-----------------------------------------------------------------------|
@@ -129,9 +112,18 @@ EXAMPLE
 ]
 ```
 
-| Label              | *Repository Link*                                                      | 
+| Label              | *Availability*                                                      | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | URL to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).                                      |
+|Definition          | Availability of the software.                                     |
+|Scheme              | n/a   |
+|Property            | osti:availability                                                  |
+|Usage               | One of three options: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source. |
+|Cardinality         | 1 |
+
+
+| Label              | *Repository Link/Landing Page*                                                      | 
+|:-------------------|:-----------------------------------------------------------------------|
+|Definition          | URL to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex) or a URL which leads to the landing page of the software.                                     |
 |Scheme              | n/a   |
 |Property            | schema:codeRepository                                                  |
 |Usage               |  |
@@ -147,22 +139,13 @@ EXAMPLE
 |Cardinality         | 1 |
 
 
-
-| Label        		 | *Distribution/Access Limitation*                                   | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | *CREATE CUSTOM SKOS ConceptScheme FOR DOE ACCESS CONCEPTS*            |
-|Scheme              | n/a                                                                    |
-|Property            | osti:Access                                                        |
-|Usage               | x |
-|Cardinality         | 1                                                                      |	
-
-| Label        		 | *Developer(s)/Creator/Contributor/Contact Point*                                            |
+| Label        		 | *Developer(s)/Contributor/Contact Point*                                            |
 |:-----------------------|:------------------------------------------------------------------|
 |Definition              | 
 |Scheme                  | n/a
 |Property                | foaf:Person
 |Annotation              | dcterms:creator, dcterms:contributor, adms:contactPoint, foaf:firstName, foaf:familyName, foaf:mbox_sha1sum |
-|Cardinality             | 1 - n                                                             |	
+|Cardinality             | 1 - n                                                         |	
 
 ```json
 "dcterms:creator": [
@@ -203,20 +186,11 @@ EXAMPLE
 
 | Label        		 | *Country of Origin*                                                    | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | States Country of ?  [Author? Submitting org?]                         |
+|Definition          | States Country of Origin for the software. Default is the United States.                         |
 |Scheme              | Getty Thesaurus of Geographic Names,                                   |
 |Property            | dcterms:coverage                                                       |
 |Usage               | Coverage will typically include spatial location (a place name or geographic co-ordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names). Where appropriate, named places or time periods should be used in preference to numeric identifiers such as sets of co-ordinates or date ranges. |	
 |Cardinality         | 0 - 1                                                                  |
-
-
-| Label        		 | *Subjects*                                                             | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | The topic of the content of the resource.                              |
-|Scheme              | LCSH? International Energy Subject Thesaurus?                          |
-|Property            | dcterms:subject                                                        |
-|Usage               | Typically, a Subject will be expressed as keywords or key phrases or classification codes that describe the topic of the resource. Recommended best practice is to select a value from a controlled vocabulary or formal classification scheme. |
-|Cardinality         | 0 - n                                                                  |	
 
 
 | Label        		 | *Keywords*                                                          | 
@@ -226,17 +200,6 @@ EXAMPLE
 |Property            | schema:keywords                                                        |
 |Usage               | Multiple entries in a keywords list are typically delimited by commas. |
 |Cardinality         | 0 - n                                                                  |
-
-
-| Label        		 | *Rights*                                                               | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Information about rights held in and over the resource. Typically a Rights element will contain a rights management statement for the resource, or reference a service providing such information. Rights information often encompasses Intellectual Property Rights (IPR), Copyright, and various Property Rights.   |
-|Scheme              |  n/a  |
-|Property            | dcterms:rights                                                         |
-|Usage               | The Rights element may be used for either a textual statement (e.g., "Open Source"), or a URL pointing to a rights statement, or a combination, when a brief statement and a more lengthy one are available. |		
-|Cardinality         | 1  |
-
-
 
 
 | Label        		 | *License*                                                               | 
@@ -254,67 +217,6 @@ dcterms:license="Licensed for use under Creative Commons Attribution 2.0."
 ```
 
 
-| Label              | *Legal Notices*  |
-|:-------------------|:--------------------------------------------------------------------------|
-|Definition          |  An official legal statement acknowledging sponsorship and/or data rights.  Respective SIACs, or originating sites, issue their own statements as legally appropriate.|
-|Property            | osti:legalNotices   |
-|Usage               | example: "This computer software has been developed under sponsorship of the U.S. Department of Energy." |	
-|Cardinality         | 1 - n |
- 
-
-
-| Label | *Disclaimers* |
-|:-------------------|:--------------------------------------------------------------------------|
-|Definition          | An official legal statement declaring any additional conditions under which the software is to be distributed apart from those stated in the license.  Respective SIACs, or originating sites, issue their own statements as legally appropriate.  |
-|Property            | osti:disclaimers  |
-|Usage               | example: "Neither the United States Government nor the United States Department of Energy, nor any of their employees, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, or represents that its use would not infringe privately owned rights." |
-|Cardinality         | 1 - n |
-
-
-
-| Label        		 | *Version*                                                              | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | The described resource is a version, edition, or adaptation of the referenced resource. Changes in version imply substantive changes in content rather than differences in format.                                           |
-|Scheme              | n/a                                                                    |
-|Property            | dcterms:hasVersion / dcterms:isVersionOf                               |
-|Usage               | Potential use for multiple versions is the standard rdf:Alt container (or rdf:Seq or rdf:Bag) as a blank node containing the ordered or unordered versions |
-|Cardinality         | 0 - n  |
-
-Example:
-```xml
-<dcterms:hasVersion>
-<rdf:Alt rdf:about="http://www.github.com/Software">
-	<rdf:_1 rdf:resource=“github.com/Version2”>
-	<rdf:_2 rdf:resource=“github.com/Version3”>
-	<rdf:_3 rdf:resource=“github.com/Version4”>
-```
-
-
-| Label        	     | *Operating System*                                                     | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Operating systems supported (Windows 7, OSX 10.6, Android 1.6).        |
-|Scheme              | n/a                                                                    |
-|Property            | schema:operatingSystem                                                 |
-|Usage               | x |
-|Cardinality         | 0 - 1                                                                  |	
-
-
-| Label              | *Documentation*                                                        | 
-|:-------------------|:-----------------------------------------------------------------------|
-|Definition          | Class for any type of document related to the software described.      |
-|Scheme              | n/a                                                                    |
-|Property            | foaf:Document                                                          |
-|Usage               | The Document class is loosely defined by W3C. Additional elements may be used to clarify attributes of the document, such as dcterms:title, dcterms:date, etc.  |
-|Cardinality         | 0 - n                                                                  |	
-
-Example:
-```json
- {
-  "@type": "foaf:Document",
-  "dcterms:title": "Software Example Technical Documentation"
- }
-```
-
 | Label        		 | *Requirements*                                                         | 
 |:-------------------|:-----------------------------------------------------------------------|
 |Definition          | A related resource that is required by the described resource to support its function, delivery, or coherence.                                         |
@@ -323,16 +225,11 @@ Example:
 |Usage               | x |
 |Cardinality         | 0 - n                                                                  |
 
-| Label        		 | *Auxiliary software*                                                   | 
+| Label        		 | *Short Title or Acronym*                                                   | 
 |:-------------------|:-----------------------------------------------------------------------|
-|Definition          | The described resource is referenced, cited, or otherwise pointed to by the referenced resource, The described resource references, cites, or otherwise points to the referenced resource. |
-|Scheme              | URI                                                                    |
-|Property            | dcterms:isReferencedBy, dcterms:references                                 |
-|Usage               | It is recommended that the value should be a URI. |
-|Cardinality         | 0 - n                                                                  |
+|Definition          | Abbreviated title or acronym for the software. |
+|Scheme              | n/a                                                                    |
+|Property            | osti:acronym                                 |
+|Usage               | This field differs from the 'Title' field. The 'Title' field is the full title of the software. |
+|Cardinality         | 0                                                                   |
 
-Example:
-```xml
-<dc:title>Expressing Simple Dublin Core in RDF/XML</dc:title>
-<dcterms:references rdf:resource="http://www.w3.org/TR/REC-rdf-syntax"></dcterms:references>
-```   
