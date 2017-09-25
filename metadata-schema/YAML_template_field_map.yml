@@ -20,12 +20,12 @@ mapping:
     property: 'dcterms:license'
     type: str
     required: yes
-  openSourceProject: 
-    property: 'dcterms:rights'
-    type: boolean
+  availability: 
+    property: 'osti:availability'
+    type: str
     required: yes
-  governmentWideReuseProject: 
-    property: 'dcterms:rights'
+  governmentWideReuseProject:
+    property: 'dcterms: rights'
     type: boolean
     required: yes
   codeRepository: 
@@ -71,15 +71,15 @@ mapping:
     email: 
       property: 'foaf:mbox_sha1sum'
       type: str
-      required: yes
+      required: no
     orcID:
       property: 'adms:identifier'
       <<: *identifier
-      required: yes
+      required: no
     basedAt:
       property: 'org:basedAt'
       <<: *organization
-      required: yes
+      required: no
   doeIdentifier: 
     property: 'adms:identifier'
     <<: *identifier
@@ -97,16 +97,18 @@ mapping:
     <<: *person
     <<: *organization
     'org:role':
-      submittingOrganization: 
+      contributingOrganization: 
         property: 'org:Role'
-        'skos:preflabel': "Submitting Organization"
+        'skos:preflabel': "Contributing Organization"
+        required: no
       sponsoringOrganization:
         property: 'org:Role'  
         'skos:prefLabel': "Sponsoring Organization"
+        required: yes
       researchOrganization:
         property: 'org:Role'
         'skos:prefLabel': "Research Organization"
-    required: no
+        required: yes
   doi:
     property: 'adms:identifier'
     <<: *identifier
@@ -119,27 +121,20 @@ mapping:
     property: 'dcterms:coverage'	
     type: str
     required: no
-  hasVersion: 
-    property: 'dcterms:hasVersion'
-    type: str
-    required: no
-  isVersionOf: 
-    property: 'dcterms:isVersionOf'
-    type: str
-    required: no
   contactPerson:
     property: 'adms:contactPoint'  
     <<: *person
-    required: no
+    required: yes
   requirements:
     property: 'dcterms:requires'
     type: str
     required: no
-  relatedSoftware:
-    property: 'dcterms:references'
+  relatedIdentifiers:
+    property: 'adms:identifier'
     type: str
     required: no
-  relatedDocumentation:
-    property: 'dcterms:references'
+  acronym:
+    property: 'osti:acronym'
     type: str
     required: no
+    
