@@ -5,12 +5,12 @@
 #REQUIRED FIELDS
 
 title: #"type the title of your project using quotation marks"
-date: #on what date was this code created YYYY-MM-DD
-description: | #provide a description of your project
-license: #give the URL for your license
-openSourceProject: 1 
+date: #on what date was this code released YYYY-MM-DD
+description: | #provide an abstract/description of your project
+license: #type in license from open source license list or give the URL for your license
+availability: #type in one of the following: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source 
 governmentWideReuseProject: 1
-codeRepository: #repo URL
+codeRepository: #repo URL or landing page URL
 
 doeIdentifier:
   identName: "DOE Contract Number"
@@ -20,19 +20,21 @@ doeIdentifier:
 developers: 
 - firstname: #what is the developer's first name
   familyname: #what is the developer's family name
-  email: #what is the developer's email  
+  email: #what is the developer's email (optional) 
   orcID: 
      identName: "ORCiD"
-     identNumber: #type in the developer's ORCiD, please	
-  basedAt: #current primary workplace
+     identNumber: #type in the developer's ORCiD, please (optional)
+  basedAt: #current primary workplace(affiliation) (optional)
 
-submittingOrganization: 
-- orgName: #What org is submitting this? add to list as needed.
 sponsoringOrganization: 
 - orgName: #What org funded this project? add to list as needed.
 researchOrganization: 
 - orgName: #What org contributed to this research? add to list as needed. 
 
+contactPerson: #Who is submitting the software
+- email: #What is the contact person's email
+  phoneNumber: #What is the contact person's phone number
+  basedAt: #current organization of the submitter
 
 #OPTIONAL FIELDS
 
@@ -48,7 +50,11 @@ contributors:
   orcID:
     identName: "ORCiD"
     identNumber: #type in orcid
-  basedAt: #current primary workplace
+  basedAt: #current primary workplace(affiliation)
+
+#add to list as needed
+contributingOrganization:
+- orgName: #What org contributed to this research?
 
 doi: 
   identName: "DOI"
@@ -56,13 +62,10 @@ doi:
 
 #repeat field as needed
 additionalIdentifier: 
-  identName: #name of the ID type, e.g. "B&R Code"
+  identName: #name of the ID type, e.g. "B&R Code, FWP Number, Site Accession Number, Additional Contract/Award Numbers"
   identNumber: #the alpha/numeric identifier 
   
 countryOfOrigin: #primary location of software development
-hasVersion: #url of newer version
-isVersionOf: #url of older version
-contactPerson: 
-requirements: #list any requirements
-relatedSoftware: #url of related software repo
-relatedDocumentation: #url or uri of related docs
+requirements: #list any special requirements
+relatedIdentifiers: #url or doi of related docs
+acronym: #abbreviated title or acronym of the software
