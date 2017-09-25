@@ -14,7 +14,7 @@
 
 |Proposed field | Property of | Expected Value | OSTI Cardinality | DataCite Field | DataCite Expected Value | Datacite Cardinality |
 |:------:|:---------:|:------:|:------:|:------:|:------:|:------:|
-|dcterms:rights | dctype:Software | Literal | 1 | dcite:rights | Literal | 0 |
+|osti: availability | dctype:Software | Literal | 1 | dcite:rights | Literal | 0 |
 
 ## Repository Link/Landing Page
 
@@ -71,7 +71,7 @@
 
 |Proposed field | Property of | Expected Value | OSTI Cardinality | DataCite Field | DataCite Expected Value | Datacite Cardinality |
 |:------:|:---------:|:------:|:------:|:------:|:------:|:------:|
-|dcterms:??title | dctype:Software | Literal | 0 | -- | -- | -- |
+|osti:acronymn | dctype:Software | Literal | 0 | -- | -- | -- |
 
 ## Digital Object Identifier (DOI)
 
