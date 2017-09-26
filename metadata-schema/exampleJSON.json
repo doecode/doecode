@@ -14,40 +14,22 @@
  "skos": "http://www.w3.org/2004/02/skos/core#"
 
   },
-  "@type": "dctype:Software",
   "@id": "github.com/ExampleSoftware",
   "dcterms:title": "Example Software",
+  "osti:acronym": "ExWare",
   "dcterms:date": "2016-12-16",
   "dcterms:description": "This Example Software is super fancy and does all the things",
   "dcterms:coverage": "United States",
   "schema:codeRepository": "http://github.com/ExampleSoftware",
-  "dcterms:rights": "Open Source",
-  "dcterms:license": "https://opensource.org/licenses/MIT",
-  "osti:legalNotice": "This computer software has been developed under sponsorship of the U.S. Department of Energy",
-  "osti:disclaimer": "Neither the United States Government nor the United States Department of Energy, nor any of their employees, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, or represents that its use would not infringe privately owned rights.",
-  "schema:operatingSystem": "Linux",
+  "osti:availability": "Open Source, Publicly Available Repository",
+  "dcterms:license": "MIT License",
   "dcterms:requires": "Python FuzzyWuzzy library",
   "dcterms:creator": {
         "@type": "foaf:Person",
         "foaf:firstName": "Jay",
         "foaf:familyName": "Billings",
-        "foaf:mbox_sha1sum": "encoded@email.com"
-    },
-  "dcterms:isReferencedBy": 
- {
-  "@type": "foaf:Document",
-  "@id": "github.com/link_to_software_docs",
-  "dcterms:title": "Software Example Technical Documentation"
- },
-  "dcterms:subject":
-	[
-	{"@type": "loc:subjects",
-	"@id": "https://lccn.loc.gov/sh85029534",
-	"skos:prefLabel": "Computer software"},
-	{"@type": "loc:subjects",
-	"@id": "https://lccn.loc.gov/sh85098374",
-	"skos:prefLabel": "Particles (Nuclear physics)"}
-	],
+        "foaf:mbox_sha1sum": "encoded@email.com",
+  
      "adms:identifier": [
         {
             "@type": "adms:Identifier",
@@ -65,12 +47,7 @@
             "skos:notation": "10.1234/5678"
         }
      ],
-  "dcterms:hasVersion": [
-   {"@id": "github.com/Version2",
-   "skos:prefLabel": "Version 2"},
-   {"@id": "github.com/Version3",
-   "skos:prefLabel": "Version 3"}
-  ],
+
 
   "dcterms:contributor": 
   {
@@ -85,7 +62,7 @@
 		},
         "org:role": {
             "@type:": "org:Role",
-            "skos:prefLabel": "Submitting Organization"
+            "skos:prefLabel": "Contributing Organization"
         }
     },
     "adms:contactPoint": {
@@ -93,10 +70,6 @@
         "foaf:firstName": "Jean",
         "foaf:familyName": "Smith",
         "foaf:mbox_sha1sum": "otherencrypted@email.com",
-        "adms:identifier": {
-            "@type:": "adms:Identifier",
-            "adms:schemaAgency": "ORCiD",
-            "skos:notation": "0000-1111-2222-3333"
         }
     }
 }
