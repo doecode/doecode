@@ -24,10 +24,6 @@ mapping:
     property: 'osti:availability'
     type: str
     required: yes
-  governmentWideReuseProject:
-    property: 'dcterms: rights'
-    type: boolean
-    required: yes
   codeRepository: 
     property: 'schema:codeRepository'
     type: str
