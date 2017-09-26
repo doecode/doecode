@@ -6,39 +6,33 @@
     
     <complexType name="metadata">
     	<sequence>
-    		<element name="productType" type="string" maxOccurs="1"
+    		<element name="availability" type="string" maxOccurs="1"
     			minOccurs="1">
     		</element>
-    		<element name="submittingOrg_siteOwnershipCode"
-    			type="string" maxOccurs="unbounded" minOccurs="1">
+    		<element name="repositoryLink_landingPage" type="string"
+    			maxOccurs="1" minOccurs="1">
     		</element>
-    		<element name="sponsoringOrg" type="string"
-    			maxOccurs="unbounded" minOccurs="1">
+    		<element name="softwareTitle" type="string" maxOccurs="1"
+    			minOccurs="1">
     		</element>
-    		<element name="distributionAccessLimiation"
-    			maxOccurs="unbounded" minOccurs="1">
-    			<complexType>
-    				<sequence></sequence>
-    			</complexType>
+    		<element name="description_abstract" type="string"
+    			maxOccurs="1" minOccurs="1">
     		</element>
-    		<element name="developersCreators" maxOccurs="unbounded"
+    		<element name="license" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="developers" maxOccurs="unbounded"
     			minOccurs="1">
     			<complexType>
     				<sequence>
-    					<element name="firstName" type="string"></element>
-    					<element name="lastName" type="string"></element>
-    					<element name="middleName" type="string"></element>
-    					<element name="email" type="string"></element>
-    					<element name="orcid" type="string"></element>
-    					<element name="affiliation" type="string"></element>
-    					<element name="primaryAuthorFlag"
-    						type="boolean">
-    					</element>
+    					<element name="firstName" type="string" maxOccurs="1" minOccurs="1"></element>
+    					<element name="lastName" type="string" maxOccurs="1" minOccurs="1"></element>
+    					<element name="middleName" type="string" maxOccurs="1" minOccurs="0"></element>
+    					<element name="email" type="string" maxOccurs="1" minOccurs="0"></element>
+    					<element name="orcid" type="string" maxOccurs="1" minOccurs="0"></element>
+    					<element name="affiliation" type="string" maxOccurs="1" minOccurs="0"></element>
     				</sequence>
     			</complexType>
-    		</element>
-    		<element name="contributingOrg" type="string"
-    			maxOccurs="unbounded" minOccurs="0">
     		</element>
     		<element name="originatingResearchOrg" type="string"
     			maxOccurs="unbounded" minOccurs="1">
@@ -46,49 +40,47 @@
     		<element name="DOEAward_contractNumber" type="string"
     			maxOccurs="unbounded" minOccurs="1">
     		</element>
-    		<element name="softwareTitle_name" type="string"
-    			maxOccurs="1" minOccurs="1">
+    		<element name="sponsoringOrg" type="string"
+    			maxOccurs="unbounded" minOccurs="1">
     		</element>
-    		<element name="acronym" type="string" maxOccurs="1"
-    			minOccurs="0">
+    		<element name="releaseDate" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="contact" type="string" maxOccurs="1"
+    			minOccurs="1">
     		</element>
     		<element name="digitalObjectIdentifier_DOI" type="string"
     			maxOccurs="1" minOccurs="0">
     		</element>
-    		<element name="dateOfIssuance" type="string" maxOccurs="1"
-    			minOccurs="1">
-    		</element>
-    		<element name="description_abstract" type="string"
-    			maxOccurs="1" minOccurs="1">
-    		</element>
-    		<element name="relatedIdentifier" type="string"
+    		<element name="contributors" type="string"
     			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="contributingOrg" type="string"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="shortTitle_acronym" type="string"
+    			maxOccurs="1" minOccurs="0">
     		</element>
     		<element name="countryOfOrigin" type="string" maxOccurs="1"
     			minOccurs="0">
     		</element>
-    		<element name="subjectCategoryCodes" type="string"
-    			maxOccurs="unbounded" minOccurs="0">
-    		</element>
     		<element name="keywords" type="string" maxOccurs="unbounded"
-    			minOccurs="0">
-    		</element>
-    		<element name="nonDOEContractNumber" type="string"
-    			maxOccurs="unbounded" minOccurs="0">
-    		</element>
-    		<element name="brCode" type="string" maxOccurs="unbounded"
-    			minOccurs="0">
-    		</element>
-    		<element name="siteUniqueIdentifier_siteAccessionNumber"
-    			type="string" maxOccurs="1" minOccurs="0">
-    		</element>
-    		<element name="operatingSystem" type="string" maxOccurs="1"
     			minOccurs="0">
     		</element>
     		<element name="otherSpecialRequirements" type="string"
     			maxOccurs="1" minOccurs="0">
     		</element>
-    		<element name="related_auxiliarySoftware" type="string"
+    		<element name="relatedIdentifier" type="string"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="additionalContract_awardNumbers"
+    			type="string" maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="brCode" type="string" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="fwpNumber" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="siteAccessionNumber" type="string"
     			maxOccurs="1" minOccurs="0">
     		</element>
     	</sequence>
