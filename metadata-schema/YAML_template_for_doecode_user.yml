@@ -9,7 +9,6 @@ date: #on what date was this code released YYYY-MM-DD
 description: | #provide an abstract/description of your project
 license: #type in license from open source license list or give the URL for your license
 availability: #type in one of the following: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source 
-governmentWideReuseProject: 1
 codeRepository: #repo URL or landing page URL
 
 doeIdentifier:
