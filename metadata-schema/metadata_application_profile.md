@@ -130,14 +130,6 @@ EXAMPLE
 |Cardinality         | 1 |
 
 
-| Label              |  Government Wide Reuse                                                 |
-|:------------------ |:-----------------------------------------------------------------------|
-|Definition          | A value indicating whether or not the project is built for government-wide reuse.|
-|Scheme              | Boolean                                                                |
-|Property            | cdg:governmentWideReuseProject                                         |
-|Usage               | 0: The project is not built for government-wide reuse. 1: The project is built for government-wide reuse. Default value will be 1 unless access limitation field determines otherwise.|
-|Cardinality         | 1 |
-
 
 | Label        		 | *Developer(s)/Contributor/Contact Point*                                            |
 |:-----------------------|:------------------------------------------------------------------|
