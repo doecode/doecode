@@ -2,7 +2,7 @@
 #Version: 1.3
 
 ---
-#Describe availability of your software. Type one of the following: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source 
+#Describe availability of your software
 accessibility: "OS"
 #repository URL or landing page URL
 repository_link: "https://github.com/doecode/dev-test-repo"
