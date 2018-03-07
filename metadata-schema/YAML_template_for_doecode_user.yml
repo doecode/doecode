@@ -1,70 +1,98 @@
----
 #Metadata template for DOECode users
-#Version: 1.01
+#Version: 1.3
 
-#REQUIRED FIELDS
-
-title: #"type the title of your project using quotation marks"
-date: #on what date was this code released YYYY-MM-DD
-description: | #provide an abstract/description of your project
-license: #type in license from open source license list or give the URL for your license
-availability: #type in one of the following: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source 
-codeRepository: #repo URL or landing page URL
-
-doeIdentifier:
-  identName: "DOE Contract Number"
-  identNumber: #type in the DOE Contract Number 
-
-#add to list as needed
-developers: 
-- firstname: #what is the developer's first name
-  familyname: #what is the developer's family name
-  email: #what is the developer's email (optional) 
-  orcID: 
-     identName: "ORCiD"
-     identNumber: #type in the developer's ORCiD, please (optional)
-  basedAt: #current primary workplace(affiliation) (optional)
-
-sponsoringOrganization: 
-- orgName: #What org funded this project? add to list as needed.
-researchOrganization: 
-- orgName: #What org contributed to this research? add to list as needed. 
-
-contactPerson: #Who is submitting the software
-- email: #What is the contact person's email
-  phoneNumber: #What is the contact person's phone number
-  basedAt: #current organization of the submitter
-
-#OPTIONAL FIELDS
-
-keywords:
-  - #type a keyword/phrase that describes your project, e.g. "Earth Sciences"
-  - #type another keyword/phrase, e.g. "Groundwater flow"
-
-#add to list as needed
+---
+#Describe availability of your software. Type one of the following: Open Source, Publicly Available Repository; Open Source, No Publicly Available Repository; Closed Source 
+accessibility: "OS"
+#repository URL or landing page URL
+repository_link: "https://github.com/doecode/dev-test-repo"
+#add as many developers as needed; first and last name required
+developers:
+- first_name: Jay Jay
+  last_name: Billings
+  affiliations:
+  - "Oak Ridge National Laboratory"
+- email: knight.kathryn@gmail.com
+  affiliations: 
+  - "Oak Ridge National Laboratory"
+  first_name: Katie
+  last_name: Knight
+- first_name: Neal
+  last_name: Ensor
+  email: ensorn@osti.gov
+  orcid: "0000-0001-5166-5705"
+- first_name: Thomas
+  last_name: Welsch
+  email: welscht@osti.gov
+  affiliations:
+  - "Information International Associates (IIa)"
+#DOI or URL identifiers of related resources
+related_identifiers:
+- identifier_type: "URL"
+  identifier_value: "http://github.com/doecode/doecode"
+  relation_type: "IsPreviousVersionOf"
+  description: "Newer code is present at this URL."
+- identifier_type: "DOI"
+  identifier_value: "10.5072/doecode2017/dev-test-repo/2"
+  relation_type: "Cites"
+#name of person or institution that has contributed to the software and not listed as a developer
 contributors:
-- firstname:
-  familyname:
-  email:
-  orcID:
-    identName: "ORCiD"
-    identNumber: #type in orcid
-  basedAt: #current primary workplace(affiliation)
-
-#add to list as needed
-contributingOrganization:
-- orgName: #What org contributed to this research?
-
-doi: 
-  identName: "DOI"
-  identNumber: #enter in the software DOI
-
-#repeat field as needed
-additionalIdentifier: 
-  identName: #name of the ID type, e.g. "B&R Code, FWP Number, Site Accession Number, Additional Contract/Award Numbers"
-  identNumber: #the alpha/numeric identifier 
-  
-countryOfOrigin: #primary location of software development
-requirements: #list any special requirements
-relatedIdentifiers: #url or doi of related docs
-acronym: #abbreviated title or acronym of the software
+- first_name: Bob
+  last_name: McTester
+  affiliations: 
+  - "Java Testing Services, Inc."
+  contributor_type: DataCurator
+  email: mctester@testingservices.com
+#other organization that provided support to project; may be entered in place of naming individual software developers
+contributing_organizations:
+- organization_name: University of Wisconsin
+  contributor_type: DataCurator
+#organization which had primary responsibility for developing the software
+research_organizations:
+- organization_name: "OSTI"
+  DOE: true 
+- organization_name: "ORNL"
+  DOE: true
+#sponsoring or funding office of the software product
+sponsoring_organizations:
+- organization_name: "DOE OSTI"
+  DOE: true
+  #award/contract number that is largely responsibile for funding the project; at least one valid entry is required
+  primary_award: "DE-1999-23902"
+  funding_identifiers:
+  - identifier_type: "AwardNumber"
+    identifier_value: "DE_865234"
+  - identifier_type: "AwardNumber"
+    identifier_value: "DE-8293"
+- organization_name: "University of Miami, FL"
+  funding_identifiers:
+  - identifier_type: "AwardNumber"
+    identifier_value: "UWIN-234"
+  - identifier_type: "AwardNumber"
+    identifier_value: "UWIN-888"
+  - identifier_type: "BRCode"
+    identifier_value: "UFL-11"
+#title of the software
+software_title: "Sample development and testing repository for DOECode"
+#abbreviated title or acronym for the software
+acronym: "dev-test-repo"
+#unique persistent identifier which references a digital object and provides long-term access
+doi: "10.5072/23892"
+#license for the software
+licenses:
+- "BSD 2-clause \"Simplified\" License"
+#provide clear, concise and publicly releasable description of the software
+description: > 
+  An example testing repository for submissions of YAML and other associated
+  testing projects related to the development of DOECode.
+#list of words or phrases that describe the software; separate terms with a semicolon
+keywords: software, DOECode, hosting repositories
+#provide name, email, phone number, and organization of the submitter. This contact info will serve as the point of contact for DOE if there are questions regarding the software; this information will not be shared publicly
+recipient_name: "Neal Ensor"
+recipient_email: "ensorn@osti.gov"
+recipient_phone: "865-576-1295"
+recipient_org: "DOE OSTI"
+#accession or other identifying nymbers assigned by submitting site, univeristy, or repository's database, records, etc.
+site_accession_number: "384983"
+#software release date
+release_date: "1999-06-02"
