@@ -118,6 +118,10 @@ mapping:
     property: 'adms:contactPoint'  
     <<: *person
     required: yes
+  other_special_requirements:
+    property: 'dcterms:requires'
+    type: str
+    required: no
   related_identifiers:
     property: 'adms:identifier'
     type: str
