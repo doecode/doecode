@@ -4,7 +4,7 @@
 type: map
 
 mapping: 
-  title: 
+  software_title: 
     property: 'dcterms:title'
     type: str
     required: yes
@@ -20,11 +20,11 @@ mapping:
     property: 'dcterms:license'
     type: str
     required: yes
-  availability: 
-    property: 'osti:availability'
+  accessibility: 
+    property: 'osti:accessibility'
     type: str
     required: yes
-  codeRepository: 
+  repsitory_link: 
     property: 'schema:codeRepository'
     type: str
     required: yes
@@ -46,9 +46,6 @@ mapping:
       property: 'skos:prefLabel'
       type: str
       required: yes
-    orgAcronym: 
-      property: 'skos:altLabel'
-      required: no
     orgID: 
       property: 'adms:identifier'
       <<: *identifier
@@ -56,11 +53,11 @@ mapping:
   person: &person
     property: 'foaf:Person'
     type: map
-    firstname: 
+    first_name: 
       property: 'foaf:firstName'
       type: str
       required: yes
-    familyname: 
+    last_name: 
       property: 'foaf:familyName'
       type: str
       required: yes
@@ -68,11 +65,11 @@ mapping:
       property: 'foaf:mbox_sha1sum'
       type: str
       required: no
-    orcID:
+    orcid:
       property: 'adms:identifier'
       <<: *identifier
       required: no
-    basedAt:
+    affiliations:
       property: 'org:basedAt'
       <<: *organization
       required: no
@@ -84,24 +81,24 @@ mapping:
     property: 'schema:keywords'
     type: str
     required: no
-  developer:
+  developers:
     property: 'dcterms:creator'
     <<: *person
     required: yes
-  contributor:
+  contributors:
     property: 'dcterms:contributor'
     <<: *person
     <<: *organization
     'org:role':
-      contributingOrganization: 
+      contributing_organization: 
         property: 'org:Role'
         'skos:preflabel': "Contributing Organization"
         required: no
-      sponsoringOrganization:
+      sponsoring_organization:
         property: 'org:Role'  
         'skos:prefLabel': "Sponsoring Organization"
         required: yes
-      researchOrganization:
+      research_organization:
         property: 'org:Role'
         'skos:prefLabel': "Research Organization"
         required: yes
@@ -109,11 +106,11 @@ mapping:
     property: 'adms:identifier'
     <<: *identifier
     required: no
-  additionalIdentifier:
+  additional_identifier:
     property: 'adms:identifier'
     <<: *identifier
     required: no
-  countryOfOrigin: 
+  country_of_origin: 
     property: 'dcterms:coverage'	
     type: str
     required: no
@@ -121,11 +118,7 @@ mapping:
     property: 'adms:contactPoint'  
     <<: *person
     required: yes
-  requirements:
-    property: 'dcterms:requires'
-    type: str
-    required: no
-  relatedIdentifiers:
+  related_identifiers:
     property: 'adms:identifier'
     type: str
     required: no
