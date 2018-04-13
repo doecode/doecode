@@ -1,0 +1,157 @@
+---
+code_id: 6751
+open_source: true
+repository_link: "https://github.com/doecode/doecode/"
+accessibility: "OS"
+software_type: "S"
+developers:
+- email: ""
+  orcid: ""
+  first_name: "Josh"
+  last_name: "Nelson"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Thomas"
+  last_name: "Welsch"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Jay Jay"
+  last_name: "Billings"
+  middle_name: ""
+  affiliations:
+  - "Oak Ridge National Lab. (ORNL), Oak Ridge, TN (United States)"
+- email: ""
+  orcid: ""
+  first_name: "Carly"
+  last_name: "Robinson"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Darel"
+  last_name: "Finkbeiner"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Mary Beth"
+  last_name: "West"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Andrew"
+  last_name: "Smith"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: "knight.kathryn@gmail.com"
+  orcid: ""
+  first_name: "Katie"
+  last_name: "Knight"
+  middle_name: ""
+  affiliations:
+  - "Oak Ridge National Lab. (ORNL), Oak Ridge, TN (United States)"
+- email: ""
+  orcid: ""
+  first_name: "Shelby"
+  last_name: "Stooksbury"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Tim"
+  last_name: "Sowers"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Lance"
+  last_name: "Vowell"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: "sherlinec@osti.gov"
+  orcid: ""
+  first_name: "Crystal"
+  last_name: "Sherline"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Lynn"
+  last_name: "Davis"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Mike"
+  last_name: "Hensley"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: "IanLee1521@gmail.com"
+  orcid: ""
+  first_name: "Ian"
+  last_name: "Lee"
+  middle_name: ""
+  affiliations:
+  - "Lawrence Livermore National Lab. (LLNL), Livermore, CA (United States)"
+- email: ""
+  orcid: ""
+  first_name: "Amber"
+  last_name: "Watson"
+  middle_name: ""
+  affiliations:
+  - "Information International Associates"
+- email: ""
+  orcid: ""
+  first_name: "Lorrie Apple"
+  last_name: "Johnson"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Mark"
+  last_name: "Martin"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+- email: ""
+  orcid: ""
+  first_name: "Neal"
+  last_name: "Ensor"
+  middle_name: ""
+  affiliations:
+  - "U.S. Department of Energy Office of Scientific and Technical Information"
+contributors: []
+sponsoring_organizations: []
+contributing_organizations: []
+research_organizations: []
+related_identifiers: []
+release_date: "2017-10-27"
+software_title: "DOE CODE"
+acronym: "doecode"
+doi: "10.11578/dc.20171031.3"
+description: "Main repo for managing the new DOE CODE site from the DOE Office of\
+  \ Scientific and Technical Information (OSTI)."
+country_of_origin: "United States"
+licenses:
+- "BSD 3-clause \"New\" or \"Revised\" License"
+recipient_org: "OSTI"
+date_record_added: "2017-10-31"
+date_record_updated: "2017-12-22"
