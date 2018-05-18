@@ -1,6 +1,6 @@
-DOECode STIP Requirement Team
+DOE CODE STIP Requirement Team
 =
-##Members
+## Members
  - Jay Jay Billings, ORNL
  - Lance Vowell, OSTI
  - Lorrie Johnson, OSTI
