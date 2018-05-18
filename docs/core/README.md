@@ -9,6 +9,7 @@ The job of the DOE CODE Core Requirements Team is to provide requirements to the
 - Gilberto Pastorello, LBL
 - Carly Robinson, OSTI
 - Lance Vowell, OSTI
+- Lynn Davis, OSTI
 - Balint Joo, JLAB
 
 
