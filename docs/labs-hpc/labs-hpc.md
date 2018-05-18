@@ -1,6 +1,6 @@
-#DOE Code Labs-HPC Requirements Team
+# DOE CODE Labs-HPC Requirements Team
 
-##Members
+## Members
  - Jay Jay Billings, ORNL
  - Lance Vowell, OSTI
  - Lynn Davis, OSTI
