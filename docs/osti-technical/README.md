@@ -1,5 +1,5 @@
-# DOECode Technical Requirements Team
-The job of the DOECode Technical Requirements Team is to provide requirements to the project lead and OSTI for DOECode that affect the technical nature of the project. This includes requirements related to the nonfunctional aspects of the software, backend hardware, security, and other areas. 
+# DOE CODE Technical Requirements Team
+The job of the DOE CODE Technical Requirements Team is to provide requirements to the project lead and OSTI for DOE CODE that affect the technical nature of the project. This includes requirements related to the nonfunctional aspects of the software, backend hardware, security, and other areas. 
 
 ## Members
 - Chris Augustus, OSTI
