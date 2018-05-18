@@ -1,4 +1,4 @@
-# DOECode Laboratory-Legal Requirements Team
+# DOE CODE Laboratory-Legal Requirements Team
 
 ## Members
  - Jay Jay Billings, ORNL
