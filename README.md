@@ -1,4 +1,4 @@
-# DOECode
+# DOE CODE
 Main repo for managing the DOECode project.
 
 ## Contacting the Team
